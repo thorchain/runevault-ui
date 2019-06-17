@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>ICON/CLP</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M50.4859185,0 L64.6071779,14.2477874 L78.7284373,0 L87.4029249,8.75221259 L73.2816655,23 L87.4029249,37.2477874 L78.7284373,46 L64.6071779,31.7522126 L50.4859185,46 L36.3632181,31.7522126 L22.2419591,46 L13.5674712,37.2477874 L27.6887305,23 L13.5674712,8.75221259 L22.2419591,0 L36.3632181,14.2477874 L50.4844775,0 L50.4859185,0 Z M0,23.0149344 L6.70759818,16.2355538 L13.4151963,23.0149344 L6.70759818,29.7943154 L0,23.0149344 Z M87.5848038,23.0149344 L94.2924019,16.2355538 L101,23.0149344 L94.2924019,29.7943154 L87.5848038,23.0149344 Z" id="path-1"></path>
+    </defs>
+    <g id="ICON/CLP" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="COLOUR/DGRAY" transform="translate(-1.000000, 27.000000)">
+            <g>
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#F0B90B" fill-rule="nonzero" xlink:href="#path-1"></use>
+                <g id="COLOUR/YELLOW" mask="url(#mask-2)" fill="#F0B90B">
+                    <g transform="translate(1.000000, -27.000000)" id="Rectangle">
+                        <rect x="0" y="0" width="101" height="101"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

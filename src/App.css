@@ -34,8 +34,15 @@
 
 /* Binance Tools CSS */
 
+body {
+  font-family: Helvetica; 
+  font-size: 18px;
+  color: #848E9C;
+  letter-spacing: 0;
+}
+
 .header-container {
-  background: #FFFFFF;
+  background: #fff;
   box-shadow: 0 2px 16px 0 rgba(0,0,0,0.09);
 }
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>ICON/Multi-sig</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M11.340797,13.2667035 L11.340797,26.5441178 L0,19.9000555 L0,6.62621154 L11.340797,0 L22.685185,6.62621154 L11.340797,13.2667035 Z M38.4259259,74.9754899 L49.7667232,81.6527198 L61.1111109,74.9754899 L61.1111109,88.3227701 L49.7667232,95 L38.4259259,88.3227701 L38.4259259,74.9754899 Z M77.314815,6.62621154 L88.6556118,0 L100,6.62621154 L100,19.9071959 L88.6556118,26.5441178 L88.6556118,13.2631335 L77.314815,6.62978165 L77.314815,6.62621154 Z M80.5341832,17.8464164 L80.5555555,31.1827219 L61.2490609,42.6005217 L61.2490609,65.5150128 L50,72.1813723 L38.7473773,65.5114268 L38.7473773,42.6005217 L19.4444445,31.1827219 L19.4444445,17.8428304 L30.6970677,11.1764706 L49.9679414,22.6086141 L69.2886841,11.1764706 L80.537745,17.8464164 L80.5341832,17.8464164 Z" id="path-1"></path>
+    </defs>
+    <g id="ICON/Multi-sig" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="COLOUR/DGRAY" transform="translate(0.000000, 3.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#F0B90B" fill-rule="nonzero" xlink:href="#path-1"></use>
+            <g id="COLOUR/YELLOW" mask="url(#mask-2)" fill="#F0B90B">
+                <g transform="translate(0.000000, -3.000000)" id="Rectangle">
+                    <rect x="0" y="0" width="101" height="101"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

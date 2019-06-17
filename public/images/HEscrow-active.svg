@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>ICON/HEscrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M30.9631335,39.4985837 L22.9516128,31.424929 L31.3847924,22.9263457 L20.1405528,11.594901 L50.5,-19 L81,11.7365439 L69.7557604,23.0679886 L77.7672811,31.1416432 L69.7557604,39.2152975 L80.8594472,50.4050993 L50.2188941,81 L20,50.5467422 L30.9631335,39.4985837 Z M39.4323639,31.290884 L50.3252212,42.2624214 L61.2180785,31.290884 L50.3252212,20.3193467 L39.4323639,31.290884 Z" id="path-1"></path>
+    </defs>
+    <g id="ICON/HEscrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="COLOUR/DGRAY" transform="translate(-1.000000, 19.000000)">
+            <g>
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#F0B90B" fill-rule="nonzero" transform="translate(50.500000, 31.000000) rotate(90.000000) translate(-50.500000, -31.000000) " xlink:href="#path-1"></use>
+                <g id="COLOUR/YELLOW" mask="url(#mask-2)" fill="#F0B90B">
+                    <g transform="translate(1.000000, -19.000000)" id="Rectangle">
+                        <rect x="0" y="0" width="101" height="101"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

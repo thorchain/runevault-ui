@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>ICON/DAO</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0,51.1201308 L11.1778678,39.9025171 L22.3557356,51.1201308 L11.1778678,62.3377449 L0,51.1201308 Z M39.5197309,11.2176139 L50.6975985,0 L61.8754665,11.2176139 L50.6975985,22.4352278 L39.5197309,11.2176139 Z M39.392974,90.7823859 L50.5708417,79.5647722 L61.7487097,90.7823859 L50.5708417,102 L39.392974,90.7823859 Z M78.6442643,51.0766834 L89.822132,39.8590698 L101,51.0766834 L89.822132,62.2942975 L78.6442643,51.0766834 Z M50.7205162,40.067915 L70.6879619,20.0239707 L81.7970317,31.1690948 L61.8263457,51.2162922 L81.7970317,71.2634897 L70.6879619,82.4086138 L50.7205162,62.3646699 L30.8689355,82.292305 L19.7598652,71.1471813 L39.6146871,51.2162922 L19.7598652,31.2854036 L30.8689355,20.1402795 L50.7205162,40.067915 Z" id="path-1"></path>
+    </defs>
+    <g id="ICON/DAO" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="COLOUR/DGRAY" transform="translate(-1.000000, -1.000000)">
+            <g>
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#F0B90B" fill-rule="nonzero" transform="translate(50.500000, 51.000000) rotate(180.000000) translate(-50.500000, -51.000000) " xlink:href="#path-1"></use>
+                <g id="COLOUR/YELLOW" mask="url(#mask-2)" fill="#F0B90B">
+                    <g transform="translate(1.000000, 1.000000)" id="Rectangle">
+                        <rect x="0" y="0" width="101" height="101"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

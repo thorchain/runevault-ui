@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="63px" viewBox="0 0 100 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>DGRAY</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M19.9568132,49.6482066 L31,38.7527091 L42.0431868,49.6482066 L31,60.5437041 L19.9568132,49.6482066 Z M0.4696971,30.4036081 L31.2348484,0 L62,30.4036081 L50.7064633,41.635514 L31.2348484,22.6574656 L12.1526659,41.635514 L0.4696971,30.4036081 Z M0,68.5963919 L11.6829688,57.364486 L30.7651516,76.3425344 L50.2367666,57.364486 L61.5303029,68.5963919 L30.7651516,99 L0,68.5963919 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="DGRAY" transform="translate(50.000000, 31.500000) rotate(90.000000) translate(-50.000000, -31.500000) translate(19.000000, -18.000000)">
+            <g id="Rectangle-Clipped">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="path-1"></g>
+                <g id="Rectangle" mask="url(#mask-2)">
+                    <g transform="translate(-19.000000, -1.000000)" id="Group">
+                        <g>
+                            <rect id="Rectangle" fill="#848E9C" fill-rule="nonzero" x="0" y="0" width="101" height="101"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
