@@ -31,3 +31,72 @@
     transform: rotate(360deg);
   }
 }
+
+/* Binance Tools CSS */
+
+.header-container {
+  background: #FFFFFF;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.09);
+}
+
+.button {
+  background: #F0B90B; 
+  border-radius: 9px; 
+  font-family: Helvetica-Bold; 
+  font-size: 18px;
+  color: #FFFFFF; 
+  letter-spacing: 0; 
+  text-align: center;
+}
+
+.pill {
+  background: #EDEDED; 
+  border-radius: 28px; 
+  font-family: Helvetica; 
+  font-size: 18px;
+  color: #848E9C; 
+  letter-spacing: 0;
+}
+
+.text-box-area {
+  border: 1px solid #F0B90B; 
+  border-radius: 6px;
+}
+
+.text-box-input {
+  background: #F8F8F8; 
+  border: 1px solid #848E9C;
+  border-radius: 8px;
+  font-family: Helvetica;
+  font-size: 18px;
+  color: #848E9C;
+  letter-spacing: 0;
+  line-height: 23px;
+}
+
+.h1 {
+  font-family: Helvetica-Light;
+  font-size: 42px;
+  color: #848E9C;
+  letter-spacing: 0;
+}
+
+.text {
+  font-family: Helvetica; 
+  font-size: 18px;
+  color: #848E9C;
+  letter-spacing: 0;
+}
+
+.text-bold {
+  font-family: Helvetica-Bold; 
+  font-size: 18px;
+  color: #848E9C; 
+  letter-spacing: 0;
+}
+
+.text-bg {
+  background: #EDEDED;
+}
+
+/*============================*/
