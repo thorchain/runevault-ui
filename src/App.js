@@ -6,6 +6,8 @@ import Header from './components/layout/Header'
 import Sidebar from './components/layout/Sidebar'
 import Footer from './components/layout/Footer'
 
+import ComingSoon from './components/pages/ComingSoon'
+
 import 'antd/dist/antd.css'
 import './App.css'
 
@@ -15,27 +17,23 @@ function Index() {
   return <h2>Home</h2>;
 }
 
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
-
-function App() {
+const App = (props) => {
   return (
     <Router>
       <div>
-        <Layout style={{background: "#fff"}}>
+        <Layout>
           <Header />
           <Layout>
             <Sidebar />
             <Content style={{background: "#fff"}}>
               <Switch>
                 <Route path="/" exact component={Index} />
-                <Route path="/about/" component={About} />
-                <Route path="/users/" component={Users} />
+                <Route path="/multi-send/" component={ComingSoon} />
+                <Route path="/multi-sig/" component={ComingSoon} />
+                <Route path="/escrow/" component={ComingSoon} />
+                <Route path="/hedge-escrow/" component={ComingSoon} />
+                <Route path="/dao/" component={ComingSoon} />
+                <Route path="/swap/" component={ComingSoon} />
               </Switch>
             </Content>
           </Layout>
