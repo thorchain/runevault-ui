@@ -6,6 +6,7 @@ import Header from './components/layout/Header'
 import Sidebar from './components/layout/Sidebar'
 import Footer from './components/layout/Footer'
 
+import Home from './components/pages/Home'
 import MultiSend from './components/pages/MultiSend'
 import MultiSig from './components/pages/MultiSig'
 import Escrow from './components/pages/Escrow'
@@ -18,10 +19,6 @@ import './App.css'
 
 const { Content } = Layout;
 
-function Index() {
-  return <h2>Home</h2>;
-}
-
 const App = (props) => {
   return (
     <Router>
@@ -32,7 +29,7 @@ const App = (props) => {
             <Sidebar />
             <Content style={{background: "#fff"}}>
               <Switch>
-                <Route path="/" exact component={Index} />
+                <Route path="/" exact component={Home} />
                 <Route path="/multi-send/" component={MultiSend} />
                 <Route path="/multi-sig/" component={MultiSig} />
                 <Route path="/escrow/" component={Escrow} />
