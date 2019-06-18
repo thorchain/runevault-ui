@@ -49,6 +49,10 @@ body {
     color: rgba(0,0,0,0.65);
 }
 
+div.ant-row.ant-form-item.form-100 > div {
+  width: 98%
+}
+
 .header-container {
   background: #fff;
   box-shadow: 0 2px 16px 0 rgba(0,0,0,0.09);

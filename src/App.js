@@ -7,6 +7,7 @@ import Sidebar from './components/layout/Sidebar'
 import Footer from './components/layout/Footer'
 
 import ComingSoon from './components/pages/ComingSoon'
+import MultiSend from './components/pages/MultiSend'
 
 import 'antd/dist/antd.css'
 import './App.css'
@@ -28,7 +29,7 @@ const App = (props) => {
             <Content style={{background: "#fff"}}>
               <Switch>
                 <Route path="/" exact component={Index} />
-                <Route path="/multi-send/" component={ComingSoon} />
+                <Route path="/multi-send/" component={MultiSend} />
                 <Route path="/multi-sig/" component={ComingSoon} />
                 <Route path="/escrow/" component={ComingSoon} />
                 <Route path="/hedge-escrow/" component={ComingSoon} />

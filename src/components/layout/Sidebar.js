@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import { Menu, Layout } from 'antd';
-import Image from '../Image'
+import { Icon } from '../Components'
 
 const Sidebar = (props) => {
   const [page, setPage] = useState(window.location.pathname.split("/")[1])
-
-  useEffect(() => {
-    console.log("Pathname change:", window.location.pathname)
-  }, [])
 
   const styles = {
     width: 25,
@@ -39,7 +35,7 @@ const Sidebar = (props) => {
     setPage(key)
   }
 
-  const items = [
+  const menu_items = [
     "multi-send",
     "multi-sig",
     "escrow",
@@ -51,10 +47,10 @@ const Sidebar = (props) => {
   return (
     <Layout.Sider style={{background: "#fff", textTransform: "uppercase", minHeight:500}}>
       <Menu onClick={handleClick} selectedKeys={[page]}>
-        {items.map((item) => (
+        {menu_items.map((item) => (
           <Menu.Item key={item} style={getStyles(item)}>
             <Link to={item}>
-              <Image img={getIcon(item)} style={styles} />&nbsp;<span>{item}</span>
+              <Icon icon={getIcon(item)} style={styles} />&nbsp;<span>{item}</span>
             </Link>
           </Menu.Item>
         ))
