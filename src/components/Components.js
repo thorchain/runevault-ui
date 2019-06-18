@@ -4,7 +4,7 @@ import { Button as AntButton } from "antd"
 
 const defaultStyles = {
     fontFamily: "Helvetica",
-    fontSize: "18px",
+    fontSize: "14px",
     color: "#848E9C", 
     letterSpacing: 0,
   }
@@ -94,7 +94,12 @@ const Button = (props) => {
     styles.border = "1px solid #F0B90B"
   }
   return (
-  <AntButton style={styles} onClick={props.onClick}>
+    <AntButton 
+      style={styles} 
+      onClick={props.onClick} 
+      onChange={props.onChange} 
+      type={props.type}
+    >
     {props.children}
   </AntButton>
   )

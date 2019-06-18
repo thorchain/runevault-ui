@@ -1,4 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import { FilePicker } from 'react-file-picker'
+
 import { Row, Col, Button as AntButton, Form, Input } from 'antd'
 import { H1, Icon, Button, Center, Text, PillText } from "../Components"
 
@@ -29,6 +31,16 @@ Coin.defaultProps = {
 const Transfer = (props) => {
   const { getFieldDecorator, getFieldError, isFieldTouched } = props.form;
 
+  useEffect(() => {
+    props.form.setFieldsValue({
+      "ticker": props.ticker,
+      "address": props.address,
+      "memo": props.memo,
+      "amount": props.amount || 0,
+    })
+    // eslint-disable-next-line
+  }, [props.ticker, props.address, props.memo, props.amount])
+
   // Only show error after a field is touched.
   const addressError = isFieldTouched('address') && getFieldError('address');
   const memoError = isFieldTouched('memo') && getFieldError('memo');
@@ -51,7 +63,7 @@ const Transfer = (props) => {
       <Col>
         <Row>
       <Form layout="inline" onChange={onChange} onSubmit={props.handleSubmit}>
-        <Col span={8}>
+        <Col span={9}>
           <div><Text size={14}>Address</Text></div>
           <Form.Item className="form-100" style={{width: "100%"}} validateStatus={addressError ? 'error' : ''} help={addressError || ''}>
             {getFieldDecorator('address', {
@@ -77,7 +89,7 @@ const Transfer = (props) => {
             )}
           </Form.Item>
         </Col>
-        <Col span={4}>
+        <Col span={5}>
           <div><Text size={14}>Amount</Text></div>
           <Form.Item className="form-100" style={{width: "100%"}} validateStatus={amountError ? 'error' : ''} help={amountError || ''}>
             {getFieldDecorator('amount', {
@@ -105,6 +117,27 @@ const MultiSend = (props) => {
   const [total, setTotal] = useState(0)
   const [selectedCoin, setSelectedCoin] = useState(null)
 
+  var reader = new FileReader();
+  reader.onload = () => {
+    var text = reader.result;
+    var transactions = []
+    const lines = text.split(/\n/)
+    for (let l of lines) {
+      const parts = l.split(',')
+      if (parts.length === 3) {
+        transactions.push({
+          "address": parts[0],
+          "memo": parts[1],
+          "amount": parseFloat(parts[2]) || 0,
+        })
+      } else {
+        console.error("Invalid CSV line:", l)
+      }
+      setTransfers([...transactions])
+      setTotal(transactions.reduce((a,b) => a + (b.amount || 0), 0))
+    }
+  }
+
   const addTransfer = (transfer) => {
     setTransfers([...transfers, {}])
   }
@@ -117,6 +150,10 @@ const MultiSend = (props) => {
 
   const sendCoins = () => {
     alert("TODO: send coins")
+  }
+
+  const uploadCsv = (f) => {
+    reader.readAsText(f);
   }
 
   const coins = [
@@ -134,7 +171,7 @@ const MultiSend = (props) => {
         <H1>Multi-Sending Tool</H1>
       </div>
       <div>
-        <Text>
+        <Text size={18}>
           Easily send transactions to multiple addresses using Binance Chain batched transactions feature.
         </Text>
       </div>
@@ -157,13 +194,13 @@ const MultiSend = (props) => {
       </div>
       {selectedCoin &&
       <Row>
-        <Col span={18}>
+        <Col span={16}>
           {transfers.map((transfer, i) => (
             <WrappedTransferLine key={i} index={i} onChange={updateTransfer} ticker={selectedCoin} {...transfer} />
           ))
           }
           <Row>
-            <Col span={10}>
+            <Col span={12}>
               <AntButton onClick={() => { addTransfer({})}} shape="circle" style={{border: "none"}}>
                 <Icon icon="plus" />
               </AntButton>
@@ -189,8 +226,38 @@ const MultiSend = (props) => {
             </Col>
           </Row>
         </Col>
-        <Col>
-          csv upload
+        <Col span={8}>
+          <Row style={coinRowStyle}>
+            <Center>
+              <H1>OR</H1>
+            </Center>
+          </Row>
+          <Row style={coinRowStyle}>
+            <Center>
+              <Text>Upload a CSV file with in the following format:</Text>
+            </Center>
+          </Row>
+          <Row style={coinRowStyle}>
+            <Center>
+              <Text bold>ADDRESS | MEMO | AMOUNT</Text>
+            </Center>
+          </Row>
+          <Row style={coinRowStyle}>
+            <Center>
+              <FilePicker
+                extensions={['csv']}
+                onChange={f => (uploadCsv(f))}
+                onError={err => (console.error(err))}
+              >
+                <Button 
+                  style={{padding: "0px 10px", fontSize: 14}} 
+                  bold={true} 
+                  fill={false}>
+                  Upload
+                </Button>
+              </FilePicker>
+            </Center>
+          </Row>
         </Col>
       </Row>
       }
