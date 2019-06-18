@@ -6,8 +6,12 @@ import Header from './components/layout/Header'
 import Sidebar from './components/layout/Sidebar'
 import Footer from './components/layout/Footer'
 
-import ComingSoon from './components/pages/ComingSoon'
 import MultiSend from './components/pages/MultiSend'
+import MultiSig from './components/pages/MultiSig'
+import Escrow from './components/pages/Escrow'
+import HEscrow from './components/pages/HedgeEscrow'
+import DAO from './components/pages/DAO'
+import Swap from './components/pages/Swap'
 
 import 'antd/dist/antd.css'
 import './App.css'
@@ -30,11 +34,11 @@ const App = (props) => {
               <Switch>
                 <Route path="/" exact component={Index} />
                 <Route path="/multi-send/" component={MultiSend} />
-                <Route path="/multi-sig/" component={ComingSoon} />
-                <Route path="/escrow/" component={ComingSoon} />
-                <Route path="/hedge-escrow/" component={ComingSoon} />
-                <Route path="/dao/" component={ComingSoon} />
-                <Route path="/swap/" component={ComingSoon} />
+                <Route path="/multi-sig/" component={MultiSig} />
+                <Route path="/escrow/" component={Escrow} />
+                <Route path="/hedge-escrow/" component={HEscrow} />
+                <Route path="/dao/" component={DAO} />
+                <Route path="/swap/" component={Swap} />
               </Switch>
             </Content>
           </Layout>
