@@ -36,7 +36,7 @@ const Home = (props) => {
     {
       icon: 'multi-sig-active',
       link: 'multi-sig',
-      title: 'NON-INTERACTIVE MULTI-SIGNATURE MODULE',
+      title: 'MULTI-SIGNATURE MODULE',
       description: 'This module using Cosmos multi-key store to persist state about the wallets on-chain and is non-interactive since signers don’t need to be online at the same time. Signatures and public keys are recorded on-chain, as opposed to off-chain. This functions similar to Ethereum’s Gnosis Multi- sig contract, where the wallet is set up first before it can be used.',
     },
     {
@@ -60,7 +60,7 @@ const Home = (props) => {
     {
       icon: 'swap-active',
       link: 'swap',
-      title: 'CONTINUOUS LIQUIDITY POOL MODULE',
+      title: 'LIQUIDITY POOL MODULE',
       description: 'This module allows users to stake assets and BNB in on-chain pools, and then perform trustless swaps across pools. The module features always-on liquidity and fair market-based prices that are resistant to manipulation. Stakers earn fees when staking assets, and users can instantly swap assets in a single transaction. This module is exciting because it will drive staking demand for BNB and BinanceChain assets, and solve liquidity problems for the ecosystem since it has the correct incentives to stake assets and earn fees. Developers can add a swap widget in their apps to instantly convert assets at market prices trustlessly with no counter-party.',
     }
   ];
@@ -73,7 +73,7 @@ const Home = (props) => {
         ))
         }
       </Row>
-      <Row gutter={24}>
+      <Row style={{marginTop: 20}} gutter={24}>
         {data.slice(3,6).map((item) => (
           <FeatureCard key={item.title} item={item} />
         ))
