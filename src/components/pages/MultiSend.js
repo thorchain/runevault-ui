@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react"
 import { FilePicker } from 'react-file-picker'
 
-import { Row, Col, Button as AntButton, Form, Input } from 'antd'
+import { Row, Col, Modal, Button as AntButton, Form, Input } from 'antd'
 import { H1, Icon, Button, Center, Text, PillText } from "../Components"
+
+const confirm = Modal.confirm;
 
 const Coin = ({onClick, icon, ticker, amount, border}) => {
   let styles = {width: "100%", paddingLeft: 30, cursor: "pointer"}
@@ -149,7 +151,27 @@ const MultiSend = (props) => {
   }
 
   const sendCoins = () => {
-    alert("TODO: send coins")
+    confirm({
+      content: (
+        <div>
+          Please verify and confirm addresses and amounts are EXACTLY correct!
+          {transfers.map((item) => {
+            return (
+              <Row key={item.address}>
+                <Text>{item.amount} {item.ticker} ==> {item.address} ({item.memo})</Text>
+              </Row>
+            )
+          })
+          }
+        </div>
+      ),
+      onOk() {
+        console.log('TODO: Send Coins');
+      },
+      onCancel() {
+        console.log('Cancelled.');
+      },
+    })
   }
 
   const uploadCsv = (f) => {
