@@ -1,8 +1,29 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import { List } from 'antd';
+import { Row, Col, Card } from 'antd';
 
-import { Icon, Text } from '../Components'
+import { Center, Icon, Text } from '../Components'
+
+const { Meta } = Card;
+
+const FeatureCard = ({item}) => {
+  return (
+    <Col span={8}>
+      <Link to={item.link}>
+        <Card
+          cover={<Center><Icon style={{height: 100, width:100}} icon={item.icon} /></Center> }
+          style={{border: "none"}}
+        >
+          <Meta
+            title={<Text size={18} bold>{item.title}</Text>}
+            description={<Text>{item.description}</Text>}
+          />
+        </Card>
+      </Link>
+    </Col>
+
+  )
+}
 
 const Home = (props) => {
   const data = [
@@ -46,21 +67,19 @@ const Home = (props) => {
 
   return (
     <div style={{margin: 20}}>
-      <List
-        itemLayout="horizontal"
-        dataSource={data}
-        renderItem={item => (
-          <List.Item>
-            <Link to={item.link}>
-              <List.Item.Meta
-                avatar={<Icon icon={item.icon} />}
-                title={<Text size={18} bold>{item.title}</Text>}
-                description={<Text>{item.description}</Text>}
-              />
-            </Link>
-          </List.Item>
-        )}
-      />
+      <Row gutter={24}>
+        {data.slice(0,3).map((item) => (
+          <FeatureCard key={item.title} item={item} />
+        ))
+        }
+      </Row>
+      <Row gutter={24}>
+        {data.slice(3,6).map((item) => (
+          <FeatureCard key={item.title} item={item} />
+        ))
+        }
+      </Row>
+
     </div>
   )
 }
