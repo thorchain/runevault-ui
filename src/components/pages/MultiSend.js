@@ -3,6 +3,7 @@ import { FilePicker } from 'react-file-picker'
 
 import { Row, Col, Modal, Button as AntButton, Form, Input } from 'antd'
 import { H1, Icon, Button, Center, Text, PillText } from "../Components"
+import Binance from "../../clients/binance"
 
 const confirm = Modal.confirm;
 
@@ -118,6 +119,21 @@ const MultiSend = (props) => {
   const [transfers, setTransfers] = useState([{}])
   const [total, setTotal] = useState(0)
   const [selectedCoin, setSelectedCoin] = useState(null)
+  const [multiFee, setMultiFee]  = useState(null)
+
+  useEffect(() => {
+    Binance.fees()
+      .then((response) => {
+        for (let msg of response.data) {
+          if (msg.multi_transfer_fee) {
+            setMultiFee(Binance.calculateFee(msg.multi_transfer_fee))
+          }
+        }
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }, [])
 
   var reader = new FileReader();
   reader.onload = () => {
@@ -179,7 +195,7 @@ const MultiSend = (props) => {
   }
 
   const coins = [
-    {"icon": "coin-bnb", "ticker": "BNM", "amount": 23.45},
+    {"icon": "coin-bnb", "ticker": "BNB", "amount": 23.45},
     {"icon": "coin-bep", "ticker": "CAN", "amount": 2300},
   ]
 
@@ -237,7 +253,7 @@ const MultiSend = (props) => {
               <Row>
                 <div style={{textAlign: "right"}}>
                   <Text size={14} bold>Fee:</Text>&nbsp;&nbsp;
-                  <Text size={14} bold>0.1</Text> <Text size={14}>BNB</Text>
+                  <Text size={14} bold>{multiFee * transfers.length}</Text> <Text size={14}>BNB</Text>
                 </div>
               </Row>
               <Row>
