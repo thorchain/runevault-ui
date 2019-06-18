@@ -1,26 +1,31 @@
 import React from 'react'
 import { Row, Col } from 'antd'
 
-import { Center, Icon, Text } from '../Components'
+import { Center, Icon, H1, Text } from '../Components'
 
 const ComingSoon = ({title, description, icon}) => {
   return (
-    <div style={{marginTop: 100}}>
+    <div style={{marginTop: 30}}>
       <Row>
         <Col offset={6} span={12}>
-          <Row>
+          <Row style={{margin: "10px 0px"}}>
             <Center>
               <Icon icon={icon} />
             </Center>
           </Row>
-          <Row style={{margin: "20px 0px"}}>
+          <Row style={{margin: "10px 0px"}}>
             <Center>
               <Text size={18} bold>{title}</Text>
             </Center>
           </Row>
-          <Row>
+          <Row style={{margin: "10px 0px"}}>
             <Center>
               <Text>{description}</Text>
+            </Center>
+          </Row>
+          <Row style={{margin: "10px 0px"}}>
+            <Center>
+              <H1>coming soon...</H1>
             </Center>
           </Row>
         </Col>
