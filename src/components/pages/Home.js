@@ -15,7 +15,7 @@ const FeatureCard = ({item}) => {
           style={{border: "none"}}
         >
           <Meta
-            title={<Text size={18} bold>{item.title}</Text>}
+            title={<Center><Text size={18} bold>{item.title}</Text></Center>}
             description={<Text>{item.description}</Text>}
           />
         </Card>
