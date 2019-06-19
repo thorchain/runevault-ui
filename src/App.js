@@ -15,7 +15,7 @@ import Escrow from './components/pages/Escrow'
 import HEscrow from './components/pages/HedgeEscrow'
 import DAO from './components/pages/DAO'
 import Swap from './components/pages/Swap'
-import Wallet from './components/pages/Wallet'
+import Unlock from './components/pages/Wallet/Unlock'
 
 import 'antd/dist/antd.css'
 import './App.css'
@@ -40,7 +40,7 @@ const App = (props) => {
                   <Route path="/hedge-escrow/" component={HEscrow} />
                   <Route path="/dao/" component={DAO} />
                   <Route path="/swap/" component={Swap} />
-                  <Route path="/wallet" component={Wallet} />
+                  <Route path="/wallet/unlock" component={Unlock} />
                 </Switch>
               </Content>
             </Layout>

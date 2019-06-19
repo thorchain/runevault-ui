@@ -20,17 +20,20 @@ export const H1 = ({children}) => {
   )
 }
 
-export const Text = ({children, size, bold}) => {
-  let styles = Object.assign({}, defaultStyles);
-  if (bold) {
+export const Text = (props) => {
+  let styles = Object.assign(props.style || {}, defaultStyles);
+  if (props.bold) {
     styles.fontFamily = "Helvetica-Bold"
   }
-  if (size) {
-    styles.fontSize = size
+  if (props.color) {
+    styles.color = props.color
+  }
+  if (props.size) {
+    styles.fontSize = props.size
   }
   return (
   <span style={styles}>
-    {children}
+    {props.children}
   </span>
   )
 }

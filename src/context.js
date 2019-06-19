@@ -21,16 +21,12 @@ export class ContextProvider extends React.Component {
     })
   }
 
-  ping = () => {
-    return "pong"
-  }
-
   render() {
     return (
       <Context.Provider
         value={{
           ...this.state,
-          ping: this.ping,
+          setContext: this.setContext,
         }}
       >
         {this.props.children}

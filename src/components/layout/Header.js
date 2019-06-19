@@ -18,10 +18,10 @@ const Header = (props) => {
       <div style={{float: "right"}}>
         {context.wallet ? 
         <PillText>
-          bnba1b2c3d4g5h6a1b2c3d4g5h6
+          {context.wallet.address}
         </PillText>
             :
-            <Link to="/wallet">
+            <Link to="/wallet/unlock">
               <Button>
                 Connect Wallet
               </Button>
