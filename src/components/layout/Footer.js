@@ -1,6 +1,6 @@
 import React from 'react'
 import { Layout } from 'antd';
-import Center from "../utility/Center"
+import { Center } from '../Components'
 
 const Footer = (props) => {
   return (
