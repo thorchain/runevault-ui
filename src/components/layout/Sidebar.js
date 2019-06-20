@@ -49,7 +49,7 @@ const Sidebar = (props) => {
       <Menu onClick={handleClick} selectedKeys={[page]}>
         {menu_items.map((item) => (
           <Menu.Item key={item} style={getStyles(item)}>
-            <Link to={item}>
+            <Link to={"/" + item}>
               <Icon icon={getIcon(item)} style={styles} />&nbsp;<span>{item}</span>
             </Link>
           </Menu.Item>
