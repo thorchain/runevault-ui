@@ -4,11 +4,11 @@ import { Layout } from 'antd';
 
 import { Context } from '../../context'
 
-import { Icon, Button, PillText } from '../Components'
+import { Icon, Button, WalletAddress } from '../Components'
 
 const Header = (props) => {
 
-  const context = window.context = useContext(Context)
+  const context = useContext(Context)
 
   return (
     <Layout.Header className="header-container">
@@ -17,9 +17,7 @@ const Header = (props) => {
       </Link>
       <div style={{float: "right"}}>
         {context.wallet ? 
-        <PillText>
-          {context.wallet.address}
-        </PillText>
+        <WalletAddress />
             :
             <Link to="/wallet/unlock">
               <Button>

@@ -1,22 +1,34 @@
-import React from 'react'
+import React, { Fragment, useContext } from 'react'
 import PropTypes from "prop-types";
 import { Button as AntButton } from "antd"
 
-const defaultStyles = {
-    fontFamily: "Helvetica",
-    fontSize: "14px",
-    color: "#848E9C", 
-    letterSpacing: 0,
+import { Context } from '../context'
+
+export const WalletAddress = props => {
+  const context = useContext(Context)
+  if (context.wallet && context.wallet.address) {
+    return (
+      <PillText>{context.wallet.address}</PillText>
+    )
   }
+  return <Fragment />
+}
+
+const defaultStyles = {
+  fontFamily: "Helvetica",
+  fontSize: "14px",
+  color: "#848E9C", 
+  letterSpacing: 0,
+}
 
 export const H1 = ({children}) => {
   let styles = Object.assign({}, defaultStyles);
   styles.fontFamily = "Helvetica-Light"
   styles.fontSize = "42px"
   return (
-  <span style={styles}>
-    {children}
-  </span>
+    <span style={styles}>
+      {children}
+    </span>
   )
 }
 
@@ -32,9 +44,9 @@ export const Text = (props) => {
     styles.fontSize = props.size
   }
   return (
-  <span style={styles}>
-    {props.children}
-  </span>
+    <span style={styles}>
+      {props.children}
+    </span>
   )
 }
 
@@ -45,9 +57,9 @@ export const PillText = ({children}) => {
   styles.padding = "8px 20px"
   styles.fontSize = "14px"
   return (
-  <span style={styles}>
-    {children}
-  </span>
+    <span style={styles}>
+      {children}
+    </span>
   )
 }
 
@@ -104,8 +116,8 @@ const Button = (props) => {
       onChange={props.onChange} 
       type={props.type}
     >
-    {props.children}
-  </AntButton>
+      {props.children}
+    </AntButton>
   )
 }
 Button.defaultProp = {

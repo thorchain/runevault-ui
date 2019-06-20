@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { FilePicker } from 'react-file-picker'
 
+import { Context } from '../../context'
+
 import { Row, Col, Modal, Button as AntButton, Form, Input } from 'antd'
-import { H1, Icon, Button, Center, Text, PillText } from "../Components"
+import { H1, Icon, Button, Center, Text, WalletAddress} from "../Components"
 import Binance from "../../clients/binance"
 
 const confirm = Modal.confirm;
@@ -43,6 +45,8 @@ const Transfer = (props) => {
     })
     // eslint-disable-next-line
   }, [props.ticker, props.address, props.memo, props.amount])
+
+  // const context = useContext(Context)
 
   // Only show error after a field is touched.
   const addressError = isFieldTouched('address') && getFieldError('address');
@@ -216,9 +220,7 @@ const MultiSend = (props) => {
       <div style={{margin: "30px 20px"}}>
         <Row style={coinRowStyle}>
           <Col span={coinSpan}>
-            <PillText>
-              bnba1b2c3d4g5h6a1b2c3d4g5h6
-            </PillText>
+            <WalletAddress />
           </Col>
         </Row>
         {coins.map((coin) => (
