@@ -46,6 +46,8 @@ const Keystore = props => {
         "address": address,
       }
     }, () => {
+      setPassword(null)
+      setKeystore(null)
       props.history.push("/")
     })
   }

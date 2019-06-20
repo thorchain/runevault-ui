@@ -66,6 +66,8 @@ const Mnemonic = props => {
         "address": address,
       }
     }, () => {
+      setMnemonic(null)
+      setPassword(null)
       props.history.push("/")
     })
   }
