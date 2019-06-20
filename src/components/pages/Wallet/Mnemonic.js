@@ -80,10 +80,7 @@ const Mnemonic = props => {
     <>
       <Row style={{marginBottom: 10}}>
         <div>
-          <Text color='#FF4136' size={16} bold>This option restores a lost keystore file or password, or imports a seed from another wallet app.</Text>
-        </div>
-        <div>
-          <Text size={12}><i>Warning! Entering your seed phrase or private key on any website is very dangerous. If you have malicious extensions installed in your browser or accidentally visit a phishing website, your assets can be stolen.</i></Text>
+          <Text color='#FF4136' size={12}><i><b>Warning!</b> Entering your seed phrase or private key on any website is very dangerous. If you have malicious extensions installed in your browser or accidentally visit a phishing website, your assets can be stolen.</i></Text>
         </div>
       </Row>
       <Row style={{marginBottom: 10}}>

@@ -16,8 +16,7 @@ const Wallet = (props) => {
         </Row>
         <Row style={{margin:20}}>
           <Center>
-            <Text>
-              Please check that you are visiting <i>https://www.binancetools.org</i>
+            <Text color='#FF4136'><i><b>Important!</b></i></Text>&nbsp;<Text>Please check that you are visiting <i>https://www.binancetools.org</i>
             </Text>
           </Center>
         </Row>
@@ -28,16 +27,16 @@ const Wallet = (props) => {
             <Text size={16} bold>Select how you would like to unlock</Text>
           </p>
           <Tabs defaultActiveKey="3" tabPosition={"left"}>
-            <TabPane tab={"WalletConnect"} key="1">
+            <TabPane tab={<Text size={16}><i>WalletConnect</i></Text>} key="1">
               <Center><Text style={{marginTop: 90}}>Coming soon...</Text></Center>
             </TabPane>
-            <TabPane tab={"Ledger Device"} key="2">
+            <TabPane tab={<Text size={16}><i>Ledger Device</i></Text>} key="2">
               <Center><Text style={{marginTop: 90}}>Coming soon...</Text></Center>
             </TabPane>
-            <TabPane tab={"Keystore File"} key="3">
+            <TabPane tab={<Text size={16}><i>Keystore File</i></Text>} key="3">
               <Keystore {...props} />
             </TabPane>
-            <TabPane tab={"Mnemonic Phrase"} key="4">
+            <TabPane tab={<Text size={16}><i>Mnemonic Phrase</i></Text>} key="4">
               <Mnemonic {...props} />
             </TabPane>
           </Tabs>
