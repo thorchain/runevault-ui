@@ -98,6 +98,7 @@ const Button = (props) => {
   }
   return (
     <AntButton 
+      disabled={props.disabled}
       style={styles} 
       onClick={props.onClick} 
       onChange={props.onChange} 
@@ -108,6 +109,7 @@ const Button = (props) => {
   )
 }
 Button.defaultProp = {
+  disabled: false,
   fill: false,
   bold: false,
 }

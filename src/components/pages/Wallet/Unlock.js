@@ -11,7 +11,7 @@ const Wallet = (props) => {
     <div style={{margin: 20}}>
       <div>
         <Row>
-          <Center> <H1> Unlock Your Wallet </H1> </Center>
+          <Center><H1>Unlock Your Wallet</H1></Center>
         </Row>
         <Row>
           <Center>

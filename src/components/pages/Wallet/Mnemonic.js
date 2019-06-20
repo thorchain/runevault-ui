@@ -6,6 +6,9 @@ import { Context } from '../../../context'
 import { Button, Text } from '../../Components'
 
 const { TextArea } = Input;
+const hasUppercaseTest = new RegExp(/[A-Z]/)
+const hasNumberTest = new RegExp(/[0-9]/)
+const hasSpecialTest = new RegExp(/[~`!#$%^&*+=\-[\]\\';,/{}|\\":<>?]/)
 
 const OkIcon = ({bool}) => {
   const ty = bool ? "check" : "close"
@@ -20,28 +23,43 @@ const Mnemonic = props => {
   const [mnemonic, setMnemonic] = useState(null)
   const [password, setPassword] = useState(null)
 
-  const [isMin, setIsMin] = useState(false)
-  const [hasSpecial, setHasSpecial] = useState(false)
-  const [hasUppercase, setHasUppercase] = useState(false)
-  const [hasNumber, setHasNumber] = useState(false)
+  const [passwordRequirements, setPasswordRequirements] = useState({
+    isMin: false,
+    hasSpecial: false,
+    hasUppercase: false,
+    hasNumber: false,
+  })
+  const [mnemonicError, setMnemonicError] = useState(null)
 
   const onMnemonicChange = value => {
     const mnemonic = value.target.value
-    if (crypto.generateMnemonic(mnemonic)) {
+    if (crypto.validateMnemonic(mnemonic)) {
       setMnemonic(value.target.value)
-    } 
+      setMnemonicError(null)
+    } else {
+      if (mnemonic.length > 0) {
+        setMnemonicError("Invalid mnemonic phrase.")
+      } else {
+        setMnemonicError(null)
+      }
+    }
   }
 
   const onSessionPasswordChange = value => {
     const passwd = value.target.value
     setPassword(passwd)
-    setIsMin(passwd.length >= 8)
-    setHasSpecial(passwd.match(/[~`!#$%^&*+=\-[\]\\';,/{}|\\":<>?]/))
-    setHasUppercase(passwd.match(/[A-Z]/))
-    setHasNumber(passwd.match(/[0-9]/))
+    setPasswordRequirements({
+      isMin: passwd.length >= 8,
+      hasSpecial: hasSpecialTest.test(passwd),
+      hasUppercase: hasUppercaseTest.test(passwd),
+      hasNumber: hasNumberTest.test(passwd),
+    })
   }
 
   const unlock = () => {
+    if (mnemonicError) {
+      return
+    }
     const privateKey = crypto.getPrivateKeyFromMnemonic(mnemonic)
     const keyStore = crypto.generateKeyStore(privateKey, password)
     const address = crypto.getAddressFromPrivateKey(privateKey)
@@ -54,6 +72,13 @@ const Mnemonic = props => {
       props.history.push("/")
     })
   }
+
+  const okPassword = passwordRequirements.isMin && passwordRequirements.hasNumber && passwordRequirements.hasSpecial && passwordRequirements.hasUppercase 
+  const okMnemonic = mnemonicError === null && (mnemonic || "").length > 0
+  const disabled = !okPassword || !okMnemonic
+  console.log("okPassword", okPassword)
+  console.log("okMnemonic", okMnemonic)
+  console.log("Disabled", disabled)
 
   return (
     <>
@@ -70,7 +95,11 @@ const Mnemonic = props => {
       </Row>
       <Row style={{marginBottom: 20}}>
         <TextArea rows={4} onChange={onMnemonicChange} />
-        <Text>Please separate each word with a space.</Text>
+        {mnemonicError ? 
+        <Text color='#FF4136'>{mnemonicError}</Text>
+            :
+            <Text>Please separate each word with a space.</Text>
+        }
       </Row>
       <Row style={{marginBottom: 10}}>
         <Input.Password
@@ -80,17 +109,17 @@ const Mnemonic = props => {
         />
         <div styles={{background: '#F8F8F8', border: "1px solid #848E9C", borderRadius: 8, fontFamily: 'Helvetica', fontSize: 18, color: '#848E9C', letterSpacing: 0, lineHeight: 23, marginBottom: 10}}
         >
-          <ul style={{listStyle: 'none'}}>
-            <li><OkIcon bool={isMin} /> Minimum of 8 characters</li>
-            <li><OkIcon bool={hasSpecial} /> Contains at least one special character</li>
-            <li><OkIcon bool={hasUppercase} /> Contains at least one uppercase character</li>
-            <li><OkIcon bool={hasNumber} /> Contains at least one number</li>
+          <ul style={{listStyle: 'none', backgroundColor: "#EDEDED", margin: 10, padding: 10, border: "1px solid #848E9C", borderRadius: 8, width: "50%"}}>
+            <li><OkIcon bool={passwordRequirements.isMin} /> Minimum of 8 characters</li>
+            <li><OkIcon bool={passwordRequirements.hasSpecial} /> Contains at least one special character</li>
+            <li><OkIcon bool={passwordRequirements.hasUppercase} /> Contains at least one uppercase character</li>
+            <li><OkIcon bool={passwordRequirements.hasNumber} /> Contains at least one number</li>
           </ul>
         </div>
       </Row>
       <Row style={{marginBottom: 10}}>
         <Button 
-          disabled={isMin && hasNumber && hasSpecial && hasUppercase}
+          disabled={disabled}
           onClick={unlock} 
           style={{float: "right"}}
         >
