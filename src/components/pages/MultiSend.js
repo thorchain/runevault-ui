@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react"
+import { Link } from "react-router-dom"
 import { FilePicker } from 'react-file-picker'
 import { crypto } from '@binance-chain/javascript-sdk'
 
@@ -264,15 +265,20 @@ const MultiSend = (props) => {
             <WalletAddress />
           </Col>
         </Row>
-        {loadingBalances &&  
-        <Text><i>Loading balances, please wait...</i></Text>
-        }
-        {!loadingBalances && (balances || []).length === 0 &&
-        <Text>This wallet has no coins in it</Text>
-        }
-        {!loadingBalances && (balances || []).length > 0 &&
-        <Text>Select a coin below</Text>
-        }
+        <Row>
+          {loadingBalances && context.wallet &&
+          <Text><i>Loading balances, please wait...</i></Text>
+          }
+          {!context.wallet && 
+          <Text><Link to="/wallet/unlock">Unlock your wallet</Link> to send coins to multiple recipients</Text>
+          }
+          {!loadingBalances && context.wallet && (balances || []).length === 0 &&
+          <Text>No coins available</Text>
+          }
+          {!loadingBalances && context.wallet && (balances || []).length > 0 &&
+          <Text>Select a coin below</Text>
+          }
+        </Row>
         {!loadingBalances && (balances || []).map((coin) => (
           <Row key={coin.ticker} style={coinRowStyle}>
             <Col span={coinSpan}>
