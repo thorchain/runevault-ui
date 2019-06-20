@@ -57,9 +57,6 @@ const Mnemonic = props => {
   }
 
   const unlock = () => {
-    if (mnemonicError) {
-      return
-    }
     const privateKey = crypto.getPrivateKeyFromMnemonic(mnemonic)
     const keyStore = crypto.generateKeyStore(privateKey, password)
     const address = crypto.getAddressFromPrivateKey(privateKey)
@@ -109,7 +106,7 @@ const Mnemonic = props => {
         />
         <div styles={{background: '#F8F8F8', border: "1px solid #848E9C", borderRadius: 8, fontFamily: 'Helvetica', fontSize: 18, color: '#848E9C', letterSpacing: 0, lineHeight: 23, marginBottom: 10}}
         >
-          <ul style={{listStyle: 'none', backgroundColor: "#EDEDED", margin: 10, padding: 10, border: "1px solid #848E9C", borderRadius: 8, width: "50%"}}>
+          <ul style={{listStyle: 'none', backgroundColor: "#DDDDDD", margin: 10, padding: 10, border: "1px solid #DDDDDD", borderRadius: 8, fontSize: 10}}>
             <li><OkIcon bool={passwordRequirements.isMin} /> Minimum of 8 characters</li>
             <li><OkIcon bool={passwordRequirements.hasSpecial} /> Contains at least one special character</li>
             <li><OkIcon bool={passwordRequirements.hasUppercase} /> Contains at least one uppercase character</li>
@@ -122,8 +119,9 @@ const Mnemonic = props => {
           disabled={disabled}
           onClick={unlock} 
           style={{float: "right"}}
+          fill={true}
         >
-          Unlock Wallet Now
+          Unlock Wallet Now <Icon type="arrow-right" />
         </Button>
       </Row>
     </>

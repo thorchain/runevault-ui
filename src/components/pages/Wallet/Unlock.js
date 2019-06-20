@@ -1,8 +1,9 @@
 import React from 'react'
-import { Row, Tabs } from 'antd'
+import { Row, Col, Tabs } from 'antd'
 
 import { Center, H1, Text } from '../../Components'
 import Mnemonic from "./Mnemonic"
+import Keystore from "./Keystore"
 
 const { TabPane } = Tabs;
 
@@ -21,8 +22,8 @@ const Wallet = (props) => {
           </Center>
         </Row>
       </div>
-      <div>
-        <div>
+      <Row>
+        <Col offset={3} span={18}>
           <p>
             <Text size={16} bold>Select how you would like to unlock</Text>
           </p>
@@ -34,14 +35,14 @@ const Wallet = (props) => {
               <Center>Coming soon</Center>
             </TabPane>
             <TabPane tab={"Keystore File"} key="3">
-              <Center>Coming soon</Center>
+              <Keystore {...props} />
             </TabPane>
             <TabPane tab={"Mnemonic Phrase"} key="4">
               <Mnemonic {...props} />
             </TabPane>
           </Tabs>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </div>
   )
 }
