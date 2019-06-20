@@ -11,10 +11,10 @@ const Wallet = (props) => {
   return (
     <div style={{margin: 20}}>
       <div>
-        <Row>
+        <Row style={{margin:20}}>
           <Center><H1>Unlock Your Wallet</H1></Center>
         </Row>
-        <Row>
+        <Row style={{margin:20}}>
           <Center>
             <Text>
               Please check that you are visiting <i>https://www.binancetools.org</i>
@@ -29,10 +29,10 @@ const Wallet = (props) => {
           </p>
           <Tabs defaultActiveKey="1" tabPosition={"left"}>
             <TabPane tab={"WalletConnect"} key="1">
-              <Center>Coming soon</Center>
+              <Center><Text style={{marginTop: 90}}>Coming soon...</Text></Center>
             </TabPane>
             <TabPane tab={"Ledger Device"} key="2">
-              <Center>Coming soon</Center>
+              <Center><Text style={{marginTop: 90}}>Coming soon...</Text></Center>
             </TabPane>
             <TabPane tab={"Keystore File"} key="3">
               <Keystore {...props} />

@@ -52,9 +52,6 @@ const Keystore = props => {
     })
   }
 
-  console.log("Keystore", keystore)
-  console.log("Password", password)
-
   return (
     <div>
       <Row style={{marginBottom: 10}}>

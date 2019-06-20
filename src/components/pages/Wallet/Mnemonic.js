@@ -75,9 +75,6 @@ const Mnemonic = props => {
   const okPassword = passwordRequirements.isMin && passwordRequirements.hasNumber && passwordRequirements.hasSpecial && passwordRequirements.hasUppercase 
   const okMnemonic = mnemonicError === null && (mnemonic || "").length > 0
   const disabled = !okPassword || !okMnemonic
-  console.log("okPassword", okPassword)
-  console.log("okMnemonic", okMnemonic)
-  console.log("Disabled", disabled)
 
   return (
     <>
