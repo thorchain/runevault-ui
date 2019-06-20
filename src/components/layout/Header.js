@@ -20,8 +20,8 @@ const Header = (props) => {
         <WalletAddress />
             :
             <Link to="/wallet/unlock">
-              <Button>
-                Connect Wallet
+              <Button fill>
+                Connect my Wallet
               </Button>
             </Link>
         }

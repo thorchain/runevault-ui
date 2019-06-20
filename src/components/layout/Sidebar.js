@@ -1,10 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import { Menu, Layout } from 'antd';
 import { Icon } from '../Components'
 
 const Sidebar = (props) => {
-  const [page, setPage] = useState(window.location.pathname.split("/")[1])
+
+  const menu_items = [
+    "multi-send",
+    "multi-sig",
+    "escrow",
+    "hedge-escrow",
+    "dao",
+    "swap",
+  ]
+
+  const [page, setPage] = useState(null)
+
+  useEffect(() => {
+    let pathname = window.location.pathname.split("/")[1] 
+    if (!menu_items.includes(pathname)) {
+      setPage(pathname)
+    }
+  }, [menu_items])
 
   const styles = {
     width: 25,
@@ -34,15 +51,6 @@ const Sidebar = (props) => {
   const handleClick = ({key}) => {
     setPage(key)
   }
-
-  const menu_items = [
-    "multi-send",
-    "multi-sig",
-    "escrow",
-    "hedge-escrow",
-    "dao",
-    "swap",
-  ]
 
   return (
     <Layout.Sider style={{background: "#fff", textTransform: "uppercase", minHeight:500}}>

@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useContext } from "react"
 import { FilePicker } from 'react-file-picker'
+import { crypto } from '@binance-chain/javascript-sdk'
 
 import { Context } from '../../context'
-
-import { Row, Col, Modal, Button as AntButton, Form, Input } from 'antd'
-import { H1, Icon, Button, Center, Text, WalletAddress} from "../Components"
 import Binance from "../../clients/binance"
 
-const confirm = Modal.confirm;
+import { Row, Icon as AntIcon, Col, Modal, Button as AntButton, Form, Input, message } from 'antd'
+import { H1, Icon, Button, Center, Text, WalletAddress} from "../Components"
 
 const Coin = ({onClick, icon, ticker, amount, border}) => {
   let styles = {width: "100%", paddingLeft: 30, cursor: "pointer"}
@@ -23,7 +22,7 @@ const Coin = ({onClick, icon, ticker, amount, border}) => {
           {ticker}
         </span>
         <span style={{marginLeft: 10}}>
-          {amount.toLocaleString()}
+          {amount}
         </span>
       </div>
     </Center>
@@ -40,17 +39,15 @@ const Transfer = (props) => {
     props.form.setFieldsValue({
       "ticker": props.ticker,
       "address": props.address,
-      "memo": props.memo,
       "amount": props.amount || 0,
     })
     // eslint-disable-next-line
-  }, [props.ticker, props.address, props.memo, props.amount])
+  }, [props.ticker, props.address, props.amount])
 
   // const context = useContext(Context)
 
   // Only show error after a field is touched.
   const addressError = isFieldTouched('address') && getFieldError('address');
-  const memoError = isFieldTouched('memo') && getFieldError('memo');
   const amountError = isFieldTouched('amount') && getFieldError('amount');
 
   const onChange = () => {
@@ -69,63 +66,78 @@ const Transfer = (props) => {
       </Col>
       <Col>
         <Row>
-      <Form layout="inline" onChange={onChange} onSubmit={props.handleSubmit}>
-        <Col span={9}>
-          <div><Text size={14}>Address</Text></div>
-          <Form.Item className="form-100" style={{width: "100%"}} validateStatus={addressError ? 'error' : ''} help={addressError || ''}>
-            {getFieldDecorator('address', {
-              rules: [{ required: true, message: 'Please input your address!' }],
-            })(
-              <Input 
-                style={{width: "100%"}}
-                placeholder="bnba1b2c3d4g5h6a1b2c3d4g5h6"
-              />,
-            )}
-          </Form.Item>
-        </Col>
-        <Col span={8}>
-          <div><Text size={14}>Memo</Text></div>
-          <Form.Item className="form-100" style={{width: "100%"}} validateStatus={memoError ? 'error' : ''} help={memoError || ''}>
-            {getFieldDecorator('memo', {
-              rules: [{ required: true, message: 'Please input your memo!' }],
-            })(
-              <Input
-                style={{width: "100%"}}
-                placeholder="hello!"
-              />,
-            )}
-          </Form.Item>
-        </Col>
-        <Col span={5}>
-          <div><Text size={14}>Amount</Text></div>
-          <Form.Item className="form-100" style={{width: "100%"}} validateStatus={amountError ? 'error' : ''} help={amountError || ''}>
-            {getFieldDecorator('amount', {
-              rules: [{ required: true, message: 'Please input your amount!' }],
-            })(
-              <Input
-                style={{width: "100%"}}
-                placeholder="23.456"
-                addonAfter=<Text size={12}>{props.ticker}</Text>
-              />,
-            )}
-          </Form.Item>
-        </Col>
-      </Form>
-    </Row>
+          <Form layout="inline" onChange={onChange} onSubmit={props.handleSubmit}>
+            <Col span={13}>
+              <div><Text size={14}>Address</Text></div>
+              <Form.Item className="form-100" style={{width: "100%"}} validateStatus={addressError ? 'error' : ''} help={addressError || ''}>
+                {getFieldDecorator('address', {
+                  rules: [{ required: true, message: 'Please input your address!' }],
+                })(
+                  <Input 
+                    style={{width: "100%"}}
+                    placeholder="bnba1b2c3d4g5h6a1b2c3d4g5h6"
+                  />,
+                )}
+              </Form.Item>
+            </Col>
+            <Col span={7}>
+              <div><Text size={14}>Amount</Text></div>
+              <Form.Item className="form-100" style={{width: "100%"}} validateStatus={amountError ? 'error' : ''} help={amountError || ''}>
+                {getFieldDecorator('amount', {
+                  rules: [{ required: true, message: 'Please input your amount!' }],
+                })(
+                  <Input
+                    style={{width: "100%"}}
+                    placeholder="23.456"
+                    addonAfter=<Text size={12}>{props.ticker}</Text>
+                  />,
+                )}
+              </Form.Item>
+            </Col>
+          </Form>
+        </Row>
       </Col>
     </Row>
   )
 }
-const WrappedTransferLine = Form.create({ name: 'transfer_line' })(Transfer);
+const WrappedTransferLine = Form.create()(Transfer);
 
 
 const MultiSend = (props) => {
   const [transfers, setTransfers] = useState([{}])
   const [total, setTotal] = useState(0)
   const [selectedCoin, setSelectedCoin] = useState(null)
-  const [multiFee, setMultiFee]  = useState(null)
+  const [balances, setBalances] = useState(null)
+  const [loadingBalances, setLoadingBalancer] = useState(false)
+  const [multiFee, setMultiFee] = useState(null)
+
+  // confirmation modal variables
+  const [visible, setVisible] = useState(false)
+  const [password, setPassword] = useState(null)
+  const [memo, setMemo] = useState("")
+  const [sending, setSending] = useState(false)
+  
+  const context = useContext(Context)
 
   useEffect(() => {
+    if (context.wallet && context.wallet.address) {
+      setLoadingBalancer(true)
+      Binance.getBalances(context.wallet.address)
+        .then((response) => {
+          const b = (response || []).map((bal) => (
+            {
+              "icon": "coin-bep",
+              "ticker": bal.symbol,
+              "amount": parseFloat(bal.free),
+            }
+          ))
+          setBalances([...b])
+          setLoadingBalancer(false)
+        })
+        .catch((error) => {
+          setLoadingBalancer(false)
+        })
+    }
     Binance.fees()
       .then((response) => {
         for (let msg of response.data) {
@@ -137,7 +149,7 @@ const MultiSend = (props) => {
       .catch((error) => {
         console.error(error)
       })
-  }, [])
+  }, [context.wallet])
 
   var reader = new FileReader();
   reader.onload = () => {
@@ -146,11 +158,11 @@ const MultiSend = (props) => {
     const lines = text.split(/\n/)
     for (let l of lines) {
       const parts = l.split(',')
-      if (parts.length === 3) {
+      if (parts.length === 2) {
         transactions.push({
           "address": parts[0],
-          "memo": parts[1],
-          "amount": parseFloat(parts[2]) || 0,
+          "ticker": selectedCoin,
+          "amount": parseFloat(parts[1]) || 0,
         })
       } else {
         console.error("Invalid CSV line:", l)
@@ -170,38 +182,67 @@ const MultiSend = (props) => {
     setTotal(transfers.reduce((a,b) => a + (b.amount || 0), 0))
   }
 
-  const sendCoins = () => {
-    confirm({
-      content: (
-        <div>
-          Please verify and confirm addresses and amounts are EXACTLY correct!
-          {transfers.map((item) => {
-            return (
-              <Row key={item.address}>
-                <Text>{item.amount} {item.ticker} ==> {item.address} ({item.memo})</Text>
-              </Row>
-            )
-          })
-          }
-        </div>
-      ),
-      onOk() {
-        console.log('TODO: Send Coins');
-      },
-      onCancel() {
-        console.log('Cancelled.');
-      },
-    })
+  const confirmation = () => {
+    setPassword("")
+    setVisible(true)
   }
 
   const uploadCsv = (f) => {
     reader.readAsText(f);
   }
 
-  const coins = [
-    {"icon": "coin-bnb", "ticker": "BNB", "amount": 23.45},
-    {"icon": "coin-bep", "ticker": "CAN", "amount": 2300},
-  ]
+  const handleOk = async () => {
+    // Send coins!
+    if (!context.wallet || !context.wallet.keystore || !context.wallet.address) {
+      setPassword(null) // clear password
+      return
+    }
+
+    setSending(true)
+
+    console.log("Transfers", transfers)
+    const transactions = window.transactions = transfers.map((transfer) => (
+      {
+        "to": transfer.address,
+        "coins": [{
+          "denom": transfer.ticker,
+          "amount": transfer.amount,
+        }]
+      }
+    ))
+
+    try {
+      const privateKey = crypto.getPrivateKeyFromKeyStore(
+        context.wallet.keystore,
+        password
+      )
+      setPassword(null) // clear password
+      const results = window.results = await Binance.multiSend(privateKey, context.wallet.address, transactions, memo)
+      setSending(false)
+      if (results.result[0].ok) {
+        message.success("Sent.")
+        setVisible(false)
+      }
+    } catch(err) {
+      window.err = err
+      console.error("Validating keystore error:", err)
+      message.error(err.message)
+      setPassword(null) // clear password
+      setSending(false)
+    }
+
+  }
+
+  const handleCancel = () => {
+    setPassword(null)
+    setVisible(false)
+  }
+
+  const onPasswordChange = (e) => {
+    const passwd = e.target.value
+    setPassword(passwd)
+  }
+
 
   // styling
   const coinSpan = 6
@@ -223,7 +264,16 @@ const MultiSend = (props) => {
             <WalletAddress />
           </Col>
         </Row>
-        {coins.map((coin) => (
+        {loadingBalances &&  
+        <Text><i>Loading balances, please wait...</i></Text>
+        }
+        {!loadingBalances && (balances || []).length === 0 &&
+        <Text>This wallet has no coins in it</Text>
+        }
+        {!loadingBalances && (balances || []).length > 0 &&
+        <Text>Select a coin below</Text>
+        }
+        {!loadingBalances && (balances || []).map((coin) => (
           <Row key={coin.ticker} style={coinRowStyle}>
             <Col span={coinSpan}>
               <Coin {...coin} onClick={setSelectedCoin} border={selectedCoin === coin.ticker}/>
@@ -260,7 +310,14 @@ const MultiSend = (props) => {
               </Row>
               <Row>
                 <div style={{float: "right"}}>
-                  <Button onClick={sendCoins} style={{padding: "0px 10px", fontSize: 14}} bold={true} fill={true}>Send</Button>
+                  <Button 
+                    disabled={transfers.length < 2} 
+                    onClick={confirmation} 
+                    loading={sending}
+                    style={{padding: "0px 10px", fontSize: 14}} bold={true} fill={true}
+                  >
+                    Next Step
+                  </Button>
                 </div>
               </Row>
             </Col>
@@ -279,7 +336,7 @@ const MultiSend = (props) => {
           </Row>
           <Row style={coinRowStyle}>
             <Center>
-              <Text bold>ADDRESS | MEMO | AMOUNT</Text>
+              <Text bold>ADDRESS | AMOUNT</Text>
             </Center>
           </Row>
           <Row style={coinRowStyle}>
@@ -301,6 +358,40 @@ const MultiSend = (props) => {
         </Col>
       </Row>
       }
+      <Modal
+        title="Confirmation"
+        visible={visible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <div>
+          Please verify and confirm addresses and amounts are EXACTLY correct!
+          {transfers.map((item, i) => {
+            return (
+              <Row key={i} style={{margin: 20}}>
+                <Text>{item.amount} {item.ticker} <AntIcon type="arrow-right" /> {item.address}</Text>
+              </Row>
+            )
+          })
+          }
+          <div style={{margin: 20}}>
+            <Input
+              allowClear
+              onChange={(e) => {setMemo(e.target.value || "")}}
+              value={memo}
+              placeholder="Enter your memo (optional)."
+            />
+          </div>
+          <div style={{margin: 20}}>
+            <Input.Password
+              allowClear
+              onChange={onPasswordChange}
+              value={password}
+              placeholder="Enter your password."
+            />
+          </div>
+        </div>
+      </Modal>
     </div>
   )
 }
