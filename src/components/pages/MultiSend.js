@@ -219,7 +219,6 @@ const MultiSend = (props) => {
         context.wallet.keystore,
         password
       )
-      console.log("Got here")
       setPassword(null) // clear password
       const results = window.results = await Binance.multiSend(privateKey, context.wallet.address, transactions, memo)
       setSending(false)
