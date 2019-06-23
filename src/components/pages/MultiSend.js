@@ -111,6 +111,7 @@ const MultiSend = (props) => {
   const [balances, setBalances] = useState(null)
   const [loadingBalances, setLoadingBalancer] = useState(false)
   const [multiFee, setMultiFee] = useState(null)
+  const [loadingCSV, setLoadingCSV] = useState(false)
 
   // confirmation modal variables
   const [visible, setVisible] = useState(false)
@@ -171,6 +172,7 @@ const MultiSend = (props) => {
     }
     setTransfers([...transactions])
     setTotal(transactions.reduce((a,b) => a + (b.amount || 0), 0))
+    setLoadingCSV(false)
   }
 
   const addTransfer = (transfer) => {
@@ -189,6 +191,7 @@ const MultiSend = (props) => {
   }
 
   const uploadCsv = (f) => {
+    setLoadingCSV(true)
     reader.readAsText(f);
   }
 
@@ -352,10 +355,11 @@ const MultiSend = (props) => {
                 onError={err => (console.error(err))}
               >
                 <Button 
-                  style={{padding: "0px 10px", fontSize: 14}} 
+                  style={{padding: "0px 20px", fontSize: 14}} 
+                  loading={loadingCSV}
                   bold={true} 
                   fill={false}>
-                  Upload
+                  <AntIcon type="upload" /> Upload
                 </Button>
               </FilePicker>
             </Center>
@@ -374,7 +378,7 @@ const MultiSend = (props) => {
           {transfers.map((item, i) => {
             return (
               <Row key={i} style={{margin: 20}}>
-                <Text>{i+1}. {item.amount} {item.ticker} <AntIcon type="arrow-right" /> {item.address}</Text>
+                <Text>{i+1}) {item.amount} {item.ticker} <AntIcon type="arrow-right" /> {item.address}</Text>
               </Row>
             )
           })

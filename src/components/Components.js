@@ -115,6 +115,7 @@ const Button = (props) => {
       onClick={props.onClick} 
       onChange={props.onChange} 
       type={props.type}
+      loading={props.loading}
     >
       {props.children}
     </AntButton>
@@ -124,10 +125,12 @@ Button.defaultProp = {
   disabled: false,
   fill: false,
   bold: false,
+  loading: false,
 }
 Button.propTypes = {
   fill: PropTypes.bool,
   bold: PropTypes.bool,
+  loading: PropTypes.bool,
 }
 
 export {
