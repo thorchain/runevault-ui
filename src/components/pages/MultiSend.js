@@ -374,7 +374,7 @@ const MultiSend = (props) => {
           {transfers.map((item, i) => {
             return (
               <Row key={i} style={{margin: 20}}>
-                <Text>{item.amount} {item.ticker} <AntIcon type="arrow-right" /> {item.address}</Text>
+                <Text>{i+1}. {item.amount} {item.ticker} <AntIcon type="arrow-right" /> {item.address}</Text>
               </Row>
             )
           })
