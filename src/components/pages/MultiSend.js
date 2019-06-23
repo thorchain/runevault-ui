@@ -324,7 +324,7 @@ const MultiSend = (props) => {
                     loading={sending}
                     style={{padding: "0px 10px", fontSize: 14}} bold={true} fill={true}
                   >
-                    Next Step
+                    Next
                   </Button>
                 </div>
               </Row>
@@ -355,7 +355,7 @@ const MultiSend = (props) => {
                 onError={err => (console.error(err))}
               >
                 <Button 
-                  style={{padding: "0px 20px", fontSize: 14}} 
+                  style={{padding: "0px 20px", fontSize: 14}}
                   loading={loadingCSV}
                   bold={true} 
                   fill={false}>
