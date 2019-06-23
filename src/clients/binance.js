@@ -1,10 +1,16 @@
 import bnbClient from '@binance-chain/javascript-sdk'
 import axios from 'axios'
 
+import { NET, isMainnet } from '../env'
+
 class Binance {
   constructor() {
     this.baseURL = "https://testnet-dex.binance.org"
-    this.net = "testnet"
+    if (isMainnet) {
+      this.baseURL = "https://dex.binance.org"
+    }
+
+    this.net = NET
 
     this.httpClient = axios.create({
       baseURL:  this.baseURL + "/api/v1",
