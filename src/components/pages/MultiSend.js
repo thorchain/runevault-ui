@@ -219,11 +219,13 @@ const MultiSend = (props) => {
         context.wallet.keystore,
         password
       )
+      console.log("Got here")
       setPassword(null) // clear password
       const results = window.results = await Binance.multiSend(privateKey, context.wallet.address, transactions, memo)
       setSending(false)
       if (results.result[0].ok) {
-        message.success("Sent.")
+        const txURL = Binance.txURL(results.result[0].hash)
+        message.success(<Text>Sent. <a target="_blank" rel="noopener noreferrer" href={txURL}>See transaction</a>.</Text>)
         setVisible(false)
       }
     } catch(err) {
@@ -371,6 +373,7 @@ const MultiSend = (props) => {
         title="Confirmation"
         visible={visible}
         onOk={handleOk}
+        okText={"Send Coins"}
         onCancel={handleCancel}
       >
         <div>

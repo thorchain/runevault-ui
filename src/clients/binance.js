@@ -6,11 +6,14 @@ import { NET, isMainnet } from '../env'
 class Binance {
   constructor() {
     this.baseURL = "https://testnet-dex.binance.org"
+    this.explorerBaseURL = "https://testnet-explorer.binance.org"
     if (isMainnet) {
       this.baseURL = "https://dex.binance.org"
+      this.explorerBaseURL = "https://explorer.binance.org"
     }
 
     this.net = NET
+    console.log("Net:", this.net)
 
     this.httpClient = axios.create({
       baseURL:  this.baseURL + "/api/v1",
@@ -28,6 +31,10 @@ class Binance {
 
   clearPrivateKey() {
     this.bnbClient.privateKey = null
+  }
+
+  txURL(tx) {
+    return this.explorerBaseURL + "/tx/" + tx
   }
 
   fees() {
