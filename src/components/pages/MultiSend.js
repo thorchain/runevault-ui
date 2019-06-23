@@ -62,7 +62,7 @@ const Transfer = (props) => {
 
   return (
     <Row>
-      <Col span={2}>
+      <Col span={3}>
         <H1>{props.index + 1}.</H1>
       </Col>
       <Col>
@@ -168,9 +168,9 @@ const MultiSend = (props) => {
       } else {
         console.error("Invalid CSV line:", l)
       }
-      setTransfers([...transactions])
-      setTotal(transactions.reduce((a,b) => a + (b.amount || 0), 0))
     }
+    setTransfers([...transactions])
+    setTotal(transactions.reduce((a,b) => a + (b.amount || 0), 0))
   }
 
   const addTransfer = (transfer) => {
@@ -201,7 +201,6 @@ const MultiSend = (props) => {
 
     setSending(true)
 
-    console.log("Transfers", transfers)
     const transactions = window.transactions = transfers.map((transfer) => (
       {
         "to": transfer.address,
