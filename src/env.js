@@ -1,11 +1,11 @@
-let NET = "testnet"
+const prod_hostnames = [
+  "binancetools.org",
+  "binancetools-prod.web.app",
+]
+const isMainnet = prod_hostnames.includes(window.location.hostname)
+const isTestnet = !isMainnet
 
-let isTestnet = window.location.hostname.endsWith("testnet.binancetools.org") || window.location.hostname.endsWith("localhost")
-let isMainnet = window.location.hostname === "binancetools.org"
-
-if (isMainnet) {
-  NET = "mainnet"
-}
+const NET = isMainnet ? "mainnet" : "testnet"
 
 export {
   NET,
