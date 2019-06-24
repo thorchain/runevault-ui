@@ -1,6 +1,6 @@
 const prod_hostnames = [
   "binancetools.org",
-  "binancetools-prod.web.app",
+  "binancetools-prod.firebaseapp.com",
 ]
 const isMainnet = prod_hostnames.includes(window.location.hostname)
 const isTestnet = !isMainnet

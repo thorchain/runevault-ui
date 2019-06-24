@@ -7,3 +7,13 @@ UI for [Binancetools.org](https://binancetools.org)
 ```bash
 yarn start
 ```
+
+## Deploy
+```bash
+yarn deploy
+```
+
+To deploy production...
+```bash
+ENVIRONMENT=prod yarn deploy
+```
