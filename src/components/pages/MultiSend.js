@@ -285,21 +285,21 @@ const MultiSend = (props) => {
                 <Col offset={12} span={3}>
                   <div style={{textAlign: "right"}}>
                     <div>
-                    <Text size={14} bold>Total:</Text>
-                  </div>
-                  <div>
-                    <Text size={14} bold>Fee:</Text>
-                  </div>
+                      <Text size={14} bold>Total:</Text>
+                    </div>
+                    <div>
+                      <Text size={14} bold>Fee:</Text>
+                    </div>
                   </div>
                 </Col>
                 <Col>
                   <div style={{textAlign: "right"}}>
                     <div>
-                    <Text size={14} bold>{total}</Text> <Text size={14}>{selectedCoin}</Text>
-                  </div>
-                  <div>
-                    <Text size={14} bold>{multiFee * transfers.length}</Text> <Text size={14}>BNB</Text>
-                  </div>
+                      <Text size={14} bold>{total}</Text> <Text size={14}>{selectedCoin}</Text>
+                    </div>
+                    <div>
+                      <Text size={14} bold>{multiFee * transfers.length}</Text> <Text size={14}>BNB</Text>
+                    </div>
                   </div>
                 </Col>
               </Row>
