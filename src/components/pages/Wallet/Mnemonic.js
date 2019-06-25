@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import { Icon, Row, Input } from 'antd'
 import { crypto } from '@binance-chain/javascript-sdk'
 
+import Binance from "../../../clients/binance"
 import { Context } from '../../../context'
 import { Button, Text } from '../../Components'
 
@@ -59,7 +60,7 @@ const Mnemonic = props => {
   const unlock = () => {
     const privateKey = crypto.getPrivateKeyFromMnemonic(mnemonic)
     const keyStore = crypto.generateKeyStore(privateKey, password)
-    const address = crypto.getAddressFromPrivateKey(privateKey)
+    const address = crypto.getAddressFromPrivateKey(privateKey, Binance.getPrefix())
     context.setContext({
       "wallet": {
         "keystore": keyStore,

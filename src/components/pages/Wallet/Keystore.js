@@ -3,6 +3,7 @@ import { Icon, Row, Input } from 'antd'
 import { crypto } from '@binance-chain/javascript-sdk'
 import { FilePicker } from 'react-file-picker'
 
+import Binance from "../../../clients/binance"
 import { Context } from '../../../context'
 import { Button, Text } from '../../Components'
 
@@ -39,7 +40,7 @@ const Keystore = props => {
 
   const unlock = () => {
     const privateKey = crypto.getPrivateKeyFromKeyStore(keystore, password)
-    const address = crypto.getAddressFromPrivateKey(privateKey)
+    const address = crypto.getAddressFromPrivateKey(privateKey, Binance.getPrefix())
     context.setContext({
       "wallet": {
         "keystore": keystore,

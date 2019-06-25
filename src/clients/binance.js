@@ -33,6 +33,10 @@ class Binance {
     this.bnbClient.privateKey = null
   }
 
+  getPrefix() {
+    return isMainnet ? "bnb" : "tbnb"
+  }
+
   txURL(tx) {
     return this.explorerBaseURL + "/tx/" + tx
   }
