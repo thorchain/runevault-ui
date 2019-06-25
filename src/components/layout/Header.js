@@ -17,7 +17,7 @@ const Header = (props) => {
       </Link>
       <div style={{float: "right"}}>
         {context.wallet ? 
-        <WalletAddress />
+        <Link to="/wallet"><WalletAddress /></Link>
             :
             <Link to="/wallet/unlock">
               <Button fill>

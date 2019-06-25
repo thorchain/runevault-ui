@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import { Row, Col, Card } from 'antd';
 
@@ -7,12 +7,26 @@ import { Center, Icon, Text } from '../Components'
 const { Meta } = Card;
 
 const FeatureCard = ({item}) => {
+  const [hover, setHover] = useState(false)
+
+  const styles = {
+    border: "none",
+    position: 'relative',
+    zIndex: 10,
+    padding: 10,
+  }
+  if (hover) {
+    styles.boxShadow = "0 2px 16px 0 rgba(0,0,0,0.09)"
+  }
+
   return (
     <Col span={8}>
       <Link to={item.link}>
         <Card
           cover={<Center><Icon style={{height: 100, width:100}} icon={item.icon} /></Center> }
-          style={{border: "none"}}
+          style={styles}
+          onMouseEnter={() => { setHover(true) }}
+          onMouseLeave={() => { setHover(false) }}
         >
           <Meta
             title={<Center><Text size={18} bold>{item.title}</Text></Center>}

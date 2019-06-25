@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import { Menu, Layout } from 'antd';
-import { Icon } from '../Components'
+import { Text, Icon } from '../Components'
 
 const Sidebar = (props) => {
 
@@ -47,18 +47,31 @@ const Sidebar = (props) => {
       return key+"-inactive"
     }
   }
+  
+  const getBold = (key) => {
+    return key === page
+  }
 
   const handleClick = ({key}) => {
     setPage(key)
   }
 
+  const sidebarStyles = {
+    background: "#fff",
+    textTransform: "uppercase",
+    minHeight: 500,
+    zIndex: 10,
+    position: "relative",
+    boxShadow: "0 2px 16px 0 rgba(0,0,0,0.09)",
+  }
+
   return (
-    <Layout.Sider style={{background: "#fff", textTransform: "uppercase", minHeight:500}}>
+    <Layout.Sider style={sidebarStyles}>
       <Menu onClick={handleClick} selectedKeys={[page]}>
         {menu_items.map((item) => (
           <Menu.Item key={item} style={getStyles(item)}>
             <Link to={"/" + item}>
-              <Icon icon={getIcon(item)} style={styles} />&nbsp;<span>{item}</span>
+              <Icon icon={getIcon(item)} style={styles} />&nbsp;<Text bold={getBold(item)}>{item}</Text>
             </Link>
           </Menu.Item>
         ))

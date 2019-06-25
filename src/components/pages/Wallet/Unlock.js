@@ -7,7 +7,8 @@ import Keystore from "./Keystore"
 
 const { TabPane } = Tabs;
 
-const Wallet = (props) => {
+const Unlock = (props) => {
+  console.log("Got here")
   return (
     <div style={{margin: 20}}>
       <div>
@@ -46,4 +47,4 @@ const Wallet = (props) => {
   )
 }
 
-export default Wallet
+export default Unlock

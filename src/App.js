@@ -16,6 +16,7 @@ import HEscrow from './components/pages/HedgeEscrow'
 import DAO from './components/pages/DAO'
 import Swap from './components/pages/Swap'
 import Unlock from './components/pages/Wallet/Unlock'
+import Wallet from './components/pages/Wallet/index'
 
 import 'antd/dist/antd.css'
 import './App.css'
@@ -34,13 +35,14 @@ const App = (props) => {
               <Content style={{background: "#fff"}}>
                 <Switch>
                   <Route path="/" exact component={Home} />
-                  <Route path="/multi-send/" component={MultiSend} />
-                  <Route path="/multi-sig/" component={MultiSig} />
-                  <Route path="/escrow/" component={Escrow} />
-                  <Route path="/hedge-escrow/" component={HEscrow} />
-                  <Route path="/dao/" component={DAO} />
-                  <Route path="/swap/" component={Swap} />
-                  <Route path="/wallet/unlock" component={Unlock} />
+                  <Route path="/multi-send" exact component={MultiSend} />
+                  <Route path="/multi-sig" exact component={MultiSig} />
+                  <Route path="/escrow" exact component={Escrow} />
+                  <Route path="/hedge-escrow" eact component={HEscrow} />
+                  <Route path="/dao" exact component={DAO} />
+                  <Route path="/swap" exact component={Swap} />
+                  <Route path="/wallet" exact component={Wallet} />
+                  <Route path="/wallet/unlock" exact component={Unlock} />
                 </Switch>
               </Content>
             </Layout>

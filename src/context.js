@@ -21,12 +21,20 @@ export class ContextProvider extends React.Component {
     })
   }
 
+  forgetWallet = () => {
+    this.setState({
+      address: null,
+      keystore: null,
+    })
+  }
+
   render() {
     return (
       <Context.Provider
         value={{
           ...this.state,
           setContext: this.setContext,
+          forgetWallet: this.forgetWallet,
         }}
       >
         {this.props.children}

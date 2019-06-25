@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Button as AntButton } from "antd"
 
 import { Context } from '../context'
+import { AmounttoString } from '../utility'
 
 export const WalletAddress = props => {
   const context = useContext(Context)
@@ -133,6 +134,31 @@ Button.propTypes = {
   loading: PropTypes.bool,
 }
 
+const Coin = ({onClick, icon, ticker, amount, border}) => {
+  let styles = {width: "100%", paddingLeft: 30, cursor: "pointer", padding: 5}
+  if (border) {
+    styles.border = "1px solid #F0B90B"
+    styles.borderRadius = 6
+  }
+  return (
+    <Center>
+      <div style={styles} onClick={() => { if (onClick) { onClick(ticker) } }}>
+        <Icon icon={icon} />
+        <span style={{margin: "0px 10px"}}>
+          {ticker}
+        </span>
+        <span style={{marginLeft: 10, float: 'right'}}>
+          {AmounttoString(amount)}
+        </span>
+      </div>
+    </Center>
+  )
+}
+Coin.defaultProps = {
+  border: false,
+}
+
 export {
-  Button
+  Button,
+  Coin,
 }

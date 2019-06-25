@@ -7,31 +7,7 @@ import { Context } from '../../context'
 import Binance from "../../clients/binance"
 
 import { Row, Icon as AntIcon, Col, Modal, Button as AntButton, Form, Input, message } from 'antd'
-import { H1, Icon, Button, Center, Text, WalletAddress} from "../Components"
-
-const Coin = ({onClick, icon, ticker, amount, border}) => {
-  let styles = {width: "100%", paddingLeft: 30, cursor: "pointer"}
-  if (border) {
-    styles.border = "1px solid #F0B90B"
-    styles.borderRadius = 6
-  }
-  return (
-    <Center>
-      <div style={styles} onClick={() => {onClick(ticker)}}>
-        <Icon icon={icon} />
-        <span style={{margin: "0px 10px"}}>
-          {ticker}
-        </span>
-        <span style={{marginLeft: 10}}>
-          {amount}
-        </span>
-      </div>
-    </Center>
-  )
-}
-Coin.defaultProps = {
-  border: false,
-}
+import { H1, Icon, Button, Center, Text, Coin, WalletAddress} from "../Components"
 
 const Transfer = (props) => {
   const { getFieldDecorator, getFieldError, isFieldTouched } = props.form;
@@ -81,7 +57,7 @@ const Transfer = (props) => {
                 )}
               </Form.Item>
             </Col>
-            <Col span={7}>
+            <Col span={8}>
               <div><Text size={14}>Amount</Text></div>
               <Form.Item className="form-100" style={{width: "100%"}} validateStatus={amountError ? 'error' : ''} help={amountError || ''}>
                 {getFieldDecorator('amount', {
@@ -298,24 +274,34 @@ const MultiSend = (props) => {
             <WrappedTransferLine key={i} index={i} onChange={updateTransfer} ticker={selectedCoin} {...transfer} />
           ))
           }
-          <Row>
+          <Row style={{paddingRight: 5}}>
             <Col span={12}>
-              <AntButton onClick={() => { addTransfer({})}} shape="circle" style={{border: "none"}}>
+              <AntButton onClick={() => { addTransfer({})}} shape="circle" style={{border: "none", marginTop: 10}}>
                 <Icon icon="plus" />
               </AntButton>
             </Col>
             <Col span={12}>
               <Row>
-                <div style={{textAlign: "right"}}>
-                  <Text size={14} bold>Total:</Text>&nbsp;&nbsp;
-                  <Text size={14} bold>{total}</Text> <Text size={14}>{selectedCoin}</Text>
-                </div>
-              </Row>
-              <Row>
-                <div style={{textAlign: "right"}}>
-                  <Text size={14} bold>Fee:</Text>&nbsp;&nbsp;
-                  <Text size={14} bold>{multiFee * transfers.length}</Text> <Text size={14}>BNB</Text>
-                </div>
+                <Col offset={12} span={3}>
+                  <div style={{textAlign: "right"}}>
+                    <div>
+                    <Text size={14} bold>Total:</Text>
+                  </div>
+                  <div>
+                    <Text size={14} bold>Fee:</Text>
+                  </div>
+                  </div>
+                </Col>
+                <Col>
+                  <div style={{textAlign: "right"}}>
+                    <div>
+                    <Text size={14} bold>{total}</Text> <Text size={14}>{selectedCoin}</Text>
+                  </div>
+                  <div>
+                    <Text size={14} bold>{multiFee * transfers.length}</Text> <Text size={14}>BNB</Text>
+                  </div>
+                  </div>
+                </Col>
               </Row>
               <Row>
                 <div style={{float: "right"}}>
@@ -382,7 +368,7 @@ const MultiSend = (props) => {
               <Row key={i} style={{margin: 20}}>
                 <Text>{i+1}) {item.amount} {item.ticker} <AntIcon type="arrow-right" /> {item.address}</Text>
               </Row>
-            )
+          )
           })
           }
           <div style={{margin: 20}}>
@@ -404,7 +390,7 @@ const MultiSend = (props) => {
         </div>
       </Modal>
     </div>
-  )
+)
 }
 
 export default MultiSend
