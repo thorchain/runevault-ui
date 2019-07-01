@@ -269,7 +269,7 @@ const MultiSend = (props) => {
       </div>
       {selectedCoin &&
       <Row>
-        <Col span={16}>
+        <Col xs={24} sm={24} md={24} lg={16}>
           {transfers.map((transfer, i) => (
             <WrappedTransferLine key={i} index={i} onChange={updateTransfer} ticker={selectedCoin} {...transfer} />
           ))
@@ -318,7 +318,7 @@ const MultiSend = (props) => {
             </Col>
           </Row>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={24} lg={8}>
           <Row style={coinRowStyle}>
             <Center>
               <H1>OR</H1>
