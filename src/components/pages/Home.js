@@ -16,18 +16,19 @@ const FeatureCard = ({item}) => {
     padding: 10,
     borderRadius: 10,
     boxShadow: "0 2px 16px 0 rgba(0,0,0,0.04)",
-    width: 300,
-    height: 380,
+    width: 260,
+    height: 400,
   }
   if (hover) {
     styles.boxShadow = "0 2px 24px 0 rgba(0,0,0,0.12)"
   }
 
   return (
-    <Col span={8}>
+    <Col xs={24} sm={24} md={12} lg={8} xl={6} style={{marginTop: 20}}>
+      <Center>
       <Link to={item.link}>
         <Card
-          cover={<Center><Icon style={{width: 60}} icon={item.icon} /></Center> }
+          cover={<Center><Icon style={{width: 40}} icon={item.icon} /></Center> }
           style={styles}
           onMouseEnter={() => { setHover(true) }}
           onMouseLeave={() => { setHover(false) }}
@@ -38,6 +39,7 @@ const FeatureCard = ({item}) => {
           />
         </Card>
       </Link>
+      </Center>
       </Col>
   )
 }
@@ -83,20 +85,12 @@ const Home = (props) => {
   ];
 
   return (
-    <div style={{margin: 20}}>
-      <Row gutter={24}>
-        {data.slice(0,3).map((item) => (
+    <div>
+      <Row style={{margin: 40, marginTop: 40}} gutter={24}>
+        {data.slice(0,6).map((item) => (
           <FeatureCard key={item.title} item={item} />
-        ))
-        }
+        ))}
       </Row>
-      <Row style={{marginTop: 20}} gutter={24}>
-        {data.slice(3,6).map((item) => (
-          <FeatureCard key={item.title} item={item} />
-        ))
-        }
-      </Row>
-
     </div>
   )
 }
