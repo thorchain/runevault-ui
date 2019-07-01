@@ -57,6 +57,7 @@ export const PillText = (props) => {
   styles.borderRadius = 28
   styles.padding = "8px 20px"
   styles.fontSize = "14px"
+  styles.textOverflow= "ellipsis"
   return (
     <span style={styles}>
       {props.children}
