@@ -9,7 +9,7 @@ const Sidebar = (props) => {
     "multi-send",
     "multi-sig",
     "escrow",
-    "hedge-escrow",
+    "hedged-escrow",
     "dao",
     "swap",
   ]
@@ -17,8 +17,8 @@ const Sidebar = (props) => {
   const [page, setPage] = useState(null)
 
   useEffect(() => {
-    let pathname = window.location.pathname.split("/")[1] 
-    if (!menu_items.includes(pathname)) {
+    let pathname = window.location.pathname.split("/")[1]
+    if (menu_items.includes(pathname)) {
       setPage(pathname)
     }
   }, [menu_items])
@@ -28,8 +28,8 @@ const Sidebar = (props) => {
   }
 
   const selected_styles = {
-    color: "inherit",
     backgroundColor: "#ededed",
+    color: "#F0B90B",
   }
 
   const getStyles = (key) => {
@@ -41,14 +41,14 @@ const Sidebar = (props) => {
   }
 
   const getIcon = (key) => {
-    if (key === page) {
+    if (isSelected(key)) {
       return key+"-active"
     } else {
       return key+"-inactive"
     }
   }
-  
-  const getBold = (key) => {
+
+  const isSelected = (key) => {
     return key === page
   }
 
@@ -59,8 +59,7 @@ const Sidebar = (props) => {
   const sidebarStyles = {
     background: "#fff",
     textTransform: "uppercase",
-    minHeight: 500,
-    zIndex: 10,
+    zIndex: 0,
     position: "relative",
     boxShadow: "0 2px 16px 0 rgba(0,0,0,0.09)",
   }
@@ -71,12 +70,12 @@ const Sidebar = (props) => {
         {menu_items.map((item) => (
           <Menu.Item key={item} style={getStyles(item)}>
             <Link to={"/" + item}>
-              <Icon icon={getIcon(item)} style={styles} />&nbsp;<Text bold={getBold(item)}>{item}</Text>
+              <Icon icon={getIcon(item)} style={styles} />&nbsp;{isSelected(item)? <Text bold={true} color="#F0B90B">{item}</Text> : <Text>{item}</Text>}
             </Link>
           </Menu.Item>
-        ))
-        }
+        ))}
       </Menu>
+
     </Layout.Sider>
   )
 }

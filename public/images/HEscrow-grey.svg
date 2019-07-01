@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="101px" height="62px" viewBox="0 0 101 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="100px" height="61px" viewBox="0 0 100 61" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>HEscrow</title>
+    <title>path-1</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <path d="M10.9631335,58.4985837 L2.9516128,50.424929 L11.3847924,41.9263457 L0.1405528,30.594901 L30.5,0 L61,30.7365439 L49.7557604,42.0679886 L57.7672811,50.1416432 L49.7557604,58.2152975 L60.8594472,69.4050993 L30.2188941,100 L0,69.5467422 L10.9631335,58.4985837 Z M19.4323639,50.290884 L30.3252212,61.2624214 L41.2180785,50.290884 L30.3252212,39.3193467 L19.4323639,50.290884 Z" id="path-1"></path>
+        <path d="M30.4631335,38.9985837 L22.4516128,30.924929 L30.8847924,22.4263457 L19.6405528,11.094901 L50,-19.5 L80.5,11.2365439 L69.2557604,22.5679886 L77.2672811,30.6416432 L69.2557604,38.7152975 L80.3594472,49.9050993 L49.7188941,80.5 L19.5,50.0467422 L30.4631335,38.9985837 Z M38.9323639,30.790884 L49.8252212,41.7624214 L60.7180785,30.790884 L49.8252212,19.8193467 L38.9323639,30.790884 Z" id="path-1"></path>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="HEscrow" transform="translate(50.500000, 31.000000) rotate(90.000000) translate(-50.500000, -31.000000) translate(20.000000, -19.000000)">
-            <g id="COLOUR/GRAY-Clipped">
-                <mask id="mask-2" fill="white">
-                    <use xlink:href="#path-1"></use>
-                </mask>
-                <g id="path-1"></g>
-                <g id="COLOUR/GRAY" mask="url(#mask-2)" fill="#848E9C">
-                    <g transform="translate(-19.000000, 0.000000)" id="Rectangle">
-                        <rect x="0" y="0" width="101" height="101"></rect>
-                    </g>
-                </g>
-            </g>
-        </g>
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="path-1" fill="#848E9C" transform="translate(50.000000, 30.500000) rotate(90.000000) translate(-50.000000, -30.500000) " xlink:href="#path-1"></use>
     </g>
 </svg>
