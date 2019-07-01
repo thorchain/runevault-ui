@@ -50,7 +50,7 @@ const Transfer = (props) => {
                 {getFieldDecorator('address', {
                   rules: [{ required: true, message: 'Please input your address!' }],
                 })(
-                  <Input 
+                  <Input
                     style={{width: "100%"}}
                     placeholder="bnba1b2c3d4g5h6a1b2c3d4g5h6"
                   />,
@@ -94,7 +94,7 @@ const MultiSend = (props) => {
   const [password, setPassword] = useState(null)
   const [memo, setMemo] = useState("")
   const [sending, setSending] = useState(false)
-  
+
   const context = useContext(Context)
 
   useEffect(() => {
@@ -229,7 +229,7 @@ const MultiSend = (props) => {
   const coinRowStyle = {margin: "10px 0px"}
 
   return (
-    <div style={{margin: 10}}>
+    <div style={{margin: 20}}>
       <div>
         <H1>Multi-Sending Tool</H1>
       </div>
@@ -238,7 +238,7 @@ const MultiSend = (props) => {
           Easily send transactions to multiple addresses using Binance Chain batched transactions feature.
         </Text>
       </div>
-      <div style={{margin: "30px 20px"}}>
+      <div style={{marginTop: "20px"}}>
         <Row style={coinRowStyle}>
           <Col span={coinSpan}>
             <WalletAddress />
@@ -248,8 +248,8 @@ const MultiSend = (props) => {
           {loadingBalances && context.wallet &&
           <Text><i>Loading balances, please wait...</i></Text>
           }
-          {!context.wallet && 
-          <Text><Link to="/wallet/unlock">Unlock your wallet</Link> to send coins to multiple recipients</Text>
+          {!context.wallet &&
+          <Text><Link to="/wallet/unlock">Unlock your wallet</Link> to send coins to multiple recipients.</Text>
           }
           {!loadingBalances && context.wallet && (balances || []).length === 0 &&
           <Text>No coins available</Text>
@@ -260,7 +260,7 @@ const MultiSend = (props) => {
         </Row>
         {!loadingBalances && (balances || []).map((coin) => (
           <Row key={coin.ticker} style={coinRowStyle}>
-            <Col span={coinSpan}>
+            <Col xs={24} sm={24} md={12} lg={8} xl={6}>
               <Coin {...coin} onClick={setSelectedCoin} border={selectedCoin === coin.ticker}/>
             </Col>
           </Row>
@@ -305,9 +305,9 @@ const MultiSend = (props) => {
               </Row>
               <Row>
                 <div style={{float: "right"}}>
-                  <Button 
-                    disabled={transfers.length < 2} 
-                    onClick={confirmation} 
+                  <Button
+                    disabled={transfers.length < 2}
+                    onClick={confirmation}
                     loading={sending}
                     style={{padding: "0px 10px", fontSize: 14}} bold={true} fill={true}
                   >
@@ -341,10 +341,10 @@ const MultiSend = (props) => {
                 onChange={f => (uploadCsv(f))}
                 onError={err => (console.error(err))}
               >
-                <Button 
+                <Button
                   style={{padding: "0px 20px", fontSize: 14}}
                   loading={loadingCSV}
-                  bold={true} 
+                  bold={true}
                   fill={false}>
                   <AntIcon type="upload" /> Upload
                 </Button>
