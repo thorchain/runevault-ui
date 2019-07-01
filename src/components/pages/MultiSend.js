@@ -311,7 +311,7 @@ const MultiSend = (props) => {
                     loading={sending}
                     style={{padding: "0px 10px", fontSize: 14}} bold={true} fill={true}
                   >
-                    Next
+                    Next <AntIcon type="arrow-right" />
                   </Button>
                 </div>
               </Row>
