@@ -18,23 +18,23 @@ export const WalletAddress = props => {
 const defaultStyles = {
   fontFamily: "Helvetica",
   fontSize: "14px",
-  color: "#848E9C", 
+  color: "#848E9C",
   letterSpacing: 0,
 }
 
-export const H1 = ({children}) => {
-  let styles = Object.assign({}, defaultStyles);
+export const H1 = (props) => {
+  let styles = {...defaultStyles, ...props.style || {}}
   styles.fontFamily = "Helvetica-Light"
   styles.fontSize = "42px"
   return (
     <span style={styles}>
-      {children}
+      {props.children}
     </span>
   )
 }
 
 export const Text = (props) => {
-  let styles = Object.assign(props.style || {}, defaultStyles);
+  let styles = {...defaultStyles, ...props.style || {}}
   if (props.bold) {
     styles.fontFamily = "Helvetica-Bold"
   }
@@ -51,15 +51,15 @@ export const Text = (props) => {
   )
 }
 
-export const PillText = ({children}) => {
-  let styles = Object.assign({}, defaultStyles);
+export const PillText = (props) => {
+  let styles = {...defaultStyles, ...props.style || {}}
   styles.backgroundColor = "#ededed"
   styles.borderRadius = 28
   styles.padding = "8px 20px"
   styles.fontSize = "14px"
   return (
     <span style={styles}>
-      {children}
+      {props.children}
     </span>
   )
 }
@@ -76,8 +76,8 @@ export const Icon = (props) => {
     "dao-inactive": "DAO-grey.svg",
     "escrow-active": "Escrow-active.svg",
     "escrow-inactive": "Escrow-grey.svg",
-    "hedge-escrow-active": "HEscrow-active.svg",
-    "hedge-escrow-inactive": "HEscrow-grey.svg",
+    "hedged-escrow-active": "HEscrow-active.svg",
+    "hedged-escrow-inactive": "HEscrow-grey.svg",
     "logo": "Logo-BinanceTools.svg",
     "multi-send-active": "Multi-sender-active.svg",
     "multi-send-inactive": "Multi-sender-grey.svg",
@@ -96,7 +96,7 @@ export const Center = (props) => (
 )
 
 const Button = (props) => {
-  let styles = Object.assign(props.style || {}, defaultStyles);
+  let styles = {...defaultStyles, ...props.style || {}}
   styles.borderRadius = 9
   if (props.bold || props.bold === "true") {
     styles.fontFamily = "Helvetica-Bold"
@@ -110,11 +110,11 @@ const Button = (props) => {
     styles.border = "1px solid #F0B90B"
   }
   return (
-    <AntButton 
+    <AntButton
       disabled={props.disabled}
-      style={styles} 
-      onClick={props.onClick} 
-      onChange={props.onChange} 
+      style={styles}
+      onClick={props.onClick}
+      onChange={props.onChange}
       type={props.type}
       loading={props.loading}
     >

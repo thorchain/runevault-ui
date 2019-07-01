@@ -6,7 +6,6 @@ import { ContextProvider } from "./context"
 
 import Header from './components/layout/Header'
 import Sidebar from './components/layout/Sidebar'
-import Footer from './components/layout/Footer'
 
 import Home from './components/pages/Home'
 import MultiSend from './components/pages/MultiSend'
@@ -30,7 +29,7 @@ const App = (props) => {
         <div>
           <Layout>
             <Header />
-            <Layout>
+            <Layout style={{height:"100vh"}}>
               <Sidebar />
               <Content style={{background: "#fff"}}>
                 <Switch>
@@ -38,7 +37,7 @@ const App = (props) => {
                   <Route path="/multi-send" exact component={MultiSend} />
                   <Route path="/multi-sig" exact component={MultiSig} />
                   <Route path="/escrow" exact component={Escrow} />
-                  <Route path="/hedge-escrow" eact component={HEscrow} />
+                  <Route path="/hedged-escrow" eact component={HEscrow} />
                   <Route path="/dao" exact component={DAO} />
                   <Route path="/swap" exact component={Swap} />
                   <Route path="/wallet" exact component={Wallet} />
@@ -46,7 +45,6 @@ const App = (props) => {
                 </Switch>
               </Content>
             </Layout>
-            <Footer />
           </Layout>
         </div>
       </Router>
