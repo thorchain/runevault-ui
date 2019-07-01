@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import { Row, Col, Card } from 'antd';
 
-import { Center, Icon, Text } from '../Components'
+import { Center, Icon, Text, PillText } from '../Components'
 
 const { Meta } = Card;
 
@@ -14,16 +14,20 @@ const FeatureCard = ({item}) => {
     position: 'relative',
     zIndex: 10,
     padding: 10,
+    borderRadius: 10,
+    boxShadow: "0 2px 16px 0 rgba(0,0,0,0.04)",
+    width: 300,
+    height: 380,
   }
   if (hover) {
-    styles.boxShadow = "0 2px 16px 0 rgba(0,0,0,0.09)"
+    styles.boxShadow = "0 2px 24px 0 rgba(0,0,0,0.12)"
   }
 
   return (
     <Col span={8}>
       <Link to={item.link}>
         <Card
-          cover={<Center><Icon style={{height: 100, width:100}} icon={item.icon} /></Center> }
+          cover={<Center><Icon style={{width: 60}} icon={item.icon} /></Center> }
           style={styles}
           onMouseEnter={() => { setHover(true) }}
           onMouseLeave={() => { setHover(false) }}
@@ -34,8 +38,7 @@ const FeatureCard = ({item}) => {
           />
         </Card>
       </Link>
-    </Col>
-
+      </Col>
   )
 }
 
@@ -44,38 +47,38 @@ const Home = (props) => {
     {
       icon: 'multi-send-active',
       link: 'multi-send',
-      title: 'MULTI-SEND TOOL',
-      description: 'Easily send transactions to multiple addresses using Binance Chain batched transactions feature.'
+      title: 'MULTI-SENDER',
+      description: 'This tool uses the Binance Chain batched transaction feature to send assets to multiple addresses easily. Users can manually add addresses, memos and amounts, or alternatively upload from a CSV file to send large amounts of transactions. Users pay the Batch Transaction fee.',
     },
     {
       icon: 'multi-sig-active',
       link: 'multi-sig',
-      title: 'MULTI-SIGNATURE MODULE',
-      description: 'This module using Cosmos multi-key store to persist state about the wallets on-chain and is non-interactive since signers don’t need to be online at the same time. Signatures and public keys are recorded on-chain, as opposed to off-chain. This functions similar to Ethereum’s Gnosis Multi- sig contract, where the wallet is set up first before it can be used.',
+      title: 'MULTI-SIGNATURE',
+      description: 'This tool uses Binance Chain multi-key store to persist state about multi-signature wallets on-chain and is non-interactive since signers don’t need to be online at the same time. Users first set up the wallet by specifying the threshold and maximum number of signatures (such as a 2 of 3 wallet), and then sign in turn to send transactions from the wallet.',
     },
     {
       icon: 'escrow-active',
       link: 'escrow',
-      title: 'ESCROW MODULE',
-      description: 'This module is a simple escrow module that allows members to register funds in an escrow that must be paid out in accordance with the set up. It is an adapted non-interactive multi-signature module that places enforceable restrictions on how the transaction is paid out.',
+      title: 'ESCROW',
+      description: 'This tool is an adapted multi-signature module that places restrictions on how funds can be spent between parties. Users set up details about how the payment should be made, and once both parties are happy, funds are released to the correct recipient. The third-party can step in to process disputes and charges a small escrow fee.',
     },
     {
       icon: 'hedged-escrow-active',
       link: 'hedged-escrow',
-      title: 'HEDGED ESCROW MODULE',
-      description: "This module implements a price hedge into the escrow so that an external value can be specified in the payment and the payout correctly paid at all times. This allows escrows to pay out funds in an externally priced asset (such as paying BNB for a transaction that is priced in USD) and removes volatility risks to escrows. The hedged escrow has already been implemented successfully in the CanWork platform.",
+      title: 'HEDGED-ESCROW',
+      description: 'This tool is an adapted escrow module that allows a float to be maintained, and an external price reference to be added (such as paying in BNB priced in USD). Users specify payment amounts in the price of the external asset such that price volatility risk is removed whilst the asset is escrowed. The float in the escrow underwrites payments and as such is very useful for marketplaces.',
     },
     {
       icon: 'dao-active',
       link: 'dao',
       title: 'DAO MODULE',
-      description: 'This module is a simple staking, election and voting module that allows members to stake assets that can only be unlocked after a period of time, start elections in communities and cast votes that represent on-chain governance.',
+      description: 'This tool allows developers to add staking, election and voting logic to their dApps. Users can stake assets on their wallets with a designated un-bonding period. They can then create elections that require minimum stake participation with designated outcomes. Votes can be tallied uses 1p1v or more elaborate schemes such as quadratic voting to determine an outcome.',
     },
     {
       icon: 'swap-active',
       link: 'swap',
-      title: 'LIQUIDITY POOL MODULE',
-      description: 'This module allows users to stake assets and BNB in on-chain pools, and then perform trustless swaps across pools. The module features always-on liquidity and fair market-based prices that are resistant to manipulation. Stakers earn fees when staking assets, and users can instantly swap assets in a single transaction. This module is exciting because it will drive staking demand for BNB and BinanceChain assets, and solve liquidity problems for the ecosystem since it has the correct incentives to stake assets and earn fees. Developers can add a swap widget in their apps to instantly convert assets at market prices trustlessly with no counter-party.',
+      title: 'LIQUIDITY POOLS',
+      description: 'This module allows users to stake assets and BNB in on-chain pools, and then perform trustless swaps across pools. The module features always-on liquidity and fair market-based prices that are resistant to manipulation. Stakers earn fees when staking assets, and users can instantly swap assets in a single transaction.',
     }
   ];
 
