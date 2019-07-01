@@ -61,10 +61,13 @@ const Mnemonic = props => {
     const privateKey = crypto.getPrivateKeyFromMnemonic(mnemonic)
     const keyStore = crypto.generateKeyStore(privateKey, password)
     const address = crypto.getAddressFromPrivateKey(privateKey, Binance.getPrefix())
+    const addr = address.substring(0,7).concat('...')
+    const addrShort = addr.concat(address.substring(address.length - 4, address.length))
     context.setContext({
       "wallet": {
         "keystore": keyStore,
         "address": address,
+        "addrShort": addrShort,
       }
     }, () => {
       setMnemonic(null)
@@ -73,7 +76,7 @@ const Mnemonic = props => {
     })
   }
 
-  const okPassword = passwordRequirements.isMin && passwordRequirements.hasNumber && passwordRequirements.hasSpecial && passwordRequirements.hasUppercase 
+  const okPassword = passwordRequirements.isMin && passwordRequirements.hasNumber && passwordRequirements.hasSpecial && passwordRequirements.hasUppercase
   const okMnemonic = mnemonicError === null && (mnemonic || "").length > 0
   const disabled = !okPassword || !okMnemonic
 
@@ -89,7 +92,7 @@ const Mnemonic = props => {
       </Row>
       <Row style={{marginBottom: 20}}>
         <TextArea rows={4} onChange={onMnemonicChange} />
-        {mnemonicError ? 
+        {mnemonicError ?
         <Text color='#FF4136'>{mnemonicError}</Text>
             :
             <Text>Please separate each word with a space.</Text>
@@ -112,9 +115,9 @@ const Mnemonic = props => {
         </div>
       </Row>
       <Row style={{marginBottom: 10}}>
-        <Button 
+        <Button
           disabled={disabled}
-          onClick={unlock} 
+          onClick={unlock}
           style={{float: "right"}}
           fill={true}
         >

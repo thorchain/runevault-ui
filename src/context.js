@@ -25,6 +25,7 @@ export class ContextProvider extends React.Component {
     this.setState({
       address: null,
       keystore: null,
+      addrShort: null,
     })
   }
 
