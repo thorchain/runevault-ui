@@ -22,19 +22,19 @@ const defaultStyles = {
   letterSpacing: 0,
 }
 
-export const H1 = ({children}) => {
-  let styles = Object.assign({}, defaultStyles);
+export const H1 = (props) => {
+  let styles = {...defaultStyles, ...props.style || {}}
   styles.fontFamily = "Helvetica-Light"
   styles.fontSize = "42px"
   return (
     <span style={styles}>
-      {children}
+      {props.children}
     </span>
   )
 }
 
 export const Text = (props) => {
-  let styles = Object.assign(props.style || {}, defaultStyles);
+  let styles = {...defaultStyles, ...props.style || {}}
   if (props.bold) {
     styles.fontFamily = "Helvetica-Bold"
   }
@@ -51,15 +51,15 @@ export const Text = (props) => {
   )
 }
 
-export const PillText = ({children}) => {
-  let styles = Object.assign({}, defaultStyles);
+export const PillText = (props) => {
+  let styles = {...defaultStyles, ...props.style || {}}
   styles.backgroundColor = "#ededed"
   styles.borderRadius = 28
   styles.padding = "8px 20px"
   styles.fontSize = "14px"
   return (
     <span style={styles}>
-      {children}
+      {props.children}
     </span>
   )
 }
@@ -96,7 +96,7 @@ export const Center = (props) => (
 )
 
 const Button = (props) => {
-  let styles = Object.assign(props.style || {}, defaultStyles);
+  let styles = {...defaultStyles, ...props.style || {}}
   styles.borderRadius = 9
   if (props.bold || props.bold === "true") {
     styles.fontFamily = "Helvetica-Bold"

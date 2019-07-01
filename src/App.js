@@ -6,7 +6,6 @@ import { ContextProvider } from "./context"
 
 import Header from './components/layout/Header'
 import Sidebar from './components/layout/Sidebar'
-import Footer from './components/layout/Footer'
 
 import Home from './components/pages/Home'
 import MultiSend from './components/pages/MultiSend'
