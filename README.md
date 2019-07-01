@@ -3,6 +3,11 @@ Binance Tools
 
 UI for [Binancetools.org](https://binancetools.org)
 
+## Setup
+```bash
+yarn install
+```
+
 ## Start
 ```bash
 yarn start

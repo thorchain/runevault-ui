@@ -104,10 +104,12 @@ const Button = (props) => {
   if (props.fill) {
     styles.color = "#fff"
     styles.backgroundColor = "#F0B90B"
+    styles.borderColor = "#F0B90B"
   } else {
     styles.color = "#F0B90B"
     styles.backgroundColor = "#fff"
     styles.border = "1px solid #F0B90B"
+    styles.borderColor = "#F0B90B"
   }
   return (
     <AntButton
