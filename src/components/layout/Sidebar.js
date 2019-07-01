@@ -9,7 +9,7 @@ const Sidebar = (props) => {
     "multi-send",
     "multi-sig",
     "escrow",
-    "hedge-escrow",
+    "hedged-escrow",
     "dao",
     "swap",
   ]
@@ -17,7 +17,7 @@ const Sidebar = (props) => {
   const [page, setPage] = useState(null)
 
   useEffect(() => {
-    let pathname = window.location.pathname.split("/")[1] 
+    let pathname = window.location.pathname.split("/")[1]
     if (!menu_items.includes(pathname)) {
       setPage(pathname)
     }
@@ -47,7 +47,7 @@ const Sidebar = (props) => {
       return key+"-inactive"
     }
   }
-  
+
   const getBold = (key) => {
     return key === page
   }
@@ -59,8 +59,7 @@ const Sidebar = (props) => {
   const sidebarStyles = {
     background: "#fff",
     textTransform: "uppercase",
-    minHeight: 500,
-    zIndex: 10,
+    zIndex: 0,
     position: "relative",
     boxShadow: "0 2px 16px 0 rgba(0,0,0,0.09)",
   }

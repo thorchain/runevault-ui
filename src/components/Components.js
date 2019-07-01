@@ -18,7 +18,7 @@ export const WalletAddress = props => {
 const defaultStyles = {
   fontFamily: "Helvetica",
   fontSize: "14px",
-  color: "#848E9C", 
+  color: "#848E9C",
   letterSpacing: 0,
 }
 
@@ -76,8 +76,8 @@ export const Icon = (props) => {
     "dao-inactive": "DAO-grey.svg",
     "escrow-active": "Escrow-active.svg",
     "escrow-inactive": "Escrow-grey.svg",
-    "hedge-escrow-active": "HEscrow-active.svg",
-    "hedge-escrow-inactive": "HEscrow-grey.svg",
+    "hedged-escrow-active": "HEscrow-active.svg",
+    "hedged-escrow-inactive": "HEscrow-grey.svg",
     "logo": "Logo-BinanceTools.svg",
     "multi-send-active": "Multi-sender-active.svg",
     "multi-send-inactive": "Multi-sender-grey.svg",
@@ -110,11 +110,11 @@ const Button = (props) => {
     styles.border = "1px solid #F0B90B"
   }
   return (
-    <AntButton 
+    <AntButton
       disabled={props.disabled}
-      style={styles} 
-      onClick={props.onClick} 
-      onChange={props.onChange} 
+      style={styles}
+      onClick={props.onClick}
+      onChange={props.onChange}
       type={props.type}
       loading={props.loading}
     >

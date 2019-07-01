@@ -60,8 +60,8 @@ const Home = (props) => {
       description: 'This module is a simple escrow module that allows members to register funds in an escrow that must be paid out in accordance with the set up. It is an adapted non-interactive multi-signature module that places enforceable restrictions on how the transaction is paid out.',
     },
     {
-      icon: 'hedge-escrow-active',
-      link: 'hedge-escrow',
+      icon: 'hedged-escrow-active',
+      link: 'hedged-escrow',
       title: 'HEDGED ESCROW MODULE',
       description: "This module implements a price hedge into the escrow so that an external value can be specified in the payment and the payout correctly paid at all times. This allows escrows to pay out funds in an externally priced asset (such as paying BNB for a transaction that is priced in USD) and removes volatility risks to escrows. The hedged escrow has already been implemented successfully in the CanWork platform.",
     },
