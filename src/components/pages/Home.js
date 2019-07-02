@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import { Row, Col, Card } from 'antd';
 
-import { Center, Icon, Text, PillText } from '../Components'
+import { Center, Icon, Text } from '../Components'
 
 const { Meta } = Card;
 
