@@ -4,7 +4,7 @@ import { Layout } from 'antd';
 
 import { Context } from '../../context'
 
-import { Icon, Button, WalletAddress } from '../Components'
+import { Icon, Button, WalletAddrShort } from '../Components'
 
 const Header = (props) => {
 
@@ -16,8 +16,8 @@ const Header = (props) => {
         <Icon icon="logo" />
       </Link>
       <div style={{float: "right"}}>
-        {context.wallet ? 
-        <Link to="/wallet"><WalletAddress /></Link>
+        {context.wallet ?
+        <Link to="/wallet"><WalletAddrShort /></Link>
             :
             <Link to="/wallet/unlock">
               <Button fill>

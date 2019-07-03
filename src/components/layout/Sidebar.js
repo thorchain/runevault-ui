@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import { Menu, Layout } from 'antd';
-import { Text, Icon } from '../Components'
+import { Text, Icon, } from '../Components'
+
+import Footer from './Footer'
 
 const Sidebar = (props) => {
 
@@ -59,7 +61,7 @@ const Sidebar = (props) => {
   const sidebarStyles = {
     background: "#fff",
     textTransform: "uppercase",
-    zIndex: 0,
+    zIndex: 1,
     position: "relative",
     boxShadow: "0 2px 16px 0 rgba(0,0,0,0.09)",
   }
@@ -75,6 +77,8 @@ const Sidebar = (props) => {
           </Menu.Item>
         ))}
       </Menu>
+
+      <Footer />
 
     </Layout.Sider>
   )

@@ -15,6 +15,16 @@ export const WalletAddress = props => {
   return <Fragment />
 }
 
+export const WalletAddrShort = props => {
+  const context = useContext(Context)
+  if (context.wallet && context.wallet.address) {
+    return (
+      <PillTextOrng>{context.wallet.addrShort}</PillTextOrng>
+    )
+  }
+  return <Fragment />
+}
+
 const defaultStyles = {
   fontFamily: "Helvetica",
   fontSize: "14px",
@@ -57,7 +67,6 @@ export const PillText = (props) => {
   styles.borderRadius = 28
   styles.padding = "8px 20px"
   styles.fontSize = "14px"
-  styles.textOverflow= "ellipsis"
   return (
     <span style={styles}>
       {props.children}
@@ -65,6 +74,19 @@ export const PillText = (props) => {
   )
 }
 
+export const PillTextOrng = (props) => {
+  let styles = {...defaultStyles, ...props.style || {}}
+  styles.backgroundColor = "#F0B90B"
+  styles.borderRadius = 28
+  styles.padding = "8px 20px"
+  styles.fontSize = "14px"
+  styles.color = "#FFF"
+  return (
+    <span style={styles}>
+      {props.children}
+    </span>
+  )
+}
 
 export const Icon = (props) => {
   const lookup = {
