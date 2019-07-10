@@ -13,7 +13,7 @@ import MultiSig from './components/pages/MultiSig'
 import Escrow from './components/pages/Escrow'
 import HEscrow from './components/pages/HedgeEscrow'
 import DAO from './components/pages/DAO'
-import Swap from './components/pages/Swap'
+// import Swap from './components/pages/Swap'
 import Unlock from './components/pages/Wallet/Unlock'
 import Wallet from './components/pages/Wallet/index'
 
@@ -39,7 +39,6 @@ const App = (props) => {
                   <Route path="/escrow" exact component={Escrow} />
                   <Route path="/hedged-escrow" eact component={HEscrow} />
                   <Route path="/dao" exact component={DAO} />
-                  <Route path="/swap" exact component={Swap} />
                   <Route path="/wallet" exact component={Wallet} />
                   <Route path="/wallet/unlock" exact component={Unlock} />
                 </Switch>

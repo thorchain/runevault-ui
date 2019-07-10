@@ -13,7 +13,6 @@ const Sidebar = (props) => {
     "escrow",
     "hedged-escrow",
     "dao",
-    "swap",
   ]
 
   const [page, setPage] = useState(null)

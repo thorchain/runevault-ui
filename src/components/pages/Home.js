@@ -76,12 +76,12 @@ const Home = (props) => {
       title: 'DAO MODULE',
       description: 'This tool allows developers to add staking, election and voting logic to their dApps. Users can stake assets on their wallets with a designated un-bonding period. They can then create elections that require minimum stake participation with designated outcomes. Votes can be tallied uses 1p1v or more elaborate schemes such as quadratic voting to determine an outcome.',
     },
-    {
-      icon: 'swap-active',
-      link: 'swap',
-      title: 'LIQUIDITY POOLS',
-      description: 'This module allows users to stake assets and BNB in on-chain pools, and then perform trustless swaps across pools. The module features always-on liquidity and fair market-based prices that are resistant to manipulation. Stakers earn fees when staking assets, and users can instantly swap assets in a single transaction.',
-    }
+    // {
+    //   icon: 'swap-active',
+    //   link: 'swap',
+    //   title: 'LIQUIDITY POOLS',
+    //   description: 'This module allows users to stake assets and BNB in on-chain pools, and then perform trustless swaps across pools. The module features always-on liquidity and fair market-based prices that are resistant to manipulation. Stakers earn fees when staking assets, and users can instantly swap assets in a single transaction.',
+    // }
   ];
 
   return (
