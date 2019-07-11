@@ -1,6 +1,5 @@
 import React from 'react'
 import { Layout, Row, Col} from 'antd';
-import { Center } from '../Components'
 
 const Footer = (props) => {
 
