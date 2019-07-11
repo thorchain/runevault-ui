@@ -1,6 +1,7 @@
 import React from 'react'
 import { Row, Col, Tabs } from 'antd'
 
+import { isMainnet } from '../../../env'
 import { Center, H1, Text } from '../../Components'
 import Mnemonic from "./Mnemonic"
 import Keystore from "./Keystore"
@@ -8,7 +9,6 @@ import Keystore from "./Keystore"
 const { TabPane } = Tabs;
 
 const Unlock = (props) => {
-  console.log("Got here")
   return (
     <div style={{margin: 20}}>
       <div>
@@ -37,9 +37,11 @@ const Unlock = (props) => {
             <TabPane tab={<Text size={16}><i>Keystore File</i></Text>} key="3">
               <Keystore {...props} />
             </TabPane>
+            {!isMainnet &&
             <TabPane tab={<Text size={16}><i>Mnemonic Phrase</i></Text>} key="4">
               <Mnemonic {...props} />
             </TabPane>
+            }
           </Tabs>
         </Col>
       </Row>
