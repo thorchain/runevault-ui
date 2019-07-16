@@ -1,7 +1,7 @@
 Binance Tools
 =============
 
-UI for [Binancetools.org](https://binancetools.org)
+UI for [beptools.org](https://beptools.org)
 
 ## Setup
 ```bash

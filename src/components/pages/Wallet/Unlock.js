@@ -17,7 +17,7 @@ const Unlock = (props) => {
         </Row>
         <Row style={{margin:20}}>
           <Center>
-            <Text color='#FF4136'><i><b>Important!</b></i></Text>&nbsp;<Text>Please check that you are visiting <i>https://www.binancetools.org</i>
+            <Text color='#FF4136'><i><b>Important!</b></i></Text>&nbsp;<Text>Please check that you are visiting <i>https://www.beptools.org</i>
             </Text>
           </Center>
         </Row>
