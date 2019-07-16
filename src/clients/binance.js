@@ -1,15 +1,15 @@
 import bnbClient from '@binance-chain/javascript-sdk'
 import axios from 'axios'
 
-import { NET, isMainnet } from '../env'
+import { NET, isTestnet} from '../env'
 
 class Binance {
   constructor() {
-    this.baseURL = "https://testnet-dex.binance.org"
-    this.explorerBaseURL = "https://testnet-explorer.binance.org"
-    if (isMainnet) {
-      this.baseURL = "https://dex.binance.org"
-      this.explorerBaseURL = "https://explorer.binance.org"
+    this.baseURL = "https://dex.binance.org"
+    this.explorerBaseURL = "https://explorer.binance.org"
+    if (isTestnet) {
+      this.baseURL = "https://testnet-dex.binance.org"
+      this.explorerBaseURL = "https://testnet-explorer.binance.org"
     }
 
     this.net = NET
@@ -34,7 +34,7 @@ class Binance {
   }
 
   getPrefix() {
-    return isMainnet ? "bnb" : "tbnb"
+    return isTestnet ? "tbnb" : "bnb"
   }
 
   txURL(tx) {
@@ -53,11 +53,11 @@ class Binance {
   getBalances(address) {
     return this.bnbClient.getBalance(address)
   }
-  
+
   getAccount(address) {
     return this.bnbClient.getAccount(address)
   }
-  
+
   getMarkets(limit = 1000, offset = 0) {
     return this.bnbClient.getMarkets(limit, offset)
   }
