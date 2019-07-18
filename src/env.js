@@ -3,13 +3,14 @@ const prod_hostnames = [
 ]
 const stage_hostnames = [
   "binancetools-prod.firebaseapp.com",
+  "binancetools-prod.web.app",
 ]
 
 const isMainnet = prod_hostnames.includes(window.location.hostname)
 const isStagenet = stage_hostnames.includes(window.location.hostname)
 const isTestnet = !isMainnet && !isStagenet
 
-const NET = isMainnet ? "mainnet" : "testnet"
+const NET = isTestnet ? "testnet" : "mainnet"
 
 export {
   NET,
