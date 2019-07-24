@@ -172,7 +172,8 @@ const Stake = (props) => {
         <Col xs={24} sm={24} md={24} lg={16}>
           <Row style={{paddingRight: 5}}>
             <Col span={24}>
-              <Button style={{height:30, width:200}}
+              <Button 
+                style={{height:30, width:200}}
                 onClick={() => { confirmation('stake') }}
                 loading={sending}
               >
@@ -181,7 +182,8 @@ const Stake = (props) => {
                   return b.ticker === SYMBOL
                 }).frozen})
               </Button>
-              <Button style={{height:30, width:200}}
+              <Button 
+                style={{height:30, width:200, marginLeft: 10}}
                 onClick={() => { confirmation('destake') }}
                 loading={sending}
               >
@@ -192,11 +194,14 @@ const Stake = (props) => {
         </Col>
       </Row>
       }
+
       <Modal
         title={mode.charAt(0).toUpperCase() + mode.slice(1)}
         visible={visible}
         footer={null}
         onCancel={handleCancel}
+        bodyStyle={{backgroundColor: "#101921", paddingBottom: 10}} 
+        headStyle={{backgroundColor: "#2B3947", color: "#fff"}} 
       >
         <WrappedStakeForm button={mode} onSubmit={handleOk} onCancel={handleCancel} loading={sending} />
       </Modal>
@@ -222,16 +227,16 @@ const StakeForm = (props) => {
 
   return (
     <Form onSubmit={handleSubmit} className="login-form">
-      <Form.Item label="Amount">
+      <Form.Item >
         {getFieldDecorator('amount', {
           rules: [{ required: true, message: 'Please input an amount of tokens!' }],
         })(
           <Input
-            placeholder="1.9938"
+            placeholder="Amount: ie 1.9938"
           />,
         )}
       </Form.Item>
-      <Form.Item label="Password">
+      <Form.Item >
         {getFieldDecorator('password', {
           rules: [{ required: true, message: 'Please input your Password!' }],
         })(
@@ -249,6 +254,7 @@ const StakeForm = (props) => {
             htmlType="submit" 
             onClick={handleSubmit}
             loading={props.loading}
+            style={{marginLeft: 10}}
           >
             {props.button.charAt(0).toUpperCase() + props.button.slice(1)}
           </Button>
