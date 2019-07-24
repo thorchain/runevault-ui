@@ -1,84 +1,12 @@
 import React, { useState, useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
-import { FilePicker } from 'react-file-picker'
 import { crypto } from '@binance-chain/javascript-sdk'
 
 import { Context } from '../../context'
 import Binance from "../../clients/binance"
 
-import { Row, Icon as AntIcon, Col, Modal, Button as AntButton, Form, Input, message } from 'antd'
-import { H1, Icon, Button, Center, Text, Coin, WalletAddress} from "../Components"
-
-const Transfer = (props) => {
-  const { getFieldDecorator, getFieldError, isFieldTouched } = props.form;
-
-  useEffect(() => {
-    props.form.setFieldsValue({
-      "ticker": props.ticker,
-      "address": props.address,
-      "amount": props.amount || 0,
-    })
-    // eslint-disable-next-line
-  }, [props.ticker, props.address, props.amount])
-
-  // const context = useContext(Context)
-
-  // Only show error after a field is touched.
-  const addressError = isFieldTouched('address') && getFieldError('address');
-  const amountError = isFieldTouched('amount') && getFieldError('amount');
-
-  const onChange = () => {
-    if (props.onChange) {
-      let values = props.form.getFieldsValue()
-      values.ticker = props.ticker
-      values.amount = parseFloat(values.amount)
-      props.onChange(props.index, values)
-    }
-  }
-
-  return (
-    <Row>
-      <Col span={3}>
-        <H1>{props.index + 1}.</H1>
-      </Col>
-      <Col>
-        <Row>
-          <Form layout="inline" onChange={onChange} onSubmit={props.handleSubmit}>
-            <Col span={13}>
-              <div><Text size={14}>Address</Text></div>
-              <Form.Item className="form-100" style={{width: "100%"}} validateStatus={addressError ? 'error' : ''} help={addressError || ''}>
-                {getFieldDecorator('address', {
-                  rules: [{ required: true, message: 'Please input your address!' }],
-                })(
-                  <Input
-                    style={{width: "100%"}}
-                    placeholder="bnba1b2c3d4g5h6a1b2c3d4g5h6"
-                  />,
-                )}
-              </Form.Item>
-            </Col>
-            <Col span={8}>
-              <div><Text size={14}>Amount</Text></div>
-              <Form.Item className="form-100" style={{width: "100%"}} validateStatus={amountError ? 'error' : ''} help={amountError || ''}>
-                {getFieldDecorator('amount', {
-                  rules: [{ required: true, message: 'Please input your amount!' }],
-                })(
-                  <Input
-                    style={{width: "100%"}}
-                    placeholder="23.456"
-                    addonAfter=<Text size={12}>{props.ticker}</Text>
-                  />,
-                )}
-              </Form.Item>
-            </Col>
-          </Form>
-        </Row>
-      </Col>
-    </Row>
-  )
-}
-const WrappedTransferLine = Form.create()(Transfer);
-
+import { Row, Icon as AntIcon, Col, Modal, Input, message } from 'antd'
+import { H1, Button, Text, Coin, WalletAddress} from "../Components"
 
 const Stake = (props) => {
   const [transfers, setTransfers] = useState([{}])
@@ -86,13 +14,10 @@ const Stake = (props) => {
   const [selectedCoin, setSelectedCoin] = useState(null)
   const [balances, setBalances] = useState(null)
   const [loadingBalances, setLoadingBalancer] = useState(false)
-  const [multiFee, setMultiFee] = useState(null)
-  const [loadingCSV, setLoadingCSV] = useState(false)
 
   // confirmation modal variables
   const [visible, setVisible] = useState(false)
   const [password, setPassword] = useState(null)
-  const [memo, setMemo] = useState("")
   const [sending, setSending] = useState(false)
 
   const context = useContext(Context)
@@ -104,10 +29,10 @@ const Stake = (props) => {
         .then((response) => {
           const b = (response || []).map((bal) => (
             {
-              "icon": bal.symbol == "BNB" ? "coin-bnb": "coin-rune",
+              "icon": bal.symbol === "BNB" ? "coin-bnb": "coin-rune",
               "ticker": bal.symbol,
               "amount": parseFloat(bal.free),
-              "button" : bal.symbol == "RUNE-B1A" ? "STAKE": "none",
+              "button" : bal.symbol === "RUNE-B1A" ? "STAKE": "none",
             }
           ))
           setBalances([...b])
@@ -117,17 +42,6 @@ const Stake = (props) => {
           setLoadingBalancer(false)
         })
     }
-    Binance.fees()
-      .then((response) => {
-        for (let msg of response.data) {
-          if (msg.multi_transfer_fee) {
-            setMultiFee(Binance.calculateFee(msg.multi_transfer_fee))
-          }
-        }
-      })
-      .catch((error) => {
-        console.error(error)
-      })
   }, [context.wallet])
 
   var reader = new FileReader();
@@ -149,27 +63,11 @@ const Stake = (props) => {
     }
     setTransfers([...transactions])
     setTotal(transactions.reduce((a,b) => a + (b.amount || 0), 0))
-    setLoadingCSV(false)
-  }
-
-  const addTransfer = (transfer) => {
-    setTransfers([...transfers, {}])
-  }
-
-  const updateTransfer = (index, transfer) => {
-    transfers[index] = transfer
-    setTransfers(transfers)
-    setTotal(transfers.reduce((a,b) => a + (b.amount || 0), 0))
   }
 
   const confirmation = () => {
     setPassword("")
     setVisible(true)
-  }
-
-  const uploadCsv = (f) => {
-    setLoadingCSV(true)
-    reader.readAsText(f);
   }
 
   const handleOk = async () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Layout, Row, Col} from 'antd';
 
-import { Center, Icon, Button, WalletAddrShort } from '../Components'
+import { Center, Icon } from '../Components'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
@@ -27,18 +27,12 @@ const Footer = (props) => {
     fontSize: 18,
   }
 
-  const emojiStyles = {
-    fontWeight: "bolder",
-    fontFamily:'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'
-  }
-
-
   const thorchainTwitter = "https://twitter.com/thorchain_org?lang=en";
-   const thorchainGithub = "https://github.com/thorchain";
-   const thorchianTelegram = "https://t.me/thorchain_org";
-   const thorchainYoutube = "https://www.youtube.com/channel/UC6ZiZuysJZRFQKv8Zn8OG0g";
-   const thorchainReddit = "https://www.reddit.com/r/THORChain/";
-   const thorchainOrg = "https://thorchain.org/";
+  const thorchainGithub = "https://github.com/thorchain";
+  const thorchianTelegram = "https://t.me/thorchain_org";
+  const thorchainYoutube = "https://www.youtube.com/channel/UC6ZiZuysJZRFQKv8Zn8OG0g";
+  const thorchainReddit = "https://www.reddit.com/r/THORChain/";
+  // const thorchainOrg = "https://thorchain.org/";
 
 
 
@@ -56,8 +50,8 @@ const Footer = (props) => {
           </Col>
           <Col xs={6}>
             <Row>
-                <Col xs={3}>
-                </Col>
+              <Col xs={3}>
+              </Col>
               <Col xs={3}>
                 <FontAwesomeIcon icon={faFacebookF} style={{ color: '#919D9D' }}  />
               </Col>
