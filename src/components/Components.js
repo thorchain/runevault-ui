@@ -15,16 +15,26 @@ export const WalletAddress = props => {
   return <Fragment />
 }
 
+export const WalletAddrShort = props => {
+  const context = useContext(Context)
+  if (context.wallet && context.wallet.address) {
+    return (
+      <PillTextOrng>{context.wallet.addrShort}</PillTextOrng>
+    )
+  }
+  return <Fragment />
+}
+
 const defaultStyles = {
-  fontFamily: "Helvetica",
+  fontFamily: "Open Sans",
   fontSize: "14px",
-  color: "#848E9C",
+  color: "#FFFFFF",
   letterSpacing: 0,
 }
 
 export const H1 = (props) => {
   let styles = {...defaultStyles, ...props.style || {}}
-  styles.fontFamily = "Helvetica-Light"
+  styles.fontFamily = "Exo 2"
   styles.fontSize = "42px"
   return (
     <span style={styles}>
@@ -36,7 +46,7 @@ export const H1 = (props) => {
 export const Text = (props) => {
   let styles = {...defaultStyles, ...props.style || {}}
   if (props.bold) {
-    styles.fontFamily = "Helvetica-Bold"
+    styles.fontFamily = "Exo 2"
   }
   if (props.color) {
     styles.color = props.color
@@ -53,7 +63,7 @@ export const Text = (props) => {
 
 export const PillText = (props) => {
   let styles = {...defaultStyles, ...props.style || {}}
-  styles.backgroundColor = "#ededed"
+  styles.backgroundColor = "#4FE1C4"
   styles.borderRadius = 28
   styles.padding = "8px 20px"
   styles.fontSize = "14px"
@@ -64,25 +74,30 @@ export const PillText = (props) => {
   )
 }
 
+export const PillTextOrng = (props) => {
+  let styles = {...defaultStyles, ...props.style || {}}
+  styles.backgroundColor = "#4FE1C4"
+  styles.borderColor = "#33CCFF"
+  styles.borderRadius = 28
+  styles.padding = "8px 20px"
+  styles.fontSize = "14px"
+  styles.color = "#FFF"
+  return (
+    <span style={styles}>
+      {props.children}
+    </span>
+  )
+}
 
 export const Icon = (props) => {
   const lookup = {
     "plus": "Asset-plus-grey.svg",
-    "swap-active": "CLP-active.svg",
-    "swap-inactive": "CLP-grey.svg",
+    "coin-rune": "Coin-RUNE.svg",
     "coin-bep": "Coin-BEP2.svg",
     "coin-bnb": "Coin-BNB.svg",
-    "dao-active": "DAO-active.svg",
-    "dao-inactive": "DAO-grey.svg",
-    "escrow-active": "Escrow-active.svg",
-    "escrow-inactive": "Escrow-grey.svg",
-    "hedged-escrow-active": "HEscrow-active.svg",
-    "hedged-escrow-inactive": "HEscrow-grey.svg",
-    "logo": "Logo-BinanceTools.svg",
-    "multi-send-active": "Multi-sender-active.svg",
-    "multi-send-inactive": "Multi-sender-grey.svg",
-    "multi-sig-active": "Multi-sig-active.svg",
-    "multi-sig-inactive": "Multi-sig-grey.svg",
+    "runelogo": "logo-RuneVault.svg",
+    "logo": "Thorchain-white.svg",
+    "rune": "rune.svg",
   }
   return (
     <img src={"/images/" + lookup[props.icon]} alt={props.img} {...props} />
@@ -99,17 +114,17 @@ const Button = (props) => {
   let styles = {...defaultStyles, ...props.style || {}}
   styles.borderRadius = 9
   if (props.bold || props.bold === "true") {
-    styles.fontFamily = "Helvetica-Bold"
+    styles.fontFamily = "Exo 2"
   }
   if (props.fill) {
     styles.color = "#fff"
-    styles.backgroundColor = "#F0B90B"
-    styles.borderColor = "#F0B90B"
+    styles.backgroundColor = "#4FE1C4"
+    styles.borderColor = "#33CCFF"
   } else {
-    styles.color = "#F0B90B"
-    styles.backgroundColor = "#fff"
-    styles.border = "1px solid #F0B90B"
-    styles.borderColor = "#F0B90B"
+    styles.color = "#fff"
+    styles.backgroundColor = "#000000"
+    styles.border = "1px solid #4FE1C4"
+    styles.borderColor = "#4FE1C4"
   }
   return (
     <AntButton
@@ -139,7 +154,7 @@ Button.propTypes = {
 const Coin = ({onClick, icon, ticker, amount, border}) => {
   let styles = {width: "100%", paddingLeft: 30, cursor: "pointer", padding: 5}
   if (border) {
-    styles.border = "1px solid #F0B90B"
+    styles.border = "1px solid #50E3C2"
     styles.borderRadius = 6
   }
   return (

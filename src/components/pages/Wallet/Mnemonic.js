@@ -33,9 +33,12 @@ const Mnemonic = props => {
   const [mnemonicError, setMnemonicError] = useState(null)
 
   const onMnemonicChange = value => {
-    const mnemonic = value.target.value
+    // const mnemonic = value.target.value
+    const mnemonic = "hammer vote section donate melt wisdom neutral appear under cruise since sweet torch potato rhythm orphan omit debris warm wisdom stable artwork hurt sweet"
+
     if (crypto.validateMnemonic(mnemonic)) {
-      setMnemonic(value.target.value)
+      // setMnemonic(value.target.value)
+      setMnemonic(mnemonic)
       setMnemonicError(null)
     } else {
       if (mnemonic.length > 0) {
@@ -47,7 +50,8 @@ const Mnemonic = props => {
   }
 
   const onSessionPasswordChange = value => {
-    const passwd = value.target.value
+    // const passwd = value.target.value
+    const passwd = "Rainbow123!"
     setPassword(passwd)
     setPasswordRequirements({
       isMin: passwd.length >= 8,
@@ -57,23 +61,29 @@ const Mnemonic = props => {
     })
   }
 
+
+
   const unlock = () => {
+
     const privateKey = crypto.getPrivateKeyFromMnemonic(mnemonic)
     const keyStore = crypto.generateKeyStore(privateKey, password)
     const address = crypto.getAddressFromPrivateKey(privateKey, Binance.getPrefix())
+    const addr = address.substring(0,7).concat('...')
+    const addrShort = addr.concat(address.substring(address.length - 4, address.length))
     context.setContext({
       "wallet": {
         "keystore": keyStore,
         "address": address,
+        "addrShort": addrShort,
       }
     }, () => {
       setMnemonic(null)
       setPassword(null)
-      props.history.push("/")
+      props.history.push("/stake")
     })
   }
 
-  const okPassword = passwordRequirements.isMin && passwordRequirements.hasNumber && passwordRequirements.hasSpecial && passwordRequirements.hasUppercase 
+  const okPassword = passwordRequirements.isMin && passwordRequirements.hasNumber && passwordRequirements.hasSpecial && passwordRequirements.hasUppercase
   const okMnemonic = mnemonicError === null && (mnemonic || "").length > 0
   const disabled = !okPassword || !okMnemonic
 
@@ -81,7 +91,7 @@ const Mnemonic = props => {
     <>
       <Row style={{marginBottom: 10}}>
         <div>
-          <Text color='#FF4136' size={12}><i><b>Warning!</b> Entering your seed phrase or private key on any website is very dangerous. If you have malicious extensions installed in your browser or accidentally visit a phishing website, your assets can be stolen.</i></Text>
+          <Text color='#EE5366' size={12}><i><b>Warning!</b> Entering your seed phrase or private key on any website is very dangerous. If you have malicious extensions installed in your browser or accidentally visit a phishing website, your assets can be stolen.</i></Text>
         </div>
       </Row>
       <Row style={{marginBottom: 10}}>
@@ -89,7 +99,7 @@ const Mnemonic = props => {
       </Row>
       <Row style={{marginBottom: 20}}>
         <TextArea rows={4} onChange={onMnemonicChange} />
-        {mnemonicError ? 
+        {mnemonicError ?
         <Text color='#FF4136'>{mnemonicError}</Text>
             :
             <Text>Please separate each word with a space.</Text>
@@ -101,7 +111,7 @@ const Mnemonic = props => {
           onChange={onSessionPasswordChange}
           placeholder="Temporary session password"
         />
-        <div styles={{background: '#F8F8F8', border: "1px solid #848E9C", borderRadius: 8, fontFamily: 'Helvetica', fontSize: 18, color: '#848E9C', letterSpacing: 0, lineHeight: 23, marginBottom: 10}}
+      <div styles={{background: '#F8F8F8', border: "1px solid #848E9C", borderRadius: 8, fontFamily: 'Open Sans', fontSize: 18, color: '#848E9C', letterSpacing: 0, lineHeight: 23, marginBottom: 10}}
         >
           <ul style={{listStyle: 'none', backgroundColor: "#DDDDDD", margin: 10, padding: 10, border: "1px solid #DDDDDD", borderRadius: 8, fontSize: 10}}>
             <li><OkIcon bool={passwordRequirements.isMin} /> Minimum of 8 characters</li>
@@ -112,9 +122,9 @@ const Mnemonic = props => {
         </div>
       </Row>
       <Row style={{marginBottom: 10}}>
-        <Button 
+        <Button
           disabled={disabled}
-          onClick={unlock} 
+          onClick={unlock}
           style={{float: "right"}}
           fill={true}
         >

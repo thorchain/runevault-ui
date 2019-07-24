@@ -8,7 +8,6 @@ import Keystore from "./Keystore"
 const { TabPane } = Tabs;
 
 const Unlock = (props) => {
-  console.log("Got here")
   return (
     <div style={{margin: 20}}>
       <div>
@@ -17,7 +16,7 @@ const Unlock = (props) => {
         </Row>
         <Row style={{margin:20}}>
           <Center>
-            <Text color='#FF4136'><i><b>Important!</b></i></Text>&nbsp;<Text>Please check that you are visiting <i>https://www.binancetools.org</i>
+            <Text color='#EE5366'><i><b>Important!</b></i></Text>&nbsp;<Text>Please check that you are visiting <i>https://www.thorchain.com</i>
             </Text>
           </Center>
         </Row>
