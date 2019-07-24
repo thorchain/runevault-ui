@@ -23,9 +23,7 @@ export class ContextProvider extends React.Component {
 
   forgetWallet = () => {
     this.setState({
-      address: null,
-      keystore: null,
-      addrShort: null,
+      wallet: null,
     })
   }
 
