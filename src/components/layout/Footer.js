@@ -14,8 +14,8 @@ const Footer = (props) => {
   const footerStyles = {
     backgroundColor:"#2B3947",
     textTransform: "uppercase",
-    zIndex: 0,
-    position: "absolute",
+    zIndex: 1,
+    position: "fixed",
     left:0,
     bottom:0,
     right:0,

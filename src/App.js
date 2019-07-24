@@ -25,7 +25,7 @@ const App = (props) => {
           <Layout>
             <Header />
             <Layout style={{height:"100vh"}}>
-              <Content style={{background: "#101921"}}>
+              <Content style={{background: "#101921", padding: '0 50px', marginTop: 64}}>
                 <Switch>
                   <Route path="/" exact component={Home} />
                   <Route path="/stake" exact component={Stake} />
