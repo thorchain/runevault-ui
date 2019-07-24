@@ -1,4 +1,5 @@
 import bnbClient from '@binance-chain/javascript-sdk'
+import TokenManagement from '@binance-chain/javascript-sdk'
 import axios from 'axios'
 
 import { NET, isTestnet} from '../env'
@@ -21,6 +22,7 @@ class Binance {
     })
 
     this.bnbClient = new bnbClient(this.baseURL);
+    this.bnbTokens = new TokenManagement(this.bnbClient);
   }
 
   setPrivateKey(privateKey) {

@@ -1,9 +1,7 @@
 const prod_hostnames = [
-  "beptools.org",
+  "localhost",
 ]
 const stage_hostnames = [
-  "binancetools-prod.firebaseapp.com",
-  "binancetools-prod.web.app",
 ]
 
 const isMainnet = prod_hostnames.includes(window.location.hostname)

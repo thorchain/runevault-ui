@@ -1,7 +1,7 @@
-Binance Tools
+Rune Vault
 =============
 
-UI for [beptools.org](https://beptools.org)
+UI for [RuneVault](https://thorchain.com)
 
 ## Setup
 ```bash

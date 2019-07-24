@@ -9,7 +9,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #2B3947;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #50E3C2;
 }
 
 @keyframes App-logo-spin {
@@ -35,9 +35,9 @@
 /* Binance Tools CSS */
 
 body {
-  font-family: Helvetica; 
+  font-family: 'Open Sans', sans-serif;
   font-size: 18px;
-  color: #848E9C;
+  color: #FFFFFF;
   letter-spacing: 0;
 }
 
@@ -58,41 +58,42 @@ div.ant-row.ant-form-item.form-100 > div {
 }
 
 .header-container {
-  background: #fff;
+  background: #2B3947;
   box-shadow: 0 2px 16px 0 rgba(0,0,0,0.09);
   z-index: 10;
   position: relative;
 }
 
 .button {
-  background: #F0B90B; 
-  border-radius: 9px; 
-  font-family: Helvetica-Bold; 
+  background: #F0B90B;
+  border-radius: 9px;
+  font-family: 'Exo 2', sans-serif;
+  letter-spacing: 2.75px;
   font-size: 18px;
-  color: #FFFFFF; 
-  letter-spacing: 0; 
+  color: #FFFFFF;
+  letter-spacing: 0;
   text-align: center;
 }
 
 .pill {
-  background: #EDEDED; 
-  border-radius: 28px; 
-  font-family: Helvetica; 
+  background: #EDEDED;
+  border-radius: 28px;
+  font-family: 'Open Sans', sans-serif;
   font-size: 18px;
-  color: #848E9C; 
+  color: #848E9C;
   letter-spacing: 0;
 }
 
 .text-box-area {
-  border: 1px solid #F0B90B; 
+  border: 1px solid #F0B90B;
   border-radius: 6px;
 }
 
 .text-box-input {
-  background: #F8F8F8; 
+  background: #F8F8F8;
   border: 1px solid #848E9C;
   border-radius: 8px;
-  font-family: Helvetica;
+  font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   color: #848E9C;
   letter-spacing: 0;
@@ -100,28 +101,29 @@ div.ant-row.ant-form-item.form-100 > div {
 }
 
 .h1 {
-  font-family: Helvetica-Light;
+  font-family: 'Exo 2', sans-serif;
+  letter-spacing: 2.75px;
   font-size: 42px;
-  color: #848E9C;
-  letter-spacing: 0;
+  color: #FFFFFF;
 }
 
 .text {
-  font-family: Helvetica; 
+  font-family: 'Exo 2', sans-serif;
+  letter-spacing: 2.75px;
   font-size: 18px;
-  color: #848E9C;
-  letter-spacing: 0;
+  color: #FFFFFF;
 }
 
 .text-bold {
-  font-family: Helvetica-Bold; 
+  font-family: 'Exo 2', sans-serif;
+  letter-spacing: 2.75px;
   font-size: 18px;
-  color: #848E9C; 
+  color: #FFFFFF;
   letter-spacing: 0;
 }
 
 .text-bg {
-  background: #EDEDED;
+  background: #FFFFFF;
 }
 
 /*============================*/

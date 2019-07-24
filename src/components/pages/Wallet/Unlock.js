@@ -1,7 +1,6 @@
 import React from 'react'
 import { Row, Col, Tabs } from 'antd'
 
-import { isMainnet } from '../../../env'
 import { Center, H1, Text } from '../../Components'
 import Mnemonic from "./Mnemonic"
 import Keystore from "./Keystore"
@@ -17,7 +16,7 @@ const Unlock = (props) => {
         </Row>
         <Row style={{margin:20}}>
           <Center>
-            <Text color='#FF4136'><i><b>Important!</b></i></Text>&nbsp;<Text>Please check that you are visiting <i>https://www.beptools.org</i>
+            <Text color='#EE5366'><i><b>Important!</b></i></Text>&nbsp;<Text>Please check that you are visiting <i>https://www.thorchain.com</i>
             </Text>
           </Center>
         </Row>
@@ -37,11 +36,9 @@ const Unlock = (props) => {
             <TabPane tab={<Text size={16}><i>Keystore File</i></Text>} key="3">
               <Keystore {...props} />
             </TabPane>
-            {!isMainnet &&
             <TabPane tab={<Text size={16}><i>Mnemonic Phrase</i></Text>} key="4">
               <Mnemonic {...props} />
             </TabPane>
-            }
           </Tabs>
         </Col>
       </Row>
