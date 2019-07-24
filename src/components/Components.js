@@ -18,8 +18,11 @@ export const WalletAddress = props => {
 export const WalletAddrShort = props => {
   const context = useContext(Context)
   if (context.wallet && context.wallet.address) {
+    const address = context.wallet.address
+    const addr = address.substring(0,7).concat('...')
+    const addrShort = addr.concat(address.substring(address.length - 4, address.length))
     return (
-      <PillTextOrng>{context.wallet.addrShort}</PillTextOrng>
+      <PillTextOrng>{addrShort}</PillTextOrng>
     )
   }
   return <Fragment />

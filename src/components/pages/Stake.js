@@ -27,6 +27,7 @@ const Stake = (props) => {
       setLoadingBalancer(true)
       Binance.getBalances(context.wallet.address)
         .then((response) => {
+          console.log("Balances:", response)
           const b = (response || []).map((bal) => (
             {
               "icon": bal.symbol === "BNB" ? "coin-bnb": "coin-rune",
