@@ -95,8 +95,8 @@ export const Icon = (props) => {
     "coin-rune": "Coin-RUNE.svg",
     "coin-bep": "Coin-BEP2.svg",
     "coin-bnb": "Coin-BNB.svg",
-    "runelogo": "logo-RuneVault.svg",
-    "logo": "Thorchain-white.svg",
+    "runelogo": "Logo-RuneVault.svg",
+    "logo": "THORChain-white.svg",
     "rune": "rune.svg",
   }
   return (
