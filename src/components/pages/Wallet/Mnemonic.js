@@ -33,11 +33,10 @@ const Mnemonic = props => {
   const [mnemonicError, setMnemonicError] = useState(null)
 
   const onMnemonicChange = value => {
-    // const mnemonic = value.target.value
-    const mnemonic = "hammer vote section donate melt wisdom neutral appear under cruise since sweet torch potato rhythm orphan omit debris warm wisdom stable artwork hurt sweet"
+    const mnemonic = value.target.value
 
     if (crypto.validateMnemonic(mnemonic)) {
-      // setMnemonic(value.target.value)
+      setMnemonic(value.target.value)
       setMnemonic(mnemonic)
       setMnemonicError(null)
     } else {
@@ -50,8 +49,7 @@ const Mnemonic = props => {
   }
 
   const onSessionPasswordChange = value => {
-    // const passwd = value.target.value
-    const passwd = "Rainbow123!"
+    const passwd = value.target.value
     setPassword(passwd)
     setPasswordRequirements({
       isMin: passwd.length >= 8,
