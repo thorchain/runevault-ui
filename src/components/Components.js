@@ -154,7 +154,7 @@ Button.propTypes = {
   loading: PropTypes.bool,
 }
 
-const Coin = ({onClick, icon, ticker, amount, border}) => {
+const Coin = ({onClick, icon, ticker, free, border}) => {
   let styles = {width: "100%", paddingLeft: 30, cursor: "pointer", padding: 5}
   if (border) {
     styles.border = "1px solid #50E3C2"
@@ -168,7 +168,7 @@ const Coin = ({onClick, icon, ticker, amount, border}) => {
           {ticker}
         </span>
         <span style={{marginLeft: 10, float: 'right'}}>
-          {AmounttoString(amount)}
+          {AmounttoString(free)}
         </span>
       </div>
     </Center>
