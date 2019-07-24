@@ -18,8 +18,11 @@ export const WalletAddress = props => {
 export const WalletAddrShort = props => {
   const context = useContext(Context)
   if (context.wallet && context.wallet.address) {
+    const address = context.wallet.address
+    const addr = address.substring(0,7).concat('...')
+    const addrShort = addr.concat(address.substring(address.length - 4, address.length))
     return (
-      <PillTextOrng>{context.wallet.addrShort}</PillTextOrng>
+      <PillTextOrng>{addrShort}</PillTextOrng>
     )
   }
   return <Fragment />
@@ -151,7 +154,7 @@ Button.propTypes = {
   loading: PropTypes.bool,
 }
 
-const Coin = ({onClick, icon, ticker, amount, border}) => {
+const Coin = ({onClick, icon, ticker, free, border}) => {
   let styles = {width: "100%", paddingLeft: 30, cursor: "pointer", padding: 5}
   if (border) {
     styles.border = "1px solid #50E3C2"
@@ -165,7 +168,7 @@ const Coin = ({onClick, icon, ticker, amount, border}) => {
           {ticker}
         </span>
         <span style={{marginLeft: 10, float: 'right'}}>
-          {AmounttoString(amount)}
+          {AmounttoString(free)}
         </span>
       </div>
     </Center>

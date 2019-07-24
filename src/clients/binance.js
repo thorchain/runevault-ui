@@ -22,7 +22,7 @@ class Binance {
     })
 
     this.bnbClient = new bnbClient(this.baseURL);
-    this.bnbTokens = new TokenManagement(this.bnbClient);
+    this.bnbTokens = new TokenManagement(this.bnbClient).tokens;
   }
 
   setPrivateKey(privateKey) {

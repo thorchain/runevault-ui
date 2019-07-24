@@ -10,8 +10,15 @@ const Header = (props) => {
 
   const context = useContext(Context)
 
+  const styles = {
+    position: 'fixed', 
+    zIndex: 1, 
+    width: '100%',
+    backgroundColor:"#2B3947",
+  }
+
   return (
-    <Layout.Header className="header-container" style={{backgroundColor:"#2B3947"}} >
+    <Layout.Header className="header-container" style={styles} >
 
       <Row>
         <Col xs={4} sm={4} md={4} lg={4} xl={4}>

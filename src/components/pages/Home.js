@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from "react-router-dom"
-import { Row, Col, Card } from 'antd';
+import { Row, Col } from 'antd';
 
-import { Center, Icon, Text, H1, Button } from '../Components'
+import { Icon, H1, Button } from '../Components'
 
 
 const homeStyles = {
@@ -25,14 +25,14 @@ const Home = (props) => {
         <H1>STAKE RUNE AND EARN</H1>
         <br></br>
         <h4 style={{color:"#848E9C"}}><span>STAKE RUNE TO EARN WEEKLY EMISSIONS UNTIL THE LAUNCH OF </span>
-        <span><strong><a href="" style={{color:"#fff"}}>BEPSWAP</a></strong></span>
+        <span><strong><a href="/" style={{color:"#fff"}}>BEPSWAP</a></strong></span>
         </h4>
         <br></br>
         <p>1) Stake your RUNE using this interface.</p>
         <p>2) Earn 1% of your staked balance per week until the launch of BEPSwap.</p>
         <p>3) On the launch of BEPSwap, withdraw and stake your earnings in the pool of your choice. </p>
         <br></br>
-        <Link to="/wallet/unlock">
+        <Link to="/stake">
           <Button style={{height:40, width:300}}>STAKE NOW</Button>
         </Link>
 
