@@ -20,7 +20,7 @@ const Wallet = props => {
         .then((response) => {
           const b = (response || []).map((bal) => (
             {
-              "icon": "coin-bep",
+              "icon": "coin-bnb",
               "ticker": bal.symbol,
               "amount": parseFloat(bal.free),
             }
