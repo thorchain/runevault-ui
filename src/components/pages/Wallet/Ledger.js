@@ -2,9 +2,7 @@ import React, { useState, useContext } from 'react'
 import { Icon as AntIcon, Row, Col, message } from 'antd'
 import { ledger, crypto } from '@binance-chain/javascript-sdk'
 import u2f_transport from '@ledgerhq/hw-transport-u2f'
-import bech32 from 'bech32'
 
-import Binance from "../../../clients/binance"
 import { Context } from '../../../context'
 import { Icon, Button, Text } from '../../Components'
 
@@ -35,27 +33,21 @@ const Connector = props => {
     const hdPath = window.hdPath = [44, 714, 0, 0, 0]
 
     // select which address to use
-    await app.showAddress()
+    const results = await app.showAddress("bnb", hdPath)
+    console.log("Results:", results)
 
     // get public key
     let pk
     try {
       pk = (await app.getPublicKey(hdPath)).pk
-      const aminoPrefix = 'eb5ae98721'
-      const compressed = crypto.getPublicKey(pk).encodeCompressed('hex')
-      const publicKey = bech32.encode(Binance.getPrefix() + "p", bech32.toWords(Buffer.from(aminoPrefix + compressed, 'hex')))
 
       // get address from pubkey
       const address = crypto.getAddressFromPublicKey(pk)
-      const addr = address.substring(0,7).concat('...')
-      const addrShort = addr.concat(address.substring(address.length - 4, address.length))
       console.log("address", address)
 
       context.setContext({
         "wallet": {
           "address": address,
-          "pubkey": publicKey,
-          "addrShort": addrShort,
           "ledger": app,
           "hdPath": hdPath,
         }
