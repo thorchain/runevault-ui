@@ -22,6 +22,8 @@ class Binance {
     })
 
     this.bnbClient = new bnbClient(this.baseURL);
+    this.bnbClient.chooseNetwork(this.net)
+    this.bnbClient.initChain()
     this.bnbTokens = new TokenManagement(this.bnbClient).tokens;
   }
 
@@ -29,6 +31,10 @@ class Binance {
     this.bnbClient.setPrivateKey(privateKey)
     this.bnbClient.chooseNetwork(this.net)
     this.bnbClient.initChain()
+  }
+
+  useLedgerSigningDelegate(ledgerApp, preSignCb, postSignCb, errCb, hdPath) {
+    return this.bnbClient.useLedgerSigningDelegate(ledgerApp, preSignCb, postSignCb, errCb, hdPath)
   }
 
   clearPrivateKey() {
@@ -64,9 +70,7 @@ class Binance {
     return this.bnbClient.getMarkets(limit, offset)
   }
 
-  async multiSend(privateKey, address, transactions, memo="") {
-    this.setPrivateKey(privateKey)
-
+  async multiSend(address, transactions, memo="") {
     // send coins!
     const result = await this.bnbClient.multiSend(address, transactions, memo)
 
