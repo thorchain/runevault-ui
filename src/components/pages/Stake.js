@@ -80,7 +80,8 @@ const Stake = (props) => {
 
   const handleOk = async (values) => {
     // Send coins!
-    if (!context.wallet || !context.wallet.keystore || !context.wallet.address) {
+    if (!context.wallet || !context.wallet.address) {
+      console.log("No wallet detected!")
       return
     }
 
@@ -142,6 +143,8 @@ const Stake = (props) => {
   const handleCancel = () => {
     setVisible(false)
   }
+
+  const passwordRequired = context.wallet && 'keystore' in context.wallet
 
   // styling
   const coinRowStyle = {margin: "10px 0px", marginTop: "20px"}
@@ -246,7 +249,7 @@ const Stake = (props) => {
       bodyStyle={{backgroundColor: "#101921", paddingBottom: 10}}
       headStyle={{backgroundColor: "#2B3947", color: "#fff"}}
       >
-      <WrappedStakeForm button={mode} onSubmit={handleOk} onCancel={handleCancel} loading={sending} />
+        <WrappedStakeForm password={passwordRequired} button={mode} onSubmit={handleOk} onCancel={handleCancel} loading={sending} />
     </Modal>
   </div>
 )
@@ -279,6 +282,7 @@ const StakeForm = (props) => {
             />,
         )}
       </Form.Item>
+      {props.password && 
       <Form.Item >
         {getFieldDecorator('password', {
           rules: [{ required: true, message: 'Please input your Password!' }],
@@ -289,6 +293,7 @@ const StakeForm = (props) => {
             />,
         )}
       </Form.Item>
+      }
       <Form.Item>
         <div style={{float: "right"}}>
           <Button onClick={props.onCancel} >Cancel</Button>

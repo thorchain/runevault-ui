@@ -27,7 +27,7 @@ const Unlock = (props) => {
           <p>
             <Text size={16} bold>Select how you would like to unlock</Text>
           </p>
-          <Tabs defaultActiveKey="3" tabPosition={"left"}>
+          <Tabs defaultActiveKey="2" tabPosition={"left"}>
             <TabPane tab={<Text size={16}><i>WalletConnect</i></Text>} key="1">
               <Center><Text style={{marginTop: 90}}>Coming soon...</Text></Center>
             </TabPane>

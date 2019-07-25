@@ -3,6 +3,7 @@ import { Icon as AntIcon, Row, Col, message } from 'antd'
 import { ledger, crypto } from '@binance-chain/javascript-sdk'
 import u2f_transport from '@ledgerhq/hw-transport-u2f'
 
+import Binance from '../../../clients/binance'
 import { Context } from '../../../context'
 import { Icon, Button, Text } from '../../Components'
 
@@ -30,10 +31,10 @@ const Connector = props => {
     }
 
     // we can provide the hd path (app checks first two parts are same as below)
-    const hdPath = window.hdPath = [44, 714, 0, 0, 0]
+    const hdPath = [44, 714, 0, 0, 0]
 
     // select which address to use
-    const results = await app.showAddress("bnb", hdPath)
+    const results = await app.showAddress(Binance.getPrefix(), hdPath)
     console.log("Results:", results)
 
     // get public key
@@ -42,7 +43,7 @@ const Connector = props => {
       pk = (await app.getPublicKey(hdPath)).pk
 
       // get address from pubkey
-      const address = crypto.getAddressFromPublicKey(pk)
+      const address = crypto.getAddressFromPublicKey(pk, Binance.getPrefix())
       console.log("address", address)
 
       context.setContext({
