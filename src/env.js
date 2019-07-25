@@ -1,8 +1,3 @@
-const prod_hostnames = [
-  "localhost",
-]
-
-
 const isMainnet = true
 const isTestnet = !isMainnet
 
