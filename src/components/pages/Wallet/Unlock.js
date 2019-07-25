@@ -4,6 +4,7 @@ import { Row, Col, Tabs } from 'antd'
 import { Center, H1, Text } from '../../Components'
 import Mnemonic from "./Mnemonic"
 import Keystore from "./Keystore"
+import Ledger from "./Ledger"
 
 const { TabPane } = Tabs;
 
@@ -31,7 +32,7 @@ const Unlock = (props) => {
               <Center><Text style={{marginTop: 90}}>Coming soon...</Text></Center>
             </TabPane>
             <TabPane tab={<Text size={16}><i>Ledger Device</i></Text>} key="2">
-              <Center><Text style={{marginTop: 90}}>Coming soon...</Text></Center>
+              <Ledger {...props} />
             </TabPane>
             <TabPane tab={<Text size={16}><i>Keystore File</i></Text>} key="3">
               <Keystore {...props} />
