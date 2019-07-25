@@ -49,7 +49,7 @@ const Keystore = props => {
     }, () => {
       setPassword(null)
       setKeystore(null)
-      props.history.push("/")
+      props.history.push("/stake")
     })
   }
 
@@ -71,7 +71,7 @@ const Keystore = props => {
               fill={false}>
               <Icon type="upload" /> Upload keystore file
             </Button>&nbsp;
-            {keystore && !keystoreError && 
+            {keystore && !keystoreError &&
             <Icon type="check-circle" theme="twoTone" twoToneColor="#52c41a" />
             }
           </div>
@@ -88,9 +88,9 @@ const Keystore = props => {
         />
       </Row>
       <Row style={{marginBottom: 10}}>
-        <Button 
+        <Button
           disabled={keystore === null || password === null}
-          onClick={unlock} 
+          onClick={unlock}
           style={{float: "right"}}
           fill={true}
         >

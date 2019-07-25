@@ -32,7 +32,7 @@ const Home = (props) => {
         <p>2) Earn 1% of your staked balance per week until the launch of BEPSwap.</p>
         <p>3) On the launch of BEPSwap, withdraw and stake your earnings in the pool of your choice. </p>
         <br></br>
-        <Link to="/stake">
+        <Link to="/wallet">
           <Button style={{height:40, width:300}}>STAKE NOW</Button>
         </Link>
 

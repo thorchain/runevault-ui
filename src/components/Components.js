@@ -123,6 +123,10 @@ const Button = (props) => {
     styles.color = "#fff"
     styles.backgroundColor = "#4FE1C4"
     styles.borderColor = "#33CCFF"
+  } else if (props.secondary) {
+    styles.color = "#fff"
+    styles.backgroundColor = "#1C2731"
+    styles.borderColor = "#4E6376"
   } else {
     styles.color = "#fff"
     styles.backgroundColor = "#000000"
@@ -154,7 +158,7 @@ Button.propTypes = {
   loading: PropTypes.bool,
 }
 
-const Coin = ({onClick, icon, ticker, free, border}) => {
+const Coin = ({onClick, icon, ticker, free, frozen, border}) => {
   let styles = {width: "100%", paddingLeft: 30, cursor: "pointer", padding: 5}
   if (border) {
     styles.border = "1px solid #50E3C2"
@@ -168,7 +172,7 @@ const Coin = ({onClick, icon, ticker, free, border}) => {
           {ticker}
         </span>
         <span style={{marginLeft: 10, float: 'right'}}>
-          {AmounttoString(free)}
+          {AmounttoString(frozen + free)}
         </span>
       </div>
     </Center>
