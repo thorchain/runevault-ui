@@ -6,7 +6,7 @@ import { Context } from '../../context'
 import Binance from "../../clients/binance"
 
 import { Row, Form, Col, Modal, Input, message } from 'antd'
-import { H1, Button, Text, Icon, Coin, WalletAddress} from "../Components"
+import { H1, Button, Text, Coin, WalletAddress} from "../Components"
 
 // RUNE-B1A
 const SYMBOL = "RUNE-B1A"
@@ -85,14 +85,35 @@ const Stake = (props) => {
     }
 
     setSending(true)
+    const binance = Binance
+
+    // setup binance client for authentication
+    if (context.wallet.keystore) {
+      try {
+        const privateKey = crypto.getPrivateKeyFromKeyStore(
+          context.wallet.keystore,
+          values.password
+        )
+        binance.setPrivateKey(privateKey)
+
+      } catch(err) {
+        window.err = err
+        console.error("Validating keystore error:", err)
+        message.error(err.message)
+        setSending(false)
+        return
+      }
+
+    } else if (context.wallet.ledger) {
+      binance.useLedgerSigningDelegate(
+        context.wallet.ledger,
+        null, null, null,
+        context.wallet.hdPath,
+      )
+    }
 
     try {
-      const privateKey = crypto.getPrivateKeyFromKeyStore(
-        context.wallet.keystore,
-        values.password
-      )
-      Binance.setPrivateKey(privateKey)
-      const manager = window.manager = new TokenManagement(Binance.bnbClient).tokens
+      const manager = new TokenManagement(Binance.bnbClient).tokens
       var results
       if (mode === "STAKE RUNE") {
         results = await manager.freeze(context.wallet.address, selectedCoin, values.amount)
@@ -101,7 +122,6 @@ const Stake = (props) => {
       } else {
         throw new Error("invalid mode")
       }
-      Binance.clearPrivateKey()
       setSending(false)
       if (results.result[0].ok) {
         const txURL = Binance.txURL(results.result[0].hash)
@@ -110,12 +130,12 @@ const Stake = (props) => {
         getBalances()
       }
     } catch(err) {
-      Binance.clearPrivateKey()
       window.err = err
       console.error("Validating keystore error:", err)
       message.error(err.message)
       setSending(false)
     }
+    binance.clearPrivateKey()
 
   }
 
@@ -124,7 +144,6 @@ const Stake = (props) => {
   }
 
   // styling
-  const coinSpan = 6
   const coinRowStyle = {margin: "10px 0px", marginTop: "20px"}
 
   return (
