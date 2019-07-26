@@ -176,7 +176,7 @@ const Stake = (props) => {
 
           <div>
             <Text size={18}>
-              Stake RUNE to earn 1% per week in earnings until BEPSwap launches.
+              Stake RUNE to earn weekly compounding interest until the launch of BEPSwap.
             </Text>
           </div>
 
@@ -238,11 +238,15 @@ const Stake = (props) => {
                         <Text size={14}>Note: RUNE will be staked on your address securely using the </Text>
                           <a href="https://docs.binance.org/tokens.html#freeze-unfreeze"
                             target="_blank" rel="noopener noreferrer">
-                            <Text style={{fontWeight: 'bold'}}>Binance Chain "freeze" command.</Text>
+                            <Text size={15} style={{fontWeight: 'bold'}}>Binance Chain "freeze" command.</Text>
                           </a>
                         <br></br>
                         <Text size={10}>RUNE will be paid out at the end of the campaign. You can add more, but any withdrawals will reset your holding period.
-                          The total earnings is calculated based on your holding period (in weeks) multiplied by 1% of your balance staked.</Text>
+                          The total earnings is calculated based the balance of your staked RUNE, based on your holding period (in weeks) and </Text>
+                          <a href="https://medium.com/thorchain/introducing-runevault-stake-and-earn-rune-87576671d1e4"
+                            target="_blank" rel="noopener noreferrer">
+                            <Text size={11} style={{fontWeight: 'bold'}}>the earning schedule.</Text>
+                          </a>
                         <hr />
 
                       </Col>
@@ -335,7 +339,7 @@ const Stake = (props) => {
 
                           <Row>
                             <Col>
-                              <span><Text>RUNE EARNED (1% a week):</Text></span>
+                              <span><Text>RUNE EARNED:</Text></span>
                               <span style={{marginLeft: "10px"}}>
                                 <i>coming soon</i>
                               </span>
@@ -343,9 +347,9 @@ const Stake = (props) => {
                           </Row>
                           <Row>
                             <Col>
-                              <span><Text>DATE OF PAYOUT:</Text></span>
+                              <span><Text>DATE OF LAST PAYOUT:</Text></span>
                               <span style={{marginLeft: "10px"}}>
-                                <i>~September 2019 (launch of BEPSwap)</i>
+                                <i>coming soon</i>
                               </span>
                             </Col>
                           </Row>

@@ -17,7 +17,7 @@ const Unlock = (props) => {
         </Row>
         <Row style={{margin:20}}>
           <Center>
-            <Text color='#EE5366'><i><b>Important!</b></i></Text>&nbsp;<Text>Please check that you are visiting <i>https://www.thorchain.com</i>
+            <Text color='#EE5366'><i><b>Important!</b></i></Text>&nbsp;<Text>Please check that you are visiting <i>https://www.runevault.org</i>
             </Text>
           </Center>
         </Row>

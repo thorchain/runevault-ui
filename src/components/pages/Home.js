@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import { Row, Col } from 'antd';
 
-import { Icon, H1, Button } from '../Components'
+import { Icon, H1, Button, Text } from '../Components'
 
 
 const homeStyles = {
@@ -30,17 +30,24 @@ const Home = (props) => {
 
         <H1>STAKE RUNE AND EARN</H1>
         <br></br>
-        <h4 style={{color:"#848E9C"}}><span>STAKE RUNE TO EARN WEEKLY EMISSIONS UNTIL THE LAUNCH OF </span>
+        <h4 style={{color:"#848E9C"}}><span>STAKE RUNE TO EARN WEEKLY COMPOUNDED INTEREST UNTIL THE LAUNCH OF </span>
         <span><strong><a href="/" style={{color:"#fff"}}>BEPSWAP</a></strong></span>
         </h4>
         <br></br>
         <p>1) Stake your RUNE using this interface.</p>
-        <p>2) Earn 1% of your staked balance per week until the launch of BEPSwap.</p>
-        <p>3) On the launch of BEPSwap, withdraw and stake your earnings in the pool of your choice. </p>
+        <p>2) Earn a percent of your balance compounded every week until the launch of BEPSwap (maximum of 10 weeks).</p>
+        <p>3) When BEPSwap launches, withdraw and stake your total earnings in a liquidity pool and continue earning. </p>
         <br></br>
         <Link to="/stake">
           <Button style={{height:40, width:300}}>STAKE NOW</Button>
         </Link>
+          <br></br>
+            <br></br>
+        <Text>Check out the</Text>
+        <a href="https://medium.com/thorchain/introducing-runevault-stake-and-earn-rune-87576671d1e4"
+          target="_blank" rel="noopener noreferrer">
+          <Text style={{fontWeight: 'bold'}}> announcement.</Text>
+        </a>
 
         </Col>
 
