@@ -2,12 +2,14 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import { Row, Col } from 'antd';
 
+import Breakpoint from 'react-socks';
+
 import { Icon, H1, Button, Text } from '../Components'
 
 
 const homeStyles = {
   marginLeft: 0,
-  marginTop: 80,
+  marginTop: 40,
   backgroundColor: "#101921"
 }
 
@@ -22,7 +24,7 @@ const Home = (props) => {
 
   return (
     <div style={{backgroundColor:"#101921"}}>
-      <Row style={{marginBottom: "20"}}>
+      <Row style={{}}>
         <Col xs={24} sm={1} md={2} lg={3}>
         </Col>
 
@@ -39,7 +41,7 @@ const Home = (props) => {
         <p>3) When BEPSwap launches, withdraw and stake your total earnings in a liquidity pool and continue earning. </p>
         <br></br>
         <Link to="/stake">
-          <Button style={{height:40, width:300}}>STAKE NOW</Button>
+          <Button style={{height:40, width:250}}>STAKE NOW</Button>
         </Link>
           <br></br>
             <br></br>
@@ -55,9 +57,11 @@ const Home = (props) => {
         <Col xs={24} sm={2} md={2} lg={2}>
         </Col>
 
+        <Breakpoint medium up>
         <Col xs={24} sm={8} md={8} lg={9} style={iconStyles}>
           <Icon icon="rune" style={{width: "auto"}}/>
           </Col>
+          </Breakpoint>
 
           <Col xs={24} sm={1} md={2} lg={3}>
           </Col>
