@@ -54,7 +54,7 @@ const Connector = props => {
         }
       }, () => {
         setConnecting(false)
-        props.history.push("/")
+        props.history.push("/stake")
       })
     } catch (err) {
       console.error("pk error", err.message, err.statusCode)
@@ -105,8 +105,8 @@ const Connector = props => {
       <Row style={{marginTop: 20}}>
         <Col span={12}>
           <div>
-            <a 
-              href="https://www.binance.org/static/guides/DEX-Ledger-Documentation.html" 
+            <a
+              href="https://www.binance.org/static/guides/DEX-Ledger-Documentation.html"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -116,8 +116,8 @@ const Connector = props => {
             </a>
           </div>
           <div>
-            <a 
-              href="https://support.ledger.com/hc/en-us/articles/115005165269-Connection-issues-with-Windows-or-Linux" 
+            <a
+              href="https://support.ledger.com/hc/en-us/articles/115005165269-Connection-issues-with-Windows-or-Linux"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -128,8 +128,8 @@ const Connector = props => {
           </div>
         </Col>
         <Col span={12}>
-          <Button 
-            onClick={ledgerConnect} 
+          <Button
+            onClick={ledgerConnect}
             loading={connecting}
             fill={true}
           >

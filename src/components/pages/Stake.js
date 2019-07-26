@@ -4,6 +4,7 @@ import TokenManagement, { crypto } from '@binance-chain/javascript-sdk'
 
 import { Context } from '../../context'
 import Binance from "../../clients/binance"
+import { AmounttoString } from '../../utility'
 
 import { Row, Form, Col, Modal, Input, message } from 'antd'
 import { H1, Button, Text, Coin, WalletAddress} from "../Components"
@@ -55,12 +56,11 @@ const Stake = (props) => {
         console.log("Balances:", response)
         const b = (response || []).map((bal) => (
           {
-            "icon": bal.symbol === "BNB" ? "coin-bnb": "coin-rune",
+            "icon": bal.symbol === "RUNE-B1A" ? "coin-rune": "coin-bep",
             "ticker": bal.symbol,
             "free": parseFloat(bal.free),
             "frozen": parseFloat(bal.frozen),
             "locked": parseFloat(bal.locked),
-            "button" : bal.symbol === "RUNE-B1A" ? "STAKE": "none",
           }
         ))
         setBalances([...b])
@@ -182,17 +182,15 @@ const Stake = (props) => {
 
           <div style={{marginTop: "20px"}}>
 
-            <Row style={coinRowStyle}>
+            {!loadingBalances && context.wallet &&
+            <Row>
               <Col xs={24} sm={24} md={12} style={{marginTop: "20px"}}>
-                <WalletAddress />
-              </Col>
-              <Col xs={24} sm={24} md={12} style={{marginTop: "20px"}}>
-                {!loadingBalances && context.wallet &&
-                  <Text><a target="_blank" rel="noopener noreferrer" href={"https://explorer.binance.org/address/" + context.wallet.address}>VIEW ON EXPLORER</a>
-                </Text>
-              }
+                <a target="_blank" rel="noopener noreferrer" href={"https://explorer.binance.org/address/" + context.wallet.address}>
+                  <WalletAddress />
+                </a>
               </Col>
             </Row>
+          }
 
           <Row style={{marginTop: "40px"}}>
             {loadingBalances && context.wallet &&
@@ -232,36 +230,20 @@ const Stake = (props) => {
                 <Col xs={24} sm={14} style={paneStyle}>
 
                   {selectedCoin && selectedCoin === SYMBOL &&
-                    <Row style={{marginTop: "10px", marginLeft: "10px"}}>
+                    <Row style={{marginTop: "10px", marginLeft: "10px", marginRight: "10px"}}>
                       <Col xs={24}>
-                        <Text size={18}>STAKE RUNE TO EARN REWARDS:</Text>
-                      </Col>
-                    </Row>
-                  }
 
-                  {selectedCoin && selectedCoin === SYMBOL &&
-                    <Row key={SYMBOL} style={coinRowStyle}>
-                      <Col xs={24} sm={12} style={{marginTop: "10px"}}>
-
-                        <span>
-                          <Text>NOT STAKED:</Text>
-                        </span>
-                        <span style={{margin: "0px 20px"}} size={22}>{balances.find((b) => {
-                            return b.ticker === SYMBOL
-                          }).free}
-                        </span>
-
-                        </Col>
-
-                        <Col xs={24} sm={12} style={{marginTop: "10px"}}>
-
-                          <span>
-                            <Text>STAKED:</Text>
-                          </span>
-                          <span style={{margin: "0px 20px"}} size={22}>{balances.find((b) => {
-                              return b.ticker === SYMBOL
-                            }).frozen}
-                          </span>
+                        <Text size={18}>STAKE RUNE TO EARN REWARDS</Text>
+                        <br></br>
+                        <Text size={14}>Note: RUNE will be staked on your address securely using the </Text>
+                          <a href="https://docs.binance.org/tokens.html#freeze-unfreeze"
+                            target="_blank" rel="noopener noreferrer">
+                            <Text style={{fontWeight: 'bold'}}>Binance Chain "freeze" command.</Text>
+                          </a>
+                        <br></br>
+                        <Text size={10}>RUNE will be paid out at the end of the campaign. You can add more, but any withdrawals will reset your holding period.
+                          The total earnings is calculated based on your holding period (in weeks) multiplied by 1% of your balance staked.</Text>
+                        <hr />
 
                       </Col>
                     </Row>
@@ -269,24 +251,80 @@ const Stake = (props) => {
 
                   {selectedCoin && selectedCoin === SYMBOL &&
                     <Row key={SYMBOL} style={coinRowStyle}>
-                      <Col xs={24} sm={24} md={12} style={{marginTop: "10px"}}>
-                        <Button
-                          style={{height:30, width:150, marginLeft: 10}}
-                          onClick={() => { confirmation('STAKE RUNE') }}
-                          loading={sending}
-                          >
-                          STAKE
-                        </Button>
+                      <Col xs={12} style={{marginTop: "10px"}}>
+
+                            <span>
+                              <Text>TOTAL BALANCE:</Text>
+                            </span>
+                            <span style={{margin: "0px 20px"}} size={22}>
+                              {AmounttoString(balances.find((b) => {
+                                return b.ticker === SYMBOL
+                              }).free +
+                              balances.find((b) => {
+                                return b.ticker === SYMBOL
+                              }).frozen
+                              )}
+                            </span>
+
+                          </Col>
+                        </Row>
+                  }
+
+
+                  {selectedCoin && selectedCoin === SYMBOL &&
+                    <Row key={SYMBOL} style={coinRowStyle}>
+                      <Col xs={12}>
+                        <Row>
+                          <Col>
+                            <span>
+                              <Text>NOT STAKED:</Text>
+                            </span>
+                            <span style={{margin: "0px 20px"}} size={22}>{balances.find((b) => {
+                                return b.ticker === SYMBOL
+                              }).free}
+                            </span>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col>
+                            <Button
+                              style={{height:30, width:150, marginTop: 10}}
+                              onClick={() => { confirmation('STAKE RUNE') }}
+                              loading={sending}
+                              >
+                              STAKE
+                            </Button>
+                          </Col>
+                        </Row>
                         </Col>
 
-                        <Col xs={24} sm={24} md={12} style={{marginTop: "10px"}}>
-                        <Button secondary
-                          style={{height:30, width:150, marginLeft: 10}}
-                          onClick={() => { confirmation('WITHDRAW') }}
-                          loading={sending}
-                          >
-                          WITHDRAW
-                        </Button>
+                        <Col xs={12}>
+                          <Row>
+                            <Col>
+                              <span>
+                                <Text>STAKED:</Text>
+                              </span>
+                              <span style={{margin: "0px 20px"}} size={22}>{balances.find((b) => {
+                                  return b.ticker === SYMBOL
+                                }).frozen}
+                              </span>
+                            </Col>
+                          </Row>
+
+                          <Row>
+                            <Col>
+                              <Button secondary
+                                style={{height:30, width:150, marginTop: 10}}
+                                onClick={() => { confirmation('WITHDRAW') }}
+                                loading={sending}
+                                >
+                                WITHDRAW
+                              </Button>
+                            </Col>
+                          </Row>
+
+
+
                       </Col>
                     </Row>
                   }
@@ -297,7 +335,7 @@ const Stake = (props) => {
 
                           <Row>
                             <Col>
-                              <span><Text>RUNE EARNED:</Text></span>
+                              <span><Text>RUNE EARNED (1% a week):</Text></span>
                               <span style={{marginLeft: "10px"}}>
                                 <i>coming soon</i>
                               </span>

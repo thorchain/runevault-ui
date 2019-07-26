@@ -90,41 +90,18 @@ const Mnemonic = props => {
         </div>
       </Row>
       <Row style={{marginBottom: 10}}>
-        <Text>Please enter your 24 word phrase</Text>
-      </Row>
-      <Row style={{marginBottom: 20}}>
-        <TextArea rows={4} onChange={onMnemonicChange} />
-        {mnemonicError ?
-        <Text color='#FF4136'>{mnemonicError}</Text>
-            :
-            <Text>Please separate each word with a space.</Text>
-        }
+        <Text>Recover your Keystore file instead, since it is password protected.</Text>
       </Row>
       <Row style={{marginBottom: 10}}>
-        <Input.Password
-          allowClear
-          onChange={onSessionPasswordChange}
-          placeholder="Temporary session password"
-        />
-      <div styles={{background: '#F8F8F8', border: "1px solid #848E9C", borderRadius: 8, fontFamily: 'Open Sans', fontSize: 18, color: '#848E9C', letterSpacing: 0, lineHeight: 23, marginBottom: 10}}
-        >
-          <ul style={{listStyle: 'none', backgroundColor: "#DDDDDD", margin: 10, padding: 10, border: "1px solid #DDDDDD", borderRadius: 8, fontSize: 10}}>
-            <li><OkIcon bool={passwordRequirements.isMin} /> Minimum of 8 characters</li>
-            <li><OkIcon bool={passwordRequirements.hasSpecial} /> Contains at least one special character</li>
-            <li><OkIcon bool={passwordRequirements.hasUppercase} /> Contains at least one uppercase character</li>
-            <li><OkIcon bool={passwordRequirements.hasNumber} /> Contains at least one number</li>
-          </ul>
-        </div>
-      </Row>
-      <Row style={{marginBottom: 10}}>
-        <Button
-          disabled={disabled}
-          onClick={unlock}
-          style={{float: "right"}}
-          fill={true}
-        >
-          Unlock Wallet Now <Icon type="arrow-right" />
-        </Button>
+        <a
+          href="https://www.binance.org/en/recover"
+        rel="noopener noreferrer"
+        target="_blank">
+          <Button>
+            Recover Keystore <Icon type="arrow-right" />
+          </Button>
+        </a>
+
       </Row>
     </>
   )
