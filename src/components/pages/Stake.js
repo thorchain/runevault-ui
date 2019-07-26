@@ -234,11 +234,13 @@ const Stake = (props) => {
             <Col xs={24}>
               {!loadingBalances && context.wallet && (balances || []).length > 0 &&
                 <Row style={{marginBottom: "50px"}}>
+
                   <Col xs={24} sm={6} style={paneStyle}>
 
                     <Row style={{marginTop: "10px", marginLeft: "10px"}}>
                       <Col xs={24}>
                         <Text size={18}>SELECT RUNE BELOW:</Text>
+                        <hr />
                       </Col>
                     </Row>
 
@@ -253,27 +255,29 @@ const Stake = (props) => {
                   }
                 </Col>
 
-                <Col xs={24} sm={14} style={paneStyle}>
+                <Col xs={24} sm={16} style={{backgroundColor: "#48515D",
+                marginTop: "20px",
+                borderRadius: 5,}}>
 
                   {selectedCoin && selectedCoin === SYMBOL &&
                     <Row style={{marginTop: "10px", marginLeft: "10px", marginRight: "10px"}}>
                       <Col xs={24}>
 
                         <Text size={18}>STAKE RUNE TO EARN REWARDS</Text>
-                        <br></br>
+                        <hr />
                         <Text size={14}>Note: RUNE will be staked on your address securely using the </Text>
                           <a href="https://docs.binance.org/tokens.html#freeze-unfreeze"
                             target="_blank" rel="noopener noreferrer">
-                            <Text size={15} style={{fontWeight: 'bold'}}>Binance Chain "freeze" command.</Text>
+                            <Text size={15} style={{fontWeight: 'bold'}}>Binance Chain "FREEZE" command.</Text>
                           </a>
                         <br></br>
-                        <Text size={10}>RUNE will be paid out at the end of the campaign. You can add more, but any withdrawals will reset your holding period.
-                          The total earnings is calculated based the balance of your staked RUNE, based on your holding period (in weeks) and </Text>
+                        <Text size={10}>RUNE will be paid out each week. You can add more, but any withdrawals will reset your holding period.
+                          Your weekly payout is calculated based the balance of your staked RUNE, multiplied by the compounded interest rate, set in the</Text>
                           <a href="https://medium.com/thorchain/introducing-runevault-stake-and-earn-rune-87576671d1e4"
                             target="_blank" rel="noopener noreferrer">
-                            <Text size={11} style={{fontWeight: 'bold'}}>the earning schedule.</Text>
+                            <Text size={11} style={{fontWeight: 'bold'}}> EARNING SCHEDULE.</Text>
                           </a>
-                        <hr />
+
 
                       </Col>
                     </Row>
