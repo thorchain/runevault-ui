@@ -126,5 +126,9 @@ div.ant-row.ant-form-item.form-100 > div {
   background: #FFFFFF;
 }
 
+.card-container > .ant-tabs-card > .ant-tabs-bar {
+  border-color: #50E3C2;
+}
+
 
 /*============================*/

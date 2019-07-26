@@ -212,9 +212,19 @@ const Stake = (props) => {
             {loadingBalances && context.wallet &&
               <Text><i>Loading balances, please wait...</i></Text>
             }
+
+            <Breakpoint small down>
+            {!context.wallet &&
+              <Text>Sorry, not yet available on mobile. Please visit on desktop.</Text>
+            }
+            </Breakpoint>
+
+            <Breakpoint medium up>
             {!context.wallet &&
               <Link to="/wallet/unlock"><Button fill>CONNECT WALLET</Button></Link>
             }
+            </Breakpoint>
+
             {!loadingBalances && context.wallet && (balances || []).length === 0 &&
               <Text>No coins available</Text>
             }
