@@ -31,12 +31,11 @@ const Stake = (props) => {
         console.log("Balances:", response)
         const b = (response || []).map((bal) => (
           {
-            "icon": bal.symbol === "BNB" ? "coin-bnb": "coin-rune",
+            "icon": bal.symbol === "RUNE-B1A" ? "coin-rune": "coin-bep",
             "ticker": bal.symbol,
             "free": parseFloat(bal.free),
             "frozen": parseFloat(bal.frozen),
             "locked": parseFloat(bal.locked),
-            "button" : bal.symbol === "RUNE-B1A" ? "STAKE": "none",
           }
         ))
         setBalances([...b])
@@ -147,111 +146,207 @@ const Stake = (props) => {
   const passwordRequired = context.wallet && 'keystore' in context.wallet
 
   // styling
-  const coinRowStyle = {margin: "10px 0px", marginTop: "20px"}
+  const coinRowStyle = {
+    margin: "10px 0px",
+    marginLeft: "10px",
+    marginRight: "10px",
+    marginTop: "20px",
+  }
+
+  const paneStyle = {
+    backgroundColor: "#48515D",
+    marginRight: "20px",
+    marginTop: "20px",
+    borderRadius: 5,
+  }
 
   return (
-    <div style={{marginTop: 20, marginLeft:100}}>
-      <div>
-        <H1>Stake Rune</H1>
-      </div>
-      <div>
-        <Text size={18}>
-          Stake RUNE to earn 1% per week in earnings until BEPSwap launches.
-        </Text>
-      </div>
-      <div style={{marginTop: "20px"}}>
-        <Row style={coinRowStyle}>
-          <Col xs={12}>
-            <WalletAddress />
-          </Col>
-          <Col xs={12}>
-            {!loadingBalances && context.wallet &&
-            <Text><a target="_blank" rel="noopener noreferrer" href={"https://explorer.binance.org/address/" + context.wallet.address}>VIEW ON EXPLORER</a>
+
+    <div style={{marginTop: 20, marginLeft:5}}>
+
+      <Row>
+
+        <Col xs={24} sm={24} md={1} lg={2}>
+        </Col>
+
+        <Col xs={24} sm={24} md={22} lg={20}>
+          <div>
+            <H1>Stake Rune</H1>
+          </div>
+
+          <div>
+            <Text size={18}>
+              Stake RUNE to earn 1% per week in earnings until BEPSwap launches.
             </Text>
-          }
+          </div>
+
+          <div style={{marginTop: "20px"}}>
+
+            <Row style={coinRowStyle}>
+              <Col xs={24} sm={24} md={12} style={{marginTop: "20px"}}>
+                <WalletAddress />
+              </Col>
+              <Col xs={24} sm={24} md={12} style={{marginTop: "20px"}}>
+                {!loadingBalances && context.wallet &&
+                  <Text><a target="_blank" rel="noopener noreferrer" href={"https://explorer.binance.org/address/" + context.wallet.address}>VIEW ON EXPLORER</a>
+                </Text>
+              }
+              </Col>
+            </Row>
+
+          <Row style={{marginTop: "40px"}}>
+            {loadingBalances && context.wallet &&
+              <Text><i>Loading balances, please wait...</i></Text>
+            }
+            {!context.wallet &&
+              <Link to="/wallet/unlock"><Button fill>CONNECT WALLET</Button></Link>
+            }
+            {!loadingBalances && context.wallet && (balances || []).length === 0 &&
+              <Text>No coins available</Text>
+            }
+          </Row>
+
+          <Row>
+            <Col xs={24}>
+              {!loadingBalances && context.wallet && (balances || []).length > 0 &&
+                <Row>
+                  <Col xs={24} sm={6} style={paneStyle}>
+
+                    <Row style={{marginTop: "10px", marginLeft: "10px"}}>
+                      <Col xs={24}>
+                        <Text size={18}>SELECT RUNE BELOW:</Text>
+                      </Col>
+                    </Row>
+
+
+                    {!loadingBalances && (balances || []).map((coin) => (
+                      <Row key={coin.ticker} style={coinRowStyle}>
+                        <Col xs={24}>
+                          <Coin {...coin} onClick={setSelectedCoin} border={selectedCoin === coin.ticker}/>
+                        </Col>
+                      </Row>
+                    ))
+                  }
+                </Col>
+
+                <Col xs={24} sm={14} style={paneStyle}>
+
+                  {selectedCoin && selectedCoin === SYMBOL &&
+                    <Row style={{marginTop: "10px", marginLeft: "10px"}}>
+                      <Col xs={24}>
+                        <Text size={18}>STAKE RUNE TO EARN REWARDS:</Text>
+                      </Col>
+                    </Row>
+                  }
+
+                  {selectedCoin && selectedCoin === SYMBOL &&
+                    <Row key={SYMBOL} style={coinRowStyle}>
+                      <Col xs={24} sm={12} style={{marginTop: "10px"}}>
+
+                        <span>
+                          <Text>NOT STAKED:</Text>
+                        </span>
+                        <span style={{margin: "0px 20px"}} size={22}>{balances.find((b) => {
+                            return b.ticker === SYMBOL
+                          }).free}
+                        </span>
+
+                        </Col>
+
+                        <Col xs={24} sm={12} style={{marginTop: "10px"}}>
+
+                          <span>
+                            <Text>STAKED:</Text>
+                          </span>
+                          <span style={{margin: "0px 20px"}} size={22}>{balances.find((b) => {
+                              return b.ticker === SYMBOL
+                            }).frozen}
+                          </span>
+
+                      </Col>
+                    </Row>
+                  }
+
+                  {selectedCoin && selectedCoin === SYMBOL &&
+                    <Row key={SYMBOL} style={coinRowStyle}>
+                      <Col xs={24} sm={24} md={12} style={{marginTop: "10px"}}>
+                        <Button
+                          style={{height:30, width:150, marginLeft: 10}}
+                          onClick={() => { confirmation('STAKE RUNE') }}
+                          loading={sending}
+                          >
+                          STAKE
+                        </Button>
+                        </Col>
+
+                        <Col xs={24} sm={24} md={12} style={{marginTop: "10px"}}>
+                        <Button secondary
+                          style={{height:30, width:150, marginLeft: 10}}
+                          onClick={() => { confirmation('WITHDRAW') }}
+                          loading={sending}
+                          >
+                          WITHDRAW
+                        </Button>
+                      </Col>
+                    </Row>
+                  }
+
+                    {selectedCoin && selectedCoin === SYMBOL &&
+                      <Row style={coinRowStyle}>
+                        <Col xs={24} style={{marginTop: "10px"}}>
+
+                          <Row>
+                            <Col>
+                              <span><Text>RUNE EARNED:</Text></span>
+                              <span style={{marginLeft: "10px"}}>
+                                <i>coming soon</i>
+                              </span>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <span><Text>DATE OF PAYOUT:</Text></span>
+                              <span style={{marginLeft: "10px"}}>
+                                <i>~September 2019 (launch of BEPSwap)</i>
+                              </span>
+                            </Col>
+                          </Row>
+
+
+
+
+                        </Col>
+                      </Row>
+                    }
+
+                </Col>
+              </Row>
+            }
           </Col>
         </Row>
-        <Row style={{marginTop: "40px"}}>
-          {loadingBalances && context.wallet &&
-            <Text><i>Loading balances, please wait...</i></Text>
-          }
-          {!context.wallet &&
-              <Link to="/wallet/unlock"><Button fill>CONNECT WALLET</Button></Link>
-          }
-          {!loadingBalances && context.wallet && (balances || []).length === 0 &&
-            <Text>No coins available</Text>
-          }
-          {!loadingBalances && context.wallet && (balances || []).length > 0 &&
-            <Text>Select RUNE below</Text>
-          }
-        </Row>
 
-        {!loadingBalances && (balances || []).map((coin) => (
-          <Row key={coin.ticker} style={coinRowStyle}>
-            <Col xs={24} sm={24} md={12} lg={8} xl={6}>
-              <Coin {...coin} onClick={setSelectedCoin} border={selectedCoin === coin.ticker}/>
-            </Col>
-          </Row>
-        ))
-      }
+        </div>
 
-            {selectedCoin && selectedCoin === SYMBOL &&
-              <Row style={{marginTop: "40px"}}>
-                <Col xs={24} sm={24}>
-                <Text size={22}>STAKE RUNE TO EARN REWARDS:</Text>
-                </Col>
-              </Row>
-            }
-
-              {selectedCoin && selectedCoin === SYMBOL &&
-              <Row key={SYMBOL} style={coinRowStyle}>
-                <Col xs={24} sm={24}>
-                  <span>
-                    <Text>NOT STAKED:</Text>
-                      <span style={{margin: "0px 50px"}} size={22}>{balances.find((b) => {
-                       return b.ticker === SYMBOL
-                     }).free}
-                      </span>
-                  </span>
-                    <Text>STAKED:</Text>
-                    <span style={{margin: "0px 50px"}} size={22}>{balances.find((b) => {
-                     return b.ticker === SYMBOL
-                   }).frozen}
-                    </span>
-
-
-                      <Button
-                        style={{height:30, width:200}}
-                        onClick={() => { confirmation('STAKE RUNE') }}
-                        loading={sending}
-                        >
-                        STAKE
-                      </Button>
-                      <Button secondary
-                        style={{height:30, width:200, marginLeft: 10}}
-                        onClick={() => { confirmation('WITHDRAW') }}
-                        loading={sending}
-                        >
-                        WITHDRAW
-                      </Button>
-
-                </Col>
-              </Row>
-            }
-
-    </div>
-
-    <Modal
-      title={mode.charAt(0).toUpperCase() + mode.slice(1)}
-      visible={visible}
-      footer={null}
-      onCancel={handleCancel}
-      bodyStyle={{backgroundColor: "#101921", paddingBottom: 10}}
-      headStyle={{backgroundColor: "#2B3947", color: "#fff"}}
-      >
+      <Modal
+        title={mode.charAt(0).toUpperCase() + mode.slice(1)}
+        visible={visible}
+        footer={null}
+        onCancel={handleCancel}
+        bodyStyle={{backgroundColor: "#101921", paddingBottom: 10}}
+        headStyle={{backgroundColor: "#2B3947", color: "#fff"}}
+        >
         <WrappedStakeForm password={passwordRequired} button={mode} onSubmit={handleOk} onCancel={handleCancel} loading={sending} />
-    </Modal>
-  </div>
+      </Modal>
+
+
+        </Col>
+
+        <Col xs={24} sm={24} md={1} lg={2}>
+        </Col>
+
+
+      </Row>
+          </div>
 )
 }
 
@@ -282,17 +377,17 @@ const StakeForm = (props) => {
             />,
         )}
       </Form.Item>
-      {props.password && 
-      <Form.Item >
-        {getFieldDecorator('password', {
-          rules: [{ required: true, message: 'Please input your Password!' }],
-        })(
-          <Input
-            type="password"
-            placeholder="Password"
-            />,
-        )}
-      </Form.Item>
+      {props.password &&
+        <Form.Item >
+          {getFieldDecorator('password', {
+            rules: [{ required: true, message: 'Please input your Password!' }],
+          })(
+            <Input
+              type="password"
+              placeholder="Password"
+              />,
+          )}
+        </Form.Item>
       }
       <Form.Item>
         <div style={{float: "right"}}>
