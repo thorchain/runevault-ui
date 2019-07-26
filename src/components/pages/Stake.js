@@ -119,7 +119,7 @@ const Stake = (props) => {
       var results
       if (mode === "STAKE RUNE") {
         results = await manager.freeze(context.wallet.address, selectedCoin, values.amount)
-      } else if (mode === "WITHDRAW") {
+      } else if (mode === "WITHDRAW (Caution: time will be reset!)") {
         results = await manager.unfreeze(context.wallet.address, selectedCoin, values.amount)
       } else {
         throw new Error("invalid mode")
@@ -345,11 +345,14 @@ const Stake = (props) => {
                             <Col>
                               <Button secondary
                                 style={{height:30, width:150, marginTop: 10}}
-                                onClick={() => { confirmation('WITHDRAW') }}
+                                onClick={() => { confirmation('WITHDRAW (Caution: time will be reset!)') }}
                                 loading={sending}
                                 >
                                 WITHDRAW
                               </Button>
+                              <br></br>
+
+                              <Text>Caution: your time will be reset!</Text>
                             </Col>
                           </Row>
 
