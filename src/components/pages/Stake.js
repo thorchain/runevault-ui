@@ -207,7 +207,7 @@ const Stake = (props) => {
           <Row>
             <Col xs={24}>
               {!loadingBalances && context.wallet && (balances || []).length > 0 &&
-                <Row>
+                <Row style={{marginBottom: "50px"}}>
                   <Col xs={24} sm={6} style={paneStyle}>
 
                     <Row style={{marginTop: "10px", marginLeft: "10px"}}>
