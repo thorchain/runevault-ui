@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from "react-router-dom"
 import { Layout, Row, Col} from 'antd';
 
+import Breakpoint from 'react-socks';
 
 import { Context } from '../../context'
 
@@ -22,16 +23,46 @@ const Header = (props) => {
 
         <Layout.Header className="header-container" style={styles} >
           <Row>
-            <Col xs={24} sm={24} md={4}>
+            <Breakpoint medium up>
+            <Col xs={12} sm={8} md={4}>
               <Link to="/">
                 <Icon icon="runelogo" style={{width:"100"}} />
               </Link>
             </Col>
+            </Breakpoint>
 
-            <Col xs={24} sm={24} md={16}>
+            <Breakpoint small down>
+            <Col xs={8}>
+              <Link to="/">
+                <Icon icon="runelogo" style={{width:"80"}} />
+              </Link>
+            </Col>
+            </Breakpoint>
+
+            <Breakpoint medium up>
+            <Col sm={8} md={16}>
               <Center><span>STAKE AND EARN RUNE</span></Center>
             </Col>
-            <Col xs={24} sm={24} md={4}>
+            </Breakpoint>
+
+            <Breakpoint small down>
+            <Col xs={16}>
+              <div style={{float: "right"}}>
+                {context.wallet ?
+                  <Link to="/wallet"><WalletAddrShort /></Link>
+                  :
+                  <Link to="/wallet/unlock">
+                    <Button fill>
+                      Connect
+                    </Button>
+                  </Link>
+                }
+              </div>
+            </Col>
+            </Breakpoint>
+
+            <Breakpoint medium up>
+            <Col xs={12} sm={8} md={4}>
               <div style={{float: "right"}}>
                 {context.wallet ?
                   <Link to="/wallet"><WalletAddrShort /></Link>
@@ -44,6 +75,8 @@ const Header = (props) => {
                 }
               </div>
             </Col>
+            </Breakpoint>
+
           </Row>
       </Layout.Header>
 

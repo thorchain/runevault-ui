@@ -51,10 +51,7 @@ const Footer = (props) => {
 
           <Col xs={24} sm={8} md={8} lg={6} xl={6}>
             <Row>
-              <Col xs={3}>
-              </Col>
-              <Col xs={3}>
-                <FontAwesomeIcon icon={faFacebookF} style={{ color: '#919D9D' }}  />
+              <Col xs={6}>
               </Col>
               <Col xs={3}>
                 <a href={thorchainTwitter}><FontAwesomeIcon icon={faTwitter} style={{ color: '#919D9D' }}/></a>

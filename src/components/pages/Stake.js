@@ -2,12 +2,14 @@ import React, { useState, useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
 import TokenManagement, { crypto } from '@binance-chain/javascript-sdk'
 
+import Breakpoint from 'react-socks';
+
 import { Context } from '../../context'
 import Binance from "../../clients/binance"
 import { AmounttoString } from '../../utility'
 
 import { Row, Form, Col, Modal, Input, message } from 'antd'
-import { H1, Button, Text, Coin, WalletAddress} from "../Components"
+import { H1, Button, Text, Coin, WalletAddress, WalletAddrShort} from "../Components"
 
 // RUNE-B1A
 const SYMBOL = "RUNE-B1A"
@@ -182,6 +184,19 @@ const Stake = (props) => {
 
           <div style={{marginTop: "20px"}}>
 
+            <Breakpoint small down>
+            {!loadingBalances && context.wallet &&
+            <Row>
+              <Col xs={24} sm={24} md={12} style={{marginTop: "20px"}}>
+                <a target="_blank" rel="noopener noreferrer" href={"https://explorer.binance.org/address/" + context.wallet.address}>
+                  <WalletAddrShort />
+                </a>
+              </Col>
+            </Row>
+          }
+          </Breakpoint>
+
+            <Breakpoint medium up>
             {!loadingBalances && context.wallet &&
             <Row>
               <Col xs={24} sm={24} md={12} style={{marginTop: "20px"}}>
@@ -191,6 +206,7 @@ const Stake = (props) => {
               </Col>
             </Row>
           }
+          </Breakpoint>
 
           <Row style={{marginTop: "40px"}}>
             {loadingBalances && context.wallet &&
@@ -277,7 +293,7 @@ const Stake = (props) => {
 
                   {selectedCoin && selectedCoin === SYMBOL &&
                     <Row key={SYMBOL} style={coinRowStyle}>
-                      <Col xs={12}>
+                      <Col xs={24} sm={12}>
                         <Row>
                           <Col>
                             <span>
@@ -302,7 +318,7 @@ const Stake = (props) => {
                         </Row>
                         </Col>
 
-                        <Col xs={12}>
+                        <Col xs={24} sm={12}>
                           <Row>
                             <Col>
                               <span>

@@ -62,18 +62,6 @@ div.ant-row.ant-form-item.form-100 > div {
   box-shadow: 0 2px 16px 0 rgba(0,0,0,0.09);
   z-index: 10;
   position: relative;
-
-  .mobile-only {
-    @media (min-width: 768px){
-      display: none;
-    }
-  }
-  .desktop-only {
-    @media (max-width: 767px){
-      display: none;
-    }
-  }
-
 }
 
 .button {

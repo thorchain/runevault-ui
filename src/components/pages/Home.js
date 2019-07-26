@@ -22,7 +22,7 @@ const Home = (props) => {
 
   return (
     <div style={{backgroundColor:"#101921"}}>
-      <Row>
+      <Row style={{marginBottom: "20"}}>
         <Col xs={24} sm={1} md={2} lg={3}>
         </Col>
 
@@ -48,6 +48,7 @@ const Home = (props) => {
           target="_blank" rel="noopener noreferrer">
           <Text style={{fontWeight: 'bold'}}> announcement.</Text>
         </a>
+        <br></br>
 
         </Col>
 
