@@ -41,14 +41,15 @@ const Footer = (props) => {
       <div>
 
         <Row>
-          <Col xs={4} sm={4} md={4} lg={4} xl={4}>
+          <Col xs={24} sm={24} md={24} lg={4} xl={4}>
             <Icon icon="logo" style={{width:"100"}} />
           </Col>
 
-          <Col xs={16} sm={16} md={16} lg={16} xl={14}>
+          <Col xs={24} sm={16} md={16} lg={14} xl={14}>
             <Center></Center>
           </Col>
-          <Col xs={6}>
+
+          <Col xs={24} sm={8} md={8} lg={6} xl={6}>
             <Row>
               <Col xs={3}>
               </Col>
@@ -73,8 +74,8 @@ const Footer = (props) => {
               <Col xs={3}>
               </Col>
             </Row>
-
           </Col>
+
         </Row>
 
       </div>

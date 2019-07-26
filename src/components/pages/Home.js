@@ -11,6 +11,11 @@ const homeStyles = {
   backgroundColor: "#101921"
 }
 
+const iconStyles = {
+  marginTop: 140,
+  backgroundColor: "#101921"
+}
+
 
 
 const Home = (props) => {
@@ -18,9 +23,10 @@ const Home = (props) => {
   return (
     <div style={{backgroundColor:"#101921"}}>
       <Row>
-        <Col xs={3}>
+        <Col xs={24} sm={1} md={2} lg={3}>
         </Col>
-      <Col xs={12} sm={12} md={9} style={homeStyles}>
+
+      <Col xs={24} sm={12} md={12} lg={9} style={homeStyles}>
 
         <H1>STAKE RUNE AND EARN</H1>
         <br></br>
@@ -38,15 +44,16 @@ const Home = (props) => {
 
         </Col>
 
+        <Col xs={24} sm={2} md={2} lg={2}>
+        </Col>
 
-        <Col xs={12} sm={12} md={9} style={homeStyles}>
-
-          <Icon icon="rune" style={{width:500, marginLeft:100}} />
-
+        <Col xs={24} sm={8} md={8} lg={9} style={iconStyles}>
+          <Icon icon="rune" style={{width: "auto"}}/>
           </Col>
 
-          <Col xs={3}>
+          <Col xs={24} sm={1} md={2} lg={3}>
           </Col>
+
       </Row>
     </div>
   )
