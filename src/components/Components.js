@@ -104,6 +104,7 @@ export const Icon = (props) => {
     "step1": "step1.svg",
     "step2": "step2.svg",
     "openapp": "ledger-app.svg",
+    "qrcode": "qrCode.svg",
     "pincode": "ledger-pin.svg",
   }
   return (

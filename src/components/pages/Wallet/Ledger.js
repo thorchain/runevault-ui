@@ -6,6 +6,7 @@ import u2f_transport from '@ledgerhq/hw-transport-u2f'
 import Binance from '../../../clients/binance'
 import { Context } from '../../../context'
 import { Icon, Button, Text } from '../../Components'
+import {walletConnect} from "./walletConnect";
 
 ledger.transports.u2f = u2f_transport
 window.ledger = ledger
@@ -70,6 +71,10 @@ const Connector = props => {
 
   return (
     <div>
+        <Row  style={{bottom: 5}}>
+            <Text size={18}>Scan a QR code to link your mobile wallet using WalletConnect.</Text>
+            <Icon icon="qrcode" onClick={() => walletConnect()} />
+        </Row>
       <Row style={{marginBottom: 20}}>
         <Text size={18}>Connect your Ledger device</Text>
       </Row>
