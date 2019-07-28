@@ -92,12 +92,12 @@ const Home = (props) => {
         <Col xs={24} sm={1} md={2} lg={3}>
         </Col>
 
-        <Col  xs={24} sm={11} md={10} lg={9}>
+        <Col  xs={24} sm={13} md={12} lg={11}>
           <h4 style={{color:"#848E9C"}}>TOTAL STAKED:</h4>
           <H1> 16,519,144.18 RUNE</H1>
         </Col>
 
-        <Col  xs={24} sm={11} md={10} lg={9}>
+        <Col  xs={24} sm={9} md={8} lg={7}>
           <h4 style={{color:"#848E9C"}}>STAKED SUPPLY:</h4>
           <H1> 20.1%</H1>
         </Col>
@@ -130,7 +130,7 @@ const Home = (props) => {
         <Col xs={24} sm={1} md={2} lg={3}>
         </Col>
 
-        <Col  xs={24} sm={22} md={20} lg={18} style={{backgroundColor:'#D8D8D8'}}>
+        <Col  xs={24} sm={22} md={20} lg={18} style={{backgroundColor:'#D8D8D8', borderRadius: 5, paddingBottom:5}}>
             <Table dataSource={dataSource} columns={columns} pagination={false} size={'middle'} title={() => 'EARNINGS SCHEDULE'}/>
         </Col>
 
