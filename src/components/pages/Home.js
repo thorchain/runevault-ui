@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import { Row, Col } from 'antd';
+import { Row, Col, Table } from 'antd';
 
 import Breakpoint from 'react-socks';
 
@@ -67,8 +67,107 @@ const Home = (props) => {
           </Col>
 
       </Row>
+
+      <Row style={{marginTop:50}}>
+
+        <Col xs={24} sm={1} md={2} lg={3}>
+        </Col>
+
+        <Col  xs={24} sm={22} md={20} lg={18} style={{backgroundColor:'#D8D8D8'}}>
+            <Table dataSource={dataSource} columns={columns} pagination={false} size={'middle'} title={() => 'EARNINGS SCHEDULE'}/>
+        </Col>
+
+        <Col xs={24} sm={1} md={2} lg={3}>
+        </Col>
+
+      </Row>
+
+
     </div>
   )
 }
+
+
+
+const dataSource = [
+  {
+    key: '1',
+    week: '1',
+    interest: '0.2%',
+    compounded: '0.2%',
+  },
+  {
+    key: '2',
+    week: '2',
+    interest: '0.4%',
+    compounded: '0.6%',
+  },
+  {
+    key: '3',
+    week: '3',
+    interest: '0.6%',
+    compounded: '1.2%',
+  },
+  {
+    key: '4',
+    week: '4',
+    interest: '0.8%',
+    compounded: '2.0%',
+  },
+  {
+    key: '5',
+    week: '5',
+    interest: '1.0%',
+    compounded: '3.0%',
+  },
+  {
+    key: '6',
+    week: '6',
+    interest: '1.2%',
+    compounded: '4.3%',
+  },
+  {
+    key: '7',
+    week: '7',
+    interest: '1.4%',
+    compounded: '5.7%',
+  },
+  {
+    key: '8',
+    week: '8',
+    interest: '1.6%',
+    compounded: '7.4%',
+  },
+  {
+    key: '9',
+    week: '9',
+    interest: '1.8%',
+    compounded: '9.4%',
+  },
+  {
+    key: '10',
+    week: '10',
+    interest: '2%',
+    compounded: '11.5%',
+  },
+];
+
+const columns = [
+  {
+    title: 'Week',
+    dataIndex: 'week',
+    key: 'week',
+  },
+  {
+    title: 'Interest',
+    dataIndex: 'interest',
+    key: 'interest',
+  },
+  {
+    title: 'Compounded Interest',
+    dataIndex: 'compounded',
+    key: 'compounded',
+  },
+];
 
 export default Home
