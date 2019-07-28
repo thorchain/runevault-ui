@@ -68,7 +68,64 @@ const Home = (props) => {
 
       </Row>
 
+      <Row style={{marginTop:100}}>
+
+        <Col xs={24} sm={1} md={2} lg={3}>
+        </Col>
+
+        <Col  xs={24} sm={11} md={10} lg={9}>
+          <h4 style={{color:"#848E9C"}}>NUMBER OF STAKERS:</h4>
+          <H1>83</H1>
+        </Col>
+
+        <Col  xs={24} sm={11} md={10} lg={9}>
+
+        </Col>
+
+        <Col xs={24} sm={1} md={2} lg={3}>
+        </Col>
+
+      </Row>
+
       <Row style={{marginTop:50}}>
+
+        <Col xs={24} sm={1} md={2} lg={3}>
+        </Col>
+
+        <Col  xs={24} sm={11} md={10} lg={9}>
+          <h4 style={{color:"#848E9C"}}>TOTAL STAKED:</h4>
+          <H1> 16,519,144.18 RUNE</H1>
+        </Col>
+
+        <Col  xs={24} sm={11} md={10} lg={9}>
+          <h4 style={{color:"#848E9C"}}>STAKED SUPPLY:</h4>
+          <H1> 20.1%</H1>
+        </Col>
+
+        <Col xs={24} sm={1} md={2} lg={3}>
+        </Col>
+
+      </Row>
+
+      <Row style={{marginTop:50}}>
+
+        <Col xs={24} sm={1} md={2} lg={3}>
+        </Col>
+
+        <Col  xs={12} sm={11} md={10} lg={9}>
+          <h4 style={{color:"#848E9C"}}>LAST UPDATED:</h4>
+          <h4 style={{color:"#FFF"}}>28 JULY 2019</h4>
+        </Col>
+
+        <Col  xs={12} sm={11} md={10} lg={9}>
+        </Col>
+
+        <Col xs={24} sm={1} md={2} lg={3}>
+        </Col>
+
+      </Row>
+
+      <Row style={{marginTop:100}}>
 
         <Col xs={24} sm={1} md={2} lg={3}>
         </Col>
