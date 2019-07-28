@@ -105,6 +105,7 @@ export const Icon = (props) => {
     "step2": "step2.svg",
     "openapp": "ledger-app.svg",
     "pincode": "ledger-pin.svg",
+    "qrcode" : "qr-code.svg",
   }
   return (
     <img src={"/images/" + lookup[props.icon]} alt={props.img} {...props} />

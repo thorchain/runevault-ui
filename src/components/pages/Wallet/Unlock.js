@@ -7,6 +7,7 @@ import { Center, H1, Text } from '../../Components'
 import Mnemonic from "./Mnemonic"
 import Keystore from "./Keystore"
 import Ledger from "./Ledger"
+import WalletConnectPane from "./WalletConnect"
 
 const { TabPane } = Tabs;
 
@@ -46,7 +47,7 @@ const Unlock = (props) => {
                 <Breakpoint small down>
                 <Tabs defaultActiveKey="2" tabPosition={"top"}>
                   <TabPane tab={<Text size={16}><i>WalletConnect</i></Text>} key="1">
-                    <Center><Text style={{marginTop: 90}}>Coming soon...</Text></Center>
+                    <WalletConnectPane {...props} />
                   </TabPane>
 
                   <TabPane tab={<Text size={16}><i>Ledger Device</i></Text>} key="2">
@@ -65,7 +66,7 @@ const Unlock = (props) => {
                 <Breakpoint medium up>
                 <Tabs defaultActiveKey="2" tabPosition={"left"}>
                   <TabPane tab={<Text size={16}><i>WalletConnect</i></Text>} key="1">
-                    <Center><Text style={{marginTop: 90}}>Coming soon...</Text></Center>
+                    <WalletConnectPane {...props} />
                   </TabPane>
 
                   <TabPane tab={<Text size={16}><i>Ledger Device</i></Text>} key="2">
