@@ -2,12 +2,14 @@ import React, { useState, useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
 import TokenManagement, { crypto } from '@binance-chain/javascript-sdk'
 
+import Breakpoint from 'react-socks';
+
 import { Context } from '../../context'
 import Binance from "../../clients/binance"
 import { AmounttoString } from '../../utility'
 
 import { Row, Form, Col, Modal, Input, message } from 'antd'
-import { H1, Button, Text, Coin, WalletAddress} from "../Components"
+import { H1, Button, Text, Coin, WalletAddress, WalletAddrShort} from "../Components"
 
 // RUNE-B1A
 const SYMBOL = "RUNE-B1A"
@@ -117,7 +119,7 @@ const Stake = (props) => {
       var results
       if (mode === "STAKE RUNE") {
         results = await manager.freeze(context.wallet.address, selectedCoin, values.amount)
-      } else if (mode === "WITHDRAW") {
+      } else if (mode === "WITHDRAW (Caution: time will be reset!)") {
         results = await manager.unfreeze(context.wallet.address, selectedCoin, values.amount)
       } else {
         throw new Error("invalid mode")
@@ -182,6 +184,19 @@ const Stake = (props) => {
 
           <div style={{marginTop: "20px"}}>
 
+            <Breakpoint small down>
+            {!loadingBalances && context.wallet &&
+            <Row>
+              <Col xs={24} sm={24} md={12} style={{marginTop: "20px"}}>
+                <a target="_blank" rel="noopener noreferrer" href={"https://explorer.binance.org/address/" + context.wallet.address}>
+                  <WalletAddrShort />
+                </a>
+              </Col>
+            </Row>
+          }
+          </Breakpoint>
+
+            <Breakpoint medium up>
             {!loadingBalances && context.wallet &&
             <Row>
               <Col xs={24} sm={24} md={12} style={{marginTop: "20px"}}>
@@ -191,14 +206,25 @@ const Stake = (props) => {
               </Col>
             </Row>
           }
+          </Breakpoint>
 
           <Row style={{marginTop: "40px"}}>
             {loadingBalances && context.wallet &&
               <Text><i>Loading balances, please wait...</i></Text>
             }
+
+            <Breakpoint small down>
+            {!context.wallet &&
+              <Text>Sorry, not yet available on mobile. Please visit on desktop.</Text>
+            }
+            </Breakpoint>
+
+            <Breakpoint medium up>
             {!context.wallet &&
               <Link to="/wallet/unlock"><Button fill>CONNECT WALLET</Button></Link>
             }
+            </Breakpoint>
+
             {!loadingBalances && context.wallet && (balances || []).length === 0 &&
               <Text>No coins available</Text>
             }
@@ -208,11 +234,13 @@ const Stake = (props) => {
             <Col xs={24}>
               {!loadingBalances && context.wallet && (balances || []).length > 0 &&
                 <Row style={{marginBottom: "50px"}}>
+
                   <Col xs={24} sm={6} style={paneStyle}>
 
                     <Row style={{marginTop: "10px", marginLeft: "10px"}}>
                       <Col xs={24}>
                         <Text size={18}>SELECT RUNE BELOW:</Text>
+                        <hr />
                       </Col>
                     </Row>
 
@@ -227,27 +255,29 @@ const Stake = (props) => {
                   }
                 </Col>
 
-                <Col xs={24} sm={14} style={paneStyle}>
+                <Col xs={24} sm={16} style={{backgroundColor: "#48515D",
+                marginTop: "20px",
+                borderRadius: 5,}}>
 
                   {selectedCoin && selectedCoin === SYMBOL &&
                     <Row style={{marginTop: "10px", marginLeft: "10px", marginRight: "10px"}}>
                       <Col xs={24}>
 
                         <Text size={18}>STAKE RUNE TO EARN REWARDS</Text>
-                        <br></br>
+                        <hr />
                         <Text size={14}>Note: RUNE will be staked on your address securely using the </Text>
                           <a href="https://docs.binance.org/tokens.html#freeze-unfreeze"
                             target="_blank" rel="noopener noreferrer">
-                            <Text size={15} style={{fontWeight: 'bold'}}>Binance Chain "freeze" command.</Text>
+                            <Text size={15} style={{fontWeight: 'bold'}}>Binance Chain "FREEZE" command.</Text>
                           </a>
                         <br></br>
-                        <Text size={10}>RUNE will be paid out at the end of the campaign. You can add more, but any withdrawals will reset your holding period.
-                          The total earnings is calculated based the balance of your staked RUNE, based on your holding period (in weeks) and </Text>
+                        <Text size={10}>RUNE will be paid out each week. You can add more, but any withdrawals will reset your holding period.
+                          Your weekly payout is calculated based the balance of your staked RUNE, multiplied by the compounded interest rate, set in the</Text>
                           <a href="https://medium.com/thorchain/introducing-runevault-stake-and-earn-rune-87576671d1e4"
                             target="_blank" rel="noopener noreferrer">
-                            <Text size={11} style={{fontWeight: 'bold'}}>the earning schedule.</Text>
+                            <Text size={11} style={{fontWeight: 'bold'}}> EARNING SCHEDULE.</Text>
                           </a>
-                        <hr />
+
 
                       </Col>
                     </Row>
@@ -277,7 +307,7 @@ const Stake = (props) => {
 
                   {selectedCoin && selectedCoin === SYMBOL &&
                     <Row key={SYMBOL} style={coinRowStyle}>
-                      <Col xs={12}>
+                      <Col xs={24} sm={12}>
                         <Row>
                           <Col>
                             <span>
@@ -302,7 +332,7 @@ const Stake = (props) => {
                         </Row>
                         </Col>
 
-                        <Col xs={12}>
+                        <Col xs={24} sm={12}>
                           <Row>
                             <Col>
                               <span>
@@ -319,11 +349,14 @@ const Stake = (props) => {
                             <Col>
                               <Button secondary
                                 style={{height:30, width:150, marginTop: 10}}
-                                onClick={() => { confirmation('WITHDRAW') }}
+                                onClick={() => { confirmation('WITHDRAW (Caution: time will be reset!)') }}
                                 loading={sending}
                                 >
                                 WITHDRAW
                               </Button>
+                              <br></br>
+
+                              <Text>Caution: your time will be reset!</Text>
                             </Col>
                           </Row>
 

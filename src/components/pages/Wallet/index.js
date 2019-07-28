@@ -20,9 +20,11 @@ const Wallet = props => {
         .then((response) => {
           const b = (response || []).map((bal) => (
             {
-              "icon": "coin-bep",
+              "icon": bal.symbol === "RUNE-B1A" ? "coin-rune": "coin-bep",
               "ticker": bal.symbol,
-              "amount": parseFloat(bal.free),
+              "free": parseFloat(bal.free),
+              "frozen": parseFloat(bal.frozen),
+              "locked": parseFloat(bal.locked),
             }
           ))
           setBalances([...b])
@@ -44,7 +46,7 @@ const Wallet = props => {
 
 
   const rowStyle = {margin: "10px 0px"}
-  const coinSpan = 6
+  const coinSpan = 12
 
   return (
     <div style={{margin: 10}}>
@@ -52,19 +54,22 @@ const Wallet = props => {
       <Row style={rowStyle}>
         <Text size={18} bold>Balances</Text>
       </Row>
+
       {!loadingBalances && (balances || []).map((coin) => (
         <Row key={coin.ticker} style={rowStyle}>
-          <Col span={coinSpan}>
+          <Col xs={24} sm={12} md={6}>
             <Coin {...coin} />
           </Col>
         </Row>
       ))
       }
+
       <Row style={rowStyle}>
         <div style={{marginTop: 20}}>
           <Button onClick={forgetWallet}>Forget Wallet</Button>
         </div>
       </Row>
+
     </div>
   )
 }

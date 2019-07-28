@@ -1,6 +1,8 @@
 import React from 'react'
 import { Layout, Row, Col} from 'antd';
 
+import Breakpoint from 'react-socks';
+
 import { Center, Icon } from '../Components'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -41,35 +43,39 @@ const Footer = (props) => {
       <div>
 
         <Row>
+
           <Col xs={24} sm={24} md={24} lg={4} xl={4}>
-            <Icon icon="logo" style={{width:"100"}} />
+            <Breakpoint medium up>
+            <Icon icon="logo" style={{width:"100", marginLeft:50}} />
+            </Breakpoint>
+            <Breakpoint small down>
+            <Icon icon="logo" style={{width:"50"}} />
+            </Breakpoint>
           </Col>
+
 
           <Col xs={24} sm={16} md={16} lg={14} xl={14}>
             <Center></Center>
           </Col>
 
           <Col xs={24} sm={8} md={8} lg={6} xl={6}>
-            <Row>
-              <Col xs={3}>
+            <Row style={{marginTop:10}}>
+              <Col xs={6}>
               </Col>
               <Col xs={3}>
-                <FontAwesomeIcon icon={faFacebookF} style={{ color: '#919D9D' }}  />
+                <a href={thorchainTwitter}><FontAwesomeIcon icon={faTwitter} style={{ color: '#fff' }}/></a>
               </Col>
               <Col xs={3}>
-                <a href={thorchainTwitter}><FontAwesomeIcon icon={faTwitter} style={{ color: '#919D9D' }}/></a>
+                <a href={thorchainYoutube}><FontAwesomeIcon icon={faYoutube} style={{ color: '#fff' }}/></a>
               </Col>
               <Col xs={3}>
-                <a href={thorchainYoutube}><FontAwesomeIcon icon={faYoutube} style={{ color: '#919D9D' }}/></a>
+                <a href={thorchainReddit}><FontAwesomeIcon icon={faReddit} style={{ color: '#fff' }}/></a>
               </Col>
               <Col xs={3}>
-                <a href={thorchainReddit}><FontAwesomeIcon icon={faReddit} style={{ color: '#919D9D' }}/></a>
+                <a href={thorchainGithub}><FontAwesomeIcon icon={faGithub} style={{ color: '#fff' }}/></a>
               </Col>
               <Col xs={3}>
-                <a href={thorchainGithub}><FontAwesomeIcon icon={faGithub} style={{ color: '#919D9D' }}/></a>
-              </Col>
-              <Col xs={3}>
-                <a href={thorchianTelegram}><FontAwesomeIcon icon={faTelegram} style={{ color: '#919D9D' }}/></a>
+                <a href={thorchianTelegram}><FontAwesomeIcon icon={faTelegram} style={{ color: '#fff' }}/></a>
               </Col>
               <Col xs={3}>
               </Col>

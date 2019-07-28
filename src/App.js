@@ -2,6 +2,8 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Layout } from 'antd';
 
+import Breakpoint, { BreakpointProvider } from 'react-socks';
+
 import { ContextProvider } from "./context"
 
 import Header from './components/layout/Header'
@@ -22,10 +24,11 @@ const App = (props) => {
     <ContextProvider>
       <Router>
         <div>
+          <BreakpointProvider>
           <Layout>
             <Header />
             <Layout style={{background: "#101921", minHeight: "100vh"}} >
-              <Content style={{background: "#101921", padding: '0 50px', marginBottom: 64, marginTop: 64}}>
+              <Content style={{background: "#101921", padding: '0 20px', marginBottom: 200, marginTop: 64}}>
                 <Switch>
                   <Route path="/" exact component={Home} />
                   <Route path="/stake" exact component={Stake} />
@@ -36,6 +39,7 @@ const App = (props) => {
             </Layout>
             <Footer />
           </Layout>
+          </BreakpointProvider>
         </div>
       </Router>
     </ContextProvider>
