@@ -1932,7 +1932,7 @@
     "@svgr/plugin-svgo" "^4.0.3"
     loader-utils "^1.1.0"
 
-"@trustwallet/walletconnect@^0.0.12":
+"@trustwallet/walletconnect@0.0.12":
   version "0.0.12"
   resolved "https://registry.yarnpkg.com/@trustwallet/walletconnect/-/walletconnect-0.0.12.tgz#1a2176456a5e05beafd2ab497c10f2d896f52daf"
   integrity sha512-nCrVoIAbyChaieRVbts7n9ST4BhQ2x3YHRP7IfBdjm1h9UiHsStZFQLXtlIRDCy1dAEJh6zH/bba/0t5CaPyHg==
