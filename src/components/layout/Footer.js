@@ -46,10 +46,12 @@ const Footer = (props) => {
 
           <Col xs={24} sm={24} md={24} lg={4} xl={4}>
             <Breakpoint medium up>
-            <Icon icon="logo" style={{width:"100", marginLeft:50}} />
+              <a href="https://thorchain.org" target="_blank">
+            <Icon icon="logo" style={{width:"100", marginLeft:50}} /></a>
             </Breakpoint>
             <Breakpoint small down>
-            <Icon icon="logo" style={{width:"50"}} />
+              <a href="https://thorchain.org" target="_blank">
+            <Icon icon="logo" style={{width:"50"}} /></a>
             </Breakpoint>
           </Col>
 
