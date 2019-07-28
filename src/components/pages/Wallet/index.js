@@ -46,7 +46,6 @@ const Wallet = props => {
 
 
   const rowStyle = {margin: "10px 0px"}
-  const coinSpan = 12
 
   return (
     <div style={{margin: 10}}>
