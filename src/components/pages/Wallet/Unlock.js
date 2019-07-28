@@ -45,7 +45,7 @@ const Unlock = (props) => {
                 </p>
 
                 <Breakpoint small down>
-                <Tabs defaultActiveKey="2" tabPosition={"top"}>
+                <Tabs defaultActiveKey="1" tabPosition={"top"}>
                   <TabPane tab={<Text size={16}><i>WalletConnect</i></Text>} key="1">
                     <WalletConnectPane {...props} />
                   </TabPane>
@@ -64,7 +64,7 @@ const Unlock = (props) => {
                 </Breakpoint>
 
                 <Breakpoint medium up>
-                <Tabs defaultActiveKey="2" tabPosition={"left"}>
+                <Tabs defaultActiveKey="1" tabPosition={"left"}>
                   <TabPane tab={<Text size={16}><i>WalletConnect</i></Text>} key="1">
                     <WalletConnectPane {...props} />
                   </TabPane>

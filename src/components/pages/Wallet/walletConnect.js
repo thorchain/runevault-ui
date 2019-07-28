@@ -11,16 +11,34 @@ import { Icon as AntIcon, Row, Col, message } from 'antd'
 
 const WalletConnectPane = props => {
 
+  const paneStyle = {
+    backgroundColor: "#48515D",
+    marginLeft: "10px",
+    marginRight: "10px",
+    marginTop: "50px",
+    borderRadius: 5,
+    boxShadow: "5px 5px 5px #50E3C2;",
+  }
+
+
+
 return (
   <div>
 
 
     <Row  style={{bottom: 5}}>
-        <Text size={18}>Scan a QR code to link your mobile wallet using WalletConnect.</Text>
+        <Text size={18}>Click to scan a QR code and link your mobile wallet using WalletConnect.</Text>
     </Row>
 
-    <Row  style={{marginTop: 50}}>
-    <Icon icon="qrcode" style={{width:200, marginLeft:200}} onClick={() => walletConnect()} />
+    <Row>
+      <Col  xs={24} md={3}></Col>
+      <Col  xs={24} md={8} style={paneStyle}>
+
+        <a>
+          <Center><Icon icon="qrcode" style={{width:200, marginTop:30, marginBottom:30}} onClick={() => walletConnect()} /></Center>
+      </a>
+      </Col>
+      <Col xs={24} md={13}></Col>
     </Row>
 
 
