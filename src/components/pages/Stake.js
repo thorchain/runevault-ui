@@ -256,27 +256,12 @@ const Stake = (props) => {
                     <Row style={{marginTop: "10px", marginLeft: "10px", marginRight: "10px"}}>
                       <Col xs={24}>
 
+
+
                         <Row>
                           <Col xs={24}>
                             <Text size={18}>STAKE RUNE TO EARN REWARDS</Text>
                             <hr />
-                            <Text size={14}>Note: RUNE will be staked on your address securely using the </Text>
-                              <a href="https://docs.binance.org/tokens.html#freeze-unfreeze"
-                                target="_blank" rel="noopener noreferrer">
-                                <Text size={15} style={{fontWeight: 'bold'}}>Binance Chain "FREEZE" command.</Text>
-                              </a>
-                            <br></br>
-                            <Text size={10}>RUNE will be paid out each week. You can add more, but any withdrawals will reset your holding period.
-                              Your weekly payout is calculated based the balance of your staked RUNE, multiplied by the compounded interest rate, set in the</Text>
-                              <a href="https://medium.com/thorchain/introducing-runevault-stake-and-earn-rune-87576671d1e4"
-                                target="_blank" rel="noopener noreferrer">
-                                <Text size={11} style={{fontWeight: 'bold'}}> EARNING SCHEDULE.</Text>
-                              </a>
-                          </Col>
-                        </Row>
-
-                        <Row>
-                          <Col xs={24}>
                             <Row>
                               <Col xs={12} style={{marginTop: "10px"}}>
                                     <span>
@@ -314,7 +299,7 @@ const Stake = (props) => {
                                 <Row>
                                   <Col>
                                     <Button
-                                      style={{height:30, width:150, marginTop: 10}}
+                                      style={{height:40, width:200, marginTop: 10}}
                                       onClick={() => { confirmation('STAKE RUNE') }}
                                       loading={sending}
                                       >
@@ -340,7 +325,7 @@ const Stake = (props) => {
                                   <Row>
                                     <Col>
                                       <Button secondary
-                                        style={{height:30, width:150, marginTop: 10}}
+                                        style={{height:40, width:200, marginTop: 10}}
                                         onClick={() => { confirmation('WITHDRAW (Caution: time will be reset!)') }}
                                         loading={sending}
                                         >
@@ -359,29 +344,49 @@ const Stake = (props) => {
                           </Col>
                         </Row>
 
-                        <Row>
+                        <Row  style={{marginTop: "10px"}}>
                           <Col xs={24}>
-                            <Row>
-                              <Col xs={24} style={{marginTop: "10px"}}>
+                                <span><Text>WEEK:</Text></span>
+                                <span style={{margin: "0px 20px"}} size={22}>1</span>
+                          </Col>
+                        </Row>
 
-                                <Row>
-                                  <Col>
-                                    <span><Text>RUNE EARNED:</Text></span>
-                                    <span style={{marginLeft: "10px"}}>
-                                      <i>coming soon</i>
-                                    </span>
+                        <Row  style={{marginTop: "10px"}}>
+                              <Col xs={24} sm={12}>
+                                    <span><Text>THIS TIER:</Text></span>
+                                    <span style={{margin: "0px 20px"}} size={22}>0.2%</span>
+                                </Col>
+                                  <Col xs={24} sm={12} >
+                                    <span><Text>NEXT TIER:</Text></span>
+                                    <span style={{margin: "0px 20px"}} size={22}>0.4%</span>
                                   </Col>
-                                </Row>
-                                <Row>
-                                  <Col>
-                                    <span><Text>DATE OF LAST PAYOUT:</Text></span>
-                                    <span style={{marginLeft: "10px"}}>
-                                      <i>coming soon</i>
-                                    </span>
+                        </Row>
+
+                        <Row  style={{marginTop: "10px"}}>
+                                  <Col xs={24} sm={12}>
+                                    <span><Text>COMPOUNDED:</Text></span>
+                                    <span style={{margin: "0px 20px"}} size={22}>0.2%</span>
                                   </Col>
-                                </Row>
-                              </Col>
-                            </Row>
+                                  <Col xs={24} sm={12} >
+                                    <span><Text>NEXT COMPOUND:</Text></span>
+                                    <span style={{margin: "0px 20px"}} size={22}>0.6%</span>
+                                  </Col>
+                        </Row>
+
+                        <Row style={{marginTop: "40px", marginBottom: 20}}>
+                          <Col xs={24}>
+                            <Text size={14}>Note: RUNE will be staked on your address securely using the </Text>
+                              <a href="https://docs.binance.org/tokens.html#freeze-unfreeze"
+                                target="_blank" rel="noopener noreferrer">
+                                <Text size={15} style={{fontWeight: 'bold'}}>Binance Chain "FREEZE" command.</Text>
+                              </a>
+                            <br></br>
+                            <Text size={10}>RUNE will be paid out each week. You can add more, but any withdrawals will reset your holding period.
+                              Your weekly payout is calculated based the balance of your staked RUNE, multiplied by the compounded interest rate, set in the</Text>
+                              <a href="https://medium.com/thorchain/introducing-runevault-stake-and-earn-rune-87576671d1e4"
+                                target="_blank" rel="noopener noreferrer">
+                                <Text size={11} style={{fontWeight: 'bold'}}> EARNING SCHEDULE.</Text>
+                              </a>
                           </Col>
                         </Row>
 
