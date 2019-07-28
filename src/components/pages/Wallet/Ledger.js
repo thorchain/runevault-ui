@@ -16,6 +16,7 @@ const Connector = props => {
 
   const ledgerConnect = async () => {
     setConnecting(true)
+    message.success(<Text color='#50E3C2'>Please approve on your ledger</Text>, 5)
 
     // use the u2f transport
     const timeout = 50000

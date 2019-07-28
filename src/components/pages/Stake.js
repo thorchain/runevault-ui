@@ -127,7 +127,7 @@ const Stake = (props) => {
       setSending(false)
       if (results.result[0].ok) {
         const txURL = Binance.txURL(results.result[0].hash)
-        message.success(<Text>Sent. <a target="_blank" rel="noopener noreferrer" href={txURL}>See transaction</a>.</Text>)
+        message.success(<Text>Sent. <a target="_blank" rel="noopener noreferrer" href={txURL}>See transaction</a>.</Text>, 10)
         setVisible(false)
         getBalances()
       }
