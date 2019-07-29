@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import TokenManagement, { crypto } from '@binance-chain/javascript-sdk'
 
 import Breakpoint from 'react-socks';
+import { connect } from 'react-redux';
 
 import { Context } from '../../context'
 import Binance from "../../clients/binance"
@@ -10,11 +11,13 @@ import { AmounttoString } from '../../utility'
 
 import { Row, Form, Col, Modal, Input, message } from 'antd'
 import { H1, Button, Text, Coin, WalletAddress, WalletAddrShort} from "../Components"
+import {addStake} from "../../actions/stakeaction";
 
 // RUNE-B1A
 const SYMBOL = "RUNE-B1A"
 
 const Stake = (props) => {
+
   const [selectedCoin, setSelectedCoin] = useState(null)
   const [balances, setBalances] = useState(null)
   const [mode, setMode] = useState("stake")
@@ -127,6 +130,8 @@ const Stake = (props) => {
       setSending(false)
       if (results.result[0].ok) {
         const txURL = Binance.txURL(results.result[0].hash)
+        const stakeValue = { address: context.wallet.address, amountStaked: values.amount }
+        props.dispatch(addStake(stakeValue))
         message.success(<Text>Sent. <a target="_blank" rel="noopener noreferrer" href={txURL}>See transaction</a>.</Text>, 10)
         setVisible(false)
         getBalances()
@@ -490,5 +495,10 @@ const StakeForm = (props) => {
 
 const WrappedStakeForm = Form.create({ name: 'staking' })(StakeForm);
 
+function mapStateToProps(state) {
+    return {
+        stake: state.stake
+    };
+}
 
-export default Stake
+export default connect(mapStateToProps)(Stake)
