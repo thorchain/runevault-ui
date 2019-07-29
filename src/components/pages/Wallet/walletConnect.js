@@ -97,7 +97,7 @@ const WalletConnectPane = props => {
     marginRight: "10px",
     marginTop: "50px",
     borderRadius: 5,
-    boxShadow: "5px 5px 5px #50E3C2",
+    boxShadow: "0px 0px 5px #50E3C2",
   }
 
   return (
