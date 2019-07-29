@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97543396-0ce5-4baa-826b-4ee04cfcd717" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/actions/stakeaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/stakeaction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/Stake.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Stake.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/keys.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/keys.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,14 +14,15 @@
     <session id="-60926184">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.15" value="1" />
-          <entry key="project.open.time.18" value="1" />
+          <entry key="project.open.time.18" value="2" />
           <entry key="project.open.time.2" value="4" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -31,7 +30,7 @@
           <entry key=".env file" value="1" />
           <entry key="Image" value="1" />
           <entry key="JSON" value="8" />
-          <entry key="JavaScript" value="64" />
+          <entry key="JavaScript" value="65" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="RNG Compact" value="1" />
           <entry key="SVG" value="2" />
@@ -40,7 +39,7 @@
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="ESLintLanguageService" value="6" />
+          <entry key="ESLintLanguageService" value="7" />
           <entry key="TypeScriptServerServiceImpl" value="1" />
         </counts>
       </usages-collector>
@@ -48,7 +47,7 @@
         <counts>
           <entry key=".env file" value="8" />
           <entry key="JSON" value="5" />
-          <entry key="JavaScript" value="1587" />
+          <entry key="JavaScript" value="1819" />
           <entry key="PLAIN_TEXT" value="13" />
         </counts>
       </usages-collector>
@@ -59,8 +58,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/pages/Stake.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2115">
-              <caret line="141" column="25" lean-forward="true" selection-start-line="141" selection-start-column="25" selection-end-line="141" selection-end-column="25" />
+            <state relative-caret-position="55">
+              <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -69,22 +68,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/config/firebase.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-              <folding>
-                <element signature="e#0#36#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/actions/stakeaction.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="150">
+              <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
               <folding>
                 <element signature="e#0#44#0" expanded="true" />
               </folding>
@@ -96,7 +83,7 @@
         <entry file="file://$PROJECT_DIR$/src/config/keys.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="47" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
+              <caret line="7" column="12" lean-forward="true" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -105,7 +92,7 @@
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -114,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" column="21" lean-forward="true" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+              <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -122,7 +109,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
+            <state relative-caret-position="195">
               <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -134,7 +121,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/context.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
+            <state relative-caret-position="495">
               <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
@@ -152,22 +139,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/reducers/stakereducer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>RuneVault</find>
-      <find>runevault</find>
-      <find>walletcon</find>
       <find>Net:</find>
       <find>Runevault</find>
       <find>bf139e7748ffb1c7d2434bce3e87fbe7866ec0ffc01a1c035778c1c924ee8c3b</find>
@@ -195,6 +170,9 @@
       <find>succ</find>
       <find>addst</find>
       <find>addstake</find>
+      <find>publis</find>
+      <find>publishStake</find>
+      <find>saveStake</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/components</dir>
@@ -234,8 +212,8 @@
         <option value="$PROJECT_DIR$/src/reducers/stakereducer.js" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/config/keys.js" />
         <option value="$PROJECT_DIR$/src/actions/stakeaction.js" />
+        <option value="$PROJECT_DIR$/src/config/keys.js" />
         <option value="$PROJECT_DIR$/src/components/pages/Stake.js" />
       </list>
     </option>
@@ -332,7 +310,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -349,14 +326,15 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="App.&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/App.js&#10;staj&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;inde&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/index.js&#10;sta&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;unlo&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet/Unlock.js&#10;wallec&#9;null&#9;null&#10;wall&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet&#10;ledger-ap&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/public/images/ledger-app.svg&#10;led&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet/Ledger.js&#10;Head&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/layout/Header.js" />
+    <property name="SearchEverywhereHistoryKey" value="keys&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/config/keys.js&#10;App.&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/App.js&#10;staj&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;inde&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/index.js&#10;sta&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;unlo&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet/Unlock.js&#10;wallec&#9;null&#9;null&#10;wall&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet&#10;ledger-ap&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/public/images/ledger-app.svg&#10;led&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet/Ledger.js&#10;Head&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/layout/Header.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564409369992" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564444507795" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -438,18 +416,20 @@
       <workItem from="1564398925632" duration="791000" />
       <workItem from="1564400075917" duration="23000" />
       <workItem from="1564400110529" duration="24000" />
-      <workItem from="1564400374090" duration="8696000" />
+      <workItem from="1564400374090" duration="9375000" />
+      <workItem from="1564440675631" duration="501000" />
+      <workItem from="1564444231357" duration="628000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33308000" />
+    <option name="totallyTimeSpent" value="35328000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="828" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.32874015" visible="true" weight="0.19098713" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.32874015" visible="true" weight="0.19957082" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -459,12 +439,12 @@
       <window_info id="npm" order="7" sideWeight="0.6712598" side_tool="true" weight="0.011444922" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32893" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32893" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32893" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32893" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32893" />
       <window_info anchor="bottom" id="Docker" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Multi-OS Engine" order="10" />
@@ -635,9 +615,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1365">
           <caret line="96" column="32" selection-start-line="96" selection-start-column="32" selection-end-line="96" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -645,9 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="44" column="28" lean-forward="true" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -662,9 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -675,37 +646,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/context.js">
+    <entry file="file://$PROJECT_DIR$/src/firebase.js" />
+    <entry file="file://$PROJECT_DIR$/src/config/firebase.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/firebase.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="75">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
@@ -716,41 +661,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="21" lean-forward="true" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/context.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/config/keys.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" column="47" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/firebase.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
+          <caret line="7" column="12" lean-forward="true" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/actions/stakeaction.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="150">
+          <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
           <folding>
             <element signature="e#0#44#0" expanded="true" />
           </folding>
@@ -759,8 +721,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/Stake.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2115">
-          <caret line="141" column="25" lean-forward="true" selection-start-line="141" selection-start-column="25" selection-end-line="141" selection-end-column="25" />
+        <state relative-caret-position="55">
+          <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>
