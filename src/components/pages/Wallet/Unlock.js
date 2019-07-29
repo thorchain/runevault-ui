@@ -7,7 +7,7 @@ import { Center, H1, Text } from '../../Components'
 import Mnemonic from "./Mnemonic"
 import Keystore from "./Keystore"
 import Ledger from "./Ledger"
-import WalletConnectPane from "./WalletConnect"
+import WalletConnectPane from "./walletConnect"
 
 const { TabPane } = Tabs;
 
