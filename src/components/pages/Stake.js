@@ -13,7 +13,7 @@ import { Row, Form, Col, Modal, Input, message } from 'antd'
 import { H1, Button, Text, Coin, WalletAddress, WalletAddrShort} from "../Components"
 
 // RUNE-B1A
-const SYMBOL = "SLV-986"
+const SYMBOL = "RUNE-B1A"
 const NETWORK_ID = 714
 const MODE_STAKE = "STAKE RUNE"
 const MODE_WITHDRAWL = "WITHDRAW (Caution: time will be reset!)"
