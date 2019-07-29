@@ -85,167 +85,138 @@ const Stake = (props) => {
   }
 
   const handleOk = async (values) => {
-    // Send coins!
-    if (!context.wallet || !context.wallet.address) {
-      console.log("No wallet detected!")
-      return
-    }
+      // Send coins!
+      if (!context.wallet || !context.wallet.address) {
+        console.log("No wallet detected!")
+        return
+      }
 
-    setSending(true)
-    const binance = Binance
-    console.log("Values:", values)
+      setSending(true)
+      const binance = Binance
+      console.log("Values:", values)
 
-    // setup binance client for authentication
-    if (context.wallet.walletconnect) {
-      Binance.getAccount(context.wallet.address)
-        .then((response) => {
-          const account = response.result
-          console.log("AccountInfo:", account)
-          const tx = window.tx = {
-            accountNumber: account.account_number.toString(),
-            chainId: CHAIN_ID,
-            sequence: account.sequence.toString(),
-          };
+      // setup binance client for authentication
+      if (context.wallet.walletconnect) {
+        Binance.getAccount(context.wallet.address)
+          .then((response) => {
+            const account = response.result
+            console.log("AccountInfo:", account)
+            const tx = window.tx = {
+              accountNumber: account.account_number.toString(),
+              chainId: CHAIN_ID,
+              sequence: account.sequence.toString(),
+            };
 
+            if (mode === MODE_STAKE) {
+              tx.freeze_order = {
+                from: base64js.fromByteArray(crypto.decodeAddress(context.wallet.address)),
+                symbol: SYMBOL,
+                amount: (parseFloat(values.amount) * Math.pow(10, 8)).toString(),
+              }
+            } else if (mode === MODE_WITHDRAWL) {
+              tx.unfreeze_order = {
+                from: base64js.fromByteArray(crypto.decodeAddress(context.wallet.address)),
+                symbol: SYMBOL,
+                amount: (parseFloat(values.amount) * Math.pow(10, 8)).toString(),
+              }
+            } else {
+              throw new Error("invalid mode")
+            }
+            window.mywall = context.wallet.walletconnect
+            context.wallet.walletconnect
+              .trustSignTransaction(NETWORK_ID, tx)
+              .then(result => {
+                // Returns transaction signed in json or encoded format
+                window.result = result
+                console.log("Successfully signed freeze/unfreeze msg:", result);
+                binance.bnbClient.sendRawTransaction(result, true)
+                  .then((response) => {
+                    console.log("Response", response)
+                    setSending(false)
+                    setVisible(false)
+                    getBalances()
+                  })
+                  .catch((error) => {
+                    message.error(error.message)
+                    setSending(false)
+                    setVisible(false)
+                    console.error(error)
+                  })
+              })
+              .catch(error => {
+                // Error returned when rejected
+                console.error(error);
+                message.error(error.message)
+                setSending(false)
+                setVisible(false)
+              });
+            return
+          })
+          .catch((error) => {
+            window.err = error
+            message.error(error.message)
+            setSending(false)
+            setVisible(false)
+            console.error(error)
+            return
+          })
+      } else {
+
+        if (context.wallet.keystore) {
+          try {
+            const privateKey = crypto.getPrivateKeyFromKeyStore(
+              context.wallet.keystore,
+              values.password
+            )
+            binance.setPrivateKey(privateKey)
+
+          } catch(err) {
+            window.err = err
+            console.error("Validating keystore error:", err)
+            message.error(err.message)
+            setSending(false)
+            return
+          }
+
+        } else if (context.wallet.ledger) {
+          binance.useLedgerSigningDelegate(
+            context.wallet.ledger,
+            null, null, null,
+            context.wallet.hdPath,
+          )
+        } else {
+          throw new Error("no wallet detected")
+        }
+
+        try {
+          const manager = new TokenManagement(Binance.bnbClient).tokens
+          var results
           if (mode === MODE_STAKE) {
-            tx.freeze_order = {
-              from: base64js.fromByteArray(crypto.decodeAddress(context.wallet.address)),
-              symbol: SYMBOL,
-              amount: (parseFloat(values.amount) * Math.pow(10, 8)).toString(),
-            }
+            results = await manager.freeze(context.wallet.address, selectedCoin, values.amount)
           } else if (mode === MODE_WITHDRAWL) {
-            tx.unfreeze_order = {
-              from: base64js.fromByteArray(crypto.decodeAddress(context.wallet.address)),
-              symbol: SYMBOL,
-              amount: (parseFloat(values.amount) * Math.pow(10, 8)).toString(),
-            }
+            results = await manager.unfreeze(context.wallet.address, selectedCoin, values.amount)
           } else {
             throw new Error("invalid mode")
           }
-          window.mywall = context.wallet.walletconnect
-          context.wallet.walletconnect
-            .trustSignTransaction(NETWORK_ID, tx)
-            .then(result => {
-              // Returns transaction signed in json or encoded format
-              window.result = result
-              console.log("Successfully signed freeze/unfreeze msg:", result);
-              binance.bnbClient.sendRawTransaction(result, true)
-                .then((response) => {
-                  console.log("Response", response)
-                  setSending(false)
-                  setVisible(false)
-                  getBalances()
-                })
-                .catch((error) => {
-                  message.error(error.message)
-                  setSending(false)
-                  setVisible(false)
-                  console.error(error)
-                })
-            })
-            .catch(error => {
-              // Error returned when rejected
-              console.error(error);
-              message.error(error.message)
-              setSending(false)
-              setVisible(false)
-            });
-          return
-        })
-        .catch((error) => {
-          window.err = error
-          message.error(error.message)
           setSending(false)
-          setVisible(false)
-          console.error(error)
-          return
-        })
-    } else {
-
-      if (context.wallet.keystore) {
-        try {
-          const privateKey = crypto.getPrivateKeyFromKeyStore(
-            context.wallet.keystore,
-            values.password
-          )
-          binance.setPrivateKey(privateKey)
-
+          if (results.result[0].ok) {
+            const txURL = Binance.txURL(results.result[0].hash)
+            message.success(<Text>Sent. <a target="_blank" rel="noopener noreferrer" href={txURL}>See transaction</a>.</Text>, 10)
+            setVisible(false)
+            getBalances()
+          }
         } catch(err) {
           window.err = err
           console.error("Validating keystore error:", err)
           message.error(err.message)
           setSending(false)
-          return
         }
+        binance.clearPrivateKey()
 
-      } else if (context.wallet.ledger) {
-        binance.useLedgerSigningDelegate(
-          context.wallet.ledger,
-          null, null, null,
-          context.wallet.hdPath,
-        )
-      } else {
-        throw new Error("no wallet detected")
       }
 
-      try {
-        const manager = new TokenManagement(Binance.bnbClient).tokens
-        var results
-        if (mode === MODE_STAKE) {
-          results = await manager.freeze(context.wallet.address, selectedCoin, values.amount)
-        } else if (mode === MODE_WITHDRAWL) {
-          results = await manager.unfreeze(context.wallet.address, selectedCoin, values.amount)
-        } else {
-          throw new Error("invalid mode")
-        }
-        setSending(false)
-        if (results.result[0].ok) {
-          const txURL = Binance.txURL(results.result[0].hash)
-          message.success(<Text>Sent. <a target="_blank" rel="noopener noreferrer" href={txURL}>See transaction</a>.</Text>, 10)
-          setVisible(false)
-          getBalances()
-        }
-      } catch(err) {
-        window.err = err
-        console.error("Validating keystore error:", err)
-        message.error(err.message)
-        setSending(false)
-      }
-      binance.clearPrivateKey()
-
-    } else if (context.wallet.ledger) {
-      binance.useLedgerSigningDelegate(
-        context.wallet.ledger,
-        null, null, null,
-        context.wallet.hdPath,
-      )
     }
 
-    try {
-      const manager = new TokenManagement(Binance.bnbClient).tokens
-      var results
-      if (mode === "STAKE RUNE") {
-        results = await manager.freeze(context.wallet.address, selectedCoin, values.amount)
-      } else if (mode === "WITHDRAW (Caution: time will be reset!)") {
-        results = await manager.unfreeze(context.wallet.address, selectedCoin, values.amount)
-      } else {
-        throw new Error("invalid mode")
-      }
-      setSending(false)
-      if (results.result[0].ok) {
-        const txURL = Binance.txURL(results.result[0].hash)
-        message.success(<Text>Sent. <a target="_blank" rel="noopener noreferrer" href={txURL}>See transaction</a>.</Text>, 10)
-        setVisible(false)
-        getBalances()
-      }
-    } catch(err) {
-      window.err = err
-      console.error("Validating keystore error:", err)
-      message.error(err.message)
-      setSending(false)
-    }
-
-  }
 
   const handleCancel = () => {
     setVisible(false)
@@ -332,16 +303,9 @@ const Stake = (props) => {
             <Col xs={24}>
 
               {!loadingBalances && context.wallet && (balances || []).length > 0 &&
-              <Row style={{marginBottom: "50px"}}>
+                <Row style={{marginBottom: "50px"}}>
 
-                <Col xs={24} sm={6} style={paneStyle}>
-
-                  <Row style={{marginTop: "10px", marginLeft: "10px"}}>
-                    <Col xs={24}>
-                      <Text size={18}>SELECT RUNE BELOW:</Text>
-                      <hr />
-                    </Col>
-                  </Row>
+                  <Col xs={24} sm={6} style={paneStyle}>
 
                     <Row style={{marginTop: "10px", marginLeft: "10px"}}>
                       <Col xs={24} style={{paddingRight: "10px"}}>
@@ -349,116 +313,25 @@ const Stake = (props) => {
                         <hr />
                       </Col>
                     </Row>
-                  ))
+
+
+                    {!loadingBalances && (balances || []).map((coin) => (
+                      <Row key={coin.ticker} style={coinRowStyle}>
+                        <Col xs={24}>
+                          <Coin {...coin} onClick={setSelectedCoin} border={selectedCoin === coin.ticker}/>
+                        </Col>
+                      </Row>
+                    ))
                   }
                 </Col>
 
-                <Col 
-                  xs={24} 
-                  sm={16} 
-                  style={{backgroundColor: "#48515D", marginTop: "20px", borderRadius: 5,}}
-                >
+                <Col xs={24} sm={16} style={{backgroundColor: "#48515D",
+                marginTop: "20px",
+                borderRadius: 5,}}>
 
-                {selectedCoin && selectedCoin === SYMBOL &&
-                <Row style={{marginTop: "10px", marginLeft: "10px", marginRight: "10px"}}>
-                  <Col xs={24}>
-
-                    <Text size={18}>STAKE RUNE TO EARN REWARDS</Text>
-                    <hr />
-                    <Text size={14}>Note: RUNE will be staked on your address securely using the </Text>
-                    <a href="https://docs.binance.org/tokens.html#freeze-unfreeze"
-                      target="_blank" rel="noopener noreferrer">
-                      <Text size={15} style={{fontWeight: 'bold'}}>Binance Chain "FREEZE" command.</Text>
-                    </a>
-                    <br></br>
-                    <Text size={10}>RUNE will be paid out each week. You can add more, but any withdrawals will reset your holding period.
-                      Your weekly payout is calculated based the balance of your staked RUNE, multiplied by the compounded interest rate, set in the</Text>
-                    <a href="https://medium.com/thorchain/introducing-runevault-stake-and-earn-rune-87576671d1e4"
-                      target="_blank" rel="noopener noreferrer">
-                      <Text size={11} style={{fontWeight: 'bold'}}> EARNING SCHEDULE.</Text>
-                    </a>
-
-
-                  </Col>
-                </Row>
-                }
-
-                {selectedCoin && selectedCoin === SYMBOL &&
-                <Row style={coinRowStyle}>
-                  <Col xs={12} style={{marginTop: "10px"}}>
-
-                    <span>
-                      <Text>TOTAL BALANCE:</Text>
-                    </span>
-                    <span style={{margin: "0px 20px"}} size={22}>
-                      {AmounttoString(balances.find((b) => {
-                        return b.ticker === SYMBOL
-                      }).free +
-                        balances.find((b) => {
-                          return b.ticker === SYMBOL
-                        }).frozen
-                      )}
-                    </span>
-
-                  </Col>
-                </Row>
-                }
-
-
-                {selectedCoin && selectedCoin === SYMBOL &&
-                <Row style={coinRowStyle}>
-                  <Col xs={24} sm={12}>
-                    <Row>
-                      <Col>
-                        <span>
-                          <Text>NOT STAKED:</Text>
-                        </span>
-                        <span style={{margin: "0px 20px"}} size={22}>{balances.find((b) => {
-                          return b.ticker === SYMBOL
-                        }).free}
-                      </span>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Button
-                        style={{height:30, width:150, marginTop: 10}}
-                        onClick={() => { confirmation(MODE_STAKE) }}
-                        loading={sending}
-                      >
-                        STAKE
-                      </Button>
-                    </Col>
-                  </Row>
-                </Col>
-
-                <Col xs={24} sm={12}>
-                  <Row>
-                    <Col>
-                      <span>
-                        <Text>STAKED:</Text>
-                      </span>
-                      <span style={{margin: "0px 20px"}} size={22}>{balances.find((b) => {
-                        return b.ticker === SYMBOL
-                      }).frozen}
-                    </span>
-                  </Col>
-                </Row>
-
-                <Row>
-                  <Col>
-                    <Button secondary
-                      style={{height:30, width:150, marginTop: 10}}
-                      onClick={() => { confirmation(MODE_WITHDRAWL) }}
-                      loading={sending}
-                    >
-                      WITHDRAW
-                    </Button>
-                    <br></br>
-
-                    <Text>Caution: your time will be reset!</Text>
-                  </Col>
-                </Row>
+                  {selectedCoin && selectedCoin === SYMBOL &&
+                    <Row style={{marginTop: "10px", marginLeft: "10px", marginRight: "10px"}}>
+                      <Col xs={24}>
 
 
 
@@ -604,6 +477,7 @@ const Stake = (props) => {
             }
           </Col>
         </Row>
+
 
 
 

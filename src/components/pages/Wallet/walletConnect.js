@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 
 import WalletConnect from "@trustwallet/walletconnect";
 import WalletConnectQRCodeModal from "@walletconnect/qrcode-modal";
 
 import { Icon, Text, Center } from '../../Components'
-import { Row, Col, message } from 'antd'
+import { Row, Col } from 'antd'
 
 import { Context } from '../../../context'
 import { crypto } from '@binance-chain/javascript-sdk'
@@ -13,7 +13,6 @@ import { crypto } from '@binance-chain/javascript-sdk'
 const WalletConnectPane = props => {
 
   const context = useContext(Context)
-  const [connecting, setConnecting] = useState(false)
 
   const walletConnect = async () => {
     const walletConnector = window.mywallet = new WalletConnect({
