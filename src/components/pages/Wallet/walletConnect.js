@@ -7,7 +7,7 @@ import { Icon, Text, Center } from '../../Components'
 import { Row, Col, message } from 'antd'
 
 import { Context } from '../../../context'
-//import { crypto } from '@binance-chain/javascript-sdk'
+import { crypto } from '@binance-chain/javascript-sdk'
 
 
 const WalletConnectPane = props => {
@@ -53,6 +53,7 @@ const WalletConnectPane = props => {
         const account = result.find((account) => account.network === 714);
         console.log("ACCOUNT:", account)
         console.log("WALLET CONNECT ACCOUNTS RESULTS " + account.address);
+        console.log("ADDR:", crypto.decodeAddress(account.address))
         context.setContext({
           "wallet": {
             "walletconnect": walletConnector,

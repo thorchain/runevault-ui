@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
 import TokenManagement, { crypto } from '@binance-chain/javascript-sdk'
+import base64js from 'base64-js'
 
 import Breakpoint from 'react-socks';
 
@@ -92,6 +93,7 @@ const Stake = (props) => {
 
     setSending(true)
     const binance = Binance
+    console.log("Values:", values)
 
     // setup binance client for authentication
     if (context.wallet.walletconnect) {
@@ -99,55 +101,62 @@ const Stake = (props) => {
         .then((response) => {
           const account = response.result
           console.log("AccountInfo:", account)
-          Binance.fees()
-            .then((response) => {
-              const fee = response.data.find((fee) => fee.msg_type === "tokensFreeze");
-              console.log("FEE", fee)
-              const tx = window.tx = {
-                accountNumber: account.account_number.toString(),
-                chainId: CHAIN_ID,
-                fee: {
-                  gas: fee.fee.toString(),
-                },
-                sequence: account.sequence.toString(),
-              };
+          const tx = window.tx = {
+            accountNumber: account.account_number.toString(),
+            chainId: CHAIN_ID,
+            sequence: account.sequence.toString(),
+          };
 
-              if (mode === MODE_STAKE) {
-                tx.TokenFreezeOrder = {
-                  from: context.wallet.address,
-                  symbol: SYMBOL,
-                  amount: values.amount,
-                }
-              } else if (mode === MODE_WITHDRAWL) {
-                tx.TokenUnfreezeOrder = {
-                  from: context.wallet.address,
-                  symbol: SYMBOL,
-                  amount: values.amount,
-                }
-              } else {
-                throw new Error("invalid mode")
-              }
-              window.mywall = context.wallet.walletconnect
-              context.wallet.walletconnect
-                .trustSignTransaction(NETWORK_ID, tx)
-                .then(result => {
-                  // Returns transaction signed in json or encoded format
-                  console.log("Successfully signed freeze/unfreeze msg:", result);
+          if (mode === MODE_STAKE) {
+            tx.freeze_order = {
+              from: base64js.fromByteArray(crypto.decodeAddress(context.wallet.address)),
+              symbol: SYMBOL,
+              amount: (parseFloat(values.amount) * Math.pow(10, 8)).toString(),
+            }
+          } else if (mode === MODE_WITHDRAWL) {
+            tx.unfreeze_order = {
+              from: base64js.fromByteArray(crypto.decodeAddress(context.wallet.address)),
+              symbol: SYMBOL,
+              amount: (parseFloat(values.amount) * Math.pow(10, 8)).toString(),
+            }
+          } else {
+            throw new Error("invalid mode")
+          }
+          window.mywall = context.wallet.walletconnect
+          context.wallet.walletconnect
+            .trustSignTransaction(NETWORK_ID, tx)
+            .then(result => {
+              // Returns transaction signed in json or encoded format
+              window.result = result
+              console.log("Successfully signed freeze/unfreeze msg:", result);
+              binance.bnbClient.sendRawTransaction(result, true)
+                .then((response) => {
+                  console.log("Response", response)
+                  setSending(false)
+                  setVisible(false)
+                  getBalances()
                 })
-                .catch(error => {
-                  // Error returned when rejected
-                  console.error(error);
-                });
-              return
+                .catch((error) => {
+                  message.error(error.message)
+                  setSending(false)
+                  setVisible(false)
+                  console.error(error)
+                })
             })
-            .catch((error) => {
-              window.err = error
-              console.error(error)
-            })
-
+            .catch(error => {
+              // Error returned when rejected
+              console.error(error);
+              message.error(error.message)
+              setSending(false)
+              setVisible(false)
+            });
+          return
         })
         .catch((error) => {
           window.err = error
+          message.error(error.message)
+          setSending(false)
+          setVisible(false)
           console.error(error)
           return
         })
