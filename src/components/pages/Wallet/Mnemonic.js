@@ -3,7 +3,9 @@ import { Icon, Row } from 'antd'
 
 import { Button, Text } from '../../Components'
 
+
 const Mnemonic = props => {
+
   return (
     <>
       <Row style={{marginBottom: 10}}>
