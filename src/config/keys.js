@@ -1,4 +1,4 @@
-import { config } from './env'
+import { config } from '../env'
 
 export const FirebaseConfig = {
     apiKey: config.apiKey,
