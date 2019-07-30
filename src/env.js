@@ -2,6 +2,7 @@ const isMainnet = true
 const isTestnet = !isMainnet
 
 const NET = isTestnet ? "testnet" : "mainnet"
+const CHAIN_ID = isTestnet ? "Binance-Chain-Nile" : "Binance-Chain-Tigris"
 
 const config = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -15,6 +16,7 @@ const config = {
 
 export {
     NET,
+    CHAIN_ID,
     isTestnet,
     isMainnet,
     config

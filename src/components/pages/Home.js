@@ -75,7 +75,7 @@ const Home = (props) => {
 
         <Col  xs={24} sm={11} md={10} lg={9}>
           <h4 style={{color:"#848E9C"}}>NUMBER OF STAKERS:</h4>
-          <H1>83</H1>
+          <H1>104</H1>
         </Col>
 
         <Col  xs={24} sm={11} md={10} lg={9}>
@@ -94,12 +94,12 @@ const Home = (props) => {
 
         <Col  xs={24} sm={13} md={12} lg={11}>
           <h4 style={{color:"#848E9C"}}>TOTAL STAKED:</h4>
-          <H1> 16,519,144.18 RUNE</H1>
+          <H1> 16,977,611.09 RUNE</H1>
         </Col>
 
         <Col  xs={24} sm={9} md={8} lg={7}>
           <h4 style={{color:"#848E9C"}}>STAKED SUPPLY:</h4>
-          <H1> 20.1%</H1>
+          <H1>{((16977611.09 / 82184069) * 100).toFixed(1) + "%"}</H1>
         </Col>
 
         <Col xs={24} sm={1} md={2} lg={3}>
@@ -114,7 +114,7 @@ const Home = (props) => {
 
         <Col  xs={12} sm={11} md={10} lg={9}>
           <h4 style={{color:"#848E9C"}}>LAST UPDATED:</h4>
-          <h4 style={{color:"#FFF"}}>28 JULY 2019</h4>
+          <h4 style={{color:"#FFF"}}>29 JULY 2019</h4>
         </Col>
 
         <Col  xs={12} sm={11} md={10} lg={9}>

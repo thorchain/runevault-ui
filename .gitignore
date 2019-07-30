@@ -25,4 +25,5 @@ yarn-error.log*
 .firebase*
 
 keys.txt
+.idea/
 .env
