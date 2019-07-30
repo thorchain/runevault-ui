@@ -7,11 +7,11 @@ import { connect } from 'react-redux';
 
 import { Context } from '../../context'
 import Binance from "../../clients/binance"
-import { AmounttoString } from '../../utility'
+import { AmounttoString } from '../../utils/utility'
 
 import { Row, Form, Col, Modal, Input, message } from 'antd'
 import { H1, Button, Text, Coin, WalletAddress, WalletAddrShort} from "../Components"
-import {saveStake, fetchStake} from "../../actions/stakeaction";
+import {saveStake} from "../../actions/stakeaction";
 
 // RUNE-B1A
 const SYMBOL = "RUNE-B1A"
@@ -120,17 +120,20 @@ const Stake = (props) => {
     try {
       const manager = new TokenManagement(Binance.bnbClient).tokens
       var results
+      var modeValue
       if (mode === "STAKE RUNE") {
+        modeValue = "Staked";
         results = await manager.freeze(context.wallet.address, selectedCoin, values.amount)
       } else if (mode === "WITHDRAW (Caution: time will be reset!)") {
-        results = await manager.unfreeze(context.wallet.address, selectedCoin, values.amount)
+          modeValue = "Withdraw";
+          results = await manager.unfreeze(context.wallet.address, selectedCoin, values.amount)
       } else {
         throw new Error("invalid mode")
       }
       setSending(false)
       if (results.result[0].ok) {
         const txURL = Binance.txURL(results.result[0].hash)
-        const stakeValue = { address: context.wallet.address, amountStaked: values.amount }
+        const stakeValue = { address: context.wallet.address, amount: values.amount, mode: modeValue }
         props.dispatch(saveStake(stakeValue))
         message.success(<Text>Sent. <a target="_blank" rel="noopener noreferrer" href={txURL}>See transaction</a>.</Text>, 10)
         setVisible(false)

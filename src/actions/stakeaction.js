@@ -1,28 +1,26 @@
 import {stakeRef} from '../config/firebase';
 import {FETCH_STAKE} from "./index";
-import * as firebase from 'firebase'
+import * as firebase from 'firebase';
+import { mapStakeValueWithAddress } from '../utils/utility'
 
 export const saveStake = (stakeValue)  => async => {
-
-    stakeRef.push({address: stakeValue.address, date: firebase.firestore.Timestamp.now(), amountStaked: stakeValue.amount });
+    stakeRef.push({address: stakeValue.address, date: firebase.firestore.Timestamp.now(), amount: parseInt(stakeValue.amount, 10), mode: stakeValue.mode });
 };
 
 export const fetchStake = () => async dispatch => {
+
+    const stakeList = [];
     stakeRef.on("value", snapshot => {
 
-        const stakeList = snapshotToArray(snapshot.val());
-
-        var sortedStakeByAmountStaked = stakeList.slice(0);
-        sortedStakeByAmountStaked.sort(function(a,b) {
-            return a.amountStaked - b.amountStaked;
+        snapshot.forEach(function(_child){
+            var rowValue = _child.val();
+            console.log(rowValue.date.getTime())
+            stakeList.push(rowValue);
         });
-        console.log('sorted stake ' + sortedStakeByAmountStaked);
 
         dispatch({
             type: FETCH_STAKE,
-            fetchStake: snapshot.val()
+            fetchStake: mapStakeValueWithAddress(stakeList)
         });
     });
 };
-
-const snapshotToArray = snapshot => Object.entries(snapshot).map(e => Object.assign(e[1], { key: e[0] }));

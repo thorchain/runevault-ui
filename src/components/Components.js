@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Button as AntButton } from "antd"
 
 import { Context } from '../context'
-import { AmounttoString } from '../utility'
+import { AmounttoString } from '../utils/utility'
 
 export const WalletAddress = props => {
   const context = useContext(Context)
