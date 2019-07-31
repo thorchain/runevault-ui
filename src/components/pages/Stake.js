@@ -4,14 +4,15 @@ import TokenManagement, { crypto } from '@binance-chain/javascript-sdk'
 import base64js from 'base64-js'
 
 import Breakpoint from 'react-socks';
+import { connect } from 'react-redux';
 
 import { Context } from '../../context'
 import Binance from "../../clients/binance"
-import { AmounttoString } from '../../utility'
+import { AmounttoString } from '../../utils/utility'
 import { CHAIN_ID } from '../../env'
-
 import { Row, Form, Col, Modal, Input, message } from 'antd'
 import { H1, Button, Text, Coin, WalletAddress, WalletAddrShort} from "../Components"
+import {saveStake} from "../../actions/stakeaction";
 
 // RUNE-B1A
 const SYMBOL = "RUNE-B1A"
@@ -191,9 +192,12 @@ const Stake = (props) => {
         try {
           const manager = new TokenManagement(Binance.bnbClient).tokens
           var results
+          var modeValue
           if (mode === MODE_STAKE) {
-            results = await manager.freeze(context.wallet.address, selectedCoin, values.amount)
+              modeValue = "Staked"
+              results = await manager.freeze(context.wallet.address, selectedCoin, values.amount)
           } else if (mode === MODE_WITHDRAWL) {
+             modeValue = "Withdraw"
             results = await manager.unfreeze(context.wallet.address, selectedCoin, values.amount)
           } else {
             throw new Error("invalid mode")
@@ -201,6 +205,8 @@ const Stake = (props) => {
           setSending(false)
           if (results.result[0].ok) {
             const txURL = Binance.txURL(results.result[0].hash)
+              const stakeValue = { address: context.wallet.address, amount: values.amount, mode: modeValue }
+              props.dispatch(saveStake(stakeValue))
             message.success(<Text>Sent. <a target="_blank" rel="noopener noreferrer" href={txURL}>See transaction</a>.</Text>, 10)
             setVisible(false)
             getBalances()
@@ -568,5 +574,10 @@ const StakeForm = (props) => {
 
 const WrappedStakeForm = Form.create({ name: 'staking' })(StakeForm);
 
+function mapStateToProps(state) {
+    return {
+        stake: state.stake
+    };
+}
 
-export default Stake
+export default connect(mapStateToProps)(Stake)
