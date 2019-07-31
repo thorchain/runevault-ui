@@ -130,7 +130,7 @@ class Home extends Component {
 
                     <Col xs={12} sm={11} md={10} lg={9}>
                         <h4 style={{color: "#848E9C"}}>LAST UPDATED:</h4>
-                        <h4 style={{color: "#FFF"}}>29 JULY 2019</h4>
+                        <h4 style={{color: "#FFF"}}>{stake.lastUpdatedDate}</h4>
                     </Col>
 
                     <Col xs={12} sm={11} md={10} lg={9}>

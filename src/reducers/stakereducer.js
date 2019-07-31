@@ -5,7 +5,8 @@ const initialState = {
     fetchStake: {},
     sumStake: '',
     totalStakers: 0,
-    stakedSupply: ''
+    stakedSupply: '',
+    lastUpdatedDate: ''
 }
 
 export function stake(state = initialState, action) {
@@ -21,6 +22,8 @@ export function stake(state = initialState, action) {
             return {...state, totalStakers: action.totalStakers};
         case types.STAKED_SUPPLY:
             return {...state, stakedSupply: action.stakedSupply};
+        case types.LAST_UPDATED_DATE:
+            return {...state, lastUpdatedDate: action.lastUpdatedDate};
         default:
             return state;
     }
