@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="97543396-0ce5-4baa-826b-4ee04cfcd717" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/stakeaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/stakeaction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/stakereducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/stakereducer.js" afterDir="false" />
-    </list>
+    <list default="true" id="97543396-0ce5-4baa-826b-4ee04cfcd717" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,8 +58,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="120" column="54" lean-forward="true" selection-start-line="120" selection-start-column="54" selection-end-line="120" selection-end-column="54" />
+            <state relative-caret-position="419">
+              <caret line="130" column="45" selection-start-line="130" selection-start-column="45" selection-end-line="130" selection-end-column="45" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -72,77 +67,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+            <state relative-caret-position="120">
+              <caret line="8" selection-start-line="8" selection-end-line="14" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/reducers/stakereducer.js">
+        <entry file="file://$PROJECT_DIR$/src/env.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/actions/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="26" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/actions/stakeaction.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="54" column="16" lean-forward="true" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#44#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/utility.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-              <folding>
-                <element signature="e#0#22#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/reducers/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/config/firebase.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-              <folding>
-                <element signature="e#0#36#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="285">
+              <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -152,18 +90,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="345">
               <caret line="23" selection-start-line="23" selection-end-line="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -248,11 +174,11 @@
         <option value="$PROJECT_DIR$/src/components/pages/Stake.js" />
         <option value="$PROJECT_DIR$/src/utils/utility.js" />
         <option value="$PROJECT_DIR$/src/actions/index.js" />
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/src/reducers/stakereducer.js" />
         <option value="$PROJECT_DIR$/src/actions/stakeaction.js" />
         <option value="$PROJECT_DIR$/src/components/pages/Home.js" />
         <option value="$PROJECT_DIR$/src/config/firebase.js" />
+        <option value="$PROJECT_DIR$/.env" />
       </list>
     </option>
   </component>
@@ -368,43 +294,6 @@
               <item name="rune-vault-ui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="rune-vault-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rune-vault-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="actions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rune-vault-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rune-vault-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rune-vault-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rune-vault-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rune-vault-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rune-vault-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rune-vault-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rune-vault-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="reducers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rune-vault-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rune-vault-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -415,7 +304,7 @@
     <property name="SearchEverywhereHistoryKey" value="St&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;Hom&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Home.js&#10;sta&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;stake.js&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;stak&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/actions/stakeaction.js&#10;stakea&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/actions/stakeaction.js&#10;stake&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;keys&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/config/keys.js&#10;App.&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/App.js&#10;staj&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;inde&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/index.js&#10;unlo&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet/Unlock.js&#10;wallec&#9;null&#9;null&#10;wall&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet&#10;ledger-ap&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/public/images/ledger-app.svg&#10;led&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet/Ledger.js&#10;Head&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/layout/Header.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564578036252" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564579251414" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -514,7 +403,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56247000" />
+    <option name="totallyTimeSpent" value="56366000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="828" extended-state="0" />
@@ -699,13 +588,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/utils.js" />
-    <entry file="file://$PROJECT_DIR$/src/env.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/config/keys.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -764,16 +646,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/runevault-31july19.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/runevault-31july19.json" />
     <entry file="file://$PROJECT_DIR$/src/utils/utility.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -781,9 +658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -791,13 +665,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -819,16 +686,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
           <caret line="54" column="16" lean-forward="true" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="120" column="54" lean-forward="true" selection-start-line="120" selection-start-column="54" selection-end-line="120" selection-end-column="54" />
+        <state relative-caret-position="419">
+          <caret line="130" column="45" selection-start-line="130" selection-start-column="45" selection-end-line="130" selection-end-column="45" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
@@ -839,9 +703,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/env.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="14" selection-end-column="53" />
         </state>
       </provider>
     </entry>
