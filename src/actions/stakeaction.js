@@ -1,5 +1,5 @@
 import {stakeRef} from '../config/firebase';
-import {FETCH_STAKE, SUM_STAKE, TOTAL_STAKERS} from "./index";
+import {FETCH_STAKE, STAKED_SUPPLY, SUM_STAKE, TOTAL_STAKERS} from "./index";
 import { mapStakeValueWithAddress } from '../utils/utility'
 
 export const saveStake = (stakeValue)  => async => {
@@ -37,9 +37,13 @@ export const sumStake = () => async dispatch => {
             const totalStakers = stakeModeList.length;
 
             const sumStake = stakeModeList.map(item => item.amount).reduce((prev, next) => prev + next);
+            const stakedSuppy = (sumStake/82184069)*100
+
+            console.log('STAKED SUPPLY ' + stakedSuppy.toFixed(1));
 
             dispatch(setSumStake(sumStake.toLocaleString()));
-            dispatch(seTtotalStakers(totalStakers));
+            dispatch(seTotalStakers(totalStakers));
+            dispatch(setSakedSupply(stakedSuppy.toFixed(1)));
         }
 
     });
@@ -52,9 +56,16 @@ export const setSumStake = (sumStake) => {
     }
 };
 
-export const seTtotalStakers = (totalStakers) => {
+export const seTotalStakers = (totalStakers) => {
     return {
         type: TOTAL_STAKERS,
         totalStakers
+    }
+};
+
+export const setSakedSupply = (stakedSupply) => {
+    return {
+        type: STAKED_SUPPLY,
+        stakedSupply
     }
 };

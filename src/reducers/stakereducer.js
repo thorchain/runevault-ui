@@ -4,7 +4,8 @@ const initialState = {
     stakeValue: {},
     fetchStake: {},
     sumStake: '',
-    totalStakers: 0
+    totalStakers: 0,
+    stakedSupply: ''
 }
 
 export function stake(state = initialState, action) {
@@ -18,6 +19,8 @@ export function stake(state = initialState, action) {
             return {...state, sumStake: action.sumStake};
         case types.TOTAL_STAKERS:
             return {...state, totalStakers: action.totalStakers};
+        case types.STAKED_SUPPLY:
+            return {...state, stakedSupply: action.stakedSupply};
         default:
             return state;
     }

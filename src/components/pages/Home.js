@@ -115,7 +115,7 @@ class Home extends Component {
 
                     <Col xs={24} sm={9} md={8} lg={7}>
                         <h4 style={{color: "#848E9C"}}>STAKED SUPPLY:</h4>
-                        <H1>{((16977611.09 / 82184069) * 100).toFixed(1) + "%"}</H1>
+                        <H1>{stake.stakedSupply}%</H1>
                     </Col>
 
                     <Col xs={24} sm={1} md={2} lg={3}>
