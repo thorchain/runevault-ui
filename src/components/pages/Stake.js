@@ -114,7 +114,7 @@ const Stake = (props) => {
 
   const confirmation = (mode) => {
     const bnb = balances.find((b) => {
-      return b.ticker === "bogus"
+      return b.ticker === "BNB"
     }) || {free: 0}
     if (fee > bnb.free) {
       message.error("Insufficient fund: Not enough for transaction fee of " + fee + "BNB", 10)
