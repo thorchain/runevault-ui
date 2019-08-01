@@ -26,6 +26,7 @@ const Stake = (props) => {
   const [mode, setMode] = useState("stake")
   const [loadingBalances, setLoadingBalancer] = useState(false)
   const [price, setPrice] = useState(null)
+  const [fee, setFee] = useState(null)
 
   // confirmation modal variables
   const [visible, setVisible] = useState(false)
@@ -42,6 +43,20 @@ const Stake = (props) => {
       .catch((error) => {
         console.error(error)
       })
+  }
+
+  const getFee = () => {
+    Binance.fees()
+      .then((response) => {
+        const fee = response.data.find((item) => {
+          return item.msg_type === "tokensFreeze"
+        })
+        setFee(Binance.calculateFee(fee.fee))
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+
   }
 
   const getBalances = () => {
@@ -70,6 +85,7 @@ const Stake = (props) => {
 
   useEffect(() => {
     getPrice()
+    getFee()
   }, [])
 
   useEffect(() => {
@@ -97,6 +113,13 @@ const Stake = (props) => {
   }, [context.wallet])
 
   const confirmation = (mode) => {
+    const bnb = balances.find((b) => {
+      return b.ticker === "bogus"
+    }) || {free: 0}
+    if (fee > bnb.free) {
+      message.error("Insufficient fund: Not enough for transaction fee of " + fee + "BNB", 10)
+      return
+    }
     setMode(mode)
     setVisible(true)
   }
@@ -524,7 +547,7 @@ const Stake = (props) => {
           bodyStyle={{backgroundColor: "#101921", paddingBottom: 10}}
           headStyle={{backgroundColor: "#2B3947", color: "#fff"}}
         >
-          <WrappedStakeForm password={passwordRequired} button={mode} onSubmit={handleOk} onCancel={handleCancel} loading={sending} />
+          <WrappedStakeForm fee={fee} password={passwordRequired} button={mode} onSubmit={handleOk} onCancel={handleCancel} loading={sending} />
         </Modal>
 
 
@@ -589,6 +612,9 @@ const StakeForm = (props) => {
           >
             {props.button.charAt(0).toUpperCase() + props.button.slice(1)}
           </Button>
+          <div style={{padding: 0, margin: 0}}>
+            <Text style={{float: "right"}} size={12} color="#FF4136">Fee: {props.fee} BNB</Text>
+          </div>
         </div>
       </Form.Item>
     </Form>
