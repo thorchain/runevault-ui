@@ -4,3 +4,5 @@ export const SUM_STAKE = 'SUM_STAKE';
 export const TOTAL_STAKERS = 'TOTAL_STAKERS';
 export const STAKED_SUPPLY = 'STAKED_SUPPLY';
 export const LAST_UPDATED_DATE = 'LAST_UPDATED_DATE';
+export const LEADERBOARD_LIST = 'LEADERBOARD_LIST';
+export const DATA_SOURCE = 'DATA_SOURCE';

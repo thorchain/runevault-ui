@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import {stakeRef} from "../config/firebase";
 
 // replacement for .toLocaleString(). That func does rounding that I don't like.
 const AmounttoString = (amount) => {
@@ -8,23 +9,20 @@ const AmounttoString = (amount) => {
   return parts.join(".");
 }
 
-function mapStakeValueWithAddress(stakeList) {
-    var groups = _.groupBy(stakeList, 'address');
-    var adressByHighestStake = _.map(groups, function (value, key) {
-        return {
-            address: key,
-            amount: _.reduce(value, function (total, o) {
-                return total + parseInt(o.amount);
-            }, 0)
-        };
-    });
+function formatDate(lastUpdatedDate){
+    return lastUpdatedDate.toLocaleDateString('en-GB', {
+        day: 'numeric', month: 'long', year: 'numeric'
+    }).replace(/ /g, ' ');
+}
 
-    adressByHighestStake.sort((a, b) => Number(b.amount) - Number(a.amount));
-
-    return adressByHighestStake;
+function pushData(jsonData) {
+    jsonData.forEach(a =>
+    {
+        stakeRef.push({address: a.Address, date: new Date(a.Date).getTime(), amount: parseInt(a.Amount, 10), mode: a.Mode });
+    })
 }
 
 export {
   AmounttoString,
-  mapStakeValueWithAddress
+    formatDate,
 }

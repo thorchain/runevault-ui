@@ -13,6 +13,7 @@ import Home from './components/pages/Home'
 import Stake from './components/pages/Stake'
 import Unlock from './components/pages/Wallet/Unlock'
 import Wallet from './components/pages/Wallet/index'
+import Leaderboard from './components/pages/leaderboard';
 
 import 'antd/dist/antd.css'
 import './App.css'
@@ -34,6 +35,7 @@ const App = (props) => {
                   <Route path="/stake" exact component={Stake} />
                   <Route path="/wallet" exact component={Wallet} />
                   <Route path="/wallet/unlock" exact component={Unlock} />
+                  <Route path="/leaderboard" exact component={Leaderboard} />
                 </Switch>
               </Content>
             </Layout>

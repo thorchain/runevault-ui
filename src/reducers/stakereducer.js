@@ -6,7 +6,9 @@ const initialState = {
     sumStake: '',
     totalStakers: 0,
     stakedSupply: '',
-    lastUpdatedDate: ''
+    lastUpdatedDate: '',
+    leaderBoardList: [],
+    dataSource: []
 }
 
 export function stake(state = initialState, action) {
@@ -24,6 +26,10 @@ export function stake(state = initialState, action) {
             return {...state, stakedSupply: action.stakedSupply};
         case types.LAST_UPDATED_DATE:
             return {...state, lastUpdatedDate: action.lastUpdatedDate};
+        case types.LEADERBOARD_LIST:
+            return {...state, leaderBoardList: action.leaderBoardList};
+        case types.DATA_SOURCE:
+            return {...state, dataSource: action.dataSource};
         default:
             return state;
     }

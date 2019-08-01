@@ -1,29 +1,19 @@
 import {stakeRef} from '../config/firebase';
-import {FETCH_STAKE, LAST_UPDATED_DATE, STAKED_SUPPLY, SUM_STAKE, TOTAL_STAKERS} from "./index";
-import { mapStakeValueWithAddress } from '../utils/utility'
+import {
+    DATA_SOURCE,
+    LAST_UPDATED_DATE,
+    LEADERBOARD_LIST,
+    STAKED_SUPPLY,
+    SUM_STAKE,
+    TOTAL_STAKERS
+} from "./index";
+import { formatDate } from '../utils/utility'
 
 export const saveStake = (stakeValue)  => async => {
     stakeRef.push({address: stakeValue.address, date: new Date().getTime(), amount: parseInt(stakeValue.amount, 10), mode: stakeValue.mode });
 };
 
-export const fetchStake = () => async dispatch => {
-
-    const stakeList = [];
-    stakeRef.on("value", snapshot => {
-
-        snapshot.forEach(function(_child){
-            var rowValue = _child.val();
-            stakeList.push(rowValue);
-        });
-
-        dispatch({
-            type: FETCH_STAKE,
-            fetchStake: mapStakeValueWithAddress(stakeList)
-        });
-    });
-};
-
-export const sumStake = () => async dispatch => {
+export const sumStake = () => dispatch => {
     const stakeList = [];
     stakeRef.on("value", snapshot => {
 
@@ -41,15 +31,35 @@ export const sumStake = () => async dispatch => {
 
             const lastUpdatedDate = new Date(stakeList[stakeList.length - 1].date);
 
-            const formattedDate = lastUpdatedDate.toLocaleDateString('en-GB', {
-                day: 'numeric', month: 'long', year: 'numeric'
-            }).replace(/ /g, ' ');
+            var result = [];
+            stakeModeList.reduce(function(res, value) {
+                if (!res[value.address]) {
+                    res[value.address] = { address: value.address, amount: 0, date: new Date(value.date).toISOString() };
+                    result.push(res[value.address])
+                }
+                res[value.address].amount += value.amount;
+                return res;
+            }, {});
 
+            const resultValue = result.sort((a, b) => Number(b.amount) - Number(a.amount));
+
+            const viewableLeaderBoardList = [];
+            for (var i = 0; i < resultValue.length; i++) {
+                viewableLeaderBoardList.push({
+                    key: i,
+                    avatar: resultValue[i].address,
+                    address: resultValue[i].address,
+                    staked: resultValue[i].amount,
+                    lastUpdated: resultValue[i].date,
+                });
+            }
 
             dispatch(setSumStake(sumStake.toLocaleString()));
             dispatch(seTotalStakers(totalStakers));
             dispatch(setSakedSupply(stakedSuppy.toFixed(1)));
-            dispatch(setLastUpdatedDate(formattedDate));
+            dispatch(setLastUpdatedDate(formatDate(lastUpdatedDate)));
+            dispatch(setLeaderBoardList(viewableLeaderBoardList));
+            dispatch(setDataSource(viewableLeaderBoardList.slice(0, 10)));
         }
 
     });
@@ -83,3 +93,17 @@ export const setLastUpdatedDate = (lastUpdatedDate) => {
         lastUpdatedDate
     }
 };
+
+export const setLeaderBoardList = (leaderBoardList) => {
+    return {
+        type: LEADERBOARD_LIST,
+        leaderBoardList
+    }
+};
+
+export const setDataSource = (dataSource) => {
+    return {
+        type: DATA_SOURCE,
+        dataSource
+    }
+}
