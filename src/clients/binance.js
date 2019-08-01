@@ -53,6 +53,15 @@ class Binance {
     return this.httpClient.get("/fees")
   }
 
+  async price(symbol) {
+    const bnb = await axios.get("https://api.cryptonator.com/api/ticker/bnb-usd")
+    const rune = await this.httpClient.get("/markets")
+    const symbol_data = rune.data.find((s) => {
+      return s.base_asset_symbol === symbol
+    })
+    return parseFloat(bnb.data.ticker.price) * parseFloat(symbol_data.list_price)
+  }
+
   // convert fee number into BNB tokens
   calculateFee(x) {
     return  x / 100000000

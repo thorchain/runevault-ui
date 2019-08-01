@@ -25,12 +25,24 @@ const Stake = (props) => {
   const [balances, setBalances] = useState(null)
   const [mode, setMode] = useState("stake")
   const [loadingBalances, setLoadingBalancer] = useState(false)
+  const [price, setPrice] = useState(null)
 
   // confirmation modal variables
   const [visible, setVisible] = useState(false)
   const [sending, setSending] = useState(false)
 
   const context = useContext(Context)
+
+  const getPrice = () => {
+    Binance.price(SYMBOL)
+      .then((response) => {
+        console.log("Result", response)
+        setPrice(response)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
 
   const getBalances = () => {
     if (context.wallet && context.wallet.address) {
@@ -55,6 +67,10 @@ const Stake = (props) => {
         })
     }
   }
+
+  useEffect(() => {
+    getPrice()
+  }, [])
 
   useEffect(() => {
     if (context.wallet && context.wallet.address) {
@@ -229,6 +245,21 @@ const Stake = (props) => {
 
   const passwordRequired = context.wallet && 'keystore' in context.wallet
 
+  var balance = 0
+  var dollarValue = "loading"
+  if (balances) {
+    balance = AmounttoString((balances || []).find((b) => {
+      return b.ticker === SYMBOL
+    }).free +
+      balances.find((b) => {
+        return b.ticker === SYMBOL
+      }).frozen
+    )
+    if (price) {
+      dollarValue = "$" + Math.floor(balance * price * 100) / 100
+    }
+  }
+
   // styling
   const coinRowStyle = {
     margin: "10px 0px",
@@ -296,7 +327,7 @@ const Stake = (props) => {
             }
 
             {!context.wallet &&
-              <Link to="/wallet/unlock"><Button fill>CONNECT WALLET</Button></Link>
+            <Link to="/wallet/unlock"><Button fill>CONNECT WALLET</Button></Link>
             }
 
             {!loadingBalances && context.wallet && (balances || []).length === 0 &&
@@ -308,180 +339,174 @@ const Stake = (props) => {
             <Col xs={24}>
 
               {!loadingBalances && context.wallet && (balances || []).length > 0 &&
-                <Row style={{marginBottom: "50px"}}>
+              <Row style={{marginBottom: "50px"}}>
 
-                  <Col xs={24} sm={6} style={paneStyle}>
+                <Col xs={24} sm={6} style={paneStyle}>
 
-                    <Row style={{marginTop: "10px", marginLeft: "10px"}}>
-                      <Col xs={24} style={{paddingRight: "10px"}}>
-                        <Text size={18}>SELECT RUNE BELOW</Text>
-                        <hr />
+                  <Row style={{marginTop: "10px", marginLeft: "10px"}}>
+                    <Col xs={24} style={{paddingRight: "10px"}}>
+                      <Text size={18}>SELECT RUNE BELOW</Text>
+                      <hr />
+                    </Col>
+                  </Row>
+
+
+                  {!loadingBalances && (balances || []).map((coin) => (
+                    <Row key={coin.ticker} style={coinRowStyle}>
+                      <Col xs={24}>
+                        <Coin {...coin} onClick={setSelectedCoin} border={selectedCoin === coin.ticker}/>
                       </Col>
                     </Row>
-
-
-                    {!loadingBalances && (balances || []).map((coin) => (
-                      <Row key={coin.ticker} style={coinRowStyle}>
-                        <Col xs={24}>
-                          <Coin {...coin} onClick={setSelectedCoin} border={selectedCoin === coin.ticker}/>
-                        </Col>
-                      </Row>
-                    ))
+                  ))
                   }
                 </Col>
 
                 <Col xs={24} sm={16} style={{backgroundColor: "#48515D",
-                marginTop: "20px",
-                borderRadius: 5,}}>
+                  marginTop: "20px",
+                  borderRadius: 5,}}>
 
                   {selectedCoin && selectedCoin === SYMBOL &&
-                    <Row style={{marginTop: "10px", marginLeft: "10px", marginRight: "10px"}}>
-                      <Col xs={24}>
+                  <Row style={{marginTop: "10px", marginLeft: "10px", marginRight: "10px"}}>
+                    <Col xs={24}>
 
 
 
-                        <Row>
-                          <Col xs={24}>
-                            <Text size={18}>STAKE RUNE TO EARN REWARDS</Text>
-                            <hr />
+                      <Row>
+                        <Col xs={24}>
+                          <Text size={18}>STAKE RUNE TO EARN REWARDS</Text>
+                          <hr />
+                          <Row>
+                            <Col xs={12} style={{marginTop: "10px"}}>
+                              <span>
+                                <Text>TOTAL BALANCE:</Text>
+                              </span>
+                              <span style={{margin: "0px 20px"}} size={22}>
+                                {balance} ({dollarValue})
+                              </span>
+
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs={24}>
+                          <Row>
+                            <Col xs={24} sm={12}>
+                              <Row>
+                                <Col>
+                                  <span>
+                                    <Text>NOT STAKED:</Text>
+                                  </span>
+                                  <span style={{margin: "0px 20px"}} size={22}>{balances.find((b) => {
+                                    return b.ticker === SYMBOL
+                                  }).free}
+                                </span>
+                              </Col>
+                            </Row>
                             <Row>
-                              <Col xs={12} style={{marginTop: "10px"}}>
-                                    <span>
-                                      <Text>TOTAL BALANCE:</Text>
-                                    </span>
-                                    <span style={{margin: "0px 20px"}} size={22}>
-                                      {AmounttoString(balances.find((b) => {
-                                        return b.ticker === SYMBOL
-                                      }).free +
-                                      balances.find((b) => {
-                                        return b.ticker === SYMBOL
-                                      }).frozen
-                                      )}
-                                    </span>
-
+                              <Col>
+                                <Button
+                                  style={{height:40, width:200, marginTop: 10}}
+                                  onClick={() => { confirmation('STAKE RUNE') }}
+                                  loading={sending}
+                                >
+                                  STAKE
+                                </Button>
                               </Col>
                             </Row>
                           </Col>
-                        </Row>
-                        <Row>
-                          <Col xs={24}>
+
+                          <Col xs={24} sm={12}>
                             <Row>
-                              <Col xs={24} sm={12}>
-                                <Row>
-                                  <Col>
-                                    <span>
-                                      <Text>NOT STAKED:</Text>
-                                    </span>
-                                    <span style={{margin: "0px 20px"}} size={22}>{balances.find((b) => {
-                                        return b.ticker === SYMBOL
-                                      }).free}
-                                    </span>
-                                  </Col>
-                                </Row>
-                                <Row>
-                                  <Col>
-                                    <Button
-                                      style={{height:40, width:200, marginTop: 10}}
-                                      onClick={() => { confirmation('STAKE RUNE') }}
-                                      loading={sending}
-                                      >
-                                      STAKE
-                                    </Button>
-                                  </Col>
-                                </Row>
-                                </Col>
+                              <Col>
+                                <span>
+                                  <Text>STAKED:</Text>
+                                </span>
+                                <span style={{margin: "0px 20px"}} size={22}>{balances.find((b) => {
+                                  return b.ticker === SYMBOL
+                                }).frozen}
+                              </span>
+                            </Col>
+                          </Row>
 
-                                <Col xs={24} sm={12}>
-                                  <Row>
-                                    <Col>
-                                      <span>
-                                        <Text>STAKED:</Text>
-                                      </span>
-                                      <span style={{margin: "0px 20px"}} size={22}>{balances.find((b) => {
-                                          return b.ticker === SYMBOL
-                                        }).frozen}
-                                      </span>
-                                    </Col>
-                                  </Row>
+                          <Row>
+                            <Col>
+                              <Button secondary
+                                style={{height:40, width:200, marginTop: 10}}
+                                onClick={() => { confirmation('WITHDRAW (Caution: time will be reset!)') }}
+                                loading={sending}
+                              >
+                                WITHDRAW
+                              </Button>
+                              <br></br>
 
-                                  <Row>
-                                    <Col>
-                                      <Button secondary
-                                        style={{height:40, width:200, marginTop: 10}}
-                                        onClick={() => { confirmation('WITHDRAW (Caution: time will be reset!)') }}
-                                        loading={sending}
-                                        >
-                                        WITHDRAW
-                                      </Button>
-                                      <br></br>
-
-                                      <Text>Caution: your time will be reset!</Text>
-                                    </Col>
-                                  </Row>
+                              <Text>Caution: your time will be reset!</Text>
+                            </Col>
+                          </Row>
 
 
 
-                              </Col>
-                            </Row>
-                          </Col>
-                        </Row>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
 
-                        <Row  style={{marginTop: "10px"}}>
-                          <Col xs={24}>
-                                <span><Text>WEEK:</Text></span>
-                                <span style={{margin: "0px 20px"}} size={22}>1</span>
-                          </Col>
-                        </Row>
+                  <Row  style={{marginTop: "10px"}}>
+                    <Col xs={24}>
+                      <span><Text>WEEK:</Text></span>
+                      <span style={{margin: "0px 20px"}} size={22}>1</span>
+                    </Col>
+                  </Row>
 
-                        <Row  style={{marginTop: "10px"}}>
-                              <Col xs={24} sm={12}>
-                                    <span><Text>THIS TIER:</Text></span>
-                                    <span style={{margin: "0px 20px"}} size={22}>0.2%</span>
-                                </Col>
-                                  <Col xs={24} sm={12} >
-                                    <span><Text>NEXT TIER:</Text></span>
-                                    <span style={{margin: "0px 20px"}} size={22}>0.4%</span>
-                                  </Col>
-                        </Row>
+                  <Row  style={{marginTop: "10px"}}>
+                    <Col xs={24} sm={12}>
+                      <span><Text>THIS TIER:</Text></span>
+                      <span style={{margin: "0px 20px"}} size={22}>0.2%</span>
+                    </Col>
+                    <Col xs={24} sm={12} >
+                      <span><Text>NEXT TIER:</Text></span>
+                      <span style={{margin: "0px 20px"}} size={22}>0.4%</span>
+                    </Col>
+                  </Row>
 
-                        <Row  style={{marginTop: "10px"}}>
-                                  <Col xs={24} sm={12}>
-                                    <span><Text>COMPOUNDED:</Text></span>
-                                    <span style={{margin: "0px 20px"}} size={22}>0.2%</span>
-                                  </Col>
-                                  <Col xs={24} sm={12} >
-                                    <span><Text>NEXT COMPOUND:</Text></span>
-                                    <span style={{margin: "0px 20px"}} size={22}>0.6%</span>
-                                  </Col>
-                        </Row>
+                  <Row  style={{marginTop: "10px"}}>
+                    <Col xs={24} sm={12}>
+                      <span><Text>COMPOUNDED:</Text></span>
+                      <span style={{margin: "0px 20px"}} size={22}>0.2%</span>
+                    </Col>
+                    <Col xs={24} sm={12} >
+                      <span><Text>NEXT COMPOUND:</Text></span>
+                      <span style={{margin: "0px 20px"}} size={22}>0.6%</span>
+                    </Col>
+                  </Row>
 
-                        <Row style={{marginTop: "40px", marginBottom: 20}}>
-                          <Col xs={24}>
-                            <Text size={14}>Note: RUNE will be staked on your address securely using the </Text>
-                              <a href="https://docs.binance.org/tokens.html#freeze-unfreeze"
-                                target="_blank" rel="noopener noreferrer">
-                                <Text size={15} style={{fontWeight: 'bold'}}>Binance Chain "FREEZE" command.</Text>
-                              </a>
-                            <br></br>
-                            <Text size={10}>RUNE will be paid out each week. You can add more, but any withdrawals will reset your holding period.
-                              Your weekly payout is calculated based the balance of your staked RUNE, multiplied by the compounded interest rate, set in the</Text>
-                              <a href="https://medium.com/thorchain/introducing-runevault-stake-and-earn-rune-87576671d1e4"
-                                target="_blank" rel="noopener noreferrer">
-                                <Text size={11} style={{fontWeight: 'bold'}}> EARNING SCHEDULE.</Text>
-                              </a>
-                          </Col>
-                        </Row>
+                  <Row style={{marginTop: "40px", marginBottom: 20}}>
+                    <Col xs={24}>
+                      <Text size={14}>Note: RUNE will be staked on your address securely using the </Text>
+                      <a href="https://docs.binance.org/tokens.html#freeze-unfreeze"
+                        target="_blank" rel="noopener noreferrer">
+                        <Text size={15} style={{fontWeight: 'bold'}}>Binance Chain "FREEZE" command.</Text>
+                      </a>
+                      <br></br>
+                      <Text size={10}>RUNE will be paid out each week. You can add more, but any withdrawals will reset your holding period.
+                        Your weekly payout is calculated based the balance of your staked RUNE, multiplied by the compounded interest rate, set in the</Text>
+                      <a href="https://medium.com/thorchain/introducing-runevault-stake-and-earn-rune-87576671d1e4"
+                        target="_blank" rel="noopener noreferrer">
+                        <Text size={11} style={{fontWeight: 'bold'}}> EARNING SCHEDULE.</Text>
+                      </a>
+                    </Col>
+                  </Row>
 
-                      </Col>
+                </Col>
 
-                    </Row>
+              </Row>
                   }
 
                 </Col>
               </Row>
-            }
-          </Col>
-        </Row>
+              }
+            </Col>
+          </Row>
 
 
 
@@ -573,9 +598,9 @@ const StakeForm = (props) => {
 const WrappedStakeForm = Form.create({ name: 'staking' })(StakeForm);
 
 function mapStateToProps(state) {
-    return {
-        stake: state.stake
-    };
+  return {
+    stake: state.stake
+  };
 }
 
 export default connect(mapStateToProps)(Stake)
