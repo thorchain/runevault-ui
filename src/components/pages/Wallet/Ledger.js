@@ -6,6 +6,7 @@ import u2f_transport from '@ledgerhq/hw-transport-u2f'
 import Binance from '../../../clients/binance'
 import { Context } from '../../../context'
 import { Icon, Button, Text } from '../../Components'
+import { InputNumber } from 'antd'
 
 ledger.transports.u2f = u2f_transport
 window.ledger = ledger
@@ -13,6 +14,7 @@ window.ledger = ledger
 const Connector = props => {
   const context = useContext(Context)
   const [connecting, setConnecting] = useState(false)
+  const [ledgerIndex, setLedgerIndex] = useState(0)
 
   const ledgerConnect = async () => {
     setConnecting(true)
@@ -32,7 +34,7 @@ const Connector = props => {
     }
 
     // we can provide the hd path (app checks first two parts are same as below)
-    const hdPath = [44, 714, 0, 0, 0]
+    const hdPath = [44, 714, 0, 0, ledgerIndex]
 
     // select which address to use
     const results = await app.showAddress(Binance.getPrefix(), hdPath)
@@ -129,6 +131,17 @@ const Connector = props => {
           </div>
         </Col>
         <Col span={12}>
+          <div>
+            <div>
+              <Text size={12}>Index Number</Text>
+            </div>
+            <InputNumber 
+              min={0}
+              size='small' 
+              value={ledgerIndex} 
+              onChange={(i) => {setLedgerIndex(i)}} 
+            />
+          </div>
           <Button
             onClick={ledgerConnect}
             loading={connecting}

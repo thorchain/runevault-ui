@@ -13,6 +13,12 @@ yarn install
 yarn start
 ```
 
+If you need to use Ledger to connect your wallet, you need to be serving over
+https. To do so....
+```bash
+HTTP=true yarn start
+```
+
 ## Deploy
 ```bash
 yarn deploy
