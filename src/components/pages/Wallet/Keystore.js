@@ -60,7 +60,6 @@ const Keystore = props => {
       </Row>
       <Row style={{marginBottom: 10}}>
         <FilePicker
-          extensions={['txt', 'json']}
           onChange={f => (uploadKeystore(f))}
           onError={err => (console.error(err))}
         >
