@@ -94,7 +94,6 @@ const Stake = (props) => {
 
       setSending(true)
       const binance = Binance
-      console.log("Values:", values)
 
       // setup binance client for authentication
       if (context.wallet.walletconnect) {
@@ -213,7 +212,7 @@ const Stake = (props) => {
           }
         } catch(err) {
           window.err = err
-          console.error("Validating keystore error:", err)
+          console.error("Staking error:", err)
           message.error(err.message)
           setSending(false)
         }
@@ -520,7 +519,6 @@ const StakeForm = (props) => {
     e.preventDefault();
     props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         if (props.onSubmit) {
           props.onSubmit(values)
         }
