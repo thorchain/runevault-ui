@@ -27,3 +27,4 @@ yarn-error.log*
 keys.txt
 .idea/
 .env
+prod.env

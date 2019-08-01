@@ -73,12 +73,12 @@ const Connector = props => {
 
   return (
     <div>
-      <Row style={{marginBottom: 20}}>
+      <Row style={{ marginBottom: 20 }}>
         <Text size={18}>Connect your Ledger device</Text>
       </Row>
       <Row>
         <Col span={3}>
-          <Icon icon="step1" alt="Step 1"/>
+          <Icon icon="step1" alt="Step 1" />
         </Col>
         <Col span={8}>
           <Text bold>Enter PIN Code</Text>
@@ -87,7 +87,7 @@ const Connector = props => {
           <Icon icon="pincode" style={ledgerCSS} />
         </Col>
       </Row>
-      <Row style={{marginTop: 20}}>
+      <Row style={{ marginTop: 20 }}>
         <Col span={3}>
           <Icon icon="step2" alt="Step 2" />
         </Col>
@@ -105,8 +105,8 @@ const Connector = props => {
           <Icon icon="openapp" alt="" style={ledgerCSS} />
         </Col>
       </Row>
-      <Row style={{marginTop: 20}}>
-        <Col span={12}>
+      <Row style={{ marginTop: 20 }}>
+        <Col span={6}>
           <div>
             <a
               href="https://www.binance.org/static/guides/DEX-Ledger-Documentation.html"
@@ -131,24 +131,36 @@ const Connector = props => {
           </div>
         </Col>
         <Col span={12}>
-          <div>
-            <div>
-              <Text size={12}>Index Number</Text>
-            </div>
-            <InputNumber 
-              min={0}
-              size='small' 
-              value={ledgerIndex} 
-              onChange={(i) => {setLedgerIndex(i)}} 
-            />
-          </div>
-          <Button
-            onClick={ledgerConnect}
-            loading={connecting}
-            fill={true}
-          >
-            Connect to Ledger <AntIcon type="arrow-right" />
-          </Button>
+          <Row>
+
+            <Col span={9}>
+              <div>
+                <div>
+                  <Text size={12}>Index Number (default 0)</Text>
+                </div>
+                <InputNumber
+                  min={0}
+                  size='medium'
+                  value={ledgerIndex}
+                  onChange={(i) => { setLedgerIndex(i) }}
+                  style={{verticalAlign:"text-bottom"}}
+                />
+              </div>
+            </Col>
+            <Col span={12}>
+              <Button
+                onClick={ledgerConnect}
+                loading={connecting}
+                fill={true}
+                style={{marginTop:24}}
+              >
+                Connect to Ledger <AntIcon type="arrow-right" />
+              </Button>
+            </Col>
+
+
+          </Row>
+
         </Col>
       </Row>
     </div>

@@ -544,7 +544,7 @@ const Stake = (props) => {
           visible={visible}
           footer={null}
           onCancel={handleCancel}
-          bodyStyle={{backgroundColor: "#101921", paddingBottom: 10}}
+          bodyStyle={{backgroundColor: "#101921", paddingBottom: 0}}
           headStyle={{backgroundColor: "#2B3947", color: "#fff"}}
         >
           <WrappedStakeForm fee={fee} password={passwordRequired} button={mode} onSubmit={handleOk} onCancel={handleCancel} loading={sending} />
@@ -613,7 +613,7 @@ const StakeForm = (props) => {
             {props.button.charAt(0).toUpperCase() + props.button.slice(1)}
           </Button>
           <div style={{padding: 0, margin: 0}}>
-            <Text style={{float: "right"}} size={12} color="#FF4136">Fee: {props.fee} BNB</Text>
+            <Text style={{float: "right"}} size={12} color="#EE5366">Network Fee: {props.fee} BNB</Text>
           </div>
         </div>
       </Form.Item>
