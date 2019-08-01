@@ -24,10 +24,6 @@ const iconStyles = {
 
 class Home extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         this.props.dispatch(sumStake());
     }
