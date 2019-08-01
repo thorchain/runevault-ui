@@ -6,7 +6,11 @@ const initialState = {
     sumStake: '',
     totalStakers: 0,
     stakedSupply: '',
-    lastUpdatedDate: ''
+    lastUpdatedDate: '',
+    dataSource: [],
+    stakeEarningsColumn: [],
+    stakeEarningsData: [],
+    isLoading: true
 }
 
 export function stake(state = initialState, action) {
@@ -24,6 +28,14 @@ export function stake(state = initialState, action) {
             return {...state, stakedSupply: action.stakedSupply};
         case types.LAST_UPDATED_DATE:
             return {...state, lastUpdatedDate: action.lastUpdatedDate};
+        case types.STAKE_EARNINGS_COLUMN:
+            return {...state, stakeEarningsColumn: action.stakeEarningsColumn};
+        case types.STAKE_EARNINGS_DATA:
+            return {...state, stakeEarningsData: action.stakeEarningsData}
+        case types.DATA_SOURCE:
+            return {...state, dataSource: action.dataSource};
+        case types.IS_LOADING:
+            return {...state, isLoading: action.isLoading};
         default:
             return state;
     }

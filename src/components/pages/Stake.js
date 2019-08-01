@@ -10,7 +10,7 @@ import { Context } from '../../context'
 import Binance from "../../clients/binance"
 import { AmounttoString } from '../../utils/utility'
 import { CHAIN_ID } from '../../env'
-import { Row, Form, Col, Modal, Input, message } from 'antd'
+import { Row, Form, Col, Modal, Input, message, Table } from 'antd'
 import { H1, Button, Text, Coin, WalletAddress, WalletAddrShort} from "../Components"
 import {saveStake} from "../../actions/stakeaction";
 
@@ -558,6 +558,21 @@ const Stake = (props) => {
 
 
     </Row>
+      <Row style={{marginTop: 50}}>
+
+          <Col xs={24} sm={24} md={1} lg={2}>
+          </Col>
+
+          <Col xs={24} sm={22} md={20} lg={20}
+               style={{backgroundColor: '#D8D8D8', borderRadius: 5, paddingBottom: 5}}>
+              <Table dataSource={props.stake.stakeEarningsData} columns={props.stake.stakeEarningsColumn} pagination={false} size={'middle'}
+                     title={() => 'EARNINGS SCHEDULE'}/>
+          </Col>
+
+          <Col xs={24} sm={1} md={2} lg={3}>
+          </Col>
+
+      </Row>
   </div>
   )
 }
@@ -625,7 +640,7 @@ const WrappedStakeForm = Form.create({ name: 'staking' })(StakeForm);
 
 function mapStateToProps(state) {
   return {
-    stake: state.stake
+    stake: state.stake,
   };
 }
 

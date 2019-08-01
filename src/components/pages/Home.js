@@ -6,8 +6,6 @@ import Breakpoint from 'react-socks';
 
 import { Icon, H1, Button, Text } from '../Components'
 import { connect } from 'react-redux';
-import { sumStake } from "../../actions/stakeaction";
-
 
 const homeStyles = {
   marginLeft: 0,
@@ -24,13 +22,13 @@ const iconStyles = {
 
 class Home extends Component {
 
-    componentDidMount() {
-        this.props.dispatch(sumStake());
+    constructor(props) {
+        super(props);
     }
 
     render() {
 
-        const {stake} = this.props;
+        const {stake, leaderboard} = this.props;
 
         return (
             <div style={{backgroundColor: "#101921"}}>
@@ -144,16 +142,30 @@ class Home extends Component {
 
                     <Col xs={24} sm={22} md={20} lg={18}
                          style={{backgroundColor: '#D8D8D8', borderRadius: 5, paddingBottom: 5}}>
-                        <Table dataSource={dataSource} columns={columns} pagination={false} size={'middle'}
-                               title={() => 'EARNINGS SCHEDULE'}/>
-                    </Col>
-
-                    <Col xs={24} sm={1} md={2} lg={3}>
+                        <Table dataSource={stake.dataSource} columns={leaderboard.leaderboardColumns}
+                               pagination={false} size={'middle'}
+                               title={() => 'LEADERBOARD'}/>
                     </Col>
 
                 </Row>
 
+                <Row style={{marginTop: 30}}>
+                    <Col xs={2} sm={4} md={6} lg={8} xl={8}>
 
+                    </Col>
+                    <Col xs={2} sm={4} md={6} lg={8} xl={4}>
+
+                    </Col>
+                    <Col xs={2} sm={4} md={6} lg={8} xl={5}>
+
+                    </Col>
+                    <Col xs={20} sm={16} md={12} lg={8} xl={3}>
+                        <Link to="/leaderboard">
+                            <Button style={{height: 40, width: 237}}>VIEW ALL</Button>
+                        </Link>
+                    </Col>
+
+                </Row>
             </div>
         )
     }
@@ -161,90 +173,10 @@ class Home extends Component {
 
 
 
-const dataSource = [
-  {
-    key: '1',
-    week: '1',
-    interest: '0.2%',
-    compounded: '0.2%',
-  },
-  {
-    key: '2',
-    week: '2',
-    interest: '0.4%',
-    compounded: '0.6%',
-  },
-  {
-    key: '3',
-    week: '3',
-    interest: '0.6%',
-    compounded: '1.2%',
-  },
-  {
-    key: '4',
-    week: '4',
-    interest: '0.8%',
-    compounded: '2.0%',
-  },
-  {
-    key: '5',
-    week: '5',
-    interest: '1.0%',
-    compounded: '3.0%',
-  },
-  {
-    key: '6',
-    week: '6',
-    interest: '1.2%',
-    compounded: '4.3%',
-  },
-  {
-    key: '7',
-    week: '7',
-    interest: '1.4%',
-    compounded: '5.7%',
-  },
-  {
-    key: '8',
-    week: '8',
-    interest: '1.6%',
-    compounded: '7.4%',
-  },
-  {
-    key: '9',
-    week: '9',
-    interest: '1.8%',
-    compounded: '9.4%',
-  },
-  {
-    key: '10',
-    week: '10',
-    interest: '2%',
-    compounded: '11.5%',
-  },
-];
-
-const columns = [
-  {
-    title: 'Week',
-    dataIndex: 'week',
-    key: 'week',
-  },
-  {
-    title: 'Interest',
-    dataIndex: 'interest',
-    key: 'interest',
-  },
-  {
-    title: 'Compounded Interest',
-    dataIndex: 'compounded',
-    key: 'compounded',
-  },
-];
-
 function mapStateToProps(state) {
     return {
-        stake: state.stake
+        stake: state.stake,
+        leaderboard: state.leaderboard
     };
 }
 
