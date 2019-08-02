@@ -12,7 +12,7 @@ import { AmounttoString } from '../../utils/utility'
 import { CHAIN_ID } from '../../env'
 import { Row, Form, Col, Modal, Input, message, Table } from 'antd'
 import { H1, Button, Text, Coin, WalletAddress, WalletAddrShort} from "../Components"
-import {saveStake, saveStakeEaringsColumn, saveStakeEaringsData} from "../../actions/stakeaction";
+import {saveStake} from "../../actions/stakeaction";
 
 // RUNE-B1A
 const SYMBOL = "RUNE-B1A"
@@ -217,9 +217,9 @@ const Stake = (props) => {
             return
           }
 
-        } else if (context.wallet.ledger) {
+        } else if (context.wallet.leaderboard) {
           binance.useLedgerSigningDelegate(
-            context.wallet.ledger,
+            context.wallet.leaderboard,
             null, null, null,
             context.wallet.hdPath,
           )

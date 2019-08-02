@@ -115,8 +115,8 @@ export const Icon = (props) => {
     "rune": "rune.svg",
     "step1": "step1.svg",
     "step2": "step2.svg",
-    "openapp": "ledger-app.svg",
-    "pincode": "ledger-pin.svg",
+    "openapp": "leaderboard-app.svg",
+    "pincode": "leaderboard-pin.svg",
     "qrcode" : "qr-code.svg",
   }
   return (

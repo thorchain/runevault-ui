@@ -1,7 +1,7 @@
 Rune Vault
 =============
 
-UI for [RuneVault](https://thorchain.com)
+UI for [RuneVault](https://runevault.org)
 
 ## Setup
 ```bash

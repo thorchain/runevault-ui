@@ -7,7 +7,7 @@ import Breakpoint from 'react-socks';
 import { Icon, H1, Button, Text } from '../Components'
 import { connect } from 'react-redux';
 import { sumStake, saveStakeEaringsData, saveStakeEaringsColumn } from "../../actions/stakeaction";
-import { saveLedgerColumns } from "../../actions/ledgeraction";
+import { saveLeaderboardColumns } from "../../actions/leaderboardaction";
 
 const homeStyles = {
   marginLeft: 0,
@@ -26,22 +26,18 @@ class Home extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            columns: [],
-            viewableLeaderBoardList: []
-        }
     }
 
     componentDidMount() {
         this.props.dispatch(sumStake());
-        this.props.dispatch(saveLedgerColumns());
+        this.props.dispatch(saveLeaderboardColumns());
         this.props.dispatch(saveStakeEaringsColumn());
         this.props.dispatch(saveStakeEaringsData());
     }
 
     render() {
 
-        const {stake, ledger} = this.props;
+        const {stake, leaderboard} = this.props;
 
         return (
             <div style={{backgroundColor: "#101921"}}>
@@ -155,7 +151,7 @@ class Home extends Component {
 
                     <Col xs={24} sm={22} md={20} lg={18}
                          style={{backgroundColor: '#D8D8D8', borderRadius: 5, paddingBottom: 5}}>
-                        <Table dataSource={stake.dataSource} columns={ledger.ledgerColumns}
+                        <Table dataSource={stake.dataSource} columns={leaderboard.leaderboardColumns}
                                pagination={false} size={'middle'}
                                title={() => 'LEADERBOARD'}/>
                     </Col>
@@ -189,7 +185,7 @@ class Home extends Component {
 function mapStateToProps(state) {
     return {
         stake: state.stake,
-        ledger: state.ledger
+        leaderboard: state.leaderboard
     };
 }
 

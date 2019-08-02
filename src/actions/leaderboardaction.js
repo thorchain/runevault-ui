@@ -1,8 +1,8 @@
 import Gravatar from "react-gravatar";
 import React from "react";
-import {LEADERBOARD_LIST, LEDGER_COLUMNS} from "./index";
+import {LEADERBOARD_LIST, LEADERBOARD_COLUMNS} from "./index";
 
-export const saveLedgerColumns = () => dispatch => {
+export const saveLeaderboardColumns = () => dispatch => {
     const columns = [
         {
             title: 'Avatar',
@@ -42,14 +42,14 @@ export const saveLedgerColumns = () => dispatch => {
         },
 
     ];
-    dispatch(setLedgerColumn(columns));
+    dispatch(setLeaderBoardColumn(columns));
 }
 
 
-export const setLedgerColumn = (ledgerColumns) => {
+export const setLeaderBoardColumn = (leaderboardColumns) => {
     return {
-        type: LEDGER_COLUMNS,
-        ledgerColumns
+        type: LEADERBOARD_COLUMNS,
+        leaderboardColumns
     }
 }
 

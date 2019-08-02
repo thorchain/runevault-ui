@@ -22,7 +22,7 @@ class Leaderboard extends Component {
             backgroundColor: "#101921"
         }
 
-        const {stake, ledger} = this.props;
+        const {stake, leaderboard} = this.props;
 
         console.log('STAKE ' + stake.sumStake);
 
@@ -49,7 +49,7 @@ class Leaderboard extends Component {
                     <Col xs={24} sm={22} md={20} lg={20}
                          style={{backgroundColor: '#D8D8D8', borderRadius: 5, paddingTop: 25, paddingBottom: 5}}>
                         <Table pagination={{ defaultPageSize: 100, showSizeChanger: true, pageSizeOptions: ['10', '20', '30']}}
-                               dataSource={ledger.leaderBoardList} pafin columns={ledger.ledgerColumns}
+                               dataSource={leaderboard.leaderBoardList} pafin columns={leaderboard.leaderboardColumns}
                                size={'middle'}
                                title={() => 'LEADERBOARD'}/>
                     </Col>
@@ -71,7 +71,7 @@ class Leaderboard extends Component {
 function mapStateToProps(state) {
     return {
         stake: state.stake,
-        ledger: state.ledger
+        leaderboard: state.leaderboard
     };
 }
 

@@ -1,14 +1,14 @@
 import * as types from "../actions";
 
 const initialState = {
-    ledgerColumns: [],
+    leaderboardColumns: [],
     leaderBoardList: [],
 }
 
-export function ledger(state = initialState, action) {
+export function leaderboard(state = initialState, action) {
     switch (action.type) {
-        case types.LEDGER_COLUMNS:
-            return {...state, ledgerColumns: action.ledgerColumns};
+        case types.LEADERBOARD_COLUMNS:
+            return {...state, leaderboardColumns: action.leaderboardColumns};
         case types.LEADERBOARD_LIST:
             return {...state, leaderBoardList: action.leaderBoardList};
         default:

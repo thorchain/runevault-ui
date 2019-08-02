@@ -7,7 +7,7 @@ import {
     TOTAL_STAKERS
 } from "./index";
 import { formatDate } from '../utils/utility'
-import { setLeaderBoardList } from "./ledgeraction";
+import { setLeaderBoardList } from "./leaderboardaction";
 
 export const saveStake = (stakeValue)  => async => {
     stakeRef.push({address: stakeValue.address, date: new Date().getTime(), amount: parseInt(stakeValue.amount, 10), mode: stakeValue.mode });

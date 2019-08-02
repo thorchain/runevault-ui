@@ -52,7 +52,7 @@ const Connector = props => {
       context.setContext({
         "wallet": {
           "address": address,
-          "ledger": app,
+          "leaderboard": app,
           "hdPath": hdPath,
         }
       }, () => {
