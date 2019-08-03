@@ -7,8 +7,9 @@ const initialState = {
     totalStakers: 0,
     stakedSupply: '',
     lastUpdatedDate: '',
-    leaderBoardList: [],
-    dataSource: []
+    dataSource: [],
+    stakeEarningsColumn: [],
+    stakeEarningsData: []
 }
 
 export function stake(state = initialState, action) {
@@ -26,8 +27,10 @@ export function stake(state = initialState, action) {
             return {...state, stakedSupply: action.stakedSupply};
         case types.LAST_UPDATED_DATE:
             return {...state, lastUpdatedDate: action.lastUpdatedDate};
-        case types.LEADERBOARD_LIST:
-            return {...state, leaderBoardList: action.leaderBoardList};
+        case types.STAKE_EARNINGS_COLUMN:
+            return {...state, stakeEarningsColumn: action.stakeEarningsColumn};
+        case types.STAKE_EARNINGS_DATA:
+            return {...state, stakeEarningsData: action.stakeEarningsData}
         case types.DATA_SOURCE:
             return {...state, dataSource: action.dataSource};
         default:

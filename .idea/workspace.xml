@@ -2,16 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97543396-0ce5-4baa-826b-4ee04cfcd717" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/pages/leaderboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/actions/ledgeraction.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/ledgerreducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.sample" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/stakeaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/stakeaction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Components.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Components.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/Stake.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Stake.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/leaderboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/leaderboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/stakereducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/stakereducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/utility.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utility.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,44 +28,45 @@
     <session id="-60926184">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="12" />
+          <entry key="project.closed" value="13" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.10" value="2" />
-          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.18" value="2" />
           <entry key="project.open.time.2" value="4" />
           <entry key="project.open.time.20" value="1" />
-          <entry key="project.open.time.21" value="1" />
-          <entry key="project.opened" value="15" />
+          <entry key="project.open.time.21" value="2" />
+          <entry key="project.opened" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="7" />
+          <entry key="Env File" value="1" />
           <entry key="Image" value="1" />
-          <entry key="JSON" value="14" />
-          <entry key="JavaScript" value="114" />
+          <entry key="JSON" value="15" />
+          <entry key="JavaScript" value="142" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="6" />
-          <entry key="RNG Compact" value="1" />
+          <entry key="RNG Compact" value="2" />
           <entry key="SVG" value="2" />
-          <entry key="TypeScript" value="6" />
+          <entry key="TypeScript" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
           <entry key="ESLintLanguageService" value="7" />
-          <entry key="TypeScriptServerServiceImpl" value="2" />
+          <entry key="TypeScriptServerServiceImpl" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="131" />
           <entry key="JSON" value="25" />
-          <entry key="JavaScript" value="5680" />
+          <entry key="JavaScript" value="7403" />
           <entry key="PLAIN_TEXT" value="13" />
         </counts>
       </usages-collector>
@@ -68,89 +74,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/Stake.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+              <folding>
+                <element signature="e#0#62#0" expanded="true" />
+                <element signature="e#1930#2589#0" />
+                <element signature="e#2671#3386#0" />
+                <element signature="e#3440#3715#0" />
+                <element signature="e#3754#8552#0" />
+                <element signature="e#18896#19114#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/leaderboard.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="61" column="52" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="28" column="18" lean-forward="true" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/actions/stakeaction.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="60" column="47" selection-start-line="60" selection-start-column="47" selection-end-line="60" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#44#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+            <state relative-caret-position="214">
+              <caret line="176" column="66" selection-start-line="176" selection-start-column="66" selection-end-line="176" selection-end-column="66" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
-                <element signature="e#2890#3414#0" />
-                <element signature="e#3432#4080#0" />
-                <element signature="e#4098#4642#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Components.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="50" column="31" lean-forward="true" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/utility.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="26" column="15" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/actions/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/reducers/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -158,8 +106,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/reducers/stakereducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="67">
-              <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="12" />
+            <state relative-caret-position="376">
+              <caret line="30" column="77" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="77" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/reducers/ledgerreducer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actions/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actions/stakeaction.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="379">
+              <caret line="88" column="33" lean-forward="true" selection-start-line="88" selection-start-column="13" selection-end-line="88" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#44#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -168,18 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>publis</find>
-      <find>publishStake</find>
-      <find>process</find>
-      <find>AmounttoString</find>
-      <find>values</find>
-      <find>Button</find>
-      <find>connect</find>
-      <find>savet</find>
-      <find>saveStake</find>
-      <find>NETWORK_ID</find>
-      <find>Stake</find>
-      <find>connect wall</find>
       <find>save</find>
       <find>stake</find>
       <find>Connect wa</find>
@@ -194,10 +160,22 @@
       <find>RUN</find>
       <find>ENVIRONMENT</find>
       <find>DATE</find>
-      <find>saves</find>
-      <find>leaderBoardList</find>
-      <find>Table</find>
       <find>H1</find>
+      <find>stake no</find>
+      <find>STAKED SUPPLY:</find>
+      <find>react-gravatar</find>
+      <find>Table</find>
+      <find>leaderBoardList</find>
+      <find>leade</find>
+      <find>dataSource</find>
+      <find>viewableLeaderBoardList</find>
+      <find>stake rune to earn re</find>
+      <find>StakeForm</find>
+      <find>WrappedStakeForm</find>
+      <find>datas</find>
+      <find>saves</find>
+      <find>props</find>
+      <find>earnings</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/components</dir>
@@ -221,12 +199,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/layout/Header.js" />
         <option value="$PROJECT_DIR$/src/components/pages/Wallet/Ledger.js" />
         <option value="$PROJECT_DIR$/src/components/pages/Wallet/Unlock.js" />
         <option value="$PROJECT_DIR$/src/components/pages/Wallet/walletConnect.js" />
         <option value="$PROJECT_DIR$/src/firebase.js" />
-        <option value="$PROJECT_DIR$/src/reducers/index.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/context.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -238,18 +214,23 @@
         <option value="$PROJECT_DIR$/src/keys.js" />
         <option value="$PROJECT_DIR$/src/env.js" />
         <option value="$PROJECT_DIR$/src/config/keys.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/Stake.js" />
         <option value="$PROJECT_DIR$/src/utils/utility.js" />
         <option value="$PROJECT_DIR$/src/config/firebase.js" />
         <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/actions/ledgerActions.js" />
+        <option value="$PROJECT_DIR$/src/reducers/index.js" />
+        <option value="$PROJECT_DIR$/src/reducers/ledgerreducer.js" />
+        <option value="$PROJECT_DIR$/src/components/Components.js" />
+        <option value="$PROJECT_DIR$/src/components/layout/Header.js" />
+        <option value="$PROJECT_DIR$/src/actions/ledgeraction.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/leaderboard.js" />
         <option value="$PROJECT_DIR$/src/actions/index.js" />
         <option value="$PROJECT_DIR$/src/reducers/stakereducer.js" />
-        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/actions/stakeaction.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/Stake.js" />
         <option value="$PROJECT_DIR$/src/components/pages/Home.js" />
-        <option value="$PROJECT_DIR$/src/components/Components.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/leaderboard.js" />
       </list>
     </option>
   </component>
@@ -351,8 +332,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -364,6 +345,12 @@
               <item name="rune-vault-ui" type="b2602c69:ProjectViewProjectNode" />
               <item name="rune-vault-ui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rune-vault-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rune-vault-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="actions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rune-vault-ui" type="b2602c69:ProjectViewProjectNode" />
@@ -410,10 +397,10 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="Stake&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;fire&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/config/firebase.js&#10;St&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;Hom&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Home.js&#10;sta&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;stake.js&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;stak&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/actions/stakeaction.js&#10;stakea&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/actions/stakeaction.js&#10;stake&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;keys&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/config/keys.js&#10;App.&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/App.js&#10;staj&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;inde&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/index.js&#10;unlo&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet/Unlock.js&#10;wallec&#9;null&#9;null&#10;wall&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet&#10;ledger-ap&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/public/images/ledger-app.svg&#10;led&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet/Ledger.js&#10;Head&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/layout/Header.js" />
+    <property name="SearchEverywhereHistoryKey" value="Ho&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Home.js&#10;stak&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;Lead&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/leaderboard.js&#10;Head&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/layout/Header.js&#10;stake&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;App&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/App.js&#10;Hom&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Home.js&#10;Home&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Home.js&#10;stakeac&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/actions/stakeaction.js&#10;app&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/App.js&#10;Leader&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/leaderboard.js&#10;Stake&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;fire&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/config/firebase.js&#10;St&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;sta&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;stake.js&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;stakea&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/actions/stakeaction.js&#10;keys&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/config/keys.js&#10;App.&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/App.js&#10;staj&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;inde&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/index.js&#10;unlo&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet/Unlock.js&#10;wallec&#9;null&#9;null&#10;wall&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet&#10;ledger-ap&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/public/images/ledger-app.svg&#10;led&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet/Ledger.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564667159546" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564843064990" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -509,11 +496,13 @@
       <workItem from="1564564185826" duration="4452000" />
       <workItem from="1564576046637" duration="2335000" />
       <workItem from="1564616121399" duration="141000" />
+      <workItem from="1564756196875" duration="264000" />
+      <workItem from="1564756713392" duration="17545000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62599000" />
+    <option name="totallyTimeSpent" value="81681000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -528,14 +517,14 @@
     <frame x="0" y="23" width="1440" height="828" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.47834647" visible="true" weight="0.2081545" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.47244096" visible="true" weight="0.20958512" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="npm" order="7" sideWeight="0.52165353" side_tool="true" visible="true" weight="0.2081545" />
+      <window_info id="npm" order="7" sideWeight="0.52755904" side_tool="true" visible="true" weight="0.20958512" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32893" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32893" />
@@ -561,40 +550,6 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.32874015" weight="0.011444922" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="npm" order="7" sideWeight="0.6712598" side_tool="true" visible="true" weight="0.011444922" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32893" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32893" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32893" />
-      <window_info anchor="bottom" id="Docker" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Multi-OS Engine" order="10" />
-      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="12" weight="0.32893" />
-      <window_info anchor="bottom" id="TypeScript" order="13" />
-      <window_info anchor="bottom" id="Messages" order="14" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -612,17 +567,19 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/pages/Home.js</url>
+          <line>148</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/antd/lib/avatar/index.d.ts" />
-    <entry file="file://$PROJECT_DIR$/src/assets/qrCode.svg" />
-    <entry file="file://$PROJECT_DIR$/src/components/layout/Header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="22" column="50" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/qrCodeImage.png" />
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/embed.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -720,13 +677,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/MultiSend.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4110">
-          <caret line="283" column="19" selection-start-line="283" selection-start-column="19" selection-end-line="283" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/MultiSend.js" />
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -735,13 +686,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/actions/runevault-31july19.json" />
-    <entry file="file://$PROJECT_DIR$/src/utils/utility.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="26" column="15" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/env.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -759,13 +703,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="14" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/deploy.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -777,9 +714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -790,10 +724,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/index.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/react-gravatar/dist/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="241">
+          <caret line="50" column="25" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/utility.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="26" column="15" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -804,83 +745,164 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-gravatar/dist/index.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/resize-antd-table/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="50" column="25" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
+        <state>
+          <caret column="30" lean-forward="true" selection-start-column="30" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/Stake.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/resize-antd-table/lib/resize.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9205">
-          <caret line="626" column="10" lean-forward="true" selection-start-line="626" selection-start-column="10" selection-end-line="631" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#62#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="45">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/resize-antd-table/lib/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="50" column="135" lean-forward="true" selection-start-line="50" selection-start-column="125" selection-end-line="50" selection-end-column="135" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/antd/lib/table/Table.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/stakereducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="12" />
+        <state relative-caret-position="75">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="28" column="18" lean-forward="true" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+        <state relative-caret-position="390">
+          <caret line="44" column="14" lean-forward="true" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="14" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Components.js">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/phrase.rnc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="50" column="31" lean-forward="true" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
+        <state relative-caret-position="161">
+          <caret line="345" column="16" selection-start-line="345" selection-start-column="16" selection-end-line="345" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/react-socks/dist/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+        <state>
+          <caret column="65" selection-start-column="65" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Components.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="139" column="25" lean-forward="true" selection-start-line="139" selection-start-column="19" selection-end-line="139" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/layout/Header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="50" column="89" selection-start-line="50" selection-start-column="76" selection-end-line="50" selection-end-column="89" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
-            <element signature="e#2890#3414#0" />
-            <element signature="e#3432#4080#0" />
-            <element signature="e#4098#4642#0" />
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/stakeaction.js">
+    <entry file="file://$PROJECT_DIR$/src/actions/ledgeraction.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="60" column="47" selection-start-line="60" selection-start-column="47" selection-end-line="60" selection-end-column="47" />
+        <state relative-caret-position="355">
+          <caret line="35" column="10" lean-forward="true" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
           <folding>
-            <element signature="e#0#44#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/leaderboard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="61" column="52" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
+        <state relative-caret-position="226">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/ledgerreducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/stakeaction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="88" column="33" lean-forward="true" selection-start-line="88" selection-start-column="13" selection-end-line="88" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/stakereducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="30" column="77" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/Stake.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#0#62#0" expanded="true" />
+            <element signature="e#1930#2589#0" />
+            <element signature="e#2671#3386#0" />
+            <element signature="e#3440#3715#0" />
+            <element signature="e#3754#8552#0" />
+            <element signature="e#18896#19114#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="176" column="66" selection-start-line="176" selection-start-column="66" selection-end-line="176" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>

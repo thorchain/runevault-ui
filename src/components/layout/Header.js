@@ -45,21 +45,22 @@ const Header = (props) => {
             </Col>
             </Breakpoint>
 
-          
 
-            <Breakpoint medium up>
-            <Col xs={12} sm={8} md={4}>
-              <div style={{float: "right"}}>
-                {context.wallet ?
-                  <Link to="/wallet"><WalletAddrShort /></Link>
-                  :
-                  <Link to="/wallet/unlock">
-                    <Button fill>
-                      Connect my Wallet
-                    </Button>
-                  </Link>
-                }
-              </div>
+            <Breakpoint small up>
+                <Col xs={12} sm={8} md={4}>
+                    <Link to="/leaderboard"><span style={{marginLeft: -100, color: "#fff"}}>LEADERBOARD</span></Link>
+                    <div style={{float: "right"}}>
+                        {context.wallet ?
+                            <Link to="/wallet"><WalletAddrShort /></Link>
+                            :
+                            <Link to="/wallet/unlock">
+                                <Button fill>
+                                    Connect my Wallet
+                                </Button>
+                            </Link>
+                        }
+                    </div>
+
             </Col>
             </Breakpoint>
 

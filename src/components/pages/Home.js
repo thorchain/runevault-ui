@@ -1,15 +1,13 @@
 import React, {Component} from 'react'
 import { Link } from "react-router-dom"
 import { Row, Col, Table } from 'antd';
-import { Avatar } from 'antd';
 
 import Breakpoint from 'react-socks';
 
 import { Icon, H1, Button, Text } from '../Components'
 import { connect } from 'react-redux';
-import { sumStake } from "../../actions/stakeaction";
-import Gravatar from 'react-gravatar'
-
+import { sumStake, saveStakeEaringsData, saveStakeEaringsColumn } from "../../actions/stakeaction";
+import { saveLedgerColumns } from "../../actions/ledgeraction";
 
 const homeStyles = {
   marginLeft: 0,
@@ -36,42 +34,14 @@ class Home extends Component {
 
     componentDidMount() {
         this.props.dispatch(sumStake());
-        this.setState({columns: this.tableColumns()})
-    }
-
-    tableColumns() {
-        const columns = [
-            {
-                title: 'Avatar',
-                dataIndex: 'avatar',
-                key: 'avatar',
-                render: text => (
-                    <Gravatar size={30} email={text} />
-                )
-            },
-            {
-                title: 'Address',
-                dataIndex: 'address',
-                key: 'address',
-                render: text => <a href={"https://explorer.binance.org/address/"+text}>{text}</a>,
-            },
-            {
-                title: 'Staked',
-                dataIndex: 'staked',
-                key: 'staked',
-            },
-            {
-                title: 'Last Updated',
-                dataIndex: 'lastUpdated',
-                key: 'lastUpdated',
-            },
-        ];
-       return columns;
+        this.props.dispatch(saveLedgerColumns());
+        this.props.dispatch(saveStakeEaringsColumn());
+        this.props.dispatch(saveStakeEaringsData());
     }
 
     render() {
 
-        const {stake} = this.props;
+        const {stake, ledger} = this.props;
 
         return (
             <div style={{backgroundColor: "#101921"}}>
@@ -185,17 +155,30 @@ class Home extends Component {
 
                     <Col xs={24} sm={22} md={20} lg={18}
                          style={{backgroundColor: '#D8D8D8', borderRadius: 5, paddingBottom: 5}}>
-                        <Table dataSource={stake.dataSource} columns={this.state.columns}
+                        <Table dataSource={stake.dataSource} columns={ledger.ledgerColumns}
                                pagination={false} size={'middle'}
                                title={() => 'LEADERBOARD'}/>
                     </Col>
 
-                    <Col xs={24} sm={1} md={2} lg={3}>
+                </Row>
+
+                <Row style={{marginTop: 30}}>
+                    <Col xs={2} sm={4} md={6} lg={8} xl={8}>
+
+                    </Col>
+                    <Col xs={2} sm={4} md={6} lg={8} xl={4}>
+
+                    </Col>
+                    <Col xs={2} sm={4} md={6} lg={8} xl={5}>
+
+                    </Col>
+                    <Col xs={20} sm={16} md={12} lg={8} xl={3}>
+                        <Link to="/leaderboard">
+                            <Button style={{height: 40, width: 237}}>VIEW ALL</Button>
+                        </Link>
                     </Col>
 
                 </Row>
-
-
             </div>
         )
     }
@@ -205,7 +188,8 @@ class Home extends Component {
 
 function mapStateToProps(state) {
     return {
-        stake: state.stake
+        stake: state.stake,
+        ledger: state.ledger
     };
 }
 
