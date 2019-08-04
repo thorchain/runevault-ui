@@ -6,8 +6,6 @@ import Breakpoint from 'react-socks';
 
 import { Icon, H1, Button, Text } from '../Components'
 import { connect } from 'react-redux';
-import { sumStake, saveStakeEaringsData, saveStakeEaringsColumn } from "../../actions/stakeaction";
-import { saveLeaderboardColumns } from "../../actions/leaderboardaction";
 
 const homeStyles = {
   marginLeft: 0,
@@ -26,13 +24,6 @@ class Home extends Component {
 
     constructor(props) {
         super(props);
-    }
-
-    componentDidMount() {
-        this.props.dispatch(sumStake());
-        this.props.dispatch(saveLeaderboardColumns());
-        this.props.dispatch(saveStakeEaringsColumn());
-        this.props.dispatch(saveStakeEaringsData());
     }
 
     render() {

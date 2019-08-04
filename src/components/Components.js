@@ -46,18 +46,6 @@ export const H1 = (props) => {
   )
 }
 
-export const H4 = (props) => {
-    let styles = {...defaultStyles, ...props.style || {}}
-    styles.fontFamily = "Exo 2"
-    styles.fontSize = "15px"
-    return (
-        <span style={styles}>
-      {props.children}
-    </span>
-    )
-}
-
-
 export const Text = (props) => {
   let styles = {...defaultStyles, ...props.style || {}}
   if (props.bold) {
@@ -115,8 +103,9 @@ export const Icon = (props) => {
     "rune": "rune.svg",
     "step1": "step1.svg",
     "step2": "step2.svg",
-    "openapp": "leaderboard-app.svg",
-    "pincode": "leaderboard-pin.svg",
+    "openapp": "ledger-app.svg",
+    //"qrcode": "qrCode.svg",
+    "pincode": "ledger-pin.svg",
     "qrcode" : "qr-code.svg",
   }
   return (

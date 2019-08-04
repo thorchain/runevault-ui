@@ -29,8 +29,7 @@
     "react-scripts": "3.0.1",
     "react-socks": "^1.0.1",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-    "resize-antd-table": "^2.0.1"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "env-cmd -f .env react-scripts start",

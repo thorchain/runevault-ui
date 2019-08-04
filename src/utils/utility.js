@@ -22,7 +22,51 @@ function pushData(jsonData) {
     })
 }
 
+function countUniqueAddresses(array) {
+    const result = [];
+    const map = new Map();
+    for (const item of array) {
+        if(!map.has(item.address)){
+            map.set(item.address, true);
+            result.push({
+                address: item.address
+            });
+        }
+    }
+    return result.length
+}
+
+function getLeaderBoardDatasource(stakeModeList) {
+    const leaderBoardStakers = getLeaderBoardStakers(stakeModeList);
+    const viewableLeaderBoardList = [];
+    for (var i = 0; i < leaderBoardStakers.length; i++) {
+        viewableLeaderBoardList.push({
+            key: i,
+            avatar: leaderBoardStakers[i].address,
+            address: leaderBoardStakers[i].address,
+            staked: leaderBoardStakers[i].amount.toLocaleString(),
+            lastUpdated: formatDate(new Date(leaderBoardStakers[i].date)),
+        });
+    }
+    return viewableLeaderBoardList;
+}
+
+function getLeaderBoardStakers(stakeModeList) {
+    var result = [];
+    stakeModeList.reduce(function (res, value) {
+        if (!res[value.address]) {
+            res[value.address] = {address: value.address, amount: 0, date: new Date(value.date).toISOString()};
+            result.push(res[value.address])
+        }
+        res[value.address].amount += value.amount;
+        return res;
+    }, {});
+    return result.sort((a, b) => Number(b.amount) - Number(a.amount));
+}
+
 export {
   AmounttoString,
     formatDate,
+    countUniqueAddresses,
+    getLeaderBoardDatasource
 }

@@ -1,17 +1,18 @@
 import {stakeRef} from '../config/firebase';
 import {
-    DATA_SOURCE,
+    DATA_SOURCE, IS_LOADING,
     LAST_UPDATED_DATE, STAKE_EARNINGS_COLUMN, STAKE_EARNINGS_DATA,
     STAKED_SUPPLY,
     SUM_STAKE,
     TOTAL_STAKERS
 } from "./index";
-import { formatDate } from '../utils/utility'
+import { formatDate, getLeaderBoardDatasource, countUniqueAddresses } from '../utils/utility'
 import { setLeaderBoardList } from "./leaderboardaction";
 
 export const saveStake = (stakeValue)  => async => {
     stakeRef.push({address: stakeValue.address, date: new Date().getTime(), amount: parseInt(stakeValue.amount, 10), mode: stakeValue.mode });
 };
+
 
 export const sumStake = () => dispatch => {
     const stakeList = [];
@@ -24,48 +25,32 @@ export const sumStake = () => dispatch => {
 
         if(stakeList.length > 0) {
             const stakeModeList = stakeList.filter(stake => stake.mode === 'Staked');
-            const totalStakers = countUnique(stakeModeList);
+            const totalStakers = countUniqueAddresses(stakeModeList);
 
             const sumStake = stakeModeList.map(item => item.amount).reduce((prev, next) => prev + next);
             const stakedSuppy = (sumStake/82184069)*100
 
             const lastUpdatedDate = new Date(stakeList[stakeList.length - 1].date);
 
-            var result = [];
-            stakeModeList.reduce(function(res, value) {
-                if (!res[value.address]) {
-                    res[value.address] = { address: value.address, amount: 0, date: new Date(value.date).toISOString() };
-                    result.push(res[value.address])
-                }
-                res[value.address].amount += value.amount;
-                return res;
-            }, {});
+            const viewableLeaderBoardList = getLeaderBoardDatasource(stakeModeList);
 
-            const resultValue = result.sort((a, b) => Number(b.amount) - Number(a.amount));
-
-            const viewableLeaderBoardList = [];
-            for (var i = 0; i < resultValue.length; i++) {
-                viewableLeaderBoardList.push({
-                    key: i,
-                    avatar: resultValue[i].address,
-                    address: resultValue[i].address,
-                    staked: resultValue[i].amount.toLocaleString(),
-                    lastUpdated: formatDate(new Date(resultValue[i].date)),
-                });
-            }
-
-            dispatch(setSumStake(sumStake.toLocaleString()));
-            dispatch(seTotalStakers(totalStakers));
-            dispatch(setSakedSupply(stakedSuppy.toFixed(1)));
-            dispatch(setLastUpdatedDate(formatDate(lastUpdatedDate)));
-            dispatch(setLeaderBoardList(viewableLeaderBoardList));
-            dispatch(setDataSource(viewableLeaderBoardList.slice(0, 10)));
+            calculateHomePageMetrices(dispatch, sumStake, totalStakers, stakedSuppy, lastUpdatedDate, viewableLeaderBoardList);
         }
 
     });
 }
 
-export const saveStakeEaringsColumn = () => dispatch => {
+function calculateHomePageMetrices(dispatch, sumStake, totalStakers, stakedSuppy, lastUpdatedDate, viewableLeaderBoardList) {
+    dispatch(setSumStake(sumStake.toLocaleString()));
+    dispatch(seTotalStakers(totalStakers));
+    dispatch(setSakedSupply(stakedSuppy.toFixed(1)));
+    dispatch(setLastUpdatedDate(formatDate(lastUpdatedDate)));
+    dispatch(setLeaderBoardList(viewableLeaderBoardList));
+    dispatch(setDataSource(viewableLeaderBoardList.slice(0, 10)));
+    dispatch(setIsLoading(false));
+}
+
+export const saveStakeEarningsColumn = () => dispatch => {
     const columns = [
         {
             title: 'Week',
@@ -84,20 +69,6 @@ export const saveStakeEaringsColumn = () => dispatch => {
         },
     ];
     dispatch(setStakeEaringsColumn(columns));
-}
-
-export function countUnique(array) {
-    const result = [];
-    const map = new Map();
-    for (const item of array) {
-        if(!map.has(item.address)){
-            map.set(item.address, true);    // set any value to Map
-            result.push({
-                address: item.address
-            });
-        }
-    }
-    return result.length
 }
 
 export const saveStakeEaringsData = () => dispatch => {
@@ -214,5 +185,12 @@ export const setDataSource = (dataSource) => {
     return {
         type: DATA_SOURCE,
         dataSource
+    }
+}
+
+export const setIsLoading = (isLoading) => {
+    return {
+        type: IS_LOADING,
+        isLoading
     }
 }

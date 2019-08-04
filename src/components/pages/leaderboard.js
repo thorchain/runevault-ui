@@ -2,7 +2,7 @@ import {Component} from "react";
 import { connect } from 'react-redux';
 import React from "react";
 import {Col, Row, Table} from "antd";
-import {Button, H1, H4, Icon, Text} from "../Components";
+import { H1 } from "../Components";
 
 class Leaderboard extends Component {
 
@@ -47,9 +47,9 @@ class Leaderboard extends Component {
                     <Col xs={24} sm={24} md={1} lg={2}>
                     </Col>
                     <Col xs={24} sm={22} md={20} lg={20}
-                         style={{backgroundColor: '#D8D8D8', borderRadius: 5, paddingTop: 25, paddingBottom: 5}}>
+                         style={{backgroundColor: '#D8D8D8', borderRadius: 5, paddingBottom: 5}}>
                         <Table pagination={{ defaultPageSize: 100, showSizeChanger: true, pageSizeOptions: ['10', '20', '30']}}
-                               dataSource={leaderboard.leaderBoardList} pafin columns={leaderboard.leaderboardColumns}
+                               dataSource={leaderboard.leaderBoardList} columns={leaderboard.leaderboardColumns}
                                size={'middle'}
                                title={() => 'LEADERBOARD'}/>
                     </Col>

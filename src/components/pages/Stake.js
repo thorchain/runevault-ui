@@ -217,9 +217,9 @@ const Stake = (props) => {
             return
           }
 
-        } else if (context.wallet.leaderboard) {
+        } else if (context.wallet.ledger) {
           binance.useLedgerSigningDelegate(
-            context.wallet.leaderboard,
+            context.wallet.ledger,
             null, null, null,
             context.wallet.hdPath,
           )
@@ -558,7 +558,7 @@ const Stake = (props) => {
 
 
     </Row>
-      <Row style={{marginTop: 100}}>
+      <Row style={{marginTop: 50}}>
 
           <Col xs={24} sm={24} md={1} lg={2}>
           </Col>

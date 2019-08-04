@@ -28,3 +28,4 @@ keys.txt
 .idea/
 .env
 prod.env
+package-lock.json
