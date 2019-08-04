@@ -24,7 +24,7 @@ export const sumStake = () => dispatch => {
 
         if(stakeList.length > 0) {
             const stakeModeList = stakeList.filter(stake => stake.mode === 'Staked');
-            const totalStakers = stakeModeList.length;
+            const totalStakers = countUnique(stakeModeList);
 
             const sumStake = stakeModeList.map(item => item.amount).reduce((prev, next) => prev + next);
             const stakedSuppy = (sumStake/82184069)*100
@@ -49,8 +49,8 @@ export const sumStake = () => dispatch => {
                     key: i,
                     avatar: resultValue[i].address,
                     address: resultValue[i].address,
-                    staked: resultValue[i].amount,
-                    lastUpdated: resultValue[i].date,
+                    staked: resultValue[i].amount.toLocaleString(),
+                    lastUpdated: formatDate(new Date(resultValue[i].date)),
                 });
             }
 
@@ -84,6 +84,20 @@ export const saveStakeEaringsColumn = () => dispatch => {
         },
     ];
     dispatch(setStakeEaringsColumn(columns));
+}
+
+export function countUnique(array) {
+    const result = [];
+    const map = new Map();
+    for (const item of array) {
+        if(!map.has(item.address)){
+            map.set(item.address, true);    // set any value to Map
+            result.push({
+                address: item.address
+            });
+        }
+    }
+    return result.length
 }
 
 export const saveStakeEaringsData = () => dispatch => {
