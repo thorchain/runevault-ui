@@ -34,7 +34,7 @@ export const sumStake = () => async dispatch => {
 
         if(stakeList.length > 0) {
             const stakeModeList = stakeList.filter(stake => stake.mode === 'Staked');
-            const totalStakers = stakeModeList.length;
+            const totalStakers = countUnique(stakeModeList);
 
             const sumStake = stakeModeList.map(item => item.amount).reduce((prev, next) => prev + next);
             const stakedSuppy = (sumStake/82184069)*100
@@ -53,6 +53,20 @@ export const sumStake = () => async dispatch => {
         }
 
     });
+}
+
+export function countUnique(array) {
+    const result = [];
+    const map = new Map();
+    for (const item of array) {
+        if(!map.has(item.address)){
+            map.set(item.address, true);
+            result.push({
+                address: item.address
+            });
+        }
+    }
+    return result.length
 }
 
 export const setSumStake = (sumStake) => {
