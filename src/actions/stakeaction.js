@@ -23,9 +23,9 @@ export const sumStake = () => dispatch => {
             stakeList.push(rowValue);
         });
 
+        const stakeListOrderByDate = stakeList.sort((a, b) => Number(b.date) - Number(a.date));
         if(stakeList.length > 0) {
             const stakeModeList = stakeList.filter(stake => stake.mode === 'Staked');
-            const stakeModeListOrderByDate = stakeModeList.sort((a, b) => Number(b.date) - Number(a.date));
             const totalStakers = countUniqueAddresses(stakeModeList);
 
             const sumStake = stakeModeList.map(item => item.amount).reduce((prev, next) => prev + next);
@@ -33,7 +33,7 @@ export const sumStake = () => dispatch => {
 
             const lastUpdatedDate = new Date(stakeList[stakeList.length - 1].date);
 
-            const viewableLeaderBoardList = getLeaderBoardDatasource(stakeModeListOrderByDate);
+            const viewableLeaderBoardList = getLeaderBoardDatasource(stakeListOrderByDate);
 
             calculateHomePageMetrices(dispatch, sumStake, totalStakers, stakedSuppy, lastUpdatedDate, viewableLeaderBoardList);
         }
