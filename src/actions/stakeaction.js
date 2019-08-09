@@ -10,7 +10,7 @@ import { formatDate, getLeaderBoardDatasource, countUniqueAddresses } from '../u
 import { setLeaderBoardList } from "./leaderboardaction";
 
 export const saveStake = (stakeValue)  => async => {
-    stakeRef.push({address: stakeValue.address, date: new Date().getTime(), amount: parseInt(stakeValue.amount, 10), mode: stakeValue.mode });
+    stakeRef.push({address: stakeValue.address, date: new Date().getTime(), amount: 0, mode: stakeValue.mode });
 };
 
 
@@ -29,13 +29,18 @@ export const sumStake = () => dispatch => {
             const totalStakers = countUniqueAddresses(stakeModeList);
 
             const sumStake = stakeModeList.map(item => item.amount).reduce((prev, next) => prev + next);
-            const stakedSuppy = (sumStake/82184069)*100
 
-            const lastUpdatedDate = new Date(stakeList[stakeList.length - 1].date);
+            const stakeWithdrawList = stakeList.filter(stake => stake.mode === 'Withdraw');
+            const sumWithdStake = stakeWithdrawList.map(item => item.amount).reduce((prev, next) => prev + next);
+            const total = sumStake - sumWithdStake
+
+            const stakedSuppy = (total/82184069)*100
+
+            const lastUpdatedDate = new Date(stakeListOrderByDate[0].date);
 
             const viewableLeaderBoardList = getLeaderBoardDatasource(stakeListOrderByDate);
 
-            calculateHomePageMetrices(dispatch, sumStake, totalStakers, stakedSuppy, lastUpdatedDate, viewableLeaderBoardList);
+            calculateHomePageMetrices(dispatch, total, totalStakers, stakedSuppy, lastUpdatedDate, viewableLeaderBoardList);
         }
 
     });
