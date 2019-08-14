@@ -1,4 +1,3 @@
-import {stakeRef} from '../config/firebase';
 import {
     DATA_SOURCE, IS_LOADING,
     LAST_UPDATED_DATE, STAKE_EARNINGS_COLUMN, STAKE_EARNINGS_DATA,
@@ -6,55 +5,21 @@ import {
     SUM_STAKE,
     TOTAL_STAKERS
 } from "./index";
-import { formatDate, getLeaderBoardDatasource, countUniqueAddresses } from '../utils/utility'
-import { setLeaderBoardList } from "./leaderboardaction";
+import {getLastUpdatedDate, getTotalSupply, getTotalStakedRune, getTotalRuneStakers, getLeaderboardlist, saveStakeAddress} from "../services/runestats.service";
 
-export const saveStake = (stakeValue)  => async => {
-    stakeRef.push({address: stakeValue.address, date: new Date().getTime(), amount: 0, mode: stakeValue.mode });
+export const saveStake = (stakeValue)  => dispatch => {
+    dispatch(saveStakeAddress(stakeValue));
 };
 
 
 export const sumStake = () => dispatch => {
-    const stakeList = [];
-    stakeRef.on("value", snapshot => {
-
-        snapshot.forEach(function(_child){
-            var rowValue = _child.val();
-            stakeList.push(rowValue);
-        });
-
-        const stakeListOrderByDate = stakeList.sort((a, b) => Number(b.date) - Number(a.date));
-        if(stakeList.length > 0) {
-            const stakeModeList = stakeList.filter(stake => stake.mode === 'Staked');
-            const totalStakers = countUniqueAddresses(stakeModeList);
-
-            const sumStake = stakeModeList.map(item => item.amount).reduce((prev, next) => prev + next);
-
-            const stakeWithdrawList = stakeList.filter(stake => stake.mode === 'Withdraw');
-            const sumWithdStake = stakeWithdrawList.map(item => item.amount).reduce((prev, next) => prev + next);
-            const total = sumStake - sumWithdStake
-
-            const stakedSuppy = (total/82184069)*100
-
-            const lastUpdatedDate = new Date(stakeListOrderByDate[0].date);
-
-            const viewableLeaderBoardList = getLeaderBoardDatasource(stakeListOrderByDate);
-
-            calculateHomePageMetrices(dispatch, total, totalStakers, stakedSuppy, lastUpdatedDate, viewableLeaderBoardList);
-        }
-
-    });
+    dispatch(getLastUpdatedDate());
+    dispatch(getTotalSupply());
+    dispatch(getTotalStakedRune());
+    dispatch(getTotalRuneStakers());
+    dispatch(getLeaderboardlist());
 }
 
-function calculateHomePageMetrices(dispatch, sumStake, totalStakers, stakedSuppy, lastUpdatedDate, viewableLeaderBoardList) {
-    dispatch(setSumStake(sumStake.toLocaleString()));
-    dispatch(seTotalStakers(totalStakers));
-    dispatch(setSakedSupply(stakedSuppy.toFixed(1)));
-    dispatch(setLastUpdatedDate(formatDate(lastUpdatedDate)));
-    dispatch(setLeaderBoardList(viewableLeaderBoardList));
-    dispatch(setDataSource(viewableLeaderBoardList.slice(0, 10)));
-    dispatch(setIsLoading(false));
-}
 
 export const saveStakeEarningsColumn = () => dispatch => {
     const columns = [
