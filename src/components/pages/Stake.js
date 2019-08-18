@@ -480,29 +480,26 @@ const Stake = (props) => {
                   <Row  style={{marginTop: "10px"}}>
                     <Col xs={24}>
                       <span><Text>WEEK:</Text></span>
-                      <span style={{margin: "0px 20px"}} size={22}>1</span>
+                      <span style={{margin: "0px 20px"}} size={22}>4</span>
                     </Col>
                   </Row>
 
                   <Row  style={{marginTop: "10px"}}>
                     <Col xs={24} sm={12}>
-                      <span><Text>THIS TIER:</Text></span>
-                      <span style={{margin: "0px 20px"}} size={22}>0.2%</span>
+                      <span><Text>CURRENT TIER (TIER 4):</Text></span>
+                      <span style={{margin: "0px 20px"}} size={22}>0.8%</span>
                     </Col>
                     <Col xs={24} sm={12} >
-                      <span><Text>NEXT TIER:</Text></span>
-                      <span style={{margin: "0px 20px"}} size={22}>0.4%</span>
+                      <span><Text>NEXT TIER (TIER 5):</Text></span>
+                      <span style={{margin: "0px 20px"}} size={22}>1.0%</span>
                     </Col>
                   </Row>
 
                   <Row  style={{marginTop: "10px"}}>
-                    <Col xs={24} sm={12}>
-                      <span><Text>COMPOUNDED:</Text></span>
-                      <span style={{margin: "0px 20px"}} size={22}>0.2%</span>
-                    </Col>
-                    <Col xs={24} sm={12} >
-                      <span><Text>NEXT COMPOUND:</Text></span>
-                      <span style={{margin: "0px 20px"}} size={22}>0.6%</span>
+                    <Col xs={24}>
+                      <span><Text>COMPOUNDED (TIER 1 to TIER 4):</Text></span>
+                      <span style={{margin: "0px 20px"}} size={22}>2.0%</span>
+                      <p>Restake your rewards each week to earn this.</p>
                     </Col>
                   </Row>
 
