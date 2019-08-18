@@ -69,7 +69,7 @@ class Home extends Component {
 
                     <Breakpoint medium up>
                         <Col xs={24} sm={8} md={8} lg={9} style={iconStyles}>
-                            <Icon icon="rune" style={{width: "auto"}}/>
+                            <Icon icon="rune" style={{width: 450}}/>
                         </Col>
                     </Breakpoint>
 
@@ -85,7 +85,7 @@ class Home extends Component {
 
                     <Col xs={24} sm={11} md={10} lg={9}>
                         <h4 style={{color: "#848E9C"}}>NUMBER OF STAKERS:</h4>
-                        <H1>{stake.totalStakers}</H1>
+                        <H1>TotalStakers</H1>
                     </Col>
 
                     <Col xs={24} sm={11} md={10} lg={9}>
@@ -104,12 +104,12 @@ class Home extends Component {
 
                     <Col xs={24} sm={13} md={12} lg={11}>
                         <h4 style={{color: "#848E9C"}}>TOTAL STAKED:</h4>
-                        <H1> {stake.sumStake} RUNE</H1>
+                        <H1> Total RUNE</H1>
                     </Col>
 
                     <Col xs={24} sm={9} md={8} lg={7}>
                         <h4 style={{color: "#848E9C"}}>STAKED SUPPLY:</h4>
-                        <H1>{stake.stakedSupply}%</H1>
+                        <H1>Supply%</H1>
                     </Col>
 
                     <Col xs={24} sm={1} md={2} lg={3}>
@@ -124,7 +124,7 @@ class Home extends Component {
 
                     <Col xs={12} sm={11} md={10} lg={9}>
                         <h4 style={{color: "#848E9C"}}>LAST UPDATED:</h4>
-                        <h4 style={{color: "#FFF"}}>{stake.lastUpdatedDate}</h4>
+                        <h4 style={{color: "#FFF"}}>Date</h4>
                     </Col>
 
                     <Col xs={12} sm={11} md={10} lg={9}>

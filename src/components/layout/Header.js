@@ -26,7 +26,7 @@ const Header = (props) => {
             <Breakpoint medium up>
             <Col xs={12} sm={8} md={4}>
               <Link to="/">
-                <Icon icon="runelogo" style={{width:"100"}} />
+                <Icon icon="runelogo" style={{height:40}} />
               </Link>
             </Col>
             </Breakpoint>
@@ -34,7 +34,7 @@ const Header = (props) => {
             <Breakpoint small down>
             <Col xs={8}>
               <Link to="/">
-                <Icon icon="runelogo" style={{width:"80"}} />
+                <Icon icon="runelogo" style={{width:30}} />
               </Link>
             </Col>
             </Breakpoint>
