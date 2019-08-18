@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Row, Col, Table } from 'antd';
 
@@ -8,14 +8,14 @@ import { Icon, H1, Button, Text } from '../Components'
 import { connect } from 'react-redux';
 
 const homeStyles = {
-  marginLeft: 0,
-  marginTop: 40,
-  backgroundColor: "#101921"
+    marginLeft: 0,
+    marginTop: 40,
+    backgroundColor: "#101921"
 }
 
 const iconStyles = {
-  marginTop: 140,
-  backgroundColor: "#101921"
+    marginTop: 140,
+    backgroundColor: "#101921"
 }
 
 
@@ -28,10 +28,10 @@ class Home extends Component {
 
     render() {
 
-        const {stake, leaderboard} = this.props;
+        const { stake, leaderboard } = this.props;
 
         return (
-            <div style={{backgroundColor: "#101921"}}>
+            <div style={{ backgroundColor: "#101921" }}>
                 <Row style={{}}>
                     <Col xs={24} sm={1} md={2} lg={3}>
                     </Col>
@@ -40,8 +40,8 @@ class Home extends Component {
 
                         <H1>STAKE RUNE AND EARN</H1>
                         <br></br>
-                        <h4 style={{color: "#848E9C"}}><span>STAKE RUNE TO EARN WEEKLY COMPOUNDED INTEREST UNTIL THE LAUNCH OF </span>
-                            <span><strong><a href="/" style={{color: "#fff"}}>BEPSWAP</a></strong></span>
+                        <h4 style={{ color: "#848E9C" }}><span>STAKE RUNE TO EARN WEEKLY COMPOUNDED INTEREST UNTIL THE LAUNCH OF </span>
+                            <span><strong><a href="/" style={{ color: "#fff" }}>BEPSWAP</a></strong></span>
                         </h4>
                         <br></br>
                         <p>1) Stake your RUNE using this interface.</p>
@@ -51,14 +51,14 @@ class Home extends Component {
                             continue earning. </p>
                         <br></br>
                         <Link to="/stake">
-                            <Button style={{height: 40, width: 250}}>STAKE NOW</Button>
+                            <Button style={{ height: 40, width: 250 }}>STAKE NOW</Button>
                         </Link>
                         <br></br>
                         <br></br>
                         <Text>Check out the</Text>
                         <a href="https://medium.com/thorchain/introducing-runevault-stake-and-earn-rune-87576671d1e4"
-                           target="_blank" rel="noopener noreferrer">
-                            <Text style={{fontWeight: 'bold'}}> announcement.</Text>
+                            target="_blank" rel="noopener noreferrer">
+                            <Text style={{ fontWeight: 'bold' }}> announcement.</Text>
                         </a>
                         <br></br>
 
@@ -69,7 +69,7 @@ class Home extends Component {
 
                     <Breakpoint medium up>
                         <Col xs={24} sm={8} md={8} lg={9} style={iconStyles}>
-                            <Icon icon="rune" style={{width: 450}}/>
+                            <Icon icon="rune" style={{ width: 450 }} />
                         </Col>
                     </Breakpoint>
 
@@ -78,14 +78,14 @@ class Home extends Component {
 
                 </Row>
 
-                <Row style={{marginTop: 100}}>
+                <Row style={{ marginTop: 100 }}>
 
                     <Col xs={24} sm={1} md={2} lg={3}>
                     </Col>
 
                     <Col xs={24} sm={11} md={10} lg={9}>
-                        <h4 style={{color: "#848E9C"}}>NUMBER OF STAKERS:</h4>
-                        <H1>TotalStakers</H1>
+                        <h4 style={{ color: "#848E9C" }}>NUMBER OF STAKERS:</h4>
+                        <H1>{stake.totalStakers}</H1>
                     </Col>
 
                     <Col xs={24} sm={11} md={10} lg={9}>
@@ -97,19 +97,19 @@ class Home extends Component {
 
                 </Row>
 
-                <Row style={{marginTop: 50}}>
+                <Row style={{ marginTop: 50 }}>
 
                     <Col xs={24} sm={1} md={2} lg={3}>
                     </Col>
 
                     <Col xs={24} sm={13} md={12} lg={11}>
-                        <h4 style={{color: "#848E9C"}}>TOTAL STAKED:</h4>
-                        <H1> Total RUNE</H1>
+                        <h4 style={{ color: "#848E9C" }}>TOTAL STAKED:</h4>
+                        <H1> {stake.sumStake} RUNE</H1>
                     </Col>
 
                     <Col xs={24} sm={9} md={8} lg={7}>
-                        <h4 style={{color: "#848E9C"}}>STAKED SUPPLY:</h4>
-                        <H1>Supply%</H1>
+                        <h4 style={{ color: "#848E9C" }}>STAKED SUPPLY:</h4>
+                        <H1>{stake.stakedSupply}%</H1>
                     </Col>
 
                     <Col xs={24} sm={1} md={2} lg={3}>
@@ -117,14 +117,14 @@ class Home extends Component {
 
                 </Row>
 
-                <Row style={{marginTop: 50}}>
+                <Row style={{ marginTop: 50 }}>
 
                     <Col xs={24} sm={1} md={2} lg={3}>
                     </Col>
 
                     <Col xs={12} sm={11} md={10} lg={9}>
-                        <h4 style={{color: "#848E9C"}}>LAST UPDATED:</h4>
-                        <h4 style={{color: "#FFF"}}>Date</h4>
+                        <h4 style={{ color: "#848E9C" }}>LAST UPDATED:</h4>
+                        <h4 style={{ color: "#FFF" }}>{stake.lastUpdatedDate}</h4>
                     </Col>
 
                     <Col xs={12} sm={11} md={10} lg={9}>
@@ -135,21 +135,21 @@ class Home extends Component {
 
                 </Row>
 
-                <Row style={{marginTop: 100}}>
+                <Row style={{ marginTop: 100 }}>
 
                     <Col xs={24} sm={1} md={2} lg={3}>
                     </Col>
 
                     <Col xs={24} sm={22} md={20} lg={18}
-                         style={{backgroundColor: '#D8D8D8', borderRadius: 5, paddingBottom: 5}}>
+                        style={{ backgroundColor: '#D8D8D8', borderRadius: 5, paddingBottom: 5 }}>
                         <Table dataSource={stake.dataSource} columns={leaderboard.leaderboardColumns}
-                               pagination={false} size={'middle'}
-                               title={() => 'LEADERBOARD'}/>
+                            pagination={false} size={'middle'}
+                            title={() => 'LEADERBOARD'} />
                     </Col>
 
                 </Row>
 
-                <Row style={{marginTop: 30}}>
+                <Row style={{ marginTop: 30 }}>
                     <Col xs={2} sm={4} md={6} lg={8} xl={8}>
 
                     </Col>
@@ -161,7 +161,7 @@ class Home extends Component {
                     </Col>
                     <Col xs={20} sm={16} md={12} lg={8} xl={3}>
                         <Link to="/leaderboard">
-                            <Button style={{height: 40, width: 237}}>VIEW ALL</Button>
+                            <Button style={{ height: 40, width: 237 }}>VIEW ALL</Button>
                         </Link>
                     </Col>
 
