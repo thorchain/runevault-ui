@@ -47,7 +47,7 @@ class Home extends Component {
                         <p>1) Stake your RUNE using this interface.</p>
                         <p>2) Earn a percent of your balance compounded every week until the launch of BEPSwap (maximum
                             of 10 weeks).</p>
-                        <p>3) When BEPSwap launches, withdraw and stake your total earnings in a liquidity pool and
+                        <p>3) When BEPSwap launches, withdraw and stake in a liquidity pool and
                             continue earning. </p>
                         <br></br>
                         <Link to="/stake">
