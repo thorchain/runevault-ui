@@ -44,14 +44,15 @@ export const getLeaderboardlist = () => dispatch => {
         .then((response) => {
             const viewableLeaderBoardList = [];
             const runeAddressList = response.data.runeAddressList;
+            const runeAddressListThanZero = runeAddressList.filter(x => x.amount > 0);
 
-            for (var i = 0; i < runeAddressList.length; i++) {
+            for (var i = 0; i < runeAddressListThanZero.length; i++) {
                 viewableLeaderBoardList.push({
                     key: i,
-                    avatar: runeAddressList[i].address,
-                    address: runeAddressList[i].address,
-                    staked: (runeAddressList[i].amount).toLocaleString(),
-                    lastUpdated: formatDate(new Date(runeAddressList[i].date)),
+                    avatar: runeAddressListThanZero[i].address,
+                    address: runeAddressListThanZero[i].address,
+                    staked: (runeAddressListThanZero[i].amount).toLocaleString(),
+                    lastUpdated: formatDate(new Date(runeAddressListThanZero[i].date)),
                 });
             }
             dispatch(setLeaderBoardList(viewableLeaderBoardList));
