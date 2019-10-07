@@ -40,13 +40,12 @@ class Home extends Component {
 
                         <H1>STAKE RUNE AND EARN</H1>
                         <br></br>
-                        <h4 style={{ color: "#848E9C" }}><span>STAKE RUNE TO EARN WEEKLY COMPOUNDED INTEREST UNTIL THE LAUNCH OF </span>
+                        <h4 style={{ color: "#848E9C" }}><span>STAKE RUNE TO EARN WEEKLY 1% INTEREST UNTIL THE LAUNCH OF </span>
                             <span><strong><a href="/" style={{ color: "#fff" }}>BEPSWAP</a></strong></span>
                         </h4>
                         <br></br>
                         <p>1) Stake your RUNE using this interface.</p>
-                        <p>2) Earn a percent of your balance compounded every week until the launch of BEPSwap (maximum
-                            of 10 weeks).</p>
+                        <p>2) Earn weekly 1% (52% APR) of your balance compounded until the launch of BEPSwap.</p>
                         <p>3) When BEPSwap launches, withdraw and stake your total earnings in a liquidity pool and
                             continue earning. </p>
                         <br></br>
@@ -54,12 +53,6 @@ class Home extends Component {
                             <Button style={{ height: 40, width: 250 }}>STAKE NOW</Button>
                         </Link>
                         <br></br>
-                        <br></br>
-                        <Text>Check out the</Text>
-                        <a href="https://medium.com/thorchain/introducing-runevault-stake-and-earn-rune-87576671d1e4"
-                            target="_blank" rel="noopener noreferrer">
-                            <Text style={{ fontWeight: 'bold' }}> announcement.</Text>
-                        </a>
                         <br></br>
 
                     </Col>

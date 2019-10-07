@@ -18,7 +18,7 @@ import {saveStake} from "../../actions/stakeaction";
 const SYMBOL = "RUNE-B1A"
 const NETWORK_ID = 714
 const MODE_STAKE = "STAKE RUNE"
-const MODE_WITHDRAWL = "WITHDRAW (Caution: time will be reset!)"
+const MODE_WITHDRAWL = "WITHDRAW"
 
 const Stake = (props) => {
   const [selectedCoin, setSelectedCoin] = useState(null)
@@ -317,7 +317,7 @@ const Stake = (props) => {
 
         <div>
           <Text size={18}>
-            Stake RUNE to earn weekly compounding interest until the launch of BEPSwap.
+            Stake RUNE to earn 1% weekly interest (52% APR) until the launch of BEPSwap.
           </Text>
         </div>
 
@@ -459,14 +459,12 @@ const Stake = (props) => {
                             <Col>
                               <Button secondary
                                 style={{height:40, width:200, marginTop: 10}}
-                                onClick={() => { confirmation('WITHDRAW (Caution: time will be reset!)') }}
+                                onClick={() => { confirmation('WITHDRAW') }}
                                 loading={sending}
                               >
                                 WITHDRAW
                               </Button>
                               <br></br>
-
-                              <Text>Caution: your time will be reset!</Text>
                             </Col>
                           </Row>
 
@@ -485,12 +483,7 @@ const Stake = (props) => {
                         <Text size={15} style={{fontWeight: 'bold'}}>Binance Chain "FREEZE" command.</Text>
                       </a>
                       <br></br>
-                      <Text size={10}>RUNE will be paid out each week. You can add more, but any withdrawals will reset your holding period.
-                        Your weekly payout is calculated based the balance of your staked RUNE, multiplied by the compounded interest rate, set in the</Text>
-                      <a href="https://medium.com/thorchain/introducing-runevault-stake-and-earn-rune-87576671d1e4"
-                        target="_blank" rel="noopener noreferrer">
-                        <Text size={11} style={{fontWeight: 'bold'}}> EARNING SCHEDULE.</Text>
-                      </a>
+                      <Text size={10}>RUNE will be paid out each week. Your weekly payout is 1% of your staked RUNE.</Text>
                     </Col>
                   </Row>
 
@@ -504,13 +497,6 @@ const Stake = (props) => {
               }
             </Col>
           </Row>
-
-
-
-
-
-
-
         </div>
 
         <Modal
@@ -530,24 +516,9 @@ const Stake = (props) => {
       <Col xs={24} sm={24} md={1} lg={2}>
       </Col>
 
-
-    </Row>
-      <Row style={{marginTop: 50}}>
-
-          <Col xs={24} sm={24} md={1} lg={2}>
-          </Col>
-
-          <Col xs={24} sm={22} md={20} lg={20}
-               style={{backgroundColor: '#D8D8D8', borderRadius: 5, paddingBottom: 5}}>
-              <Table dataSource={props.stake.stakeEarningsData} columns={props.stake.stakeEarningsColumn} pagination={false} size={'middle'}
-                     title={() => 'EARNINGS SCHEDULE'}/>
-          </Col>
-
-          <Col xs={24} sm={1} md={2} lg={3}>
-          </Col>
-
       </Row>
-  </div>
+
+      </div>
   )
 }
 
