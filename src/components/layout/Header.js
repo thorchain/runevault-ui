@@ -24,30 +24,15 @@ const Header = (props) => {
         <Layout.Header className="header-container" style={styles} >
           <Row>
             <Breakpoint medium up>
-            <Col xs={12} sm={8} md={4}>
+            <Col sm={8} md={4}>
               <Link to="/">
                 <Icon icon="runelogo" style={{height:40}} />
               </Link>
             </Col>
-            </Breakpoint>
-
-            <Breakpoint small down>
-            <Col xs={8}>
-              <Link to="/">
-                <Icon icon="runelogo" style={{width:30}} />
-              </Link>
-            </Col>
-            </Breakpoint>
-
-            <Breakpoint medium up>
-            <Col sm={8} md={16}>
+            <Col sm={8} md={14}>
               <Center><span>STAKE AND EARN RUNE</span></Center>
             </Col>
-            </Breakpoint>
-
-
-            <Breakpoint small up>
-                <Col xs={12} sm={8} md={4}>
+            <Col sm={8} md={6}>
                     <Link to="/leaderboard"><span style={{marginLeft: -100, color: "#fff"}}>LEADERBOARD</span></Link>
                     <div style={{float: "right"}}>
                         {context.wallet ?
@@ -60,9 +45,17 @@ const Header = (props) => {
                             </Link>
                         }
                     </div>
-
             </Col>
             </Breakpoint>
+
+            <Breakpoint small down>
+            <Col xs={24}>
+              <Link to="/">
+                <Icon icon="runelogo" style={{height:30}} />
+              </Link>
+            </Col>
+            </Breakpoint>
+
 
           </Row>
       </Layout.Header>

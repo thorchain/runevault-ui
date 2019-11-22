@@ -3,8 +3,8 @@ import React, { useContext } from 'react'
 import WalletConnect from "@trustwallet/walletconnect";
 import WalletConnectQRCodeModal from "@walletconnect/qrcode-modal";
 
-import { Icon, Text, Center } from '../../Components'
-import { Row, Col } from 'antd'
+import { Text, Button } from '../../Components'
+import { Row, Col, Icon as AntIcon } from 'antd'
 
 import { Context } from '../../../context'
 import { crypto } from '@binance-chain/javascript-sdk'
@@ -106,13 +106,19 @@ const WalletConnectPane = props => {
         <Text size={18}>Click to scan a QR code and link your mobile wallet using WalletConnect.</Text>
       </Row>
 
+      
       <Row>
-        <Col  xs={24} md={3}></Col>
-        <Col  xs={24} md={8} style={paneStyle}>
+      <Col span={12}>
 
-          <Center><Icon icon="qrcode" style={{width:200, marginTop:30, marginBottom:30}} onClick={() => walletConnect()} /></Center>
-        </Col>
-        <Col xs={24} md={13}></Col>
+        <Button
+                onClick={() => walletConnect()}
+                fill={true}
+                style={{marginTop:24, marginLeft:0}}
+              >
+                Connect <AntIcon type="arrow-right" />
+              </Button>
+              </Col>
+
       </Row>
 
     </div>
