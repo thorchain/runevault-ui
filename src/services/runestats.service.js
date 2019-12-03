@@ -17,15 +17,18 @@ export const getLeaderboardlist = () => dispatch => {
             const viewableLeaderBoardList = [];
             const runeAddressList = response.data;
 
-            for (var i = 0; i < runeAddressList.length; i++) {
+            const sortedRuneAddressList = runeAddressList.sort((a, b) => Number(b.frozen) - Number(a.frozen));
+
+            for (var i = 0; i < sortedRuneAddressList.length; i++) {
                 viewableLeaderBoardList.push({
                     key: i,
-                    avatar: runeAddressList[i].address,
-                    address: runeAddressList[i].address,
-                    staked: (runeAddressList[i].frozen).toLocaleString(),
+                    avatar: sortedRuneAddressList[i].address,
+                    address: sortedRuneAddressList[i].address,
+                    staked: (sortedRuneAddressList[i].frozen.toLocaleString()),
                 });
             }
-            let totalFrozen = runeAddressList.reduce((acc,address) => { return address.frozen+acc},0);
+
+            let totalFrozen = sortedRuneAddressList.reduce((acc,address) => { return address.frozen+acc},0);
 
             dispatch(setSumStake(totalFrozen.toLocaleString()));
             dispatch(setSakedSupply((totalFrozen/110052528*100).toLocaleString()));
