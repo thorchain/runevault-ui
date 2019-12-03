@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-    setDataSource,
+    setDataSource, setIsError,
     setIsLoading,
     setLastUpdatedDate,
     seTotalStakers,
@@ -10,54 +10,31 @@ import {
 import {formatDate} from "../utils/utility";
 import {setLeaderBoardList} from "../actions/leaderboardaction";
 
-export const getLastUpdatedDate = () => dispatch => {
-    axios.get("https://thorchain-microservice.herokuapp.com/api/runeLastUpdatedDate")
-        .then((response) => {
-            dispatch(setLastUpdatedDate(formatDate(new Date(response.data.lastUpdatedDate))));
-        })
-}
-
-export const getTotalSupply = () => dispatch => {
-    axios.get("https://thorchain-microservice.herokuapp.com/api/totalSupply")
-        .then((response) => {
-            dispatch(setSakedSupply(response.data.totalSupply.toFixed(1)));
-        })
-}
-
-export const getTotalStakedRune = () => dispatch => {
-    axios.get("https://thorchain-microservice.herokuapp.com/api/totalAmountStaked")
-        .then((response) => {
-            dispatch(setSumStake(response.data.totalAmountStaked.toLocaleString()));
-        })
-}
-
-export const getTotalRuneStakers = () => dispatch => {
-    axios.get("https://thorchain-microservice.herokuapp.com/api/uniqueStakers")
-        .then((response) => {
-            dispatch(seTotalStakers(response.data.totalStakers));
-        })
-}
-
-
 export const getLeaderboardlist = () => dispatch => {
-    axios.get("https://thorchain-microservice.herokuapp.com/api/addresses")
+    axios.get("https://frozenbalances.herokuapp.com/frozen/RUNE-B1A")
         .then((response) => {
+            dispatch(setIsLoading(false));
             const viewableLeaderBoardList = [];
-            const runeAddressList = response.data.runeAddressList;
-            const runeAddressListThanZero = runeAddressList.filter(x => x.amount > 0);
+            const runeAddressList = response.data;
 
-            for (var i = 0; i < runeAddressListThanZero.length; i++) {
+            for (var i = 0; i < runeAddressList.length; i++) {
                 viewableLeaderBoardList.push({
                     key: i,
-                    avatar: runeAddressListThanZero[i].address,
-                    address: runeAddressListThanZero[i].address,
-                    staked: (runeAddressListThanZero[i].amount).toLocaleString(),
-                    lastUpdated: formatDate(new Date(runeAddressListThanZero[i].date)),
+                    avatar: runeAddressList[i].address,
+                    address: runeAddressList[i].address,
+                    staked: (runeAddressList[i].frozen).toLocaleString(),
                 });
             }
+            let totalFrozen = runeAddressList.reduce((acc,address) => { return address.frozen+acc},0);
+
+            dispatch(setSumStake(totalFrozen.toLocaleString()));
+            dispatch(setSakedSupply((totalFrozen/110052528*100).toLocaleString()));
+            dispatch(seTotalStakers(viewableLeaderBoardList.length));
             dispatch(setLeaderBoardList(viewableLeaderBoardList));
             dispatch(setDataSource(viewableLeaderBoardList.slice(0, 10)));
-            dispatch(setIsLoading(false));
+            dispatch(setLastUpdatedDate(formatDate(new Date())));
+            dispatch(setIsError(response.status === 404));
+
         })
 }
 

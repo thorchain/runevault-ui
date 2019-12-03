@@ -35,12 +35,6 @@ export const saveLeaderboardColumns = () => dispatch => {
             key: 'staked',
         },
 
-        {
-            title: 'Last Updated',
-            dataIndex: 'lastUpdated',
-            key: 'lastUpdated',
-        },
-
     ];
     dispatch(setLeaderBoardColumn(columns));
 }

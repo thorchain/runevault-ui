@@ -10,7 +10,8 @@ const initialState = {
     dataSource: [],
     stakeEarningsColumn: [],
     stakeEarningsData: [],
-    isLoading: true
+    isLoading: true,
+    isError: false,
 }
 
 export function stake(state = initialState, action) {
@@ -36,6 +37,8 @@ export function stake(state = initialState, action) {
             return {...state, dataSource: action.dataSource};
         case types.IS_LOADING:
             return {...state, isLoading: action.isLoading};
+        case types.IS_ERROR:
+            return {...state, isError: action.isError};
         default:
             return state;
     }

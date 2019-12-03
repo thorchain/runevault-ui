@@ -3,9 +3,10 @@ import {
     LAST_UPDATED_DATE, STAKE_EARNINGS_COLUMN, STAKE_EARNINGS_DATA,
     STAKED_SUPPLY,
     SUM_STAKE,
-    TOTAL_STAKERS
+    TOTAL_STAKERS,
+    IS_ERROR,
 } from "./index";
-import {getLastUpdatedDate, getTotalSupply, getTotalStakedRune, getTotalRuneStakers, getLeaderboardlist, saveStakeAddress} from "../services/runestats.service";
+import {getLeaderboardlist, saveStakeAddress} from "../services/runestats.service";
 
 export const saveStake = (stakeValue)  => dispatch => {
     dispatch(saveStakeAddress(stakeValue));
@@ -13,10 +14,6 @@ export const saveStake = (stakeValue)  => dispatch => {
 
 
 export const sumStake = () => dispatch => {
-    dispatch(getLastUpdatedDate());
-    dispatch(getTotalSupply());
-    dispatch(getTotalStakedRune());
-    dispatch(getTotalRuneStakers());
     dispatch(getLeaderboardlist());
 }
 
@@ -163,5 +160,12 @@ export const setIsLoading = (isLoading) => {
     return {
         type: IS_LOADING,
         isLoading
+    }
+}
+
+export const setIsError = (isError) => {
+    return {
+        type: IS_ERROR,
+        isError
     }
 }
