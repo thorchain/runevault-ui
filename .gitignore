@@ -26,6 +26,7 @@ yarn-error.log*
 
 keys.txt
 .idea/
+.idea/workspace.xml
 .env
 prod.env
 package-lock.json

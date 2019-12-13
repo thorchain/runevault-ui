@@ -12,7 +12,6 @@ import { AmounttoString } from '../../utils/utility'
 import { CHAIN_ID } from '../../env'
 import { Row, Form, Col, Modal, Input, message, Table } from 'antd'
 import { H1, Button, Text, Coin, WalletAddress, WalletAddrShort} from "../Components"
-import {saveStake} from "../../actions/stakeaction";
 
 // RUNE-B1A
 const SYMBOL = "RUNE-B1A"
@@ -246,8 +245,8 @@ const Stake = (props) => {
           setSending(false)
           if (results.result[0].ok) {
             const txURL = Binance.txURL(results.result[0].hash)
-              const stakeValue = { address: context.wallet.address, amount: values.amount, mode: modeValue }
-              props.dispatch(saveStake(stakeValue))
+              //const stakeValue = { address: context.wallet.address, amount: values.amount, mode: modeValue }
+              //props.dispatch(saveStake(stakeValue))
             message.success(<Text>Sent. <a target="_blank" rel="noopener noreferrer" href={txURL}>See transaction</a>.</Text>, 10)
             setVisible(false)
             getBalances()

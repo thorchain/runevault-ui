@@ -50,10 +50,3 @@ export const getLeaderboardlist = () => dispatch => {
         dispatch(setIsError(true));
     }
 }
-
-export const saveStakeAddress = (stakeValue) => dispatch => {
-    axios.post("https://thorchain-microservice.herokuapp.com/api/saveStake", {stakeValue})
-        .then((response) => {
-            console.log("saved ", response.data.status);
-        })
-}

@@ -6,11 +6,7 @@ import {
     TOTAL_STAKERS,
     IS_ERROR,
 } from "./index";
-import {getLeaderboardlist, saveStakeAddress} from "../services/runestats.service";
-
-export const saveStake = (stakeValue)  => dispatch => {
-    dispatch(saveStakeAddress(stakeValue));
-};
+import {getLeaderboardlist} from "../services/runestats.service";
 
 
 export const sumStake = () => dispatch => {
