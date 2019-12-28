@@ -18,7 +18,7 @@ import Leaderboard from './components/pages/leaderboard';
 import 'antd/dist/antd.css'
 import './App.css'
 import { connect } from 'react-redux';
-import {saveStakeEaringsData, saveStakeEarningsColumn, sumStake} from "./actions/stakeaction";
+import {saveStakeEaringsData, saveStakeEarningsColumn, sumStake, getCirculatingSupply} from "./actions/stakeaction";
 import {saveLeaderboardColumns} from "./actions/leaderboardaction";
 import { Spin, Icon } from 'antd';
 

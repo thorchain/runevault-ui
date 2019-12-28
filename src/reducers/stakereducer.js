@@ -12,6 +12,7 @@ const initialState = {
     stakeEarningsData: [],
     isLoading: true,
     isError: false,
+    circulatingSupply: ''
 }
 
 export function stake(state = initialState, action) {
@@ -35,6 +36,8 @@ export function stake(state = initialState, action) {
             return {...state, stakeEarningsData: action.stakeEarningsData}
         case types.DATA_SOURCE:
             return {...state, dataSource: action.dataSource};
+        case types.CIRCULATING_SUPPLY:
+            return {...state, circulatingSupply: action.circulatingSupply};
         case types.IS_LOADING:
             return {...state, isLoading: action.isLoading};
         case types.IS_ERROR:

@@ -4,7 +4,7 @@ import {
     STAKED_SUPPLY,
     SUM_STAKE,
     TOTAL_STAKERS,
-    IS_ERROR,
+    IS_ERROR, CIRCULATING_SUPPLY,
 } from "./index";
 import {getLeaderboardlist} from "../services/runestats.service";
 
@@ -163,5 +163,13 @@ export const setIsError = (isError) => {
     return {
         type: IS_ERROR,
         isError
+    }
+}
+
+export const setCirculatingSupply = (circulatingSupply) => {
+    console.log('circulatingSupply--- > ', circulatingSupply);
+    return {
+        type: CIRCULATING_SUPPLY,
+        circulatingSupply
     }
 }

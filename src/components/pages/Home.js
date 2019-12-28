@@ -44,8 +44,6 @@ class Home extends Component {
 
         const { stake, leaderboard } = this.props;
 
-        console.log(stake.isError);
-
         if (!this.state || !this.state.price){
 
             return (
@@ -123,7 +121,7 @@ class Home extends Component {
 
                         <Col xs={24} sm={9} md={8} lg={7}>
                         <h4 style={{ color: "#848E9C" }}>STAKED SUPPLY:</h4>
-                        <H1>{stake.stakedSupply}%</H1>
+                        <H1>{(stake.stakedSupply/stake.circulatingSupply * 100).toLocaleString()}%</H1>
                         </Col>
 
                         <Col xs={24} sm={1} md={2} lg={3}>
