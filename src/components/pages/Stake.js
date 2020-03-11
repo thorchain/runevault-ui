@@ -12,6 +12,7 @@ import { AmounttoString } from '../../utils/utility'
 import { CHAIN_ID } from '../../env'
 import { Row, Form, Col, Modal, Input, message, Table } from 'antd'
 import { H1, Button, Text, Coin, WalletAddress, WalletAddrShort} from "../Components"
+import {saveLog} from "../../services/log.api";
 
 // RUNE-B1A
 const SYMBOL = "RUNE-B1A"
@@ -80,6 +81,8 @@ const Stake = (props) => {
           setLoadingBalancer(false)
         })
         .catch((error) => {
+          console.log('getbalance eror: ', error);
+          saveLog("ERROR", error);
           setLoadingBalancer(false)
         })
     }
@@ -109,6 +112,7 @@ const Stake = (props) => {
           setLoadingBalancer(false)
         })
         .catch((error) => {
+          saveLog("ERROR_GET_BALANCE", error);
           setLoadingBalancer(false)
         })
     }
@@ -135,9 +139,11 @@ const Stake = (props) => {
 
       setSending(true)
       const binance = Binance
+      let authenticationType = "";
 
       // setup binance client for authentication
       if (context.wallet.walletconnect) {
+        let walletConnectMode = "";
         Binance.getAccount(context.wallet.address)
           .then((response) => {
             const account = response.result
@@ -149,18 +155,21 @@ const Stake = (props) => {
             };
 
             if (mode === MODE_STAKE) {
+              walletConnectMode = "STAKE";
               tx.freeze_order = {
                 from: base64js.fromByteArray(crypto.decodeAddress(context.wallet.address)),
                 symbol: SYMBOL,
                 amount: (parseFloat(values.amount) * Math.pow(10, 8)).toString(),
               }
             } else if (mode === MODE_WITHDRAWL) {
-              tx.unfreeze_order = {
+                walletConnectMode = "UNSTAKE";
+                tx.unfreeze_order = {
                 from: base64js.fromByteArray(crypto.decodeAddress(context.wallet.address)),
                 symbol: SYMBOL,
                 amount: (parseFloat(values.amount) * Math.pow(10, 8)).toString(),
               }
             } else {
+              saveLog("ERROR_WALLET_ACCOUNT_INVALID_MODE", "");
               throw new Error("invalid mode")
             }
             window.mywall = context.wallet.walletconnect
@@ -170,6 +179,7 @@ const Stake = (props) => {
                 // Returns transaction signed in json or encoded format
                 window.result = result
                 console.log("Successfully signed freeze/unfreeze msg:", result);
+                saveLog(`ERROR_WALLET_ACCOUNT_${walletConnectMode}_SUCCESS`, result);
                 binance.bnbClient.sendRawTransaction(result, true)
                   .then((response) => {
                     console.log("Response", response)
@@ -179,8 +189,9 @@ const Stake = (props) => {
                   })
                   .catch((error) => {
                     message.error(error.message)
-                    setSending(false)
-                    setVisible(false)
+                    setSending(false);
+                    setVisible(false);
+                    saveLog(`ERROR_WALLET_ACCOUNT_${walletConnectMode}_RAW_TRANSACTION`, error.message);
                     console.error(error)
                   })
               })
@@ -188,22 +199,25 @@ const Stake = (props) => {
                 // Error returned when rejected
                 console.error(error);
                 message.error(error.message)
-                setSending(false)
-                setVisible(false)
+                setSending(false);
+                saveLog(`ERROR_WALLET_ACCOUNT_${walletConnectMode}_ERROR`, error.message);
+                setVisible(false);
               });
             return
           })
           .catch((error) => {
             window.err = error
             message.error(error.message)
-            setSending(false)
-            setVisible(false)
-            console.error(error)
+            setSending(false);
+            setVisible(false);
+            console.error(error);
+            saveLog("ERROR_WALLET_ACCOUNT_GET_ACCOUNT", error.message);
             return
           })
       } else {
 
         if (context.wallet.keystore) {
+          authenticationType = "KEYSTORE_CONNECT";
           try {
             const privateKey = crypto.getPrivateKeyFromKeyStore(
               context.wallet.keystore,
@@ -214,12 +228,14 @@ const Stake = (props) => {
           } catch(err) {
             window.err = err
             console.error("Validating keystore error:", err)
-            message.error(err.message)
+            message.error(err.message);
+            saveLog("ERROR_KEYSTORE_GET_PRIVATEKEY", err.message);
             setSending(false)
             return
           }
 
         } else if (context.wallet.ledger) {
+          authenticationType = "LEDGER_CONNECT";
           binance.useLedgerSigningDelegate(
             context.wallet.ledger,
             null, null, null,
@@ -233,27 +249,44 @@ const Stake = (props) => {
           const manager = new TokenManagement(Binance.bnbClient).tokens
           var results
           var modeValue
+          var results
           if (mode === MODE_STAKE) {
-              modeValue = "Staked"
-              results = await manager.freeze(context.wallet.address, selectedCoin, values.amount)
+              console.log(context.wallet.address, selectedCoin, values.amount)
+
+              try {
+                  results = await manager.freeze(context.wallet.address, selectedCoin, values.amount)
+              } catch (error) {
+                  saveLog(`ERROR_STAKE_${authenticationType}`, error.message);
+                  console.log('error in stake ', error)
+              }
+
+
           } else if (mode === MODE_WITHDRAWL) {
-             modeValue = "Withdraw"
-            results = await manager.unfreeze(context.wallet.address, selectedCoin, values.amount)
+              try {
+                  results = await manager.unfreeze(context.wallet.address, selectedCoin, values.amount)
+              } catch (error) {
+                  saveLog(`ERROR_UNSTAKE_${authenticationType}`, error.message);
+                  console.log('error in stake ', error.message)
+              }
+
           } else {
+            saveLog(`ERROR_${authenticationType}_INVALID_MODE`, "");
             throw new Error("invalid mode")
           }
           setSending(false)
-          if (results.result[0].ok) {
+          if (results && results.result[0].ok) {
             const txURL = Binance.txURL(results.result[0].hash)
-              //const stakeValue = { address: context.wallet.address, amount: values.amount, mode: modeValue }
-              //props.dispatch(saveStake(stakeValue))
             message.success(<Text>Sent. <a target="_blank" rel="noopener noreferrer" href={txURL}>See transaction</a>.</Text>, 10)
             setVisible(false)
             getBalances()
+          } else {
+              saveLog(`ERROR_${authenticationType}_INVALID_MODE`, "");
+              console.log('transaction was not successful ', context.wallet.address);
           }
         } catch(err) {
           window.err = err
-          console.error("Staking error:", err)
+          console.error("Staking error:", err);
+          saveLog(`ERROR_STAKE_${authenticationType}`, err);
           message.error(err.message)
           setSending(false)
         }

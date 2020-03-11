@@ -7,7 +7,8 @@ import { Text, Button } from '../../Components'
 import { Row, Col, Icon as AntIcon } from 'antd'
 
 import { Context } from '../../../context'
-import { crypto } from '@binance-chain/javascript-sdk'
+import { crypto } from '@binance-chain/javascript-sdk';
+import { saveLog } from '../../../services/log.api';
 
 
 const WalletConnectPane = props => {
@@ -22,19 +23,32 @@ const WalletConnectPane = props => {
     walletConnector.killSession()
 
     // Check if connection is already established
-    if (!walletConnector.connected) {
-      console.log("Creating session")
-      // create new session
-      walletConnector.createSession().then(() => {
-        // get uri for QR Code modal
-        const uri = walletConnector.uri;
-        // display QR Code modal
-        WalletConnectQRCodeModal.open(uri, () => {
-          console.log("QR Code Modal closed");
-        })
-      })
-    }
 
+
+
+    if (!walletConnector.connected) {
+      console.log("Creating session");
+
+       try {
+           walletConnector.createSession().then(() => {
+               // get uri for QR Code modal
+               const uri = walletConnector.uri;
+               // display QR Code modal
+               WalletConnectQRCodeModal.open(uri, () => {
+                   console.log("QR Code Modal closed");
+               })
+
+           }).catch(error => {
+               saveLog("ERROR", error);
+           });
+       } catch(e) {
+           saveLog("ERROR", e);
+           console.log('error in creating session', e);
+       }
+
+
+
+    }
     // Subscribe to connection events
     walletConnector.on("connect", (error, payload) => {
       if (error) {
@@ -53,6 +67,7 @@ const WalletConnectPane = props => {
         console.log("ACCOUNT:", account)
         console.log("WALLET CONNECT ACCOUNTS RESULTS " + account.address);
         console.log("ADDR:", crypto.decodeAddress(account.address))
+        saveLog("INFO", `ACCOUNT: ${account} WALLET CONNECT ACCOUNTS RESULTS ${account.address} ADDR: ${crypto.decodeAddress(account.address)}`);
         context.setContext({
           "wallet": {
             "walletconnect": walletConnector,
@@ -65,12 +80,15 @@ const WalletConnectPane = props => {
       })
         .catch(error => {
           // Error returned when rejected
-          console.error(error);
+            saveLog("ERROR", error);
+            console.error(error);
         })
     })
 
     walletConnector.on("session_update", (error, payload) => {
+      console.log('walletConnector session_update ', payload);
       if (error) {
+        saveLog("ERROR", error);
         throw error;
       }
 
@@ -78,8 +96,12 @@ const WalletConnectPane = props => {
       // const { accounts, chainId } = payload.params[0];
     })
 
+    const address =  context.wallet && context.wallet.address ? context.wallet.address : 'No Address';
+
     walletConnector.on("disconnect", (error, payload) => {
+      saveLog("INFO", `${address} ${payload.params[0].message}`);
       if (error) {
+        saveLog("ERROR", error);
         throw error;
       }
 
@@ -106,7 +128,7 @@ const WalletConnectPane = props => {
         <Text size={18}>Click to scan a QR code and link your mobile wallet using WalletConnect.</Text>
       </Row>
 
-      
+
       <Row>
       <Col span={12}>
 

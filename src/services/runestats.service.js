@@ -12,24 +12,17 @@ import {formatDate} from "../utils/utility";
 import {setLeaderBoardList} from "../actions/leaderboardaction";
 
 export const getCirculatingSupply = () => dispatch => {
-    try {
-        axios.get("https://api.coingecko.com/api/v3/coins/thorchain?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false", {
-            headers: {"Access-Control-Allow-Origin": "*"}
+    axios.get("https://api.coingecko.com/api/v3/coins/thorchain?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false", {
+        headers: {"Access-Control-Allow-Origin": "*"}
+    })
+        .then((response) => {
+            dispatch(setCirculatingSupply(response.data.market_data.circulating_supply.toFixed(0)));
         })
-            .then((response) => {
-                dispatch(setCirculatingSupply(response.data.market_data.circulating_supply.toFixed(0)));
-            })
-            .catch(e => {
-                dispatch(setIsError(true));
-            })
-    } catch (e) {
-        dispatch(setIsError(true));
-    }
 }
 
 export const getLeaderboardlist = () => dispatch => {
-    dispatch(getCirculatingSupply());
     try {
+        dispatch(getCirculatingSupply());
         axios.get("https://frozenbalances.herokuapp.com/frozen/RUNE-B1A")
             .then((response) => {
                 dispatch(setIsLoading(false));
@@ -48,7 +41,9 @@ export const getLeaderboardlist = () => dispatch => {
                     });
                 }
 
-                let totalFrozen = sortedRuneAddressList.reduce((acc,address) => { return address.frozen+acc},0);
+                let totalFrozen = sortedRuneAddressList.reduce((acc, address) => {
+                    return address.frozen + acc
+                }, 0);
 
                 dispatch(setSumStake(totalFrozen.toLocaleString()));
                 //dispatch(setSakedSupply((totalFrozen / 110052528 * 100).toLocaleString()));

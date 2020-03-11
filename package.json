@@ -15,6 +15,7 @@
     "dotenv": "^8.0.0",
     "env-cmd": "^9.0.3",
     "firebase": "^5.7.2",
+    "http-proxy-middleware": "^1.0.1",
     "jquery": "^3.4.1",
     "linq": "^3.2.0",
     "lodash": "^4.17.11",
@@ -31,6 +32,7 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
   },
+  "proxy": "https://rune-log-api.herokuapp.com",
   "scripts": {
     "start": "env-cmd -f .env react-scripts start",
     "start-s": "HTTPS=true env-cmd -f .env react-scripts start",
