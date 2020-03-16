@@ -44,6 +44,7 @@ const Stake = (props) => {
         setPrice(response)
       })
       .catch((error) => {
+        saveLog(`ERROR_GET_PRICE_${SYMBOL}`, error);
         console.error(error)
       })
   }
@@ -89,7 +90,7 @@ const Stake = (props) => {
   }
 
   useEffect(() => {
-    getPrice()
+    //getPrice()
     getFee()
   }, [])
 
@@ -144,76 +145,83 @@ const Stake = (props) => {
       // setup binance client for authentication
       if (context.wallet.walletconnect) {
         let walletConnectMode = "";
-        Binance.getAccount(context.wallet.address)
-          .then((response) => {
-            const account = response.result
-            console.log("AccountInfo:", account)
-            const tx = window.tx = {
-              accountNumber: account.account_number.toString(),
-              chainId: CHAIN_ID,
-              sequence: account.sequence.toString(),
-            };
 
-            if (mode === MODE_STAKE) {
-              walletConnectMode = "STAKE";
-              tx.freeze_order = {
-                from: base64js.fromByteArray(crypto.decodeAddress(context.wallet.address)),
-                symbol: SYMBOL,
-                amount: (parseFloat(values.amount) * Math.pow(10, 8)).toString(),
-              }
-            } else if (mode === MODE_WITHDRAWL) {
-                walletConnectMode = "UNSTAKE";
-                tx.unfreeze_order = {
-                from: base64js.fromByteArray(crypto.decodeAddress(context.wallet.address)),
-                symbol: SYMBOL,
-                amount: (parseFloat(values.amount) * Math.pow(10, 8)).toString(),
-              }
-            } else {
-              saveLog("ERROR_WALLET_ACCOUNT_INVALID_MODE", "");
-              throw new Error("invalid mode")
-            }
-            window.mywall = context.wallet.walletconnect
-            context.wallet.walletconnect
-              .trustSignTransaction(NETWORK_ID, tx)
-              .then(result => {
-                // Returns transaction signed in json or encoded format
-                window.result = result
-                console.log("Successfully signed freeze/unfreeze msg:", result);
-                saveLog(`ERROR_WALLET_ACCOUNT_${walletConnectMode}_SUCCESS`, result);
-                binance.bnbClient.sendRawTransaction(result, true)
-                  .then((response) => {
-                    console.log("Response", response)
-                    setSending(false)
-                    setVisible(false)
-                    getBalances()
-                  })
-                  .catch((error) => {
+        try {
+            Binance.getAccount(context.wallet.address)
+                .then((response) => {
+                    const account = response.result
+                    console.log("AccountInfo:", account)
+                    const tx = window.tx = {
+                        accountNumber: account.account_number.toString(),
+                        chainId: CHAIN_ID,
+                        sequence: account.sequence.toString(),
+                    };
+
+                    if (mode === MODE_STAKE) {
+                        walletConnectMode = "STAKE";
+                        tx.freeze_order = {
+                            from: base64js.fromByteArray(crypto.decodeAddress(context.wallet.address)),
+                            symbol: SYMBOL,
+                            amount: (parseFloat(values.amount) * Math.pow(10, 8)).toString(),
+                        }
+                    } else if (mode === MODE_WITHDRAWL) {
+                        walletConnectMode = "UNSTAKE";
+                        tx.unfreeze_order = {
+                            from: base64js.fromByteArray(crypto.decodeAddress(context.wallet.address)),
+                            symbol: SYMBOL,
+                            amount: (parseFloat(values.amount) * Math.pow(10, 8)).toString(),
+                        }
+                    } else {
+                        saveLog("ERROR_WALLET_ACCOUNT_INVALID_MODE", `ACCOUNT_${context.wallet.address}`);
+                        throw new Error("invalid mode")
+                    }
+                    window.mywall = context.wallet.walletconnect
+                    context.wallet.walletconnect
+                        .trustSignTransaction(NETWORK_ID, tx)
+                        .then(result => {
+                            // Returns transaction signed in json or encoded format
+                            window.result = result
+                            console.log("Successfully signed freeze/unfreeze msg:", result);
+                            saveLog(`SUCCESS_WALLET_ACCOUNT_SIGN_${walletConnectMode}`, result);
+                            binance.bnbClient.sendRawTransaction(result, true)
+                                .then((response) => {
+                                    console.log("Response", response)
+                                    setSending(false)
+                                    setVisible(false)
+                                    getBalances()
+                                })
+                                .catch((error) => {
+                                    message.error(error.message)
+                                    setSending(false);
+                                    setVisible(false);
+                                    saveLog(`ERROR_WALLET_ACCOUNT_${walletConnectMode}_RAW_TRANSACTION`, `ACCOUNT_${context.wallet.address} ERROR: ${error.message}`);
+                                    console.error(error)
+                                })
+                        })
+                        .catch(error => {
+                            // Error returned when rejected
+                            console.error(error);
+                            message.error(error.message)
+                            setSending(false);
+                            saveLog(`ERROR_WALLET_ACCOUNT_${walletConnectMode}_SIGN_TRANSACTION`, `ACCOUNT_${context.wallet.address} ERROR: ${error.message}`);
+                            setVisible(false);
+                        });
+                    return
+                })
+                .catch((error) => {
+                    window.err = error
                     message.error(error.message)
                     setSending(false);
                     setVisible(false);
-                    saveLog(`ERROR_WALLET_ACCOUNT_${walletConnectMode}_RAW_TRANSACTION`, error.message);
-                    console.error(error)
-                  })
-              })
-              .catch(error => {
-                // Error returned when rejected
-                console.error(error);
-                message.error(error.message)
-                setSending(false);
-                saveLog(`ERROR_WALLET_ACCOUNT_${walletConnectMode}_ERROR`, error.message);
-                setVisible(false);
-              });
-            return
-          })
-          .catch((error) => {
-            window.err = error
-            message.error(error.message)
-            setSending(false);
-            setVisible(false);
-            console.error(error);
-            saveLog("ERROR_WALLET_ACCOUNT_GET_ACCOUNT", error.message);
-            return
-          })
+                    console.error(error);
+                    saveLog("ERROR_WALLET_ACCOUNT_GET_ACCOUNT", error);
+                    return
+                })
+
+        } catch (e) {
+            saveLog(`ERROR_WALLET_CONNECT_${walletConnectMode}`, e)
+        }
+
       } else {
 
         if (context.wallet.keystore) {
@@ -236,11 +244,16 @@ const Stake = (props) => {
 
         } else if (context.wallet.ledger) {
           authenticationType = "LEDGER_CONNECT";
-          binance.useLedgerSigningDelegate(
-            context.wallet.ledger,
-            null, null, null,
-            context.wallet.hdPath,
-          )
+
+          try {
+              binance.useLedgerSigningDelegate(
+                  context.wallet.ledger,
+                  null, null, null,
+                  context.wallet.hdPath,
+              )
+          } catch (error) {
+              saveLog(`ERROR_${authenticationType}_SIGN_LEDGER`, error);
+          }
         } else {
           throw new Error("no wallet detected")
         }
@@ -256,7 +269,7 @@ const Stake = (props) => {
               try {
                   results = await manager.freeze(context.wallet.address, selectedCoin, values.amount)
               } catch (error) {
-                  saveLog(`ERROR_STAKE_${authenticationType}`, error.message);
+                  saveLog(`ERROR_FREEZE_${authenticationType}`, error);
                   console.log('error in stake ', error)
               }
 
@@ -265,8 +278,8 @@ const Stake = (props) => {
               try {
                   results = await manager.unfreeze(context.wallet.address, selectedCoin, values.amount)
               } catch (error) {
-                  saveLog(`ERROR_UNSTAKE_${authenticationType}`, error.message);
-                  console.log('error in stake ', error.message)
+                  saveLog(`ERROR_UNFREEZE_${authenticationType}`, error);
+                  console.log('error in unstake ', error)
               }
 
           } else {
@@ -280,14 +293,14 @@ const Stake = (props) => {
             setVisible(false)
             getBalances()
           } else {
-              saveLog(`ERROR_${authenticationType}_INVALID_MODE`, "");
+              saveLog(`ERROR_${authenticationType}_INVALID_MODE`, context.wallet.address);
               console.log('transaction was not successful ', context.wallet.address);
           }
         } catch(err) {
           window.err = err
           console.error("Staking error:", err);
-          saveLog(`ERROR_STAKE_${authenticationType}`, err);
-          message.error(err.message)
+          saveLog(`ERROR_STAKING_${authenticationType}`, err);
+          message.error(err);
           setSending(false)
         }
         binance.clearPrivateKey()

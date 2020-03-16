@@ -32,7 +32,6 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
   },
-  "proxy": "https://rune-log-api.herokuapp.com",
   "scripts": {
     "start": "env-cmd -f .env react-scripts start",
     "start-s": "HTTPS=true env-cmd -f .env react-scripts start",

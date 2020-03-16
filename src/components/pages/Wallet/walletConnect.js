@@ -39,10 +39,10 @@ const WalletConnectPane = props => {
                })
 
            }).catch(error => {
-               saveLog("ERROR", error);
+               saveLog("ERROR_WALLET_CONNECT_CREATE_SESSION", error);
            });
        } catch(e) {
-           saveLog("ERROR", e);
+           saveLog("ERROR_WALLET_CONNECT_GET_ACCOUNTS", e);
            console.log('error in creating session', e);
        }
 
@@ -80,7 +80,7 @@ const WalletConnectPane = props => {
       })
         .catch(error => {
           // Error returned when rejected
-            saveLog("ERROR", error);
+            saveLog("ERROR_WALLET_CONNECT_GET_ACCOUNTS", error);
             console.error(error);
         })
     })
@@ -88,7 +88,7 @@ const WalletConnectPane = props => {
     walletConnector.on("session_update", (error, payload) => {
       console.log('walletConnector session_update ', payload);
       if (error) {
-        saveLog("ERROR", error);
+        saveLog("ERROR_WALLET_CONNECT_SESSION_UPDATE", error);
         throw error;
       }
 
@@ -101,7 +101,7 @@ const WalletConnectPane = props => {
     walletConnector.on("disconnect", (error, payload) => {
       saveLog("INFO", `${address} ${payload.params[0].message}`);
       if (error) {
-        saveLog("ERROR", error);
+        saveLog("ERROR_WALLET_CONNECT_DISCONNECT", error);
         throw error;
       }
 

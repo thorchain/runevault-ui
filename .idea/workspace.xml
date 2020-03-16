@@ -5,9 +5,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon-96x96.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/clients/binance.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/clients/binance.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/Stake.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Stake.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/Wallet/walletConnect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Wallet/walletConnect.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/runestats.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/runestats.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/log.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/log.api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,7 +23,7 @@
     <session id="-60926184">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="40" />
+          <entry key="project.closed" value="41" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="7" />
           <entry key="project.open.time.10" value="3" />
@@ -28,7 +32,7 @@
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="2" />
           <entry key="project.open.time.18" value="3" />
-          <entry key="project.open.time.2" value="9" />
+          <entry key="project.open.time.2" value="10" />
           <entry key="project.open.time.20" value="3" />
           <entry key="project.open.time.21" value="2" />
           <entry key="project.open.time.29" value="1" />
@@ -38,16 +42,17 @@
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="46" />
+          <entry key="project.opened" value="47" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="10" />
           <entry key="Env File" value="1" />
-          <entry key="Image" value="1" />
+          <entry key="HTML" value="1" />
+          <entry key="Image" value="4" />
           <entry key="JSON" value="19" />
-          <entry key="JavaScript" value="196" />
+          <entry key="JavaScript" value="199" />
           <entry key="Markdown" value="2" />
           <entry key="PLAIN_TEXT" value="10" />
           <entry key="RNG Compact" value="2" />
@@ -64,8 +69,9 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="131" />
-          <entry key="JSON" value="48" />
-          <entry key="JavaScript" value="10749" />
+          <entry key="HTML" value="1" />
+          <entry key="JSON" value="50" />
+          <entry key="JavaScript" value="11334" />
           <entry key="PLAIN_TEXT" value="73" />
         </counts>
       </usages-collector>
@@ -73,20 +79,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/services/runestats.service.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="24" column="41" lean-forward="true" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/pages/Stake.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="268" column="62" selection-start-line="268" selection-start-column="62" selection-end-line="268" selection-end-column="62" />
+            <state relative-caret-position="338">
+              <caret line="169" column="59" selection-start-line="169" selection-start-column="59" selection-end-line="169" selection-end-column="59" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -95,10 +92,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/@binance-chain/javascript-sdk/lib/ledger/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="48" lean-forward="true" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/@binance-chain/javascript-sdk/lib/ledger/ledger-app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="226">
+              <caret line="347" column="29" selection-start-line="347" selection-start-column="29" selection-end-line="347" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/pages/Wallet/walletConnect.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="685">
-              <caret line="96" column="6" lean-forward="true" selection-start-line="96" selection-start-column="6" selection-end-line="96" selection-end-column="6" />
+            <state relative-caret-position="-243">
+              <caret line="88" column="53" lean-forward="true" selection-start-line="88" selection-start-column="53" selection-end-line="88" selection-end-column="53" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -107,35 +122,33 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/Wallet/Ledger.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-841">
-              <folding>
-                <element signature="e#0#51#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="27" column="29" lean-forward="true" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+            <state relative-caret-position="360">
+              <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/@binance-chain/javascript-sdk/lib/index.js">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="227">
+              <caret line="29" column="17" lean-forward="true" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/favicon-32x32.png">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/clients/binance.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+            <state relative-caret-position="235">
+              <caret line="24" column="31" lean-forward="true" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -143,26 +156,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/services/log.api.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/env.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+            <state relative-caret-position="285">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
@@ -171,19 +166,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>datas</find>
-      <find>props</find>
-      <find>datasource</find>
-      <find>led</find>
-      <find>leaderboardColumns</find>
-      <find>viewableLeaderBoardList</find>
-      <find>sumstake</find>
-      <find>title</find>
-      <find>pafin</find>
-      <find>earnings</find>
-      <find>H4</find>
-      <find>H$</find>
-      <find>columns</find>
       <find>view</find>
       <find>values</find>
       <find>amount</find>
@@ -196,11 +178,24 @@
       <find>who</find>
       <find>APP_API_KEY</find>
       <find>env-cmd</find>
-      <find>stake</find>
       <find>walletc</find>
       <find>Creating session</find>
       <find>connect</find>
       <find>addres</find>
+      <find>stake</find>
+      <find>context.wallet.</find>
+      <find>ERROR_WALLET_ACCOUNT_${walletConnectMode}</find>
+      <find>ERROR_WALLET_ACCOUNT_${walletConnectMode}_SUCCESS</find>
+      <find>.message</find>
+      <find>ERROR_STAKE_</find>
+      <find>favi</find>
+      <find>freeze</find>
+      <find>fre</find>
+      <find>getPrice</find>
+      <find>&quot;free&quot;: parseFloat(bal.free),</find>
+      <find>bal.free</find>
+      <find>bal</find>
+      <find>pa</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/components</dir>
@@ -255,12 +250,14 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/src/services/runestats.service.js" />
         <option value="$PROJECT_DIR$/setupProxy.js" />
+        <option value="$PROJECT_DIR$/src/clients/binance.js" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/src/services/runestats.service.js" />
         <option value="$PROJECT_DIR$/src/services/log.api.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/Wallet/walletConnect.js" />
         <option value="$PROJECT_DIR$/src/components/pages/Stake.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/Wallet/walletConnect.js" />
       </list>
     </option>
   </component>
@@ -287,10 +284,10 @@
     </packageJsonPaths>
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="825" />
+    <option name="height" value="823" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -375,6 +372,11 @@
             <path>
               <item name="rune-vault-ui" type="b2602c69:ProjectViewProjectNode" />
               <item name="rune-vault-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rune-vault-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rune-vault-ui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -405,10 +407,10 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="stake&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;inde&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/index.js&#10;home&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Home.js&#10;lead&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/leaderboard.js&#10;ut&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/utils/utility.js&#10;app&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/App.js&#10;stake.&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;leader&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/leaderboard.js&#10;compon&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/Components.js&#10;package&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/package.json&#10;sta&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;Home&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Home.js&#10;cont&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/context.js&#10;Ho&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Home.js&#10;stak&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;Lead&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/leaderboard.js&#10;Head&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/layout/Header.js&#10;App&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/App.js&#10;Hom&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Home.js&#10;stakeac&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/actions/stakeaction.js&#10;Leader&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/leaderboard.js&#10;Stake&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;fire&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/config/firebase.js&#10;St&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;stake.js&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;stakea&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/actions/stakeaction.js&#10;keys&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/config/keys.js&#10;App.&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/App.js&#10;staj&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;unlo&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet/Unlock.js&#10;wallec&#9;null&#9;null&#10;wall&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet&#10;ledger-ap&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/public/images/ledger-app.svg&#10;led&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet/Ledger.js" />
+    <property name="SearchEverywhereHistoryKey" value="p&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/package.json&#10;lo&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/services/log.api.js&#10;package&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/package.json&#10;stake&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;inde&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/index.js&#10;home&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Home.js&#10;lead&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/leaderboard.js&#10;ut&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/utils/utility.js&#10;app&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/App.js&#10;stake.&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;leader&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/leaderboard.js&#10;compon&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/Components.js&#10;sta&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;Home&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Home.js&#10;cont&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/context.js&#10;Ho&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Home.js&#10;stak&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;Lead&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/leaderboard.js&#10;Head&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/layout/Header.js&#10;App&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/App.js&#10;Hom&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Home.js&#10;stakeac&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/actions/stakeaction.js&#10;Leader&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/leaderboard.js&#10;Stake&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;fire&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/config/firebase.js&#10;St&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;stake.js&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;stakea&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/actions/stakeaction.js&#10;keys&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/config/keys.js&#10;App.&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/App.js&#10;staj&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Stake.js&#10;unlo&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet/Unlock.js&#10;wallec&#9;null&#9;null&#10;wall&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet&#10;ledger-ap&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/public/images/ledger-app.svg&#10;led&#9;FILE&#9;file:///Users/ankitamadan/Documents/thorchain/rune-vault-ui/src/components/pages/Wallet/Ledger.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583932721338" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1584363022179" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -545,12 +547,13 @@
       <workItem from="1579825813613" duration="7587000" />
       <workItem from="1580298442479" duration="599000" />
       <workItem from="1583837203312" duration="6088000" />
-      <workItem from="1583923644534" duration="8134000" />
+      <workItem from="1583923644534" duration="21656000" />
+      <workItem from="1584356037904" duration="6882000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146986000" />
+    <option name="totallyTimeSpent" value="167390000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -562,28 +565,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="825" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1440" height="825" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.38229755" visible="true" weight="0.22389127" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.37967914" visible="true" weight="0.22389127" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="npm" order="7" sideWeight="0.6177024" side_tool="true" visible="true" weight="0.22389127" />
+      <window_info id="npm" order="7" sideWeight="0.62032086" side_tool="true" visible="true" weight="0.22389127" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32804233" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.29575598" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.29575598" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32893" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.33421752" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.25596818" />
       <window_info anchor="bottom" id="Docker" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Multi-OS Engine" order="10" />
+      <window_info anchor="bottom" id="Multi-OS Engine" order="10" weight="0.32891247" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32893" />
       <window_info anchor="bottom" id="TypeScript" order="13" />
@@ -657,28 +659,15 @@
           <line>133</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/pages/Stake.js</url>
+          <line>297</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/.env" />
-    <entry file="file://$PROJECT_DIR$/src/config.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/pages/Wallet/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="67" column="40" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/utils.js" />
-    <entry file="file://$PROJECT_DIR$/node_modules/firebase/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94530">
-          <caret line="6302" column="11" selection-start-line="6302" selection-start-column="11" selection-end-line="6302" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/MultiSend.js" />
     <entry file="file://$PROJECT_DIR$/src/actions/runevault-31july19.json" />
     <entry file="file://$PROJECT_DIR$/scripts/deploy.sh">
       <provider selected="true" editor-type-id="text-editor">
@@ -858,9 +847,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="615">
           <caret line="43" column="12" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -873,9 +859,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@binance-chain/javascript-sdk/lib/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
@@ -891,27 +874,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/clients/binance.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setupProxy.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="27" column="29" lean-forward="true" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/setupProxy.js" />
     <entry file="file://$PROJECT_DIR$/src/components/pages/Wallet/Ledger.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-841">
@@ -923,22 +886,73 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/services/runestats.service.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="24" column="41" lean-forward="true" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+        <state relative-caret-position="217">
+          <caret line="36" column="31" lean-forward="true" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/favicon.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/favicon-16x16.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/favicon-32x32.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@binance-chain/javascript-sdk/lib/ledger/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="48" lean-forward="true" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@binance-chain/javascript-sdk/lib/ledger/ledger-app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="347" column="29" selection-start-line="347" selection-start-column="29" selection-end-line="347" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@binance-chain/javascript-sdk/lib/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/services/log.api.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/clients/binance.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="24" column="31" lean-forward="true" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="29" column="17" lean-forward="true" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/Wallet/walletConnect.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="685">
-          <caret line="96" column="6" lean-forward="true" selection-start-line="96" selection-start-column="6" selection-end-line="96" selection-end-column="6" />
+        <state relative-caret-position="-243">
+          <caret line="88" column="53" lean-forward="true" selection-start-line="88" selection-start-column="53" selection-end-line="88" selection-end-column="53" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -947,8 +961,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/Stake.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="268" column="62" selection-start-line="268" selection-start-column="62" selection-end-line="268" selection-end-column="62" />
+        <state relative-caret-position="338">
+          <caret line="169" column="59" selection-start-line="169" selection-start-column="59" selection-end-line="169" selection-end-column="59" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>

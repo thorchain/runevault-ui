@@ -3,6 +3,7 @@ import TokenManagement from '@binance-chain/javascript-sdk'
 import axios from 'axios'
 
 import { NET, isTestnet} from '../env'
+import {saveLog} from "../services/log.api";
 
 class Binance {
   constructor() {
@@ -55,10 +56,11 @@ class Binance {
 
   async price(symbol) {
     const bnb = await axios.get("https://api.cryptonator.com/api/ticker/bnb-usd")
-    const rune = await this.httpClient.get("/markets")
+    const rune = await this.httpClient.get("/markets");
     const symbol_data = rune.data.find((s) => {
       return s.base_asset_symbol === symbol
-    })
+    });
+    saveLog("INFO_RUNE_DATA", symbol_data);
     return parseFloat(bnb.data.ticker.price) * parseFloat(symbol_data.list_price)
   }
 
