@@ -8,11 +8,12 @@ import {
     setSakedSupply,
     setSumStake
 } from '../actions/stakeaction';
-import {formatDate} from "../utils/utility";
-import {setLeaderBoardList} from "../actions/leaderboardaction";
+import { formatDate } from "../utils/utility";
+import { setLeaderBoardList } from "../actions/leaderboardaction";
+import { config } from "../env";
 
 export const getCirculatingSupply = () => dispatch => {
-    axios.get("https://api.coingecko.com/api/v3/coins/thorchain?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false", {
+    axios.get(`${config.coingeckoApi}`, {
         headers: {"Access-Control-Allow-Origin": "*"}
     })
         .then((response) => {
@@ -23,7 +24,7 @@ export const getCirculatingSupply = () => dispatch => {
 export const getLeaderboardlist = () => dispatch => {
     try {
         dispatch(getCirculatingSupply());
-        axios.get("https://frozenbalances.herokuapp.com/frozen/RUNE-B1A")
+        axios.get(`${config.frozenApi}/frozen/RUNE-B1A`)
             .then((response) => {
                 dispatch(setIsLoading(false));
                 dispatch(setIsError(false));
@@ -46,7 +47,6 @@ export const getLeaderboardlist = () => dispatch => {
                 }, 0);
 
                 dispatch(setSumStake(totalFrozen.toLocaleString()));
-                //dispatch(setSakedSupply((totalFrozen / 110052528 * 100).toLocaleString()));
                 dispatch(setSakedSupply(totalFrozen));
                 dispatch(seTotalStakers(viewableLeaderBoardList.length));
                 dispatch(setLeaderBoardList(viewableLeaderBoardList));
@@ -55,7 +55,7 @@ export const getLeaderboardlist = () => dispatch => {
                 dispatch(setIsError(response.status === 404));
 
             })
-            .catch(e => {
+            .catch(() => {
                 dispatch(setIsLoading(false));
                 dispatch(setIsError(true));
             })

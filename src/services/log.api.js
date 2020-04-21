@@ -1,9 +1,10 @@
 import axios from "axios";
+import { config } from "../env";
 
 export const saveLog = (logType, logMessage) => {
 
     try {
-        axios.post("https://rune-log-api.herokuapp.com/log", {type: logType, message: logMessage},
+        axios.post(`${config.logApi}/log`, {type: logType, message: logMessage},
             {
                 headers: {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "*"}
             })

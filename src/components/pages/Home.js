@@ -25,8 +25,6 @@ class Home extends Component {
 
     constructor(props) {
         super(props);
-        // this.getPrice()
-        // this.setState({"price" : 0})
     }
 
     getPrice() {
@@ -116,7 +114,6 @@ class Home extends Component {
                         <Col xs={24} sm={13} md={12} lg={11}>
                         <h4 style={{ color: "#848E9C" }}>TOTAL STAKED:</h4>
                         <H1> {stake.sumStake} RUNE</H1>
-                        {/* <H1> ${(stake.sumStake * this.state.price * 100)/100} USD</H1> */}
                         </Col>
 
                         <Col xs={24} sm={9} md={8} lg={7}>

@@ -28,9 +28,6 @@ const Stake = (props) => {
   const [price, setPrice] = useState(null)
   const [fee, setFee] = useState(null)
 
-  //  const stakeValue = { address: "askdmasd", amount: 0, mode: "Stake" };
-  //props.dispatch(saveStake(stakeValue));
-
   // confirmation modal variables
   const [visible, setVisible] = useState(false)
   const [sending, setSending] = useState(false)
