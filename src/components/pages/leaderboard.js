@@ -6,10 +6,6 @@ import { H1 } from "../Components";
 
 class Leaderboard extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
 
         const homeStyles = {

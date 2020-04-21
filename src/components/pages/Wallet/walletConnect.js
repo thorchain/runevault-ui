@@ -89,16 +89,6 @@ const WalletConnectPane = props => {
 
   }
 
-
-  const paneStyle = {
-    backgroundColor: "#48515D",
-    marginLeft: "10px",
-    marginRight: "10px",
-    marginTop: "50px",
-    borderRadius: 5,
-    boxShadow: "0px 0px 5px #50E3C2",
-  }
-
   return (
     <div>
 

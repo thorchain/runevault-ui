@@ -1,11 +1,10 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Row, Col, Table } from 'antd';
 
 import Breakpoint from 'react-socks';
-import Binance from "../../clients/binance"
 
-import { Icon, H1, Button, Text } from '../Components'
+import { Icon, H1, Button } from '../Components'
 import { connect } from 'react-redux';
 
 const homeStyles = {
@@ -19,26 +18,7 @@ const iconStyles = {
     backgroundColor: "#101921"
 }
 
-const SYMBOL = "RUNE-B1A"
-
 class Home extends Component {
-
-    constructor(props) {
-        super(props);
-        // this.getPrice()
-        // this.setState({"price" : 0})
-    }
-
-    getPrice() {
-        Binance.price(SYMBOL)
-          .then((response) => {
-            this.setState({"price" : response})
-          })
-          .catch((error) => {
-            console.error(error)
-          })
-      }
-
 
     render() {
 
@@ -46,7 +26,7 @@ class Home extends Component {
 
         console.log(stake.isError);
 
-        if (!this.state || !this.state.price){
+        if (!this.state){
 
             return (
                 <div style={{ backgroundColor: "#101921" }}>
@@ -58,14 +38,15 @@ class Home extends Component {
 
                             <H1>STAKE RUNE AND EARN</H1>
                             <br></br>
-                            <h4 style={{ color: "#848E9C" }}><span>STAKE RUNE TO EARN WEEKLY 1% INTEREST UNTIL THE LAUNCH OF </span>
+                            <h4 style={{ color: "#848E9C" }}><span>STAKE RUNE TO EARN WEEKLY UP TO THE LAUNCH OF </span>
                                 <span><strong><a href="/" style={{ color: "#fff" }}>BEPSWAP</a></strong></span>
                             </h4>
                             <br></br>
                             <p>1) Stake your RUNE using this interface.</p>
-                            <p>2) Earn weekly 1% (52% APR) of your balance compounded until the launch of BEPSwap.</p>
-                            <p>3) When BEPSwap launches, withdraw and stake your total earnings in a liquidity pool and
-                                continue earning. </p>
+                            <p>2) 1,000,000 RUNE distributed weekly to stakers. Amount will reduce on launch of Chaosnet.*</p>
+                            <p>3) When THORChain mainnet launches, RUNEVault will be retired. You can continue staking in BEPSwap and later, ASGARDEX.</p>
+                            <br></br>
+                            <p style={{ fontSize: 12 }}>* Rune sourced from Community Reserves, allocated for the purpose of driving long-term engagement from Rune holders.</p>
                             <br></br>
                             <Link to="/stake">
                                 <Button style={{ height: 40, width: 250 }}>STAKE NOW</Button>
@@ -102,7 +83,8 @@ class Home extends Component {
                         </Col>
 
                         <Col xs={24} sm={11} md={10} lg={9}>
-
+                            <h4 style={{ color: "#848E9C" }}>ROI: WEEKLY | ANNUALISED</h4>
+                            <H1>{stake.weeklyROI}% | {stake.weeklyROI*52}%</H1>
                         </Col>
 
                         <Col xs={24} sm={1} md={2} lg={3}>
@@ -115,13 +97,13 @@ class Home extends Component {
                         <Col xs={24} sm={1} md={2} lg={3}>
                         </Col>
 
-                        <Col xs={24} sm={13} md={12} lg={11}>
+                        <Col xs={24} sm={11} md={10} lg={9}>
                         <h4 style={{ color: "#848E9C" }}>TOTAL STAKED:</h4>
                         <H1> {stake.sumStake} RUNE</H1>
                         {/* <H1> ${(stake.sumStake * this.state.price * 100)/100} USD</H1> */}
                         </Col>
 
-                        <Col xs={24} sm={9} md={8} lg={7}>
+                        <Col xs={24} sm={11} md={10} lg={9}>
                         <h4 style={{ color: "#848E9C" }}>STAKED SUPPLY:</h4>
                         <H1>{stake.stakedSupply}%</H1>
                         </Col>

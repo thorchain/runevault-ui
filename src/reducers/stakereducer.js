@@ -4,6 +4,7 @@ const initialState = {
     stakeValue: {},
     fetchStake: {},
     sumStake: '',
+    weeklyROI: '',
     totalStakers: 0,
     stakedSupply: '',
     lastUpdatedDate: '',
@@ -23,6 +24,8 @@ export function stake(state = initialState, action) {
             return {...state, stakeValue: action.stakeValue};
         case types.SUM_STAKE:
             return {...state, sumStake: action.sumStake};
+        case types.WEEKLY_ROI:
+            return {...state, weeklyROI: action.weeklyROI}
         case types.TOTAL_STAKERS:
             return {...state, totalStakers: action.totalStakers};
         case types.STAKED_SUPPLY:

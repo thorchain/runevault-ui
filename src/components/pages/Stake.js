@@ -10,7 +10,7 @@ import { Context } from '../../context'
 import Binance from "../../clients/binance"
 import { AmounttoString } from '../../utils/utility'
 import { CHAIN_ID } from '../../env'
-import { Row, Form, Col, Modal, Input, message, Table } from 'antd'
+import { Row, Form, Col, Modal, Input, message } from 'antd'
 import { H1, Button, Text, Coin, WalletAddress, WalletAddrShort} from "../Components"
 import {saveStake} from "../../actions/stakeaction";
 
