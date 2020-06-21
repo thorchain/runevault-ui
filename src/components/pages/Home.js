@@ -44,6 +44,7 @@ const Home = (props) => {
             const value = Number(price)*Number(StringToAmount(stake.sumStake)).toFixed(2)
             // console.log(price, value, stake.sumStake)
             setValue((value).toLocaleString())
+            console.log(stake.stakedSupply)
     }
 
     return (
@@ -129,7 +130,10 @@ const Home = (props) => {
 
                                 <Col xs={24} sm={11} md={10} lg={9}>
                                     <h4 style={{ color: "#848E9C" }}>STAKED SUPPLY:</h4>
-                                    <H1>{stake.stakedSupply}%</H1>
+                                    {stake.stakedSupply &&
+                                        <H1>{stake.stakedSupply}%</H1>
+                                    }
+                                    
                                 </Col>
 
                                 <Col xs={24} sm={1} md={2} lg={3}>
