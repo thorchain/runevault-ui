@@ -274,7 +274,7 @@ const Stake = (props) => {
   var balance = 0
   var dollarValue = "loading"
   if (balances) {
-    balance = AmounttoString((balances || []).find((b) => {
+    balance = ((balances || []).find((b) => {
       return b.ticker === SYMBOL
     }).free +
       balances.find((b) => {
@@ -282,7 +282,7 @@ const Stake = (props) => {
       }).frozen
     )
     if (price) {
-      dollarValue = "$" + Math.floor(balance * price * 100) / 100
+      dollarValue = "$" + (Number(balance) * Number(price)).toFixed(2)
     }
   }
 
@@ -317,7 +317,7 @@ const Stake = (props) => {
 
         <div>
           <Text size={18}>
-            Stake RUNE to earn 1% weekly interest (52% APR) until the launch of BEPSwap.
+            Stake RUNE to earn up to 1% weekly interest until the launch of BEPSwap. (Capped at 1m per week).
           </Text>
         </div>
 
@@ -407,7 +407,7 @@ const Stake = (props) => {
                                 <Text>TOTAL BALANCE:</Text>
                               </span>
                               <span style={{margin: "0px 20px"}} size={22}>
-                                {balance} ({dollarValue})
+                                {AmounttoString(balance)} ({dollarValue})
                               </span>
 
                             </Col>
@@ -483,7 +483,7 @@ const Stake = (props) => {
                         <Text size={15} style={{fontWeight: 'bold'}}>Binance Chain "FREEZE" command.</Text>
                       </a>
                       <br></br>
-                      <Text size={10}>RUNE will be paid out each week. Your weekly payout is 1% of your staked RUNE.</Text>
+                      <Text size={10}>RUNE will be paid out each week.</Text>
                     </Col>
                   </Row>
 

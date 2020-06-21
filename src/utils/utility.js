@@ -6,6 +6,13 @@ const AmounttoString = (amount) => {
   return parts.join(".");
 }
 
+const StringToAmount = (string) => {
+  // Converting from string
+  const number = string.replace(/,/g, "");
+  const final = Number(number).toFixed(2)
+  return final;
+}
+
 function formatDate(lastUpdatedDate){
     return lastUpdatedDate.toLocaleDateString('en-GB', {
         day: 'numeric', month: 'long', year: 'numeric'
@@ -13,6 +20,6 @@ function formatDate(lastUpdatedDate){
 }
 
 export {
-  AmounttoString,
+  AmounttoString, StringToAmount,
     formatDate
 }
