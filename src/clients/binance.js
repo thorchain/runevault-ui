@@ -54,12 +54,8 @@ class Binance {
   }
 
   async price(symbol) {
-    const bnb = await axios.get("https://api.cryptonator.com/api/ticker/bnb-usd")
-    const markets = await this.getMarkets()
-    const symbol_data = markets.result.find((s) => {
-      return s.base_asset_symbol === symbol
-    })
-    return parseFloat(bnb.data.ticker.price) * parseFloat(symbol_data.list_price)
+    const response = await axios.get("https://api.coingecko.com/api/v3/simple/price?ids=thorchain&vs_currencies=usd")
+    return response.data.thorchain.usd ? response.data.thorchain.usd : null
   }
 
   // convert fee number into BNB tokens

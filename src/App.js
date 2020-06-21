@@ -26,12 +26,9 @@ const {Content} = Layout;
 
 class App extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         this.props.dispatch(sumStake());
+        //this.props.dispatch(weeklyROI());
         this.props.dispatch(saveLeaderboardColumns());
         this.props.dispatch(saveStakeEarningsColumn());
         this.props.dispatch(saveStakeEaringsData());

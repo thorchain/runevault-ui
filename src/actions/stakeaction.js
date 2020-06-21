@@ -5,6 +5,7 @@ import {
     SUM_STAKE,
     TOTAL_STAKERS,
     IS_ERROR,
+    WEEKLY_ROI
 } from "./index";
 import {getLeaderboardlist, saveStakeAddress} from "../services/runestats.service";
 
@@ -123,6 +124,14 @@ export const setSumStake = (sumStake) => {
     return {
         type: SUM_STAKE,
         sumStake
+    }
+};
+
+export const setWeeklyROI = (weeklyROI) => {
+    console.log(weeklyROI)
+    return {
+        type: WEEKLY_ROI,
+        weeklyROI
     }
 };
 
