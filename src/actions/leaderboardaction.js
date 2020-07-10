@@ -5,6 +5,13 @@ import {LEADERBOARD_LIST, LEADERBOARD_COLUMNS} from "./index";
 export const saveLeaderboardColumns = () => dispatch => {
     const columns = [
         {
+            title: 'Rank',
+            dataIndex: 'rank',
+            render: (text, record) => (
+                <p style={{paddingLeft:20}}>{record.key+1}</p>
+            )
+        },
+        {
             title: 'Avatar',
             dataIndex: 'avatar',
             key: 'avatar',
