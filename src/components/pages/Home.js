@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
-import { Row, Col, Table } from 'antd';
+import { Row, Col, Table, Spin, Icon as AntIcon } from 'antd';
 
 import Binance from "../../clients/binance"
 import { StringToAmount } from '../../utils/utility'
@@ -17,6 +17,7 @@ const Home = (props) => {
     const [value, setValue] = useState(null)
     const [roi, setROI] = useState(0)
 
+    const antIcon = <AntIcon type="loading" style={{ fontSize: 24 }} spin />;
 
     const homeStyles = {
         marginLeft: 0,
@@ -95,7 +96,7 @@ const Home = (props) => {
 
                 </Row>
 
-                {!stake.isError &&
+                {!stake.isLoading &&
                     <div>
                         <Row style={{ marginTop: 100 }}>
 
@@ -165,14 +166,14 @@ const Home = (props) => {
                         </Row>
                         <Row>
 
-                        <Col xs={24} sm={1} md={2} lg={3}>
+                            <Col xs={24} sm={1} md={2} lg={3}>
                             </Col>
 
                             <Col xs={24} sm={18} md={18} lg={18}>
                                 <br /> <br />
-                                <p style={{ fontSize: 12, color:"#848E9C" }}>* Rune sourced from Community Reserves, allocated for the purpose of driving long-term engagement from Rune holders.</p>
-                                <p style={{ fontSize: 12, color:"#848E9C" }}>** Calculated as 1,000,000/{stake.sumStake}</p>
-                                <p style={{ fontSize: 12, color:"#848E9C" }}>*** Calculated as {roi}% * 52 </p>
+                                <p style={{ fontSize: 12, color: "#848E9C" }}>* Rune sourced from Community Reserves, allocated for the purpose of driving long-term engagement from Rune holders.</p>
+                                <p style={{ fontSize: 12, color: "#848E9C" }}>** Calculated as 1,000,000/{stake.sumStake}</p>
+                                <p style={{ fontSize: 12, color: "#848E9C" }}>*** Calculated as {roi}% * 52 </p>
                             </Col>
 
                             <Col xs={24} sm={1} md={2} lg={3}>
@@ -212,6 +213,11 @@ const Home = (props) => {
                             </Col>
 
                         </Row>
+                    </div>
+                }
+                {stake.isLoading &&
+                    <div style={{ textAlign: "center", borderRadius: 4, padding: '340px 50px' }}>
+                        <Spin tip="Loading..." indicator={antIcon} style={{ color: 'white' }} />
                     </div>
                 }
 

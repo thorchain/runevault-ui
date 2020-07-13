@@ -20,7 +20,7 @@ import './App.css'
 import { connect } from 'react-redux';
 import {saveStakeEaringsData, saveStakeEarningsColumn, sumStake} from "./actions/stakeaction";
 import {saveLeaderboardColumns} from "./actions/leaderboardaction";
-import { Spin, Icon } from 'antd';
+// import { Spin, Icon } from 'antd';
 
 const {Content} = Layout;
 
@@ -36,17 +36,17 @@ class App extends Component {
 
     render() {
 
-        const {stake} = this.props;
+        // const {stake} = this.props;
 
-        const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
+        // const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
-        if(stake.isLoading) {
-            return (
-                <div style={{textAlign: "center", borderRadius: 4, padding: '340px 50px'}}>
-                    <Spin tip="Loading..." indicator={antIcon} style={{color: 'white'}} />
-                </div>
-            );
-        }
+        // if(stake.isLoading) {
+        //     return (
+        //         <div style={{textAlign: "center", borderRadius: 4, padding: '340px 50px'}}>
+        //             <Spin tip="Loading..." indicator={antIcon} style={{color: 'white'}} />
+        //         </div>
+        //     );
+        // }
 
         return (
             <ContextProvider>
