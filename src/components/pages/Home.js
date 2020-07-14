@@ -15,7 +15,7 @@ const Home = (props) => {
     const { stake, leaderboard } = props;
     const [price, setPrice] = useState(null)
     const [value, setValue] = useState(null)
-    const [roi, setROI] = useState(0)
+    const [roi, setROI] = useState(0.1)
 
     const antIcon = <AntIcon type="loading" style={{ fontSize: 24 }} spin />;
 
@@ -33,10 +33,10 @@ const Home = (props) => {
     useEffect(() => {
         getPrice()
 
-    }, [price])
+    }, [price, stake])
 
-    const getPrice = () => {
-        Binance.price(SYMBOL)
+    const getPrice = async () => {
+        await Binance.price(SYMBOL)
             .then((response) => {
                 setPrice(response)
             })
@@ -45,11 +45,13 @@ const Home = (props) => {
             })
         const stakeAmt = Number(StringToAmount(stake.sumStake)).toFixed(2)
         const value = Number(price) * stakeAmt
-        console.log(price, value, stake.sumStake, stakeAmt)
+        // console.log(price, value, stake.sumStake, stakeAmt)
         setValue((value).toLocaleString())
         console.log(stake.stakedSupply)
-        setROI(((1000000 * 100) / (stakeAmt)).toFixed(3))
-        console.log(value)
+        let roi = ((1000000 * 100) / (stakeAmt)).toFixed(3)
+        setROI(roi)
+        // console.log(value, roi, stake.sumStake)
+
     }
 
     return (
@@ -110,7 +112,7 @@ const Home = (props) => {
 
                             <Col xs={24} sm={11} md={10} lg={9}>
                                 <h4 style={{ color: "#848E9C" }}>ROI: WEEKLY** | ANNUALISED***</h4>
-                                <H1>{roi}% | {roi * 52}%</H1>
+                                <H1>{roi}% | {(roi * 52).toFixed(2)}%</H1>
 
                             </Col>
 
