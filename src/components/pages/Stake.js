@@ -59,7 +59,6 @@ const Stake = (props) => {
       .catch((error) => {
         console.error(error)
       })
-
   }
 
   const getBalances = () => {
@@ -274,13 +273,18 @@ const Stake = (props) => {
   var balance = 0
   var dollarValue = "loading"
   if (balances) {
-    balance = ((balances || []).find((b) => {
-      return b.ticker === SYMBOL
-    }).free +
-      balances.find((b) => {
+    try{
+      balance = ((balances || []).find((b) => {
         return b.ticker === SYMBOL
-      }).frozen
-    )
+      }).free +
+        balances.find((b) => {
+          return b.ticker === SYMBOL
+        }).frozen
+      )
+    } catch (err) {
+      console.error("No token balances on address")
+      return
+    }
     if (price) {
       dollarValue = "$" + (Number(balance) * Number(price)).toFixed(2)
     }

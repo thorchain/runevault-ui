@@ -57,7 +57,7 @@ const Connector = props => {
         }
       }, () => {
         setConnecting(false)
-        props.history.push("/stake")
+        props.history.push("/")
       })
     } catch (err) {
       console.error("pk error", err.message, err.statusCode)

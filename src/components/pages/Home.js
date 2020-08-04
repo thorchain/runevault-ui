@@ -5,12 +5,14 @@ import { Row, Col, Table, Spin, Icon as AntIcon } from 'antd';
 import Binance from "../../clients/binance"
 import { StringToAmount } from '../../utils/utility'
 
+
 import Breakpoint from 'react-socks';
 
 import { Icon, H1, Text, Button } from '../Components'
 import { connect } from 'react-redux';
 
 const Home = (props) => {
+
     const SYMBOL = "RUNE-B1A"
     const { stake, leaderboard } = props;
     const [price, setPrice] = useState(null)
@@ -23,6 +25,15 @@ const Home = (props) => {
         marginLeft: 0,
         marginTop: 40,
         backgroundColor: "#101921"
+    }
+
+    const bannerStyles = {
+        padding: 20,
+        marginLeft: 40,
+        marginRight: 40,
+        marginTop: 40,
+        backgroundColor: "#2B3947",
+        borderRadius: 10
     }
 
     const iconStyles = {
@@ -58,11 +69,33 @@ const Home = (props) => {
         <div>
 
             <div style={{ backgroundColor: "#101921" }}>
+
+                <div>
+                    <Row style={bannerStyles}>
+                        <Col xs={18}>
+                            <Text color={"#4FE1C4"} size={22} bold={true}>REGISTER FOR THE THORCHAIN COLLECTIBLES!</Text><br/>
+                            <Text color={"#fff"} size={18} bold={true}>Unique, limited and on-brand. The THORChain Collectibles should be part of every RUNE Warrior's wallet.</Text><br/>
+                            <Text color={"#fff"} size={18} bold={true}>Collectibles given out based on age of staking, amount of staking and exceptional community contributions.</Text>
+
+                        </Col>
+                        <Col xs={3} style={{paddingTop:20}}>
+                        <Link to="/collectibles">
+                                <Button fill>
+                                    VIEW COLLECTIBLES NOW <AntIcon type="arrow-right" />
+                                </Button>
+                            </Link>
+                        </Col>
+
+                    </Row>
+                </div>
+
                 <Row style={{}}>
                     <Col xs={24} sm={1} md={2} lg={3}>
                     </Col>
 
                     <Col xs={24} sm={12} md={12} lg={9} style={homeStyles}>
+
+
 
                         <H1>STAKE RUNE AND EARN</H1>
                         <br></br>

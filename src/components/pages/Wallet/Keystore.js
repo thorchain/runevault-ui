@@ -49,7 +49,7 @@ const Keystore = props => {
     }, () => {
       setPassword(null)
       setKeystore(null)
-      props.history.push("/stake")
+      props.history.push("/")
     })
   }
 

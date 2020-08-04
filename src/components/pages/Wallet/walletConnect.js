@@ -60,7 +60,7 @@ const WalletConnectPane = props => {
             "account": account,
           }
         }, () => {
-          props.history.push("/stake")
+          props.history.push("/")
         })
       })
         .catch(error => {

@@ -14,6 +14,7 @@ import Stake from './components/pages/Stake'
 import Unlock from './components/pages/Wallet/Unlock'
 import Wallet from './components/pages/Wallet/index'
 import Leaderboard from './components/pages/leaderboard';
+import Collectibles from './components/pages/Collectibles';
 
 import 'antd/dist/antd.css'
 import './App.css'
@@ -68,6 +69,7 @@ class App extends Component {
                                             <Route path="/wallet" exact component={Wallet}/>
                                             <Route path="/wallet/unlock" exact component={Unlock}/>
                                             <Route path="/leaderboard" exact component={Leaderboard}/>
+                                            <Route path="/collectibles" exact component={Collectibles}/>
                                         </Switch>
                                     </Content>
                                 </Layout>
