@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 const Home = (props) => {
 
     const SYMBOL = "RUNE-B1A"
+    const weeklyReward = 700000
     const { stake, leaderboard } = props;
     const [price, setPrice] = useState(null)
     const [value, setValue] = useState(null)
@@ -59,7 +60,7 @@ const Home = (props) => {
         // console.log(price, value, stake.sumStake, stakeAmt)
         setValue((value).toLocaleString())
         console.log(stake.stakedSupply)
-        let roi = ((1000000 * 100) / (stakeAmt)).toFixed(3)
+        let roi = ((weeklyReward * 100) / (stakeAmt)).toFixed(3)
         setROI(roi)
         // console.log(value, roi, stake.sumStake)
 
@@ -72,13 +73,13 @@ const Home = (props) => {
 
                 <div>
                     <Row style={bannerStyles}>
-                        <Col xs={18}>
+                        <Col xs={24} lg={18}>
                             <Text color={"#4FE1C4"} size={22} bold={true}>REGISTER FOR THE THORCHAIN COLLECTIBLES!</Text><br/>
                             <Text color={"#fff"} size={18} bold={true}>Unique, limited and on-brand. The THORChain Collectibles should be part of every RUNE Warrior's wallet.</Text><br/>
                             <Text color={"#fff"} size={18} bold={true}>Collectibles given out based on age of staking, amount of staking and exceptional community contributions.</Text>
 
                         </Col>
-                        <Col xs={3} style={{paddingTop:20}}>
+                        <Col xs={24} lg={3} style={{paddingTop:20}}>
                         <Link to="/collectibles">
                                 <Button fill>
                                     VIEW COLLECTIBLES NOW <AntIcon type="arrow-right" />
@@ -104,7 +105,7 @@ const Home = (props) => {
                         </h4>
                         <br></br>
                         <p>1) Stake your RUNE using this interface.</p>
-                        <p>2) 1,000,000 RUNE distributed weekly to stakers *. Amount will reduce on launch of Chaosnet.</p>
+                        <p>2) {weeklyReward} RUNE distributed weekly to stakers *.</p>
                         <p>3) When THORChain mainnet launches, RUNEVault will be retired. You can continue staking in BEPSwap and later, ASGARDEX.</p>
                         <br></br>
 
@@ -207,7 +208,7 @@ const Home = (props) => {
                             <Col xs={24} sm={18} md={18} lg={18}>
                                 <br /> <br />
                                 <p style={{ fontSize: 12, color: "#848E9C" }}>* Rune sourced from Community Reserves, allocated for the purpose of driving long-term engagement from Rune holders.</p>
-                                <p style={{ fontSize: 12, color: "#848E9C" }}>** Calculated as 1,000,000/{stake.sumStake}</p>
+                                <p style={{ fontSize: 12, color: "#848E9C" }}>** Calculated as {weeklyReward}/{stake.sumStake}</p>
                                 <p style={{ fontSize: 12, color: "#848E9C" }}>*** Calculated as {roi}% * 52 </p>
                             </Col>
 

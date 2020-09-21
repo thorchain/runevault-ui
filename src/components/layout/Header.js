@@ -28,19 +28,19 @@ const Header = (props) => {
       <Row>
         <Breakpoint medium up>
 
-          <Col sm={8} md={4}>
+          <Col sm={6} lg={5}>
             <Link to="/">
               <Icon icon="runelogo" style={{ height: 40 }} />
             </Link>
           </Col>
 
-          <Col sm={8} md={14}>
+          <Col sm={14} lg={13}>
             <span><Link to="/stake"><Text color={'#4FE1C4'} size={20} bold={true}>STAKE</Text></Link></span>
             <span style={{marginLeft:20}}><Link to="/collectibles"><Text color={'#4FE1C4'} size={20} bold={true}>COLLECTIBLES</Text></Link></span>
             <span style={{marginLeft:20}}><Link to="/leaderboard"><Text color={'#4FE1C4'} size={20} bold={true}>LEADERBOARD</Text></Link></span>
           </Col>
 
-          <Col sm={8} md={6}>
+          <Col sm={4} lg={6}>
             
             <div style={{ float: "right" }}>
               {context.wallet ?
