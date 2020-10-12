@@ -316,12 +316,12 @@ const Stake = (props) => {
 
       <Col xs={24} sm={24} md={22} lg={20}>
         <div>
-          <H1>Stake Rune</H1>
+          <H1>WITHDRAW RUNE</H1>
         </div>
 
         <div>
           <Text size={18}>
-            Stake RUNE to earn up to 1% weekly interest until the launch of BEPSwap. (Capped at 1m per week).
+            WITHDRAW RUNE AND MOVE TO BEPSWAP
           </Text>
         </div>
 
@@ -403,7 +403,7 @@ const Stake = (props) => {
 
                       <Row>
                         <Col xs={24}>
-                          <Text size={18}>STAKE RUNE TO EARN REWARDS</Text>
+                          {/* <Text size={18}>STAKE RUNE TO EARN REWARDS</Text> */}
                           <hr />
                           <Row>
                             <Col xs={12} style={{marginTop: "10px"}}>
@@ -425,7 +425,7 @@ const Stake = (props) => {
                               <Row>
                                 <Col>
                                   <span>
-                                    <Text>NOT STAKED:</Text>
+                                    <Text>FREE:</Text>
                                   </span>
                                   <span style={{margin: "0px 20px"}} size={22}>{balances.find((b) => {
                                     return b.ticker === SYMBOL
@@ -435,13 +435,13 @@ const Stake = (props) => {
                             </Row>
                             <Row>
                               <Col>
-                                <Button
+                                {/* <Button
                                   style={{height:40, width:200, marginTop: 10}}
                                   onClick={() => { confirmation('STAKE RUNE') }}
                                   loading={sending}
                                 >
                                   STAKE
-                                </Button>
+                                </Button> */}
                               </Col>
                             </Row>
                           </Col>
@@ -450,7 +450,7 @@ const Stake = (props) => {
                             <Row>
                               <Col>
                                 <span>
-                                  <Text>STAKED:</Text>
+                                  <Text>FROZEN:</Text>
                                 </span>
                                 <span style={{margin: "0px 20px"}} size={22}>{balances.find((b) => {
                                   return b.ticker === SYMBOL
@@ -479,7 +479,7 @@ const Stake = (props) => {
                     </Col>
                   </Row>
 
-                  <Row style={{marginTop: "40px", marginBottom: 20}}>
+                  {/* <Row style={{marginTop: "40px", marginBottom: 20}}>
                     <Col xs={24}>
                       <Text size={14}>Note: RUNE will be staked on your address securely using the </Text>
                       <a href="https://docs.binance.org/tokens.html#freeze-unfreeze"
@@ -489,7 +489,7 @@ const Stake = (props) => {
                       <br></br>
                       <Text size={10}>RUNE will be paid out each week.</Text>
                     </Col>
-                  </Row>
+                  </Row> */}
 
                 </Col>
 

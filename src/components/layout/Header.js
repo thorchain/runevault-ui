@@ -35,9 +35,9 @@ const Header = (props) => {
           </Col>
 
           <Col sm={14} lg={13}>
-            <span><Link to="/stake"><Text color={'#4FE1C4'} size={20} bold={true}>STAKE</Text></Link></span>
-            <span style={{marginLeft:20}}><Link to="/collectibles"><Text color={'#4FE1C4'} size={20} bold={true}>COLLECTIBLES</Text></Link></span>
-            <span style={{marginLeft:20}}><Link to="/leaderboard"><Text color={'#4FE1C4'} size={20} bold={true}>LEADERBOARD</Text></Link></span>
+            <span><Link to="/stake"><Text color={'#4FE1C4'} size={20} bold={true}>WITHDRAW RUNE</Text></Link></span>
+            {/* <span style={{marginLeft:20}}><Link to="/collectibles"><Text color={'#4FE1C4'} size={20} bold={true}>COLLECTIBLES</Text></Link></span> */}
+            {/* <span style={{marginLeft:20}}><Link to="/leaderboard"><Text color={'#4FE1C4'} size={20} bold={true}>LEADERBOARD</Text></Link></span> */}
           </Col>
 
           <Col sm={4} lg={6}>

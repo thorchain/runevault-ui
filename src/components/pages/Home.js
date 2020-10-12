@@ -4,7 +4,7 @@ import { Row, Col, Table, Spin, Icon as AntIcon } from 'antd';
 
 import Binance from "../../clients/binance"
 import { StringToAmount } from '../../utils/utility'
-
+import axios from 'axios'
 
 import Breakpoint from 'react-socks';
 
@@ -14,11 +14,14 @@ import { connect } from 'react-redux';
 const Home = (props) => {
 
     const SYMBOL = "RUNE-B1A"
-    const weeklyReward = 700000
+    const weeklyReward = 500000
     const { stake, leaderboard } = props;
     const [price, setPrice] = useState(null)
     const [value, setValue] = useState(null)
     const [roi, setROI] = useState(0.1)
+    const [poolAPY, setPoolAPY] = useState(0)
+    const [bepswapUsers, setBepswapUsers] = useState(0)
+    const [bepswapCapital, setBepswapCapital] = useState(0)
 
     const antIcon = <AntIcon type="loading" style={{ fontSize: 24 }} spin />;
 
@@ -29,9 +32,9 @@ const Home = (props) => {
     }
 
     const bannerStyles = {
-        padding: 20,
-        marginLeft: 40,
-        marginRight: 40,
+        padding: 30,
+        marginLeft: 80,
+        marginRight: 80,
         marginTop: 40,
         backgroundColor: "#2B3947",
         borderRadius: 10
@@ -64,6 +67,22 @@ const Home = (props) => {
         setROI(roi)
         // console.log(value, roi, stake.sumStake)
 
+
+    }
+
+    useEffect(() => {
+        getMidgardData()
+
+    }, [])
+
+    const getMidgardData = async () => {
+        let resp = await axios.get('https://chaosnet-midgard.bepswap.com/v1/network')
+        console.log(resp.data.stakingROI)
+        setPoolAPY(resp.data.stakingROI)
+        let resp2 = await axios.get('https://chaosnet-midgard.bepswap.com/v1/stats')
+        setBepswapUsers(resp2.data.totalUsers)
+        let resp3 = await axios.get('https://chaosnet-midgard.bepswap.com/v1/network')
+        setBepswapCapital((+resp3.data.totalStaked*2 + +resp3.data.totalReserve + +resp3.data.bondMetrics.totalActiveBond + +resp3.data.bondMetrics.totalStandbyBond)/10**8)
     }
 
     return (
@@ -74,19 +93,35 @@ const Home = (props) => {
                 <div>
                     <Row style={bannerStyles}>
                         <Col xs={24} lg={18}>
-                            <Text color={"#4FE1C4"} size={22} bold={true}>REGISTER FOR THE THORCHAIN COLLECTIBLES!</Text><br/>
-                            <Text color={"#fff"} size={18} bold={true}>Unique, limited and on-brand. The THORChain Collectibles should be part of every RUNE Warrior's wallet.</Text><br/>
-                            <Text color={"#fff"} size={18} bold={true}>Collectibles given out based on age of staking, amount of staking and exceptional community contributions.</Text>
+                            <Text color={"#4FE1C4"} size={22} bold={true}>BEPSWAP HAS LAUNCHED</Text><br />
+                            <Text color={"#fff"} size={18} bold={true}>Withdraw your RUNE and provide liquidity in a BEPSwap Pool of your choice.</Text><br />
+                            <Text color={"#fff"} size={18} bold={true}>BEPSwap Liquidity Providers earn fees and emissions.</Text>
+
 
                         </Col>
-                        <Col xs={24} lg={3} style={{paddingTop:20}}>
-                        <Link to="/collectibles">
-                                <Button fill>
-                                    VIEW COLLECTIBLES NOW <AntIcon type="arrow-right" />
-                                </Button>
-                            </Link>
+                        <Col xs={24} lg={3} style={{ paddingTop: 20 }}>
+
+                            <a href="https://chaosnet.bepswap.com/pools" style={{ color: "#fff" }}><Button fill>
+                                BEPSWAP <AntIcon type="arrow-right" />
+                            </Button></a>
+                            <br /><br />
+                            <strong><a href="https://docs.thorchain.org/roles/liquidity-providers" style={{ color: "#fff" }}>LEARN MORE</a></strong>
                         </Col>
 
+                    </Row>
+                    <Row style={bannerStyles}>
+                        <Col xs={24} lg={10}>
+                            <h4 style={{ color: "#848E9C" }}>BEPSwap TVL:</h4>
+                            <H1>${(bepswapCapital * price).toLocaleString()}</H1>
+                        </Col>
+                        <Col xs={24} lg={6}>
+                            <h4 style={{ color: "#848E9C" }}>Current POOL APY:</h4>
+                            <H1>{(poolAPY * 100).toFixed(2)}%</H1>
+                        </Col>
+                        <Col xs={24} lg={8}>
+                            <h4 style={{ color: "#848E9C" }}>BEPSwap Users</h4>
+                            <H1>{bepswapUsers} users</H1>
+                        </Col>
                     </Row>
                 </div>
 
@@ -98,20 +133,16 @@ const Home = (props) => {
 
 
 
-                        <H1>STAKE RUNE AND EARN</H1>
+                        <H1>RUNEVault is retiring.</H1>
                         <br></br>
-                        <h4 style={{ color: "#848E9C" }}><span>STAKE RUNE TO EARN WEEKLY UP TO THE LAUNCH OF </span>
-                            <span><strong><a href="/" style={{ color: "#fff" }}>BEPSWAP</a></strong></span>
+                        <h4 style={{ color: "#848E9C" }}><span> WITHDRAW YOUR RUNE AND MOVE TO BEPSWAP</span>
                         </h4>
                         <br></br>
-                        <p>1) Stake your RUNE using this interface.</p>
-                        <p>2) {weeklyReward} RUNE distributed weekly to stakers *.</p>
-                        <p>3) When THORChain mainnet launches, RUNEVault will be retired. You can continue staking in BEPSwap and later, ASGARDEX.</p>
-                        <br></br>
+                        
 
                         <br></br>
                         <Link to="/stake">
-                            <Button style={{ height: 40, width: 250 }}>STAKE NOW</Button>
+                            <Button style={{ height: 40, width: 250 }}>WITHDRAW NOW</Button>
                         </Link>
                         <br></br>
                         <br></br>
@@ -144,11 +175,11 @@ const Home = (props) => {
                                 <H1>{stake.totalStakers}</H1>
                             </Col>
 
-                            <Col xs={24} sm={11} md={10} lg={9}>
+                            {/* <Col xs={24} sm={11} md={10} lg={9}>
                                 <h4 style={{ color: "#848E9C" }}>ROI: WEEKLY** | ANNUALISED***</h4>
                                 <H1>{roi}% | {(roi * 52).toFixed(2)}%</H1>
 
-                            </Col>
+                            </Col> */}
 
                             <Col xs={24} sm={1} md={2} lg={3}>
                             </Col>
@@ -200,7 +231,7 @@ const Home = (props) => {
                             </Col>
 
                         </Row>
-                        <Row>
+                        {/* <Row>
 
                             <Col xs={24} sm={1} md={2} lg={3}>
                             </Col>
@@ -215,7 +246,7 @@ const Home = (props) => {
                             <Col xs={24} sm={1} md={2} lg={3}>
                             </Col>
 
-                        </Row>
+                        </Row> */}
 
 
                         <Row style={{ marginTop: 100 }}>
