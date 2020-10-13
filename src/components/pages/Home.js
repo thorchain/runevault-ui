@@ -100,11 +100,11 @@ const Home = (props) => {
                         </Col>
                         <Col xs={24} lg={3} style={{ paddingTop: 20 }}>
 
-                            <a href="https://chaosnet.bepswap.com/pools" style={{ color: "#fff" }}><Button fill>
+                            <a href="https://chaosnet.bepswap.com/pools" target="blank" style={{ color: "#fff" }}><Button fill>
                                 BEPSWAP <AntIcon type="arrow-right" />
                             </Button></a>
                             <br /><br />
-                            <strong><a href="https://docs.thorchain.org/roles/liquidity-providers" style={{ color: "#fff" }}>LEARN MORE</a></strong>
+                            <strong><a href="https://docs.thorchain.org/roles/liquidity-providers" target="blank" style={{ color: "#fff" }}>LEARN MORE</a></strong>
                         </Col>
 
                     </Row>
