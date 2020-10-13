@@ -18,7 +18,6 @@ const Home = (props) => {
     const { stake, leaderboard } = props;
     const [price, setPrice] = useState(null)
     const [value, setValue] = useState(null)
-    const [roi, setROI] = useState(0.1)
     const [poolAPY, setPoolAPY] = useState(0)
     const [bepswapUsers, setBepswapUsers] = useState(0)
     const [bepswapCapital, setBepswapCapital] = useState(0)
@@ -63,8 +62,8 @@ const Home = (props) => {
         // console.log(price, value, stake.sumStake, stakeAmt)
         setValue((value).toLocaleString())
         console.log(stake.stakedSupply)
-        let roi = ((weeklyReward * 100) / (stakeAmt)).toFixed(3)
-        setROI(roi)
+        // let roi = ((weeklyReward * 100) / (stakeAmt)).toFixed(3)
+        // setROI(roi)
         // console.log(value, roi, stake.sumStake)
 
 
@@ -82,7 +81,7 @@ const Home = (props) => {
         let resp2 = await axios.get('https://chaosnet-midgard.bepswap.com/v1/stats')
         setBepswapUsers(resp2.data.totalUsers)
         let resp3 = await axios.get('https://chaosnet-midgard.bepswap.com/v1/network')
-        setBepswapCapital((+resp3.data.totalStaked*2 + +resp3.data.totalReserve + +resp3.data.bondMetrics.totalActiveBond + +resp3.data.bondMetrics.totalStandbyBond)/10**8)
+        setBepswapCapital((+resp3.data.totalStaked * 2 + +resp3.data.totalReserve + +resp3.data.bondMetrics.totalActiveBond + +resp3.data.bondMetrics.totalStandbyBond) / 10 ** 8)
     }
 
     return (
@@ -111,7 +110,7 @@ const Home = (props) => {
                     </Row>
                     <Row style={bannerStyles}>
                         <Col xs={24} lg={10}>
-                            <h4 style={{ color: "#848E9C" }}>BEPSwap TVL:</h4>
+                            <h4 style={{ color: "#848E9C" }}>BEPSwap Capital Locked:</h4>
                             <H1>${(bepswapCapital * price).toLocaleString()}</H1>
                         </Col>
                         <Col xs={24} lg={6}>
@@ -137,15 +136,43 @@ const Home = (props) => {
                         <br></br>
                         <h4 style={{ color: "#848E9C" }}><span> WITHDRAW YOUR RUNE AND MOVE TO BEPSWAP</span>
                         </h4>
-                        <br></br>
-                        
-
+                        <h4 style={{ color: "#848E9C" }}><span> Weekly rewards will still continue, but are decreasing every week.</span>
+                        </h4>
                         <br></br>
                         <Link to="/stake">
                             <Button style={{ height: 40, width: 250 }}>WITHDRAW NOW</Button>
                         </Link>
                         <br></br>
+
                         <br></br>
+                        <br></br>
+                        <Row>
+                            <Col xs={24}>
+                                <h4 style={{ color: "#848E9C" }}>NUMBER OF STAKERS:</h4>
+                                <H1>{stake.totalStakers}</H1>
+                            </Col>
+                            <Col xs={24} >
+                            <br></br>
+                                <h4 style={{ color: "#848E9C" }}>TOTAL STAKED:</h4>
+                                <H1> {stake.sumStake} RUNE</H1><br />
+                                {value &&
+                                    <Text size={24}> ($ {value})</Text>
+                                }
+                            </Col>
+                            <Col xs={24}>
+                            <br></br>
+                                <h4 style={{ color: "#848E9C" }}>STAKED SUPPLY:</h4>
+                                {stake.stakedSupply &&
+                                    <H1>{stake.stakedSupply}%</H1>
+                                }
+
+                            </Col>
+                            <Col xs={24}>
+                            <br></br>
+                                <h4 style={{ color: "#848E9C" }}>LAST UPDATED:</h4>
+                                <h4 style={{ color: "#FFF" }}>{stake.lastUpdatedDate}</h4>
+                            </Col>
+                        </Row>
 
                     </Col>
 
@@ -165,72 +192,7 @@ const Home = (props) => {
 
                 {!stake.isLoading &&
                     <div>
-                        <Row style={{ marginTop: 100 }}>
-
-                            <Col xs={24} sm={1} md={2} lg={3}>
-                            </Col>
-
-                            <Col xs={24} sm={11} md={10} lg={9}>
-                                <h4 style={{ color: "#848E9C" }}>NUMBER OF STAKERS:</h4>
-                                <H1>{stake.totalStakers}</H1>
-                            </Col>
-
-                            {/* <Col xs={24} sm={11} md={10} lg={9}>
-                                <h4 style={{ color: "#848E9C" }}>ROI: WEEKLY** | ANNUALISED***</h4>
-                                <H1>{roi}% | {(roi * 52).toFixed(2)}%</H1>
-
-                            </Col> */}
-
-                            <Col xs={24} sm={1} md={2} lg={3}>
-                            </Col>
-
-                        </Row>
-
-                        <Row style={{ marginTop: 50 }}>
-
-                            <Col xs={24} sm={1} md={2} lg={3}>
-                            </Col>
-
-                            <Col xs={24} sm={11} md={10} lg={9}>
-                                <h4 style={{ color: "#848E9C" }}>TOTAL STAKED:</h4>
-                                <H1> {stake.sumStake} RUNE</H1><br />
-                                {value &&
-                                    <Text size={24}> ($ {value})</Text>
-                                }
-
-                                {/* <H1> ${(stake.sumStake * this.state.price * 100)/100} USD</H1> */}
-                            </Col>
-
-                            <Col xs={24} sm={11} md={10} lg={9}>
-                                <h4 style={{ color: "#848E9C" }}>STAKED SUPPLY:</h4>
-                                {stake.stakedSupply &&
-                                    <H1>{stake.stakedSupply}%</H1>
-                                }
-
-                            </Col>
-
-                            <Col xs={24} sm={1} md={2} lg={3}>
-                            </Col>
-
-                        </Row>
-
-                        <Row style={{ marginTop: 50 }}>
-
-                            <Col xs={24} sm={1} md={2} lg={3}>
-                            </Col>
-
-                            <Col xs={12} sm={11} md={10} lg={9}>
-                                <h4 style={{ color: "#848E9C" }}>LAST UPDATED:</h4>
-                                <h4 style={{ color: "#FFF" }}>{stake.lastUpdatedDate}</h4>
-                            </Col>
-
-                            <Col xs={12} sm={11} md={10} lg={9}>
-                            </Col>
-
-                            <Col xs={24} sm={1} md={2} lg={3}>
-                            </Col>
-
-                        </Row>
+                        
                         {/* <Row>
 
                             <Col xs={24} sm={1} md={2} lg={3}>
