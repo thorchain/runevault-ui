@@ -8,7 +8,7 @@ import axios from 'axios'
 
 import Breakpoint from 'react-socks';
 
-import { Icon, H1, Text, Button } from '../Components'
+import { Icon, H1, Text, Button, Center } from '../Components'
 import { connect } from 'react-redux';
 
 const Home = (props) => {
@@ -21,6 +21,7 @@ const Home = (props) => {
     const [poolAPY, setPoolAPY] = useState(0)
     const [bepswapUsers, setBepswapUsers] = useState(0)
     const [bepswapCapital, setBepswapCapital] = useState(0)
+    const [BEPSWAPLoaded, setBEPSWAPLoaded] = useState(false)
 
     const antIcon = <AntIcon type="loading" style={{ fontSize: 24 }} spin />;
 
@@ -82,6 +83,7 @@ const Home = (props) => {
         setBepswapUsers(resp2.data.totalUsers)
         let resp3 = await axios.get('https://chaosnet-midgard.bepswap.com/v1/network')
         setBepswapCapital((+resp3.data.totalStaked * 2 + +resp3.data.totalReserve + +resp3.data.bondMetrics.totalActiveBond + +resp3.data.bondMetrics.totalStandbyBond) / 10 ** 8)
+        setBEPSWAPLoaded(true)
     }
 
     return (
@@ -108,20 +110,33 @@ const Home = (props) => {
                         </Col>
 
                     </Row>
+
                     <Row style={bannerStyles}>
-                        <Col xs={24} lg={10}>
-                            <h4 style={{ color: "#848E9C" }}>BEPSwap Capital Locked:</h4>
-                            <H1>${(bepswapCapital * price).toLocaleString()}</H1>
-                        </Col>
-                        <Col xs={24} lg={6}>
-                            <h4 style={{ color: "#848E9C" }}>Current POOL APY:</h4>
-                            <H1>{(poolAPY * 100).toFixed(2)}%</H1>
-                        </Col>
-                        <Col xs={24} lg={8}>
-                            <h4 style={{ color: "#848E9C" }}>BEPSwap Users</h4>
-                            <H1>{bepswapUsers} users</H1>
-                        </Col>
+                        {!BEPSWAPLoaded &&
+                        <Center>
+                            <Spin />
+                        </Center>
+                            
+                        }
+                        {BEPSWAPLoaded &&
+                            <>
+                                <Col xs={24} lg={10}>
+                                    <h4 style={{ color: "#848E9C" }}>BEPSwap Capital Locked:</h4>
+                                    <H1>${(bepswapCapital * price).toLocaleString()}</H1>
+                                </Col>
+                                <Col xs={24} lg={6}>
+                                    <h4 style={{ color: "#848E9C" }}>Current POOL APY:</h4>
+                                    <H1>{(poolAPY * 100).toFixed(2)}%</H1>
+                                </Col>
+                                <Col xs={24} lg={8}>
+                                    <h4 style={{ color: "#848E9C" }}>BEPSwap Users</h4>
+                                    <H1>{bepswapUsers} users</H1>
+                                </Col>
+                            </>
+                        }
+
                     </Row>
+
                 </div>
 
                 <Row style={{}}>
@@ -132,11 +147,9 @@ const Home = (props) => {
 
 
 
-                        <H1>RUNEVault is retiring.</H1>
+                        <H1>RUNEVault has retired.</H1>
                         <br></br>
                         <h4 style={{ color: "#848E9C" }}><span> WITHDRAW YOUR RUNE AND MOVE TO BEPSWAP</span>
-                        </h4>
-                        <h4 style={{ color: "#848E9C" }}><span> Weekly rewards will still continue, but are decreasing every week.</span>
                         </h4>
                         <br></br>
                         <Link to="/stake">
@@ -152,7 +165,7 @@ const Home = (props) => {
                                 <H1>{stake.totalStakers}</H1>
                             </Col>
                             <Col xs={24} >
-                            <br></br>
+                                <br></br>
                                 <h4 style={{ color: "#848E9C" }}>TOTAL STAKED:</h4>
                                 <H1> {stake.sumStake} RUNE</H1><br />
                                 {value &&
@@ -160,7 +173,7 @@ const Home = (props) => {
                                 }
                             </Col>
                             <Col xs={24}>
-                            <br></br>
+                                <br></br>
                                 <h4 style={{ color: "#848E9C" }}>STAKED SUPPLY:</h4>
                                 {stake.stakedSupply &&
                                     <H1>{stake.stakedSupply}%</H1>
@@ -168,7 +181,7 @@ const Home = (props) => {
 
                             </Col>
                             <Col xs={24}>
-                            <br></br>
+                                <br></br>
                                 <h4 style={{ color: "#848E9C" }}>LAST UPDATED:</h4>
                                 <h4 style={{ color: "#FFF" }}>{stake.lastUpdatedDate}</h4>
                             </Col>
@@ -192,7 +205,7 @@ const Home = (props) => {
 
                 {!stake.isLoading &&
                     <div>
-                        
+
                         {/* <Row>
 
                             <Col xs={24} sm={1} md={2} lg={3}>
