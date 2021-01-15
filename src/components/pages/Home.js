@@ -77,8 +77,8 @@ const Home = (props) => {
 
     const getMidgardData = async () => {
         let resp = await axios.get('https://chaosnet-midgard.bepswap.com/v1/network')
-        console.log(resp.data.stakingROI)
-        setPoolAPY(resp.data.stakingROI)
+        console.log(resp.data.liquidityAPY)
+        setPoolAPY(resp.data.liquidityAPY)
         let resp2 = await axios.get('https://chaosnet-midgard.bepswap.com/v1/stats')
         setBepswapUsers(resp2.data.totalUsers)
         let resp3 = await axios.get('https://chaosnet-midgard.bepswap.com/v1/network')
@@ -92,171 +92,113 @@ const Home = (props) => {
             <div style={{ backgroundColor: "#101921" }}>
 
                 <div>
-                    <Row style={bannerStyles}>
-                        <Col xs={24} lg={18}>
-                            <Text color={"#4FE1C4"} size={22} bold={true}>BEPSWAP HAS LAUNCHED</Text><br />
-                            <Text color={"#fff"} size={18} bold={true}>Withdraw your RUNE and provide liquidity in a BEPSwap Pool of your choice.</Text><br />
-                            <Text color={"#fff"} size={18} bold={true}>BEPSwap Liquidity Providers earn fees and emissions.</Text>
 
-
+                    <Row style={{}}>
+                        <Col xs={24} sm={1} md={2} lg={3}>
                         </Col>
-                        <Col xs={24} lg={3} style={{ paddingTop: 20 }}>
 
-                            <a href="https://chaosnet.bepswap.com/pools" target="blank" style={{ color: "#fff" }}><Button fill>
-                                BEPSWAP <AntIcon type="arrow-right" />
-                            </Button></a>
-                            <br /><br />
-                            <strong><a href="https://docs.thorchain.org/roles/liquidity-providers" target="blank" style={{ color: "#fff" }}>LEARN MORE</a></strong>
+                        <Col xs={24} sm={12} md={12} lg={9} style={homeStyles}>
+
+
+
+                            <H1>RUNEVault has retired.</H1>
+                            <br></br>
+                            <h4 style={{ color: "#848E9C" }}><span> WITHDRAW YOUR RUNE AND MOVE TO BEPSWAP</span>
+                            </h4>
+                            <br></br>
+                            <Link to="/stake">
+                                <Button style={{ height: 40, width: 250 }}>WITHDRAW NOW</Button>
+                            </Link>
+                            <br></br>
+                        </Col>
+
+                        <Col xs={24} sm={2} md={2} lg={2}>
+                        </Col>
+
+                        <Col xs={24} sm={1} md={2} lg={3}>
                         </Col>
 
                     </Row>
 
-                    <Row style={bannerStyles}>
-                        {!BEPSWAPLoaded &&
-                        <Center>
-                            <Spin />
-                        </Center>
-                            
-                        }
-                        {BEPSWAPLoaded &&
-                            <>
-                                <Col xs={24} lg={10}>
-                                    <h4 style={{ color: "#848E9C" }}>BEPSwap Capital Locked:</h4>
-                                    <H1>${(bepswapCapital * price).toLocaleString()}</H1>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+
+                    <Row>
+                        <Col xs={24} sm={1} md={2} lg={3}>
+                        </Col>
+
+                        <Col xs={24} sm={12} md={12} lg={9}>
+                            <Row style={bannerStyles}>
+
+                                <Col xs={24} lg={24}>
+                                    <Text color={"#4FE1C4"} size={22} bold={true}>BEPSWAP HAS LAUNCHED</Text><br />
+                                    <Text color={"#fff"} size={18} bold={true}>Withdraw your RUNE and provide liquidity in a BEPSwap Pool of your choice.</Text><br />
+                                    <Text color={"#fff"} size={18} bold={true}>BEPSwap Liquidity Providers earn fees and emissions.</Text>
+
+
                                 </Col>
-                                <Col xs={24} lg={6}>
-                                    <h4 style={{ color: "#848E9C" }}>Current POOL APY:</h4>
-                                    <H1>{(poolAPY * 100).toFixed(2)}%</H1>
+                                <Col xs={24} lg={24} style={{ paddingTop: 20 }}>
+
+                                    <a href="https://chaosnet.bepswap.com/pools" target="blank" style={{ color: "#fff" }}><Button fill>
+                                        BEPSWAP <AntIcon type="arrow-right" />
+                                    </Button></a>
+                                    <br /><br />
+                                    <strong><a href="https://docs.thorchain.org/roles/liquidity-providers" target="blank" style={{ color: "#fff" }}>LEARN MORE</a></strong>
                                 </Col>
-                                <Col xs={24} lg={8}>
-                                    <h4 style={{ color: "#848E9C" }}>BEPSwap Users</h4>
-                                    <H1>{bepswapUsers} users</H1>
-                                </Col>
-                            </>
-                        }
+
+
+                            </Row>
+
+
+                        </Col>
+
+                        <Col xs={24} sm={12} md={12} lg={9}>
+
+                            <Row style={bannerStyles}>
+                                {!BEPSWAPLoaded &&
+                                    <Center>
+                                        <Spin />
+                                    </Center>
+
+                                }
+                                {BEPSWAPLoaded &&
+                                    <>
+                                        <Col xs={24}>
+                                            <h4 style={{ color: "#848E9C" }}>BEPSwap Capital Locked:</h4>
+                                            <H1>${(bepswapCapital * price).toLocaleString()}</H1>
+                                        </Col>
+                                        <Col xs={24}>
+                                            <h4 style={{ color: "#848E9C" }}>Current POOL APY:</h4>
+                                            <H1>{(poolAPY * 100).toFixed(2)}%</H1>
+                                        </Col>
+                                        <Col xs={24}>
+                                            <h4 style={{ color: "#848E9C" }}>BEPSwap Users</h4>
+                                            <H1>{bepswapUsers} users</H1>
+                                        </Col>
+                                    </>
+                                }
+
+                            </Row>
+
+
+                        </Col>
+
+                        <Col xs={24} sm={1} md={2} lg={3}>
+                        </Col>
+
 
                     </Row>
+
+
+
 
                 </div>
-
-                <Row style={{}}>
-                    <Col xs={24} sm={1} md={2} lg={3}>
-                    </Col>
-
-                    <Col xs={24} sm={12} md={12} lg={9} style={homeStyles}>
+                <br></br>
+                <br></br>
+                <br></br>
 
 
-
-                        <H1>RUNEVault has retired.</H1>
-                        <br></br>
-                        <h4 style={{ color: "#848E9C" }}><span> WITHDRAW YOUR RUNE AND MOVE TO BEPSWAP</span>
-                        </h4>
-                        <br></br>
-                        <Link to="/stake">
-                            <Button style={{ height: 40, width: 250 }}>WITHDRAW NOW</Button>
-                        </Link>
-                        <br></br>
-
-                        <br></br>
-                        <br></br>
-                        <Row>
-                            <Col xs={24}>
-                                <h4 style={{ color: "#848E9C" }}>NUMBER OF STAKERS:</h4>
-                                <H1>{stake.totalStakers}</H1>
-                            </Col>
-                            <Col xs={24} >
-                                <br></br>
-                                <h4 style={{ color: "#848E9C" }}>TOTAL STAKED:</h4>
-                                <H1> {stake.sumStake} RUNE</H1><br />
-                                {value &&
-                                    <Text size={24}> ($ {value})</Text>
-                                }
-                            </Col>
-                            <Col xs={24}>
-                                <br></br>
-                                <h4 style={{ color: "#848E9C" }}>STAKED SUPPLY:</h4>
-                                {stake.stakedSupply &&
-                                    <H1>{stake.stakedSupply}%</H1>
-                                }
-
-                            </Col>
-                            <Col xs={24}>
-                                <br></br>
-                                <h4 style={{ color: "#848E9C" }}>LAST UPDATED:</h4>
-                                <h4 style={{ color: "#FFF" }}>{stake.lastUpdatedDate}</h4>
-                            </Col>
-                        </Row>
-
-                    </Col>
-
-                    <Col xs={24} sm={2} md={2} lg={2}>
-                    </Col>
-
-                    <Breakpoint medium up>
-                        <Col xs={24} sm={8} md={8} lg={9} style={iconStyles}>
-                            <Icon icon="rune" style={{ width: 450 }} />
-                        </Col>
-                    </Breakpoint>
-
-                    <Col xs={24} sm={1} md={2} lg={3}>
-                    </Col>
-
-                </Row>
-
-                {!stake.isLoading &&
-                    <div>
-
-                        {/* <Row>
-
-                            <Col xs={24} sm={1} md={2} lg={3}>
-                            </Col>
-
-                            <Col xs={24} sm={18} md={18} lg={18}>
-                                <br /> <br />
-                                <p style={{ fontSize: 12, color: "#848E9C" }}>* Rune sourced from Community Reserves, allocated for the purpose of driving long-term engagement from Rune holders.</p>
-                                <p style={{ fontSize: 12, color: "#848E9C" }}>** Calculated as {weeklyReward}/{stake.sumStake}</p>
-                                <p style={{ fontSize: 12, color: "#848E9C" }}>*** Calculated as {roi}% * 52 </p>
-                            </Col>
-
-                            <Col xs={24} sm={1} md={2} lg={3}>
-                            </Col>
-
-                        </Row> */}
-
-
-                        <Row style={{ marginTop: 100 }}>
-
-                            <Col xs={24} sm={1} md={2} lg={3}>
-                            </Col>
-
-                            <Col xs={24} sm={22} md={20} lg={18}
-                                style={{ backgroundColor: '#D8D8D8', borderRadius: 5, paddingBottom: 5 }}>
-                                <Table dataSource={stake.dataSource} columns={leaderboard.leaderboardColumns}
-                                    pagination={false} size={'middle'}
-                                    title={() => 'LEADERBOARD'} />
-                            </Col>
-
-                        </Row>
-
-                        <Row style={{ marginTop: 30 }}>
-                            <Col xs={2} sm={4} md={6} lg={8} xl={8}>
-
-                            </Col>
-                            <Col xs={2} sm={4} md={6} lg={8} xl={4}>
-
-                            </Col>
-                            <Col xs={2} sm={4} md={6} lg={8} xl={5}>
-
-                            </Col>
-                            <Col xs={20} sm={16} md={12} lg={8} xl={3}>
-                                <Link to="/leaderboard">
-                                    <Button style={{ height: 40, width: 237 }}>VIEW ALL</Button>
-                                </Link>
-                            </Col>
-
-                        </Row>
-                    </div>
-                }
                 {stake.isLoading &&
                     <div style={{ textAlign: "center", borderRadius: 4, padding: '340px 50px' }}>
                         <Spin tip="Loading..." indicator={antIcon} style={{ color: 'white' }} />
